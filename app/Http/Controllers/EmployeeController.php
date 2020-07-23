@@ -75,6 +75,12 @@ class EmployeeController extends Controller
     {
         //
     }
+    public function login()
+    {
+        return view('pages.login');
+    }
+
+    
 
     /**
      * Remove the specified resource from storage.
@@ -88,4 +94,4 @@ class EmployeeController extends Controller
         return redirect()->route('user.index')->with('success', 'user has been deleted successfuly!');
     }
     }
-}
+

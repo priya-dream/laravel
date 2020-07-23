@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendors/font-awesome/css/font-awesome.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
   </head>
   <body>
     <div class="container-scroller">
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
-          <a class="sidebar-brand"><table><tr><td rowspan=2><img src="{{ asset('images/admin.png') }}" alt="admin" width="200" height="200"/></td><td><img src="{{ asset('images/jobs.png') }}" alt="jobs" /></td></tr></table></span></a>
+          <a class="sidebar-brand"><table><tr><img class="card-img-top" src="{{ asset('images/admin.png') }}" alt="Card image cap" width="100px" height="200px"></td><td><img src="{{ asset('images/jobs.png') }}" alt="jobs" /></td></tr></table></span></a>
           <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="index.html"><img src="{{ asset('images/logo-mini.svg') }}" alt="logo" /></a>
         </div>
         <ul class="nav">
@@ -36,7 +36,7 @@
           <li class="nav-item">
             <a class="nav-link" href="index.html">
               <i class="mdi mdi-home menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
+              <span class="menu-title">{{$name}}</span>
             </a>
           </li>
           <li class="nav-item">
@@ -74,7 +74,7 @@
           <li class="nav-item">
             <a class="nav-link" href="pages/charts/chartjs.html">
               <i class="mdi mdi-chart-bar menu-icon"></i>
-              <span class="menu-title">Charts</span>
+              <span class="menu-title">Chart</span>
             </a>
           </li>
           <li class="nav-item">
