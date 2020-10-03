@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3 class="mb-0"> Available vacancies Here</h3>
+<h3 class="mb-0"> Available vacancies</h3>
             <a  href="/vacancies/login" class="btn btn-success"> POST JOB </a>
             </div>
             @if ($message = Session::get('success'))
