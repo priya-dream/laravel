@@ -13,7 +13,16 @@ class Login extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('login', function (Blueprint $table) {
+            $table->id();
+            $table->integer('company')->unsigned();
+            $table->boolean('status');
+            $table->integer('login_id');
+            $table->string('password',30);
+            $table->integer('lock');
+            //$table->foreign('company')->references('id')->on('companies')->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +32,6 @@ class Login extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('login');
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
         <div class="main-panel">  
               <div><h3 class="mb-0">Publish New Job</h3></div><br/>         
-            <form action="{{ route('vacancies.store') }}" method="POST" class="forms-sample">
+            <form action="{{ route('vacancy.store') }}" method="POST" class="forms-sample">
               @csrf
                       <div class="form-group">
                         <label class=col>Title</label>

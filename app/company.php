@@ -4,7 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class company extends Model
+class Company extends Model
 {
-    //protected $primaryKey = 'id';
+    protected $table = 'companies';
+    protected $fillable = [
+        'name', 'address','ceo','mobile','email','username','password'
+    ];
 }

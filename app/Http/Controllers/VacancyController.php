@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\vacancy;
+use App\Vacancy;
 use Illuminate\Http\Request;
 
 class VacancyController extends Controller
@@ -9,10 +9,10 @@ class VacancyController extends Controller
     public function index()
     {
         //return view('vacancies.index');
-        // $vacancies = vacancy::all();
+        // $vacancies = Vacancy::all();
         // return view('vacancies.index',compact('vacancies'));
         
-            $vacancies = vacancy::latest()->paginate(4);
+            $vacancies = Vacancy::latest()->paginate(4);
             return view('vacancies.index',compact('vacancies'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -22,17 +22,7 @@ class VacancyController extends Controller
         
         return view('vacancies.create');
     }
-    public function login()
-    {
-        
-        return view('vacancies.login');
-    }
-    public function create_account()
-    {
-        
-        return view('vacancies.create_account');
-    }
-
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -40,23 +30,23 @@ class VacancyController extends Controller
             'closing_date' => 'required',
         ]);
   
-        vacancy::create($request->all());
+        Vacancy::create($request->all());
    
         return redirect()->route('vacancies.index')
                         ->with('success','vacancy published successfully.');
     }
 
-    public function show(vacancy $vacancy)
+    public function show(Vacancy $vacancy)
     {
-        return view('vacancies.show',compact('vacancy'));
+        return view('vacancies.show');
     }
 
-    public function edit(vacancy $vacancy)
+    public function edit(Vacancy $vacancy)
     {
-        return view('vacancies.edit',compact('vacancy'));
+        return view('vacancies.edit');
     }
 
-    public function update(Request $request, vacancy $vacancy)
+    public function update(Request $request, Vacancy $vacancy)
     {
         $request->validate([
             'title' => 'required',
@@ -68,7 +58,7 @@ class VacancyController extends Controller
         return redirect()->route('vacancies.index')
                         ->with('success','vacancy published successfully');
     }
-    public function destroy(vacancy $vacancy)
+    public function destroy(Vacancy $vacancy)
     {
         $vacancy->delete();
   

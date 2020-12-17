@@ -12,7 +12,8 @@ return [
     | syntax for every one. Here you may define a default connection.
     |
     */
-
+'api_key'=>'187ecc4c',
+'api_secret'=>'QaHzVnCDz0C2bmOX',
     'default' => env('QUEUE_CONNECTION', 'sync'),
 
     /*

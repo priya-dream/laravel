@@ -12,9 +12,12 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
+        "intergo/sms.to-laravel-lumen": "^0.0.28",
         "laravel/framework": "^7.22.2",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^2.1"
+        "laravel/ui": "^2.1",
+        "laravelcollective/html": "^6.2",
+        "nexmo/laravel": "^2.3"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

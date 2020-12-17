@@ -15,10 +15,14 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->text('name');
+            $table->string('name');
             $table->longText('address');
             $table->string('CEO');
-            $table->double('points');
+            $table->integer('mobile');
+            $table->string('email',50);
+            $table->float('points');
+            $table->string('username');
+            $table->string('password');
             $table->boolean('status')->default(0);
             $table->boolean('login')->default(0);
             $table->timestamps(); 
