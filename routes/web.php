@@ -43,6 +43,9 @@ use Illuminate\Support\Facades\Route;
 
     
     Route::get('/join', 'UserController@index');
+    Route::get('/join/create', 'UserController@create');
+    Route::post('/join/store', 'UserController@store');
+    Route::post('/join/verify', 'UserController@verify');
     Route::post('/join/checklogin', 'UserController@checklogin');
     Route::get('/join/successlogin', 'UserController@successlogin');
     Route::get('/join/logout', 'UserController@logout');

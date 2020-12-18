@@ -6,12 +6,6 @@
 @if(isset(Auth::user()->email))
   <script>windows.location="/join/successlogin";</script>
 @endif
-@if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-@endif
-
 @if(count($errors)>0)
   <div class="alert alert-danger">
     <ul>
@@ -22,7 +16,7 @@
   </div>
 @endif
 
-  <form method="post" action="{{url('/join/checklogin')}}">
+  <form method="post" action="{{url('/join/verify')}}">
   {{csrf_field()}}
       <div class="form-group">
           <label class=col>Username</label>
@@ -35,7 +29,7 @@
         <div><button type="submit" class="btn btn-primary" > Login </a></div>
   </form></br>
   
-  <div><a class="btn button" href="{{url('/user/postRegister')}}">Create New Account</a></div>
+  <div><a class="btn button" href="{{url('/join/create')}}">Create New Account</a></div>
         
    
 </div>

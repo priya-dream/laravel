@@ -8,7 +8,7 @@
       </div>
   @endif
 
-  <form action="{{route('user.store')}}" method="post" class="forms-sample">
+  <form action="{{url('/join/store')}}" method="post" class="forms-sample">
           {{csrf_field()}}
   <div class="row">
     <div class="col-md-6 grid-margin stretch-card">
@@ -31,7 +31,7 @@
             <label class=col>Password</label>
             <input type="password" class="form-control" name="password" placeholder="password" required />
           </div>
-          <div><button type="submit" class="btn btn-primary"> Create </button></div>
+          <div><button type="submit" class="btn btn-primary" name="button"> Create </button></div>
         </div>
       </div>
     </div>

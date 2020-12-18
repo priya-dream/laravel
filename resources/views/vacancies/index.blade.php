@@ -3,7 +3,7 @@
 @section('content')
 
 <h3 class="mb-0"> Available vacancies</h3>
-            <a  href="{{ url('/company/login') }}" class="btn btn-success"> POST JOB </a>
+            <a  href="{{ url('/join') }}" class="btn btn-success"> POST JOB </a>
             </div>
             @if ($message = Session::get('success'))
             <div class="alert alert-success">
