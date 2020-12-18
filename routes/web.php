@@ -38,15 +38,21 @@ use Illuminate\Support\Facades\Route;
 //Route::post('/companies','CompanyController@store')->name(company.store);
 // Route::post("/companies", ["as" => "company.store", "uses" => "CompanyController@store"]);
 
-Route::prefix('admin')->group(function () {
+
     Route::resource('vacancy', 'VacancyController');
-});
-Route::prefix('admin')->group(function () {
-    Route::get('/company/login','CompanyController@login');
-    Route::get('/company/test','CompanyController@test');
+
+    
+    Route::get('/join', 'UserController@index');
+    Route::post('/join/checklogin', 'UserController@checklogin');
+    Route::get('/join/successlogin', 'UserController@successlogin');
+    Route::get('/join/logout', 'UserController@logout');
+    Route::resource('user', 'UserController');
+
+
+    Route::any('company/login','CompanyController@index');
     Route::resource('company', 'CompanyController');
     
-});
+
 
 
 Auth::routes();

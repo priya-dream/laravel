@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Company;
 use DB;
+use Auth;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -15,24 +16,7 @@ class CompanyController extends Controller
     public function index(Company $company)
     {
         
-        //return view ('companies.login');
-    }
-    public function login(Company $company)
-    {
-        // $companies = DB::table('companies')->get();
-        // return view('companies.index',compact('companies'));
         return view ('companies.login');
-    }
-    public function test(Company $company)
-    {
-        $companies = DB::table('companies')->select('username', 'password')->get();
-        return $companies;
-        $row=DB::table('companies')->get();
-        if($_POST['username']==$row['username'] AND $_POST['password']==$row['password']){
-            return 'Correct';
-        }else
-        return 'Wrong';
-        // return view('companies.test');
     }
 
     /**
@@ -40,9 +24,9 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Company $company)
     {
-        return view('companies.create');
+         return view('companies.create');
     }
 
     /**

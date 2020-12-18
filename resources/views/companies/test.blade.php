@@ -1,14 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head>
-<body>
-    <h1>Hi!</h1>
-</body>
-</html>
+@extends('layouts.master.page')
+@section('content')
+<div class="main-panel">
+<div><h1 class="page-title">Login</h1></div><br/><br/>
+@if(isset(Auth::user()->email))
+    <div class="alert alert-danger success-block">
+        <strong>
+        welcome{{ Auth::user()->email}}
+        </strong></br>
+        <a href="{{url('/join/logout')}}">Logout</a>
+    </div>
+    else
+    <script>window.location="/join";</script>
+    
+@endif
+
+</div>
+</div>
