@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Vacancy;
+use DB;
 use Illuminate\Http\Request;
 
 class VacancyController extends Controller
@@ -25,15 +26,12 @@ class VacancyController extends Controller
     
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'closing_date' => 'required',
-        ]);
-  
-        Vacancy::create($request->all());
-   
-        return redirect()->route('vacancies.index')
-                        ->with('success','vacancy published successfully.');
+        $title=$request->input('title');
+        DB::table('companies')->select('name')->where('username', 'John');
+        //$company=$request->input('company');
+        $closing_date=$request->input('closing_date');
+        DB::Insert('Insert into vacancies (id,title,closing_date) values (?,?,?)',[null,$title,$closing_date]);
+        return redirect('/vacancy')->with('success','vacancy published successfully.');
     }
 
     public function show(Vacancy $vacancy)
@@ -62,8 +60,7 @@ class VacancyController extends Controller
     {
         $vacancy->delete();
   
-        return redirect()->route('vacancies.index')
-                        ->with('success','vacancy deleted successfully');
+        return redirect('/vacancy')->with('success','vacancy deleted successfully.');
     }
   
 }

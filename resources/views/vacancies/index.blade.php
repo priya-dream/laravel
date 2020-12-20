@@ -26,7 +26,7 @@
             <td>{{ $vacancy->company }}</td>
             <td>{{ $vacancy->closing_date }}</td>
             <td>
-                <form action="{{ route('vacancies.destroy',$vacancy->id) }}" method="POST">
+                <form action="{{ route('vacancy.destroy',$vacancy->id) }}" method="POST">
                     <a class="btn btn-primary" href="">Apply</a>
                     @csrf
                     @method('DELETE')

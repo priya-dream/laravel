@@ -20,7 +20,8 @@ class CreateVacanciesTable extends Migration
             $table->string('company');
             $table->date('closing_date');
             $table->timestamps();
-            //$table->foreign('company')->references('company')->on('company')->onDelete('cascade');
+            //$table->foreign('company')->references('id')->on('companies')->onDelete('cascade');
+           
 
         });
     }

@@ -38,7 +38,7 @@ use Illuminate\Support\Facades\Route;
 //Route::post('/companies','CompanyController@store')->name(company.store);
 // Route::post("/companies", ["as" => "company.store", "uses" => "CompanyController@store"]);
 
-
+    Route::post('/vacancy/add','VacancyController@store');
     Route::resource('vacancy', 'VacancyController');
 
     

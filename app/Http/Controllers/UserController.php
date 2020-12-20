@@ -50,11 +50,19 @@ class UserController extends Controller
     {
         //print_r($request->input());
         $name=$request->input('name');
+        $address=$request->input('address');
+        $ceo=$request->input('ceo');
+        $mobile=$request->input('mobile');
         $email=$request->input('email');
+        $username=$request->input('username');
         $password=$request->input('password');
-        $result=DB::Insert('Insert into users(id,name,email,password) values (?,?,?,?)',[null,$name,$email,$password] );
-        if(count($result))
-        echo 'you are created an account successfully';
+        $image=$request->input('image');
+        $result=DB::Insert('Insert into users(id,name,email,password) values (?,?,?,?)',[null,$username,$email,$password] );
+        DB::Insert('Insert into companies(id,name,address,ceo,mobile,email,username,password,image) values (?,?,?,?,?,?,?,?,?)',[null,$name,$address,$ceo,$mobile,$email,$username,$password,$image]);
+        if(count(array($result)))
+        {
+            return redirect('/join')->with('success','you are created an account successfully. Now you can login.');
+        }
         else
         echo 'Sorry, something error';
     }
@@ -64,11 +72,12 @@ class UserController extends Controller
     {
         //print_r($request->input());
         $name=$request->input('name');
+        $username=$request->input('username');
         $email=$request->input('email');
         $password=$request->input('password');
-        $data=DB::Select('Select id from users where name=? and password=?',[$name,$password]);
+        $data=DB::Select('Select id from users where name=? and password=?',[$username,$password]);
         //print_r($data);
-        if(count($data)){
+        if(count(array($data))){
         //echo 'you are login successfully';
         return view('vacancies.add');
         }
