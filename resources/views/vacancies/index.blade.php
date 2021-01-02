@@ -10,8 +10,9 @@
             <p>{{ $message }}</p>
             </div>
            @endif
+           </br></br>
            
-        <table class="table table-bordered"  style="align:center">
+        <table margin-top="20px" class="table table-bordered"  style="align:center">
         <tr>
             <th>No</th>
             <th>Title</th>
@@ -28,6 +29,7 @@
             <td>
                 <form action="{{ route('vacancy.destroy',$vacancy->id) }}" method="POST">
                     <a class="btn btn-primary" href="">Apply</a>
+                    <a class="btn btn-primary" href="{{url('/vacancy/view',$vacancy->id) }}">View</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>

@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('admin');
-// });
+ Route::get('/home', function () {
+    return view('welcome');
+});
 //Route::resource('vacancies','VacancyController');
 // Route::get('/', function () {
 //          return view('sms');
@@ -38,16 +38,18 @@ use Illuminate\Support\Facades\Route;
 //Route::post('/companies','CompanyController@store')->name(company.store);
 // Route::post("/companies", ["as" => "company.store", "uses" => "CompanyController@store"]);
 
+
+    Route::post('/vacancy/view','VacancyController@view');
     Route::post('/vacancy/add','VacancyController@store');
-    Route::resource('vacancy', 'VacancyController');
+    Route::resource('/vacancy', 'VacancyController');
 
     
     Route::get('/join', 'UserController@index');
     Route::get('/join/create', 'UserController@create');
     Route::post('/join/store', 'UserController@store');
     Route::post('/join/verify', 'UserController@verify');
-    Route::post('/join/checklogin', 'UserController@checklogin');
-    Route::get('/join/successlogin', 'UserController@successlogin');
+    Route::post('checklogin', 'PageController@checklogin');
+    Route::get('successlogin', 'PageController@successlogin');
     Route::get('/join/logout', 'UserController@logout');
     Route::resource('user', 'UserController');
 

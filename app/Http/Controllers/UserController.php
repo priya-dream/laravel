@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 use App\User;
 use DB;
-use Auth;
 use Illuminate\Http\Request;
 use validator;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -22,15 +22,15 @@ class UserController extends Controller
     public function checkLogin(Request $request)
     {
         $this->validate($request,[
-            'email' => 'required|email',
+            'username' => 'required|username',
             'password' =>'required|password',
         ]);
         $user_data=array(
-            'email' => $request->get('email'),
+            'username' => $request->get('username'),
             'password' =>$request->get('password'), 
         );
         if(Auth::attempt($user_data)){
-            return redirect('join/successlogin');
+            return redirect('/vacancy');
         }
         return back()->with('error', "Invalid Login Details"); 
     }
@@ -43,7 +43,7 @@ class UserController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('join');
+        return redirect('/join');
     }
 
     public function store(Request $request)
@@ -67,22 +67,27 @@ class UserController extends Controller
         echo 'Sorry, something error';
     }
 
+    
+
 
     public function verify(Request $request)
     {
-        //print_r($request->input());
-        $name=$request->input('name');
+        // //print_r($request->input());
         $username=$request->input('username');
-        $email=$request->input('email');
         $password=$request->input('password');
         $data=DB::Select('Select id from users where name=? and password=?',[$username,$password]);
         //print_r($data);
-        if(count(array($data))){
-        //echo 'you are login successfully';
-        return view('vacancies.add');
+        if(count($data)){
+        $company=DB::table('companies')
+        ->join('users','users.name','=','companies.username')
+        ->select('companies.name')
+         ->where('companies.username','=',$username)
+        ->get();
+        //$user = auth()->user();
+        return View('vacancies.add',compact('request'));
         }
         else
-        echo 'Invalid login details';
+        return redirect('/join')->with('error','Invalid login details !!');
 
     }
 

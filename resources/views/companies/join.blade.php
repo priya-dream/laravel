@@ -8,6 +8,11 @@
         <p>{{ $message }}</p>
     </div>
 @endif
+@if ($error = Session::get('error'))
+    <div class="alert alert-danger">
+        <p>{{ $error }}</p>
+    </div>
+@endif
 
 @if(isset(Auth::user()->email))
   <script>windows.location="/join/successlogin";</script>
@@ -27,7 +32,7 @@
   {{csrf_field()}}
       <div class="form-group">
           <label class=col>Username</label>
-          <input type="text" class="form-control" name="email"placeholder="enter username" />
+          <input type="text" class="form-control" name="username"placeholder="enter username" />
         </div>
         <div class="form-group">
           <label class=col>Password</label>

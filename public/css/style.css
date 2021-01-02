@@ -10926,7 +10926,7 @@ code {
   border-radius: 4px; }
 
 .page-header {
-  margin: 0 0 1.5rem 0; }
+  margin: 1 0 1.5rem 0; }
   .page-header .breadcrumb {
     border: 0;
     margin-bottom: 0; }
@@ -11259,7 +11259,7 @@ code {
     margin-right: -28px; }
   .content-wrapper .flot-chart-wrapper .flot-chart .flot-text .flot-x-axis .flot-tick-label {
     color: #a7afb7;
-    padding-top: 10px;
+    padding-top: 5px;
     font-size: 12px;
     margin-left: 27px; }
     @media (max-width: 991px) {
@@ -11271,7 +11271,7 @@ code {
       height: 200px; } }
 
 .content-wrapper .flot-bar-wrapper .flot-chart {
-  height: 51px;
+  height: 55px;
   width: 64px; }
 
 .content-wrapper .todo-list-add-btn {
@@ -11858,6 +11858,9 @@ code {
 .button{
 background-color:#32CD32;
 color: #ffffff;}
+.upload{
+background-color:#808080;
+color:#ffffff;}
 
 .btn-primary:not(.btn-light):focus, .btn-primary:not(.btn-light):active {
   background: #3f50f6;
@@ -14888,6 +14891,9 @@ dl {
     display: -ms-flexbox;
     display: flex;
     margin-top: 0.5rem; } }
+	.navbar-color{
+		background-color:#6495ED;
+	}
 
 /* Sidebar */
 .sidebar {
@@ -15484,6 +15490,7 @@ dl {
   flex-direction: column; }
   @media (max-width: 991px) {
     .main-panel {
+	  margin-top:5;
       margin-left: 0;
       width: 100%; } }
 

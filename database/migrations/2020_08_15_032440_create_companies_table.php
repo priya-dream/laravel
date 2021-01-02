@@ -25,6 +25,7 @@ class CreateCompaniesTable extends Migration
             $table->string('password');
             $table->boolean('status')->default(0);
             $table->boolean('login')->default(0);
+            $table->text('image');
             $table->timestamps(); 
         });
     }
