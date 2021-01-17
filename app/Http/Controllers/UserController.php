@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use DB;
+use View;
 use Illuminate\Http\Request;
 use validator;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,10 @@ class UserController extends Controller
     public function create()
     {
         return view('users.create');
+    }
+    public function show()
+    {
+        //
     }
 
     public function checkLogin(Request $request)
@@ -40,6 +45,11 @@ class UserController extends Controller
         return view('companies.test');
     }
 
+    public function log()
+    {
+        return view('users.log');
+    }
+
     public function logout()
     {
         Auth::logout();
@@ -57,6 +67,8 @@ class UserController extends Controller
         $username=$request->input('username');
         $password=$request->input('password');
         $image=$request->input('image');
+        
+
         $result=DB::Insert('Insert into users(id,name,email,password) values (?,?,?,?)',[null,$username,$email,$password] );
         DB::Insert('Insert into companies(id,name,address,ceo,mobile,email,username,password,image) values (?,?,?,?,?,?,?,?,?)',[null,$name,$address,$ceo,$mobile,$email,$username,$password,$image]);
         if(count(array($result)))
@@ -75,16 +87,16 @@ class UserController extends Controller
         // //print_r($request->input());
         $username=$request->input('username');
         $password=$request->input('password');
+        $company=DB::table('companies')
+            ->join('users', 'users.name', '=', 'companies.username')
+            ->select('companies.name','companies.id')
+            ->where('users.name','=',$username)
+            ->get();
         $data=DB::Select('Select id from users where name=? and password=?',[$username,$password]);
         //print_r($data);
         if(count($data)){
-        $company=DB::table('companies')
-        ->join('users','users.name','=','companies.username')
-        ->select('companies.name')
-         ->where('companies.username','=',$username)
-        ->get();
-        //$user = auth()->user();
-        return View('vacancies.add',compact('request'));
+        $user = auth()->user();
+        return View('vacancies.add',compact('request'),compact('company'));
         }
         else
         return redirect('/join')->with('error','Invalid login details !!');

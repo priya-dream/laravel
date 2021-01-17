@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vacancy extends Model
 {
+    protected $guarded=[];
     protected $table = 'vacancies';
     protected $fillable = [
-        'title', 'closing_date','company','gender','age','need','qualification'
+        'title', 'closing_date','company'
     ];
 }

@@ -1,10 +1,28 @@
 @extends('layouts.master.page')
 @section('content')
 
+
 <div  class="alert alert-success">
 <p>Hi! 
 {{$request->username}}</p>
+@foreach($company as $com)
+Company : {{$com->name}}
+@endforeach
 </div>
+<ul class="navbar-nav">
+<li class="nav-item nav-profile dropdown border-0">
+    <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" href="" class="btn btn-success">
+        <img class="login-image" src="{{ asset('images/login.png') }}">
+        <span class="profile-name">{{$request->username}}</span>
+    </a>
+        <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
+            <a class="dropdown-item" href="{{url('/user/log')}}">
+                <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log </a>
+            <a class="dropdown-item" href="{{url('/join/logout')}}">
+                <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
+        </div>
+    </li>
+</ul>
 
 
 
@@ -13,6 +31,10 @@
 
   <form action="{{url('/vacancy/add')}}" method="post" class="forms-sample">
           {{csrf_field()}}
+
+    <div class="form-group">
+        <input type="text" class="form-control" name="company" value="{{$com->name}}"    />
+    </div>
     <div class="form-group">
     <label class=col>Title</label>
         <select class="form-control" name="title">
@@ -41,6 +63,7 @@
         <select class="form-control" id="exampleSelectGender" name="gender">
             <option>Male</option>
             <option>Female</option>
+            <option>Any</option>
         </select>
     </div>
     <div class="form-group">

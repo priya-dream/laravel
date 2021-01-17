@@ -39,7 +39,7 @@ use Illuminate\Support\Facades\Route;
 // Route::post("/companies", ["as" => "company.store", "uses" => "CompanyController@store"]);
 
 
-    Route::post('/vacancy/view','VacancyController@view');
+    Route::post('/vacancy/view','VacancyController@show');
     Route::post('/vacancy/add','VacancyController@store');
     Route::resource('/vacancy', 'VacancyController');
 
@@ -51,11 +51,13 @@ use Illuminate\Support\Facades\Route;
     Route::post('checklogin', 'PageController@checklogin');
     Route::get('successlogin', 'PageController@successlogin');
     Route::get('/join/logout', 'UserController@logout');
+    Route::get('/user/log', 'UserController@log');
     Route::resource('user', 'UserController');
 
 
     Route::any('company/login','CompanyController@index');
     Route::resource('company', 'CompanyController');
+    Route::resource('post', 'PostController');
     
 
 

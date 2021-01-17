@@ -69,7 +69,19 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'date' => 'required',
+            'title' => 'required',
+            'company' => 'required',
+            'qualification' => 'required',
+            'need' => 'required',
+            'gender' => 'required',
+            'age_limit' => 'required',
+            'closing_date' => 'required',
+        ]);
+        $post->update($request->all());
+  
+        return redirect()->route('vacancies.index')
     }
 
     /**
@@ -80,6 +92,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect('/vacancy');
     }
 }

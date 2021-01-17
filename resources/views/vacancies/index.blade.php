@@ -29,7 +29,7 @@
             <td>
                 <form action="{{ route('vacancy.destroy',$vacancy->id) }}" method="POST">
                     <a class="btn btn-primary" href="">Apply</a>
-                    <a class="btn btn-primary" href="{{url('/vacancy/view',$vacancy->id) }}">View</a>
+                    <a class="btn btn-primary" href="{{ route('vacancy.show',$vacancy->id)}}">View</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>

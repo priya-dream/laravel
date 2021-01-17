@@ -15,6 +15,7 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('vacancy_id');
             $table->date('date');
             $table->string('title');
             $table->unsignedBigInteger('company');           
@@ -25,6 +26,7 @@ class CreatePostsTable extends Migration
             $table->date('closing_date');
             $table->timestamps();
             $table->foreign('company')->references('id')->on('companies');
+            $table->foreign('vacancy_id')->references('id')->on('vacancies');
         });
     }
 

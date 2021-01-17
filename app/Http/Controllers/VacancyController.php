@@ -11,13 +11,9 @@ class VacancyController extends Controller
 {
     public function index()
     {
-        //return view('vacancies.index');
-        // $vacancies = Vacancy::all();
-        // return view('vacancies.index',compact('vacancies'));
-        
-            $vacancies = Vacancy::latest()->paginate(4);
-            return view('vacancies.index',compact('vacancies'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $vacancies = Vacancy::latest()->paginate(4);     
+        return view('vacancies.index',compact('vacancies'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create()
@@ -30,38 +26,34 @@ class VacancyController extends Controller
     {
         $date=date('Y-m-d');
         $title=$request->input('title');
-        //$company=$request->input('company');
+        $company=$request->input('company');
         $qualification=$request->input('qualification');
         $need=$request->input('need');
         $age_limit=$request->input('age_limit');
         $gender=$request->input('gender');
         $closing_date=$request->input('closing_date');
-        $company=DB::table('companies')
-            ->join('vacancies', 'companies.id', '=', 'vacancies.company')
-            ->join('users', 'users.name', '=', 'companies.username')
-            ->join('posts','posts.company','=','companies.id')
-            ->select('companies.name')
-            ->get();
-        return $title;
-            
+        $company_id=DB::table('companies')
+            ->where('name',$company)
+            ->first();
+    //        $vacancy_id= DB::table('posts')
+    //         // ->join('vacancies','vacancies.id','=','posts.vacancy_id')
+    //         // ->select('vacancies.title')
+    //         ->first();
+           
+    //    return $vacancy_id;
 
-        // DB::Insert('Insert into posts (id,date,title,qualification,need,age_limit,gender,closing_date) values (?,?,?,?,?,?,?,?)',[null,$date,$title,$qualification,$need,$age_limit,$gender,$closing_date]);
-        // DB::Insert('Insert into vacancies (id,title,closing_date) values (?,?,?)',[null,$title,$closing_date]);
-        // return redirect('/vacancy')->with('success','vacancy published successfully.');
+         DB::Insert('Insert into posts (id,date,title,company,qualification,need,age_limit,gender,closing_date) values (?,?,?,?,?,?,?,?,?)',[null,$date,$title,$company_id->id,$qualification,$need,$age_limit,$gender,$closing_date]);
+         DB::Insert('Insert into vacancies (id,title,company,closing_date) values (?,?,?,?)',[null,$title,$company_id->id,$closing_date]);
+         return redirect('/vacancy')->with('success','vacancy published successfully.');
     }
 
-    public function view(Request $request)
+    public function show(Vacancy $vacancy)
     {
-        //$vacancy=Vacancy::all();
-        $title=$request->input('title');
-        $qualification=$request->input('qualification');
-        $gender=$request->input('gender');
-        $age=$request->input('age');
-        $need=$request->input('need');
-        $closing_date=$request->input('closing_date');
-        
-        //return $title;
-        return view('vacancies.show',compact('request'));
+       $posts = DB::table('posts')
+            ->select('title','gender','age_limit','need','qualification')
+            ->where('id',$vacancy->id)
+            ->get();
+        return view::make('vacancies.show',compact('posts'));
     }
 
     public function edit(Vacancy $vacancy)

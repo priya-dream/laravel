@@ -7476,6 +7476,10 @@ a.close.disabled {
   border-radius: 50%;
   -webkit-animation: spinner-border .75s linear infinite;
   animation: spinner-border .75s linear infinite; }
+  
+.login-image{
+	width:40px;
+	height:40px;}
 
 .spinner-border-sm {
   width: 1rem;
