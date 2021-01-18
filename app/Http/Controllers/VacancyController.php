@@ -10,10 +10,14 @@ use Illuminate\Http\Request;
 class VacancyController extends Controller
 {
     public function index()
-    {
-        $vacancies = Vacancy::latest()->paginate(4);     
-        return view('vacancies.index',compact('vacancies'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
+    { 
+        $data= DB::table('vacancies')->select('company')->first();
+        $vacancies = Vacancy::latest()->paginate(4);
+        $company=DB::table('companies')->select('name')->where('id',$data->company)->first();
+      // return $company;
+            
+       return view('vacancies.index',compact('vacancies','company'))
+       ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create()
@@ -33,18 +37,18 @@ class VacancyController extends Controller
         $gender=$request->input('gender');
         $closing_date=$request->input('closing_date');
         $company_id=DB::table('companies')
+            ->select('name','id')
             ->where('name',$company)
             ->first();
     //        $vacancy_id= DB::table('posts')
     //         // ->join('vacancies','vacancies.id','=','posts.vacancy_id')
     //         // ->select('vacancies.title')
-    //         ->first();
-           
+    //         ->first();        
     //    return $vacancy_id;
 
          DB::Insert('Insert into posts (id,date,title,company,qualification,need,age_limit,gender,closing_date) values (?,?,?,?,?,?,?,?,?)',[null,$date,$title,$company_id->id,$qualification,$need,$age_limit,$gender,$closing_date]);
          DB::Insert('Insert into vacancies (id,title,company,closing_date) values (?,?,?,?)',[null,$title,$company_id->id,$closing_date]);
-         return redirect('/vacancy')->with('success','vacancy published successfully.');
+         return redirect('/vacancy')->with('success','vacancy published successfully.')->with(compact('company'));
     }
 
     public function show(Vacancy $vacancy)

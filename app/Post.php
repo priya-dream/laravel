@@ -11,4 +11,5 @@ class Post extends Model
     protected $fillable = [
         'title', 'address','company','qualification','need','gender','age_limit','closing_date'
     ];
+    public $timestamps = true;
 }

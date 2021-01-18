@@ -24,7 +24,7 @@
         <tr>
             <td>{{ ++$i }}</td>
             <td>{{ $vacancy->title }}</td>
-            <td>{{ $vacancy->company }}</td>
+            <td>{{ $vacancy->$company->name }}</td>
             <td>{{ $vacancy->closing_date }}</td>
             <td>
                 <form action="{{ route('vacancy.destroy',$vacancy->id) }}" method="POST">
