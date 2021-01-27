@@ -12,4 +12,10 @@ class Vacancy extends Model
     protected $fillable = [
         'title', 'closing_date','company'
     ];
+
+
+    public function company()
+  {
+      return $this->hasMany('App\Company');
+  }
 }

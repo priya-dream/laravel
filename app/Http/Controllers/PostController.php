@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use View;
+use DB;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,16 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Post $post)
     {
-        //
+        $vacancy=Post::all();
+        $vac=DB::table('vacancies')->first();
+        $lists=DB::table('posts')
+        ->join('companies','posts.company','=','companies.id')
+        ->select('posts.*','companies.*')
+        ->where('posts.vacancy_id',$vac->id)->get(); 
+       // return $vacancy->title;
+        return view('vacancies.show',compact('lists'));
     }
 
     /**
@@ -46,7 +54,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        //return view('vacancies.show',compact('post'));
     }
 
     /**
@@ -81,7 +89,7 @@ class PostController extends Controller
         ]);
         $post->update($request->all());
   
-        return redirect()->route('vacancies.index')
+        return redirect()->route('vacancies.index');
     }
 
     /**

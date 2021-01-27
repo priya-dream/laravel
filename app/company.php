@@ -11,4 +11,8 @@ class Company extends Model
     protected $fillable = [
         'name', 'address','ceo','mobile','email','username','password'
     ];
+
+    public function vacancy(){
+        return $this->belongsTo(Vacancy::class);
+    }
 }

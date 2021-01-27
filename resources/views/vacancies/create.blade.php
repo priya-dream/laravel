@@ -1,5 +1,4 @@
 @extends('layouts.master.page')
-
 @section('content')
         <div class="main-panel">  
               <div><h3 class="mb-0">Publish New Job</h3></div><br/>         
