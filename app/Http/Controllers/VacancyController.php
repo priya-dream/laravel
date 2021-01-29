@@ -11,17 +11,11 @@ class VacancyController extends Controller
 {
     public function index()
     { 
-       $data= DB::table('vacancies')->get();
-       //$vacancy = Vacancy::latest()->paginate(4);
-        $vacancies = Vacancy::all();
-        $results=DB::table('companies')
-            ->leftJoin('vacancies','companies.id','=','vacancies.company')
-             ->select('companies.*','vacancies.*')
-            //->where('companies.id','=',$data->company)
-            ->get();
-            // return $data;
-      return view('vacancies.index')->with(compact('results','data','vacancies'));
-      // ->with('i', (request()->input('page', 1) - 1) * 5);
+      return view ('vacancies.add_new');
+    }
+    public function type()
+    { 
+      return view ('vacancies.type');
     }
 
     public function create()
@@ -36,6 +30,8 @@ class VacancyController extends Controller
         $title=$request->input('title');
         $company=$request->input('company');
         $qualification=$request->input('qualification');
+        $other_quali=$request->input('other_quali');
+        $exp=$request->input('experience');
         $need=$request->input('need');
         $age_limit=$request->input('age_limit');
         $gender=$request->input('gender');
@@ -52,7 +48,7 @@ class VacancyController extends Controller
                 ->where('closing_date','=',$closing_date)
                 ->first();
         //return $vacancy_id->id;
-         DB::Insert('Insert into posts (id,date,vacancy_id,title,company,qualification,need,age_limit,gender,closing_date) values (?,?,?,?,?,?,?,?,?,?)',[null,$date,$vacancy_id->id,$title,$company_id->id,$qualification,$need,$age_limit,$gender,$closing_date]);
+         DB::Insert('Insert into posts (id,date,vacancy_id,title,company,qualification,other_quali,experience,need,age_limit,gender,closing_date) values (?,?,?,?,?,?,?,?,?,?,?,?)',[null,$date,$vacancy_id->id,$title,$company_id->id,$qualification,$other_quali,$exp,$need,$age_limit,$gender,$closing_date]);
          return redirect('/vacancy')->with('success','vacancy published successfully.');
     }
 

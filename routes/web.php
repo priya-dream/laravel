@@ -48,20 +48,22 @@ Route::get('/destroy/{id}',
     Route::get('/vacancy/apply','VacancyController@apply');
     Route::get('/vacancy/view/','VacancyController@show')->name('show');
     Route::post('/vacancy/add','VacancyController@store');
+    Route::get('/vacancy/type','VacancyController@type');
+    Route::get('/vacancies','VacancyController@index');
     Route::resource('/vacancy', 'VacancyController');
     
-    Route::get('/join', 'UserController@index');
-    Route::get('/join/create', 'UserController@create');
+    
+    
     Route::post('/join/store', 'UserController@store');
-    Route::post('/join/verify', 'UserController@verify');
     Route::post('checklogin', 'PageController@checklogin');
     Route::get('successlogin', 'PageController@successlogin');
     Route::get('/join/logout', 'UserController@logout');
     Route::get('/user/log', 'UserController@log');
     Route::resource('user', 'UserController');
-
-
-    Route::any('company/login','CompanyController@index');
+    
+    Route::post('/login/verify', 'CompanyController@verify');
+    Route::get('/login/create', 'CompanyController@create');
+    Route::get('company/login','CompanyController@index');
     Route::resource('company', 'CompanyController');
 
    

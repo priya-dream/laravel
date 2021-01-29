@@ -28,7 +28,7 @@
   </div>
 @endif
 
-  <form method="post" action="{{url('/join/verify')}}">
+  <form method="post" action="{{url('/login/verify')}}">
   {{csrf_field()}}
       <div class="form-group">
           <label class=col>Username</label>

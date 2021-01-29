@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class CreateEmployeeQualificationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,19 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('employee_qualification', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('vacancy_id');
-            $table->date('date');
-            $table->unsignedBigInteger('company_id');           
-            $table->string('qualification_id');
-            $table->integer('need');          
-            $table->date('closing_date');
+            $table->unsignedBigInteger('emp_id');
+            $table->text('A/L');
+            $table->text('stream');
+            $table->text('graduate');
+            $table->text('field');
+            $table->text('uni');
             $table->timestamps();
-            $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('vacancy_id')->references('id')->on('vacancies');
+            $table->foreign('emp_id')->references('id')->on('employees');
+            
         });
     }
 
@@ -34,6 +36,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('employee_qualification');
     }
 }

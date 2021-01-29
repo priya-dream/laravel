@@ -10232,9 +10232,9 @@ a.text-dark:hover, a.text-dark:focus {
 
 .text-body {
   color: #343a40 !important; }
-.main-text{
-	color:#00008B;}
 .sub-text{
+	color:#00008B;}
+.main-text{
 	color:#0000CD;}
 
 .text-muted, .preview-list .preview-item .preview-item-content p .content-category {
@@ -10894,7 +10894,8 @@ address p {
 .error-page h1 {
   font-size: 12rem; }
  .error {
-	color: #FF0000;}
+	color: #FF0000;
+	font-size: 20px;}
   @media (max-width: 991px) {
     .error-page h1 {
       font-size: 8rem; } }

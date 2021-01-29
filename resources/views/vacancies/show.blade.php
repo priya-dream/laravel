@@ -7,14 +7,21 @@ $i=2;
 ?>
 @foreach($lists as $list)
       <!-- <div>{{$list->image}}></div> -->
-      <div><h2 style="color:#C71585">{{$list->title}}</h2>
-      <div><img src="{{ asset('images/IT.png') }}" width="1000px" height="500px" style="align:center"></div></br></br>
-      <div><h4 class="main-text"> Post : {{$list->title}}</h4></div>
-      <div class="main-text">Company :  <p class="sub-text">{{$list->name}}</p></div>
-      <div class="main-text">Required qualifications :  <p class="sub-text">{{$list->qualification}}</p></div>
-      <div class="main-text"> No of needed employees :  <p class="sub-text">{{$list->need}}</p></div>
-      <div class="main-text">Gender preference :  <p class="sub-text">{{$list->gender}}</p> </div> 
-      <div class="main-text">Closing date : <p class="sub-text"> {{$list->closing_date}}</p></div>
+      <div><h2 style="color:#C71585">{{$list->title}}</h2></div>
+      <div><img src="{{ asset('images/IT.png') }}" width="1000px" height="500px" style="align:center"></div></br>
+      <div>
+       <table><tr><td>
+       <div><h4 class="main-text"> Post :</h4><ul><h4 class="sub-text">{{$list->title}}</h4></ul></div>
+       <div><h4 class="main-text">Company :</h4><ul><h4 class="sub-text">{{$list->name}}<h4></ul></div>
+       <div><h4 class="main-text">Gender preference :</h4><ul><h4 class="sub-text">{{$list->gender}}</h4></ul></div>
+       <div><h4 class="main-text"> No of needed employees :</h4><ul><h4 class="sub-text">{{$list->need}}</h4></ul></div> 
+       <div><h4 class="main-text">Closing Date :</h4><ul><h4 class="sub-text">{{$list->closing_date}}</h4></ul></div>
+       </td><td>
+       <div><h4 class="main-text">Required educational qualifications :</h4><ul><h4 class="sub-text">{{$list->qualification}}</h4></ul></div>
+       <div><h4 class="main-text">Required other qualifications :</h4><ul><h4 class="sub-text">{{$list->other_quali}}</h4></ul></div>
+       <div><h4 class="main-text"> Experience :</h4><ul><h4 class="sub-text">{{$list->experience}}</h4></ul></div>
+       </td></tr></table>
+      </div>
 @endforeach
 </div>
               

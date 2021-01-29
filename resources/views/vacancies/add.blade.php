@@ -1,14 +1,13 @@
 @extends('layouts.master.page')
 @section('content')
 
+<h1>Hi! {{$request->username}}</h1>
 
-<div  class="alert alert-success">
-<p>Hi! 
-{{$request->username}}</p>
-@foreach($company as $com)
-Company : {{$com->name}}
+
+@foreach($data as $com)
+
 @endforeach
-</div>
+
 <ul class="navbar-nav">
 <li class="nav-item nav-profile dropdown border-0">
     <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" href="" class="btn btn-success">
@@ -33,7 +32,8 @@ Company : {{$com->name}}
           {{csrf_field()}}
 
     <div class="form-group">
-        <input type="text" class="form-control" name="company" value="{{$com->name}}"    />
+        <label class=col>Company Name</label>
+        <input type="text" class="form-control" name="company" value="{{$com->name}}" disabled    />
     </div>
     <div class="form-group">
     <label class=col>Title</label>
@@ -47,7 +47,7 @@ Company : {{$com->name}}
         </select>
     </div>
     <div class="form-group">
-    <label class=col>Required Qualification</label>
+    <label class=col>Required Educational Qualification</label>
         <select class="form-control" name="qualification">
             <option>Select Qualification...</option>
             <option>A/L Qualified(Any stream)</option>
@@ -57,6 +57,10 @@ Company : {{$com->name}}
             <option>Bsc(computer science)</option>
             <option>IT degree(any field)</option>
         </select>
+    </div>
+    <div class="form-group">
+        <label class=col>Required Other Qualification</label>
+        <textarea class="form-control" name="other_quali" placeholder="Type here" /></textarea>
     </div>
     <div class="form-group">
         <label class=col>Gender preference</label>
@@ -73,6 +77,10 @@ Company : {{$com->name}}
     <div class="form-group">
     <label class=col>Needed Employee</label>
         <input type="number" min="1" placeholder="select needed No of employee" name="need" class="form-control">
+    </div>
+    <div class="form-group">
+    <label class=col>Experience</label>
+        <input type="text" placeholder="exoerience" name="experience" class="form-control">
     </div>
     <div class="form-group">
     <label class=col>Closing Date</label>

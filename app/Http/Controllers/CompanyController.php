@@ -85,6 +85,28 @@ class CompanyController extends Controller
         return view ('companies.edit');
     }
 
+    public function verify(Request $request)
+    {
+        // //print_r($request->input());
+        $username=$request->input('username');
+        $password=$request->input('password');
+        $data=DB::table('companies')
+        ->select('name','username')
+        ->where('username',$username)
+        ->where('password',$password)
+        ->get();
+        //print_r($data);
+        //return count($data);;
+
+        if(count($data)){
+        return View('vacancies.add',compact('request','data'));
+        //return count($data);
+        }
+        else
+        return redirect('/company/login')->with('error','Invalid login details !!');
+
+    }
+
     /**
      * Update the specified resource in storage.
      *

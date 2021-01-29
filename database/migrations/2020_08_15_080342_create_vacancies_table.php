@@ -15,12 +15,10 @@ class CreateVacanciesTable extends Migration
     {
         Schema::create('vacancies', function (Blueprint $table) {
             $table->id();
-            //$table->date('date');
             $table->string('title');
-            $table->unsignedBigInteger('company');
             $table->date('closing_date');
+            $table->text('img');
             $table->timestamps();
-            $table->foreign('company')->references('id')->on('companies');
         });
     }
 

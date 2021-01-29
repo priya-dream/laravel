@@ -27,7 +27,7 @@ class CreateCompaniesTable extends Migration
             $table->boolean('login')->default(0);
             $table->text('image');
             $table->timestamps();
-            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')); 
+            //$table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')); 
         });
     }
 
