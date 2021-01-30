@@ -7,11 +7,10 @@
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
-    @endif </br></br>       
-       
-        <div class="table-responsive">
+    @endif </br></br>  
+    <p>{{$company->name}}</p>  
+    <table class="table table-border">
         <?php $i=1; ?>
-            <table>
             <tr>
             @foreach ($results as $result)
             <div class="col-md-6">
@@ -19,8 +18,7 @@
             </div>
             <div class="col-md-6">
             <td>
-            <div> {{$result->title}}</div>
-            <div>{{$result->name}}</div>
+            
             <div>{{$result->closing_date}}</div>
             <div>
                 <form action="" method="POST">

@@ -1989,6 +1989,8 @@ label {
 
 button {
   border-radius: 0; }
+.position {
+	align:center;}
 
 button:focus {
   outline: 1px dotted;
@@ -3304,7 +3306,8 @@ pre {
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #212529; }
+  color: #212529;
+font-size:5px;  }
   .table th,
   .table td {
     padding: 0.9375rem;
@@ -3332,7 +3335,8 @@ pre {
 	
   .table-bordered thead th,
   .table-bordered thead td {
-    border-bottom-width: 2px; }
+    border-bottom-width: 2px; 
+	color:red;}
 
 .table-borderless th,
 .table-borderless td,
@@ -3341,7 +3345,9 @@ pre {
   border: 0; }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f2f2f2; }
+  background-color: #B0C4DE; }
+  .tr-odd tbody tr:nth-of-type(even) {
+  background-color: #D3D3D3; }
 
 .table-hover tbody tr:hover {
   color: #212529;
@@ -10921,7 +10927,8 @@ html {
   overflow: auto; }
 
 .container-scroller {
-  overflow: hidden; }
+  overflow: hidden
+  top-margin:1px;; }
 
 pre {
   background: #e8eff4;
@@ -15503,7 +15510,8 @@ dl {
     .main-panel {
 	  margin-top:5;
       margin-left: 0;
-      width: 100%; } }
+      width: 100%;
+	padding-left:20px;	  } }
 
 .content-wrapper {
   background: #f2f2f2;

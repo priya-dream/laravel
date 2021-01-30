@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Vacancy;
-//use App\Models\Vacancy;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -11,7 +10,12 @@ class VacancyController extends Controller
 {
     public function index()
     { 
-      return view ('vacancies.add_new');
+        $pages = Vacancy::latest()->paginate(10);
+        $results= DB::table('vacancies')->get();
+        // foreach($result as $res){
+            //return $result->img;
+        // }
+      return view ('vacancies.add_new',compact('results','pages'));
     }
     public function type()
     { 
@@ -26,30 +30,16 @@ class VacancyController extends Controller
     
     public function store(Request $request)
     {
-        $date=date('Y-m-d');
-        $title=$request->input('title');
-        $company=$request->input('company');
-        $qualification=$request->input('qualification');
-        $other_quali=$request->input('other_quali');
-        $exp=$request->input('experience');
-        $need=$request->input('need');
-        $age_limit=$request->input('age_limit');
-        $gender=$request->input('gender');
-        $closing_date=$request->input('closing_date');
-        $company_id=DB::table('companies')
-            ->select('name','id')
-            ->where('name',$company)
-            ->first();  
-        DB::Insert('Insert into vacancies (id,title,company,closing_date) values (?,?,?,?)',[null,$title,$company_id->id,$closing_date]);
-        $vacancy_id=DB::table('vacancies')
-                ->select('id')
-                ->where('title','=', $title)
-                ->where('company','=',$company_id->id)
-                ->where('closing_date','=',$closing_date)
-                ->first();
-        //return $vacancy_id->id;
-         DB::Insert('Insert into posts (id,date,vacancy_id,title,company,qualification,other_quali,experience,need,age_limit,gender,closing_date) values (?,?,?,?,?,?,?,?,?,?,?,?)',[null,$date,$vacancy_id->id,$title,$company_id->id,$qualification,$other_quali,$exp,$need,$age_limit,$gender,$closing_date]);
-         return redirect('/vacancy')->with('success','vacancy published successfully.');
+        $this->validate($request,[
+            'title'=>'required',
+            'img'=>'required'
+        ]);
+        $vacancy= new Vacancy;
+        $vacancy->title=$request->title;
+        $vacancy->img=$request->img;
+        $vacancy->save();
+        //return $vacancy->img;
+        return  redirect()->route('vacancy.index')->with('success','Added successfully');
     }
 
     public function show(Vacancy $vacancy)
@@ -80,12 +70,11 @@ class VacancyController extends Controller
         return redirect()->route('vacancies.index')
                         ->with('success','vacancy published successfully');
     }
-    public function destroy(Vacancy $vacancy)
+    public function destroy($id)
     {
         //$vacancy->delete();
-        $vacancy = Vacancy::where('id', $id)->first();
-  
-        return redirect('/vacancy')->with('success','vacancy deleted successfully.');
+        Vacancy::where('id',$id)->delete();
+        return redirect()->back()->with('sucess','Company successfully deleted');
     }
   
 }

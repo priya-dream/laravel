@@ -1,7 +1,8 @@
 @extends('layouts.master.page')
 @section('content')
 <div class="main-panel">
-<div><h1 class="page-title">Login</h1></div><br/><br/>
+<div><h1 class="page-title">Login</h1></div></br>
+<div><img src="{{asset('images/logo.png')}}" width="200px" height="100px" style="text-align:center"></div></br>
 
 @if ($message = Session::get('success'))
     <div class="alert alert-success">
@@ -27,7 +28,7 @@
     </ul>
   </div>
 @endif
-
+<div class="position">
   <form method="post" action="{{url('/login/verify')}}">
   {{csrf_field()}}
       <div class="form-group">
@@ -41,8 +42,8 @@
         <div><button type="submit" class="btn btn-primary" > Login </a></div>
   </form></br>
   
-  <div><a class="btn button" href="{{url('/join/create')}}">Create New Account</a></div>
+  <div><a class="btn button" href="{{url('/login/create')}}">Create New Account</a></div>
         
-   
+   </div>
 </div>
 @stop

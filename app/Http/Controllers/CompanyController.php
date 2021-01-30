@@ -95,11 +95,11 @@ class CompanyController extends Controller
         ->where('username',$username)
         ->where('password',$password)
         ->get();
-        //print_r($data);
-        //return count($data);;
+    
 
+        $vacancies= DB::table('vacancies')->select('title')->orderBy('title')->get();
         if(count($data)){
-        return View('vacancies.add',compact('request','data'));
+        return View('vacancies.add',compact('request','data','vacancies'));
         //return count($data);
         }
         else

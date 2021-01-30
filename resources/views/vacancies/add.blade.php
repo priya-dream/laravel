@@ -5,7 +5,6 @@
 
 
 @foreach($data as $com)
-
 @endforeach
 
 <ul class="navbar-nav">
@@ -28,36 +27,69 @@
  <div class="main-panel">
 <div><h1 class="page-title">Post New Vacancy</h1></div><br/><br/>
 
-  <form action="{{url('/vacancy/add')}}" method="post" class="forms-sample">
+  <form action="{{url('/list')}}" method="post" class="forms-sample">
           {{csrf_field()}}
 
     <div class="form-group">
         <label class=col>Company Name</label>
-        <input type="text" class="form-control" name="company" value="{{$com->name}}" disabled    />
+        <input type="text" class="form-control" name="company" value="{{$com->name}}"    />
     </div>
     <div class="form-group">
     <label class=col>Title</label>
-        <select class="form-control" name="title">
+        <select class="js-example-basic-single form-control" name="title">
             <option>Select vacancy type.... </option>
-            <option>Trainee IT Executive</option>
-            <option>Management Assistant</option>
-            <option>Sales Executive</option>
-            <option>Customer Care Assistant</option>
-            <option>General Manager</option>
+            @foreach ($vacancies as $list) 
+          {
+            <option value="{{ $list->title }}">{{ $list->title }}</option>
+          }
+          @endforeach
         </select>
     </div>
     <div class="form-group">
-    <label class=col>Required Educational Qualification</label>
-        <select class="form-control" name="qualification">
-            <option>Select Qualification...</option>
-            <option>A/L Qualified(Any stream)</option>
-            <option>A/L Qualified(Commerce stream)</option>
-            <option>A/L Qualified(Science stream)</option>
-            <option>Degree Holder(Any field)</option>
-            <option>Bsc(computer science)</option>
-            <option>IT degree(any field)</option>
-        </select>
+    <h5>Required Educational Qualification</h5>
+    <div class="col-md-9 grid-margin stretch-card">
+    <table><tr><td>
+    <label class=col>A/L Qualified</label>
+        <select class="form-control" name="advance_level">
+            <option>Need</option>
+            <option>Not Necessary</option>
+        </select></td><td></td><td></td><td></td><td></td><td>
+    <label class=col>Stream</label>
+        <select class="form-control" name="stream">
+            <option>Select stream...</option>
+            <option>Physical Science(Maths)</option>
+            <option>Biological Science</option>
+            <option>Commerce</option>
+            <option>Arts</option>
+            <option>Technology</option>
+            <option>Any</option>
+        </select></td></tr></table>
+        </div>
     </div>
+    <div class="col-md-9 grid-margin stretch-card">
+            <div class="form-group">
+                <table><tr><td>
+                <label class=col>Graduation</label>
+                <select class="form-control"  name="grad">
+                    <option>Select your top graduation...</option>
+                    <option>Diploma</option>
+                    <option>Higher Diploma</option>
+                    <option>Degree</option>
+                    <option>Master Degree</option>
+                </select></td><td></td><td></td><td></td><td></td><td>
+                <label class=col>Field</label>
+                <select class="form-control" name="field">
+                    <option>Select the subject/field...</option>
+                    <option>Infomation Technology</option>
+                    <option>Computer Science</option>
+                    <option>English</option>
+                    <option>Software Engineering</option>
+                    <option>Physical Science</option>
+                    <option>Bio Science</option>
+                    <option>Agreeculture</option>
+                </select></td></tr></table>
+                </div>
+                </div>
     <div class="form-group">
         <label class=col>Required Other Qualification</label>
         <textarea class="form-control" name="other_quali" placeholder="Type here" /></textarea>

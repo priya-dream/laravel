@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vacancy extends Model
 {
-    public $timestamps = true;
-    protected $guarded=[];
+     public $timestamps = true;
+    // protected $guarded=[];
     protected $table = 'vacancies';
     protected $fillable = [
-        'title', 'closing_date','company'
+        'title'
     ];
 
 
     public function company()
   {
-      return $this->hasMany('App\Company');
+      //return $this->hasMany('App\Company');
   }
 }

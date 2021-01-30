@@ -49,8 +49,7 @@ Route::get('/destroy/{id}',
     Route::get('/vacancy/view/','VacancyController@show')->name('show');
     Route::post('/vacancy/add','VacancyController@store');
     Route::get('/vacancy/type','VacancyController@type');
-    Route::get('/vacancies','VacancyController@index');
-    Route::resource('/vacancy', 'VacancyController');
+    Route::resource('/vacancies', 'VacancyController');
     
     
     
@@ -67,7 +66,7 @@ Route::get('/destroy/{id}',
     Route::resource('company', 'CompanyController');
 
    
-    Route::get('/post','PostController@index');
+    Route::any('/list','PostController@store');
     Route::resource('post', 'PostController');
     
     
