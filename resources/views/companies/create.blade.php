@@ -35,6 +35,10 @@
                 <label class=col>Email Address</label>
                 <input type="text" class="form-control" name="email" placeholder="Email" required />
               </div>
+              <div class="form-group">
+                <label class=col>Upload the company logo</label>
+                <input type="file" class="form-control" name="img"required />
+              </div>
         </div>
       </div>
     </div>

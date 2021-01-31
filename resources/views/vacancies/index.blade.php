@@ -1,43 +1,62 @@
 @extends('layouts.master.page')
 @section('content')
 <h3 class="mb-0"> Available vacancies</h3>
-    <a  href="{{ url('/join') }}" class="btn btn-success"> POST JOB </a>
+    <p style="padding-right:90px"><a  href="{{ url('/company/login') }}" class="btn btn-success"> POST JOB </a></p>
       </div>    
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
-    @endif </br></br>  
-    <p>{{$company->name}}</p>  
-    <table class="table table-border">
+    @endif </br></br> 
         <?php $i=1; ?>
-            <tr>
-            @foreach ($results as $result)
-            <div class="col-md-6">
-            <td class="badge badge-danger text-white ml-3 rounded">{{$i}}</td>
-            </div>
-            <div class="col-md-6">
+        <div>
+    <table>
+        <tr> 
+    @foreach ($results as $result)
+    
             <td>
-            
-            <div>{{$result->closing_date}}</div>
-            <div>
-                <form action="" method="POST">
-                    <a class="btn btn-primary" href="{{url('/vacancy/apply')}}">Apply</a>
-                    <a class="btn btn-primary"  href="{{ url('/post') }}">View</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>  
-                </form><hr>
-            </div></td></div>
-            <?php 
-            if($i%2==0){
-                echo '</tr>';
-                $i++;}
-            else
-                $i++;
-            ?>
-        </div>
-        @endforeach
-        </table>  
-        </div>
+                <span class="badge badge-danger text-white ml-3 rounded">{{$i}}</span>
+            </td><td></td><td></td>
+            <td class="card px-xl-5" style="width:580px"></br>
+                @foreach ($company as $com)
+                    @if($com->id==$result->company_id) 
+                        <div><h4 class="sub-text"><img src="{{asset('images/abc-logo.png')}}" width="120px" height="70px"></h4></div>
+                    @endif
+                @endforeach
+                @foreach ($vacancy as $vac)
+                    @if($vac->id==$result->vacancy_id)
+                        <div><h4 class="sub-text">Designation : {{$vac->title}}</h4></div>
+                    @endif
+                @endforeach
+                @foreach ($company as $com)
+                    @if($com->id==$result->company_id) 
+                        <div><h4 class="sub-text">Company Name : {{$com->name}}</h4></div>
+                    @endif
+                @endforeach
+                <div><h4 class="sub-text">Closing Date : {{$result->closing_date}}</h4></div></br>
+                <div>
+                    <form action="" method="POST">
+                        <a class="btn btn-primary" href="{{url('/vacancy/apply'),$result->id}}">Apply</a>
+                        <a class="btn btn-primary"  href="{{ url('/post/view'),$result->id }}">View</a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+                </br>
+            </td>
+      
+        <?php 
+                    if($i%2==0){
+                        echo '</tr></br>';
+                        $i++;}
+                    else
+                        $i++;
+                    ?>
+    
+@endforeach
+</table>
+    </div>
+  
+
 @stop

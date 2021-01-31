@@ -13,16 +13,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Post $post)
+    public function index()
     {
-        $results= DB::table('posts')->get();
-        $company=DB::table('companies')->select('name')->where('id',$results->company_id)->first();
-       //$vacancy = Vacancy::latest()->paginate(4); //$posts = Post::all();
-      return view('vacancies.index')->with(compact('results','company'));
-    //   ->with('i', (request()->input('page', 1) - 1) * 5);
-
-
-       
+        $results=DB::table('posts')->get();
+        $company=DB::table('companies')->select('name','id')->get(); 
+        $vacancy=DB::table('vacancies')->select('title','id')->get();
+      return view('vacancies.index')->with(compact('results','company','vacancy'));
     }
 
     /**
@@ -32,7 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        // 
     }
 
     /**
@@ -55,24 +51,20 @@ class PostController extends Controller
         $age=$request->input('age_limit');
         $need=$request->input('need');
         $exp=$request->input('experience');
+        $closing_date=$request->input('closing_date');
         $vacancy_id=DB::table('vacancies')->select('id')->where('title',$title)->first();
         $company_id=DB::table('companies')->select('id')->where('name',$company)->first();
+        
+        DB::Insert('insert into vacancy_qualification(id,vacancy_id,company_id,advance_level,stream,graduate,field,gender,age,experience) values(?,?,?,?,?,?,?,?,?,?)',[
+            null,$vacancy_id->id,$company_id->id,$advance,$stream,$graduate,$field,$gender,$age,$exp
+        ]);
         $quali_id=DB::table('vacancy_qualification')->select('id')->where('vacancy_id',$vacancy_id->id)->first();
-        return $quali_id->id;
-        // DB::table('vacancy_qualification')
-        //         ->where('vacancy_id',3)
-        //         ->update(['stream' => 'Arts']);
-        // DB::Insert('insert into vacancy_qualification(id,vacancy_id,company_id,advance_level,stream,graduate,field,gender,age,experience) values(?,?,?,?,?,?,?,?,?,?)',[
-        //     null,$vacancy_id->id,$company_id->id,$advance,$stream,$graduate,$field,$gender,$age,$exp
-        // ]);
-        // $posts = new Post;
-        // $posts->need = $request->need;
-        // $posts->closing_date = $request->closing_date;
-        // $posts->date=$date;
-        // $posts->vacancy_id=$vacancy_id;
-        // $posts->qualification_id=$quali_id->id;
-        // $posts->save();
-        // return  redirect('/post')->with('success','Account created successfully');
+        
+        DB::Insert('insert into posts(id,vacancy_id,date,company_id,qualification_id,need,closing_date) values(?,?,?,?,?,?,?)',[
+            null,$vacancy_id->id,$date,$company_id->id,$quali_id->id,$need,$closing_date
+        ]);
+        $results=DB::table('posts')->get();
+        return  view('/post')->with('success','Vacancy Published Successfully :)');
     
     }
 
@@ -84,15 +76,15 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $vacancy=Post::all();
-        $vac=DB::table('vacancies')->first();
-        $lists=DB::table('posts')
-        ->join('companies','posts.company','=','companies.id')
-        ->select('posts.*','companies.*')
-        ->where('posts.vacancy_id',$vac->id)->get(); 
-       // return $vacancy->title;
-        return view('vacancies.show',compact('lists'));
-        //return view('vacancies.show',compact('post'));
+        $posts=DB::table('posts')->get();
+        // $lists=DB::table('vacancy_qualification')
+        // ->join('posts','posts.vacancy_id','=','vacancy_qualification.vacancy_id')
+        // ->join('vacancies','vacancies.id','=','vacancy_qualification.vacancy_id')
+        // ->select('vacancies.title','vacancy_qualification.*')
+        // ->get();
+        // ->where('posts.vacancy_id',$vac->id)->get(); 
+    //    return $post->closing_date;
+       return view('vacancies.show',compact('posts'));
     }
 
     /**

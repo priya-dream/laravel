@@ -10,7 +10,7 @@ class VacancyController extends Controller
 {
     public function index()
     { 
-        $pages = Vacancy::latest()->paginate(10);
+        $pages = Vacancy::latest()->paginate(2);
         $results= DB::table('vacancies')->get();
         // foreach($result as $res){
             //return $result->img;

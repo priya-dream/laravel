@@ -65,7 +65,7 @@ Route::get('/destroy/{id}',
     Route::get('company/login','CompanyController@index');
     Route::resource('company', 'CompanyController');
 
-   
+    Route::get('/post/view','PostController@show');
     Route::any('/list','PostController@store');
     Route::resource('post', 'PostController');
     

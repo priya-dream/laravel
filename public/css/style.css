@@ -3711,7 +3711,23 @@ textarea.tt-hint {
 
 .form-group {
   margin-bottom: 1rem; }
-
+  
+ .input[type="text"] {
+ width: 500px;
+ height:40px;}
+ .input[type="number"] {
+ width: 500px;}
+ .input[type="date"] {
+ width: 500px;}
+ .textarea {
+ width: 500px;
+ height:50px;}
+ .dropdown-selection{
+ width:400px;
+ height:45px;}   
+}
+}
+}
 .form-text {
   display: block;
   margin-top: 0.25rem; }
@@ -7484,8 +7500,8 @@ a.close.disabled {
   animation: spinner-border .75s linear infinite; }
   
 .login-image{
-	width:40px;
-	height:40px;}
+	width:50px;
+	height:50px;}
 
 .spinner-border-sm {
   width: 1rem;
@@ -10014,7 +10030,7 @@ button.bg-dark:focus,
     padding-bottom: 3rem !important; }
   .pl-xl-5,
   .px-xl-5 {
-    padding-left: 3rem !important; }
+    padding-left: 5rem !important; }
   .m-xl-n1 {
     margin: -0.25rem !important; }
   .mt-xl-n1,
@@ -10240,6 +10256,9 @@ a.text-dark:hover, a.text-dark:focus {
   color: #343a40 !important; }
 .sub-text{
 	color:#00008B;}
+.sub-texts{
+	color:#00008B;
+	font-size:25px;}
 .main-text{
 	color:#0000CD;}
 
@@ -15492,7 +15511,8 @@ dl {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
-
+.forms-sample{
+	padding-left:30px;}
 .main-panel {
   -webkit-transition: width 0.25s ease, margin 0.25s ease;
   transition: width 0.25s ease, margin 0.25s ease;
@@ -15511,7 +15531,7 @@ dl {
 	  margin-top:5;
       margin-left: 0;
       width: 100%;
-	padding-left:20px;	  } }
+	padding-left:100px;	  } }
 
 .content-wrapper {
   background: #f2f2f2;
