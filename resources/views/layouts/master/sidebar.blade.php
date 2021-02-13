@@ -4,13 +4,13 @@
    </div>
   <ul class="nav">
     <li class="nav-item">
-      <a class="nav-link"  href="{{url('/vacancy')}}">
+      <a class="nav-link"  href="{{url('/post')}}">
         <i class="mdi mdi-home menu-icon"></i>
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link"  href="{{url('/vacancy')}}" >
+      <a class="nav-link"  href="{{url('/post')}}" >
         <i class="mdi mdi-crosshairs-gps menu-icon"></i>
         <span class="menu-title">Available Vacancies</span>
         <i class="menu-arrow"></i>

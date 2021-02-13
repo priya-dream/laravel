@@ -37,28 +37,29 @@
   </div>
 </div>
 <div class="container">
-<h1>Job Types</h1>
+<h2>Job Types</h2></br>
 
-<button style="font-size:20px" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button style="font-size:15px" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Add New Job Type
 </button>
 </br></br>
+<div class="table-responsive">
 <table class="table table-striped tr-odd" >
 <thead>
-<tr style="font-size:20px">
-    <th style="font-size:30px">No</th>
-    <th style="font-size:30px">Title</th>
-    <th style="font-size:30px">Image</th>
-    <th style="font-size:30px">Action</th>
+<tr>
+    <th>No</th>
+    <th>Title</th>
+    <th>Image</th>
+    <th>Action</th>
 </tr>
 </thead>
 <tbody>
 <?php $i=1; ?>
     @foreach($results as $result)
     <tr>
-        <th style="font-size:20px">{{$i}}</th>
-        <td style="font-size:20px" class="editable-form">{{$result->title}}</td>
-        <td style="font-size:20px" class="editable-form">{{$result->img}}</td>
+        <th>{{$i}}</th>
+        <td>{{$result->title}}</td>
+        <td><img src="{{asset('images/'.$result->img)}}"></td>
         <td>
         <div>
             <form action="" method="POST">
@@ -74,6 +75,7 @@
     @endforeach
 </tbody>
 </table>
+</div>
 {!! $pages->links() !!}
 </div>
 

@@ -67,7 +67,14 @@ Route::get('/destroy/{id}',
 
     Route::get('/post/view','PostController@show');
     Route::any('/list','PostController@store');
+    //Route::get('post/{id}', 'PostController@index');
     Route::resource('post', 'PostController');
+
+    Route::get('locale/(locale)',function ($locale){
+        Session::put('locale',$locale);
+        return redirect()->back();
+    });
+
     
     
 

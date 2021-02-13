@@ -4147,8 +4147,10 @@ fieldset:disabled .ajax-upload-dragdrop a.ajax-file-upload,
 
 .btn-success {
   color: #fff;
-  background-color: #00cccd;
-  border-color: #00cccd; }
+  width:25s0px;
+  height:50px;
+  background-color: #483D8B;
+  border-color: #483D8B; }
   .btn-success:hover {
     color: #fff;
     background-color: #00a6a7;
@@ -10030,7 +10032,7 @@ button.bg-dark:focus,
     padding-bottom: 3rem !important; }
   .pl-xl-5,
   .px-xl-5 {
-    padding-left: 5rem !important; }
+    padding-left: 10rem !important; }
   .m-xl-n1 {
     margin: -0.25rem !important; }
   .mt-xl-n1,
@@ -10946,8 +10948,7 @@ html {
   overflow: auto; }
 
 .container-scroller {
-  overflow: hidden
-  top-margin:1px;; }
+  overflow: hidden }
 
 pre {
   background: #e8eff4;
@@ -12140,7 +12141,8 @@ color:#ffffff;}
 
 /* Cards */
 .card {
-  border: 1px solid #e6e6e6; }
+  border: 1px solid #e6e6e6;
+  margin-top:15px;  }
   .card .card-body {
     padding: 20px 30px; }
     .card .card-body + .card-body {
@@ -15210,6 +15212,16 @@ dl {
       left: 185px; }
   .sidebar-mini .sidebar {
     width: 185px; }
+	.header{
+		width:3000px;
+		height:100px;
+		background-color:#8B008B;
+		color:white;
+		font-size:50px;
+		position:absolute;
+		text-align:left;
+		padding: 25px 50px 25px 80px;
+	}
     .sidebar-mini .sidebar .nav .sidebar-category {
       text-align: center; }
     .sidebar-mini .sidebar .nav .nav-item {
@@ -15510,7 +15522,8 @@ dl {
 .container-scroller {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex; 
+  padding-top:0px;}
 .forms-sample{
 	padding-left:30px;}
 .main-panel {
@@ -15540,5 +15553,48 @@ dl {
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1; }
+  
+.table-text {
+font-size:30px;}
+
+.modal {
+	width:500px;
+	height:300px;
+	background-color:white;
+	border-radius:4px;
+	text-align:center;
+	justify-content:center;}
+.input{
+	width:50%;
+	display:block;
+	margin:15px auto;}
+.close{
+position:absolute;
+top:0;
+right:14px;
+font-size:42px;
+transform:rotate(45deg);
+cursor:pointer;}
+.modal-bg {
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.5);
+	position:fixed;
+	top:0;
+	left:0;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	visibility:hidden;
+	epacity:0;
+	transition:visibility 0% epacity 0.5s;
+}
+.bg-active{
+	visibility:visible;
+	epacity:1;
+}
+
+
+
 
 /*# sourceMappingURL=style.css.map */

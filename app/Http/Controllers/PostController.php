@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index()
     {
         $results=DB::table('posts')->get();
-        $company=DB::table('companies')->select('name','id')->get(); 
+        $company=DB::table('companies')->select('name','id','image')->get(); 
         $vacancy=DB::table('vacancies')->select('title','id')->get();
       return view('vacancies.index')->with(compact('results','company','vacancy'));
     }
@@ -74,17 +74,19 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Request $request)
     {
-        $posts=DB::table('posts')->get();
-        // $lists=DB::table('vacancy_qualification')
-        // ->join('posts','posts.vacancy_id','=','vacancy_qualification.vacancy_id')
-        // ->join('vacancies','vacancies.id','=','vacancy_qualification.vacancy_id')
-        // ->select('vacancies.title','vacancy_qualification.*')
-        // ->get();
+        $posts=DB::table('vacancies')->first();
+        $lists=DB::table('vacancy_qualification')
+        ->join('posts','posts.vacancy_id','=','vacancy_qualification.vacancy_id')
+        ->join('vacancies','vacancies.id','=','vacancy_qualification.vacancy_id')
+        ->join('companies','companies.id','=','vacancy_qualification.company_id')
+        ->select('posts.*','companies.*','vacancy_qualification.*')
+        ->get();
         // ->where('posts.vacancy_id',$vac->id)->get(); 
-    //    return $post->closing_date;
-       return view('vacancies.show',compact('posts'));
+      //return $posts->id;
+    //$lists = Post::with('vacancy_quali')->get();
+       return view('vacancies.show',compact('posts','lists'));
     }
 
     /**

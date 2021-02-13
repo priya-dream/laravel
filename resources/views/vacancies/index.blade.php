@@ -1,15 +1,16 @@
+
 @extends('layouts.master.page')
 @section('content')
 <h3 class="mb-0"> Available vacancies</h3>
-    <p style="padding-right:90px"><a  href="{{ url('/company/login') }}" class="btn btn-success"> POST JOB </a></p>
-      </div>    
+
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
     @endif </br></br> 
+
+
         <?php $i=1; ?>
-        <div>
     <table>
         <tr> 
     @foreach ($results as $result)
@@ -17,10 +18,10 @@
             <td>
                 <span class="badge badge-danger text-white ml-3 rounded">{{$i}}</span>
             </td><td></td><td></td>
-            <td class="card px-xl-5" style="width:580px"></br>
+            <td class="card px-xl-5" style="width:700px;font-align:center;"></br>
                 @foreach ($company as $com)
                     @if($com->id==$result->company_id) 
-                        <div><h4 class="sub-text"><img src="{{asset('images/abc-logo.png')}}" width="120px" height="70px"></h4></div>
+                        <div><h4 class="sub-text"><img src="{{asset('images/'.$com->image)}}" width="120px" height="70px"></h4></div>
                     @endif
                 @endforeach
                 @foreach ($vacancy as $vac)
@@ -48,7 +49,7 @@
       
         <?php 
                     if($i%2==0){
-                        echo '</tr></br>';
+                        echo '</tr><tr>';
                         $i++;}
                     else
                         $i++;
