@@ -1,10 +1,12 @@
 @extends('layouts.master.page')
 @section('content')
 <div class="main-panel">
-<div><h2>Job Application Form</h2></div><br/>
+<div><h2 class="page-title">Job Application Form</h2></div><br/>
     <form action="{{url('/vacancy/resume')}}" method="post" class="forms-sample">
         <div class="error">* required field</div></br>
-        
+        <div class="row">
+        <div class="col-lg-24 grid-margin">
+        <div class="card">
             <div class="form-group row">
                 <div class="col">
                     <label class="col-sm-3 col-form-label"><span class="error">*</span>First Name</label>
@@ -27,7 +29,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <label class=col><span class="error">*</span>Address</label>
+                    <label class="col"><span class="error">*</span>Address</label>
                     <div>
                         <textarea name="address" placeholder="address" class="form-control textarea"></textarea>
                     </div>
@@ -103,7 +105,18 @@
             </div>
         </div>
         </br></br>
-        <input type="submit" value="Apply" class="btn btn-primary">
+        <div class="form-group row"> 
+                <div class="col-md-6">
+                    <div>
+                    <input type="submit" value="Apply" class="btn btn-primary">
+                    </div>
+                </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
     </form>
 </div>
 

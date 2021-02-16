@@ -3,17 +3,21 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+  var modalBtn=document.querySelector('.modal-btn');
+	    var modalBg=document.querySelector('.modal-bg');
+      var modalClose=document.querySelector('.close-admin');
+        modalBtn.addEventListener('click',function(){               
+          modalBg.classList.add('bg-active');
+        });
+        modalClose.addEventListener('click',function(){
+          modalBg.classList.remove('bg-active');
+        });
 
 require('./bootstrap');
 
 window.Vue = require('vue');
 
-var modalBtn=document.querySelector('.modal-btn');
-	var modalBg=document.querySelector('.modal-bg');
-	modalBtn.addEventListener('click',function(){
-		//alert ("Hello");
-	  modalBg.classList.add('bg-active');
-  });
+
 
 /**
  * The following block of code may be used to automatically register your

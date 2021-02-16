@@ -1,24 +1,32 @@
 
 @extends('layouts.master.page')
 @section('content')
-<h3 class="mb-0"> Available vacancies</h3>
+<h3 class="page-title" style="margin-top:90px"> Available vacancies</h3>
+<div style="margin-top:30px" class="input-group">
+    <input style="margin-left:250px; font-size:25px" type="text" class="form-control" placeholder="Search" />
+    <div class="input-group-append">
+        <span class="input-group-text">
+            <i class="mdi mdi-magnify"></i>
+        </span>
+    </div>
+
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
-    @endif </br></br> 
+    @endif </br></br> </br>
 
 
         <?php $i=1; ?>
-    <table>
+    <table style="margin-top:50px">
         <tr> 
     @foreach ($results as $result)
     
             <td>
                 <span class="badge badge-danger text-white ml-3 rounded">{{$i}}</span>
             </td><td></td><td></td>
-            <td class="card px-xl-5" style="width:700px;font-align:center;"></br>
+            <td class="card px-xl-5" style="width:600px;font-align:center;"></br>
                 @foreach ($company as $com)
                     @if($com->id==$result->company_id) 
                         <div><h4 class="sub-text"><img src="{{asset('images/'.$com->image)}}" width="120px" height="70px"></h4></div>
@@ -58,6 +66,7 @@
 @endforeach
 </table>
     </div>
+</div>
   
 
 @stop

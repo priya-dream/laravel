@@ -1,8 +1,8 @@
 @extends('layouts.master.page')
 @section('content')
 <div class="main-panel">
-<div><h1 class="page-title">Login</h1></div></br>
-<div><img src="{{asset('images/logo.png')}}" width="200px" height="100px" style="text-align:center"></div></br>
+<div><h1 class="page-title" style="text-align:left">Login</h1></div></br>
+<div><img src="{{asset('images/logo.png')}}" width="200px" height="100px"></div></br>
 
 @if ($message = Session::get('success'))
     <div class="alert alert-success">

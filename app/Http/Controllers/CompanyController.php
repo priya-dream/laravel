@@ -98,14 +98,14 @@ class CompanyController extends Controller
     
 
         $vacancies= DB::table('vacancies')->select('title')->orderBy('title')->get();
-        if(count($data)){
-        return View('vacancies.add',compact('request','data','vacancies'));
-        //return count($data);
-        }
-        else
-        return redirect('/company/login')->with('error','Invalid login details !!');
-        if($request->username=="admin" and $request->password=="789123" )
-        return View('vacancies.post')->include('layouts.master.sidebar');
+            if($request->username=="admin" and $request->password=="789123" )
+                return View('admin');
+            elseif(count($data))
+                return View('vacancies.add',compact('request','data','vacancies'));  
+            else
+                return redirect('/company/login')->with('error','Invalid login details !!');
+        
+        
 
     }
 

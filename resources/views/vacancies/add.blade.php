@@ -25,7 +25,7 @@
 
 
  <div class="main-panel">
-<div><h1 class="page-title" style="padding-left:200px">Post New Vacancy</h1></div><br/><br/>
+<div><h1 class="page-title">Post New Vacancy</h1></div><br/><br/>
 
   <form action="{{url('/list')}}" method="post" class="forms-sample">
           {{csrf_field()}}

@@ -64,7 +64,7 @@ class PostController extends Controller
             null,$vacancy_id->id,$date,$company_id->id,$quali_id->id,$need,$closing_date
         ]);
         $results=DB::table('posts')->get();
-        return  view('/post')->with('success','Vacancy Published Successfully :)');
+        return  redirect('/post')->with('success','Vacancy Published Successfully :)');
     
     }
 

@@ -5,12 +5,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>JOB BANK</title>
+    <title>DFC-JOB BANK</title>
     @include('layouts.master.head')
-    
-    <script src="{{asset('js/dashboard.js')}}"></script>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"> -->
-  </head>
+   </head>
   <body>
 <div class="header">
   <span>DFC JOBS</span>
@@ -24,8 +21,8 @@
         <li><a class="dropdown-item" href="#">Sinhala</a></li>
       </ul>
   </span>
-  <a style="margin-left:300px;font-size:25px" href="{{ url('/company/login') }}" class="btn btn-success"> POST JOB </a>
-  <button style="margin-left:250px; font-size:35px" class="modal-btn">Admin</button>
+  <a style="margin-left:300px;font-size:28px;" href="{{ url('/company/login') }}" class="btn btn-success"> POST JOB </a>
+  <span style="margin-left:270px" class="mdi mdi-account-star"><button style="background-color:white;font-size:35px" class="modal-btn">Admin</button></span>
 </div>
 
     
@@ -48,22 +45,33 @@
             <div class="page-header flex-wrap">
               @yield('content')
             </div>
-          </div>
-        
-      
+          </div>   
     </div>
     <div class="modal-bg">
-    <div class="modal">
-          <form action="">
-            <div class="close">+</div>
-            <img src="{{asset('images/admin-login.png')}}" width="100px" height="100px"></br>
-            username: <input type="text" placeholder="username"></br>
-            password: <input type="text" placeholder="password"></br>
-            <button type="submit">login</button>
+    <div class="modal-admin">
+          <form action="{{url('/login/verify')}}" method="POST">
+          {{csrf_field()}}
+            <div class="close-admin">+</div>
+            <img src="{{asset('images/admin-login.png')}}" width="120px" height="120px"></br><br>
+            username: <input class="form-group" type="text" placeholder="username" name=username></br>
+            password: <input class="form-group" type="text" placeholder="password" name="password"></br>
+            <button type="submit" class="btn btn-primary">login</button>
           </form>
       </div>
     </div>
   </div>
+
+    <script>
+      var modalBtn=document.querySelector('.modal-btn');
+	    var modalBg=document.querySelector('.modal-bg');
+      var modalClose=document.querySelector('.close-admin');
+        modalBtn.addEventListener('click',function(){               
+          modalBg.classList.add('bg-active');
+        });
+        modalClose.addEventListener('click',function(){
+          modalBg.classList.remove('bg-active');
+        });
+     </script>
     @include('layouts.master.footer') 
     
     </body>

@@ -4117,7 +4117,9 @@ fieldset:disabled .ajax-upload-dragdrop a.ajax-file-upload,
     .show > .btn-secondary.dropdown-toggle:focus {
       -webkit-box-shadow: 0 0 0 0.2rem rgba(189, 189, 190, 0.5);
       box-shadow: 0 0 0 0.2rem rgba(189, 189, 190, 0.5); }
-
+.btn-success1{
+background-color:#F4A460;
+font-size:25px;}
 .btn-success {
   color: #fff;
   background-color: #00cccd;

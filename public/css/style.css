@@ -4147,10 +4147,10 @@ fieldset:disabled .ajax-upload-dragdrop a.ajax-file-upload,
 
 .btn-success {
   color: #fff;
-  width:25s0px;
+  width:175px;
   height:50px;
-  background-color: #483D8B;
-  border-color: #483D8B; }
+  background-color: #F4A460;
+  border-color: #F4A460; }
   .btn-success:hover {
     color: #fff;
     background-color: #00a6a7;
@@ -10032,7 +10032,7 @@ button.bg-dark:focus,
     padding-bottom: 3rem !important; }
   .pl-xl-5,
   .px-xl-5 {
-    padding-left: 10rem !important; }
+    padding-left: 8rem !important; }
   .m-xl-n1 {
     margin: -0.25rem !important; }
   .mt-xl-n1,
@@ -10964,15 +10964,23 @@ code {
   border-radius: 4px; }
 
 .page-header {
-  margin: 1 0 1.5rem 0; }
+  margin: 0.5rem 0 1.5rem 0;
+align-items:justify;
+width:70%;
+padding-left: 200px; }
+.page-header1{ 
+width:70%;
+padding-left: 600px; }
   .page-header .breadcrumb {
     border: 0;
     margin-bottom: 0; }
 
 .page-title {
   color: #343a40;
-  font-size: 1.125rem;
-  margin-bottom: 0; }
+  font-size: 1.5rem;
+  margin-bottom: 0; 
+  margin-top:40px;
+}
   .page-title .page-title-icon {
     display: inline-block;
     width: 36px;
@@ -15222,6 +15230,15 @@ dl {
 		text-align:left;
 		padding: 25px 50px 25px 80px;
 	}
+	.admin-header{
+		width:1600px;
+		height:100px;
+		background-color:#8B008B;
+		color:white;
+		font-size:50px;
+		position:absolute;
+		padding-left:350px;
+	}
     .sidebar-mini .sidebar .nav .sidebar-category {
       text-align: center; }
     .sidebar-mini .sidebar .nav .nav-item {
@@ -15549,7 +15566,7 @@ dl {
 .content-wrapper {
   background: #f2f2f2;
   padding: 2.75rem 2.25rem;
-  width: 100%;
+  width: 50%;
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1; }
@@ -15557,7 +15574,8 @@ dl {
 .table-text {
 font-size:30px;}
 
-.modal {
+.modal-admin {
+	position:relative;
 	width:500px;
 	height:300px;
 	background-color:white;
@@ -15568,11 +15586,12 @@ font-size:30px;}
 	width:50%;
 	display:block;
 	margin:15px auto;}
-.close{
+.close-admin{
 position:absolute;
 top:0;
-right:14px;
+right:10px;
 font-size:42px;
+font-weight:bold;
 transform:rotate(45deg);
 cursor:pointer;}
 .modal-bg {
@@ -15587,7 +15606,7 @@ cursor:pointer;}
 	align-items:center;
 	visibility:hidden;
 	epacity:0;
-	transition:visibility 0% epacity 0.5s;
+	transition:visibility 0s epacity 0.5s;
 }
 .bg-active{
 	visibility:visible;
