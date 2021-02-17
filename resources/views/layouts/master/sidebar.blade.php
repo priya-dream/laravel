@@ -42,15 +42,15 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="">
+      <a class="nav-link" href="/employee">
         <i class="mdi mdi-chart-bar menu-icon"></i>
-        <span class="menu-title">Employee</span>
+        <span class="menu-title">Employee resumes</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/vacancies">
         <i class="mdi mdi-table-large menu-icon"></i>
-        <span class="menu-title">Job Types</span>
+        <span class="menu-title">Job types</span>
       </a>
     </li>
    

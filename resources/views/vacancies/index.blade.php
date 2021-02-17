@@ -1,9 +1,16 @@
 
 @extends('layouts.master.page')
 @section('content')
-<h3 class="page-title" style="margin-top:90px"> Available vacancies</h3>
-<div style="margin-top:30px" class="input-group">
-    <input style="margin-left:250px; font-size:25px" type="text" class="form-control" placeholder="Search" />
+<div>
+    @if ($error = Session::get('error'))
+        <div class="alert alert-danger">
+            <h4>{{ $error }}</h4>
+        </div>
+    @endif
+    <h3 class="page-title" style="margin-top:40px"> Available vacancies</h3>
+</div>
+<div style="margin-top:20px" class="input-group">
+    <input style="margin-left:200px; font-size:25px" type="text" class="form-control" placeholder="Search" />
     <div class="input-group-append">
         <span class="input-group-text">
             <i class="mdi mdi-magnify"></i>
@@ -16,20 +23,18 @@
             <p>{{ $message }}</p>
         </div>
     @endif </br></br> </br>
-
-
         <?php $i=1; ?>
-    <table style="margin-top:50px">
+    <table style="margin-top:30px">
         <tr> 
     @foreach ($results as $result)
     
             <td>
                 <span class="badge badge-danger text-white ml-3 rounded">{{$i}}</span>
             </td><td></td><td></td>
-            <td class="card px-xl-5" style="width:600px;font-align:center;"></br>
+            <td class="card px-xl-5" style="width:425px;align-items:center;margin-top:20px"></br>
                 @foreach ($company as $com)
                     @if($com->id==$result->company_id) 
-                        <div><h4 class="sub-text"><img src="{{asset('images/'.$com->image)}}" width="120px" height="70px"></h4></div>
+                        <div class="sub-text"><img src="{{asset('images/'.$com->image)}}" width="120px" height="70px"></div>
                     @endif
                 @endforeach
                 @foreach ($vacancy as $vac)
@@ -49,7 +54,7 @@
                         <a class="btn btn-primary"  href="{{ url('/post/view'),$result->id }}">View</a>
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <!-- <button type="submit" class="btn btn-danger">Delete</button> -->
                     </form>
                 </div>
                 </br>

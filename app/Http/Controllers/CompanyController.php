@@ -100,7 +100,9 @@ class CompanyController extends Controller
         $vacancies= DB::table('vacancies')->select('title')->orderBy('title')->get();
             if($request->username=="admin" and $request->password=="789123" )
                 return View('admin');
-            elseif(count($data))
+            else
+                return redirect('/post')->with('error','Sorry,Admin login details are wrong !!');
+            if(count($data))
                 return View('vacancies.add',compact('request','data','vacancies'));  
             else
                 return redirect('/company/login')->with('error','Invalid login details !!');

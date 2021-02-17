@@ -50,7 +50,9 @@ Route::get('/destroy/{id}',
     Route::post('/vacancy/add','VacancyController@store');
     Route::get('/vacancy/type','VacancyController@type');
     Route::resource('/vacancies', 'VacancyController');
-    
+
+    Route::post('/employee/resume', 'EmployeeController@index');
+    Route::resource('/employee', 'EmployeeController');
     
     
     Route::post('/join/store', 'UserController@store');

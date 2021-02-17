@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="{{ app()->getlocale() }}">
   <head>
@@ -11,22 +10,17 @@
   <body>
 <div class="header">
   <span>DFC JOBS</span>
-  <span style="margin-left:200px" class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-      English
-    </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="#">English</a></li>
-        <li><a class="dropdown-item" href="/post">Tamil</a></li>
-        <li><a class="dropdown-item" href="#">Sinhala</a></li>
-      </ul>
+  <span style="margin-left:100px">
+    <select class="btn btn-secondary">
+        <option><a href="#">English</a></option>
+        <option><a class="btn btn-success" href='/post'>Tamil</a></option>
+        <option><a href="#">Sinhala</a></option>
+    </select>
   </span>
-  <a style="margin-left:300px;font-size:28px;" href="{{ url('/company/login') }}" class="btn btn-success"> POST JOB </a>
-  <span style="margin-left:270px" class="mdi mdi-account-star"><button style="background-color:white;font-size:35px" class="modal-btn">Admin</button></span>
+  <a style="margin-left:150px;font-size:20px;" href="{{ url('/company/login') }}" class="btn btn-success">POST JOB</a>
+  <span style="margin-left:160px" class="mdi mdi-account-star"><button style="background-color:white;font-size:25px" class="modal-btn">Admin</button></span>
+  
 </div>
-
-    
-
 
     <div class="container-scroller">
     <!-- @include('layouts.master.sidebar') -->
@@ -37,8 +31,6 @@
             <button class="navbar-toggler navbar-toggler align-self-center mr-2" type="button" data-toggle="minimize">
               <i class="mdi mdi-menu"></i>
             </button>
-            
-            
           </div>
         </nav> -->
           <div class="content-wrapper pb-0">
@@ -46,16 +38,16 @@
               @yield('content')
             </div>
           </div>   
-    </div>
+      </div>
     <div class="modal-bg">
     <div class="modal-admin">
           <form action="{{url('/login/verify')}}" method="POST">
           {{csrf_field()}}
             <div class="close-admin">+</div>
-            <img src="{{asset('images/admin-login.png')}}" width="120px" height="120px"></br><br>
-            username: <input class="form-group" type="text" placeholder="username" name=username></br>
-            password: <input class="form-group" type="text" placeholder="password" name="password"></br>
-            <button type="submit" class="btn btn-primary">login</button>
+            <img src="{{asset('images/admin-login.png')}}" width="120px" height="120px" style="margin-top:30px"></br></br>
+            <h4>username : <input class="form-group" type="text" placeholder="username" name=username></h4></br>
+            <h4>password : <input class="form-group" type="text" placeholder="password" name="password"></h4></br>
+            <h4><button type="submit" class="btn btn-primary">login</button></h4>
           </form>
       </div>
     </div>
@@ -72,8 +64,7 @@
           modalBg.classList.remove('bg-active');
         });
      </script>
-    @include('layouts.master.footer') 
-    
+    @include('layouts.master.footer')  
     </body>
 </html>
 
