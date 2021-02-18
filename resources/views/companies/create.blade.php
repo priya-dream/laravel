@@ -15,20 +15,21 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Default Details</h4><br/>
+          <form class="forms-sample">
               <div class="form-group">
-                <label class=col>Company Name</label>
-                <input type="text" class="form-control" name="name" placeholder="Company Name" required />
+                <label class="col">Company Name</label>
+                  <input type="text" class="form-control" name="name" placeholder="Company Name" required />
               </div>
               <div class="form-group">
-                <label class=col>Address</label>
+                <label class="col">Address</label>
                 <input type="text" class="form-control" name="address" placeholder="Address" required />
               </div>
               <div class="form-group">
-                <label class=col>CEO Name</label>
+                <label class="col">CEO Name</label>
                 <input type="text" class="form-control" name="ceo" placeholder="CEO" required />
               </div>
               <div class="form-group">
-                <label class=col>Mobile Number</label>
+                <label class="col">Mobile Number</label>
                 <input type="text" class="form-control" name="mobile" placeholder="Mobile" required />
               </div>
               <div class="form-group">
@@ -39,6 +40,7 @@
                 <label class=col>Upload the company logo</label>
                 <input type="file" class="form-control" name="img"required />
               </div>
+        </form>
         </div>
       </div>
     </div>
@@ -61,9 +63,9 @@
           <div><button type="submit" class="btn btn-primary"> Create </button></div>
         </div>
       </div>
-    </div>
+    </div></td>
   </div>
-  </form>
+  
 </div>
 </div>
 @stop

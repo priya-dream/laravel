@@ -6,7 +6,7 @@
     {{csrf_field()}}
     <div class="error">* required field</div></br>
         <div class="row">
-        <div class="col-lg-24 grid-margin">
+        <div class="col-lg-13 grid-margin">
         <div class="card">
             <div class="form-group row" style="margin-top:30px">        
 		        <div class="col-md-6">
@@ -32,7 +32,7 @@
 		        <div class="col-md-6">
 			        <label class=col><span class="error">*</span>Address</label>
 			        <div>
-				        <textarea cols="20" name="address" placeholder="address" class="form-control input" style="width:500px;font-size:20px"></textarea>
+				        <textarea cols="20" name="address" placeholder="address" class="form-control input" style="width:350px;font-size:20px"></textarea>
 			        </div>
 		        </div>
 	        </div>
@@ -55,13 +55,13 @@
             <div class="form-group">
                 <table><tr><td>
                 <label class=col><span class="error">*</span>A/L Qualification</label>
-                <select class="form-control dropdown-selection" name="al" style="height:40px;font-size:20px"">
+                <select class="form-control dropdown-selection" name="al" style="height:40px;font-size:15px"">
                     <option>Select the status...</option>
                     <option>Qualified</option>
                     <option>Not Qualified</option>
                 </select></td><td></td><td></td><td></td><td></td><td>
                 <label class=col><span class="error">*</span>Stream</label>
-                <select class="form-control dropdown-selection" name="stream" style="height:40px;font-size:20px"">
+                <select class="form-control dropdown-selection" name="stream" style="height:40px;font-size:15px"">
                     <option>Select stream...</option>
                     <option>Physical Science(Maths)</option>
                     <option>Biological Science</option>
@@ -75,7 +75,7 @@
             <div class="form-group">
                 <table><tr><td>
                 <label class=col>Graduation</label>
-                <select class="form-control dropdown-selection" name="grad" style="height:40px;font-size:20px"">
+                <select class="form-control dropdown-selection" name="grad" style="height:40px;font-size:15px"">
                     <option>Select your top graduation...</option>
                     <option>Diploma</option>
                     <option>Higher Diploma</option>
@@ -83,7 +83,7 @@
                     <option>Master Degree</option>
                 </select></td><td></td><td></td><td></td><td></td><td>
                 <label class=col><span class="error">*</span>Field</label>
-                <select class="form-control dropdown-selection" name="subj" style="height:40px;font-size:20px"">
+                <select class="form-control dropdown-selection" name="subj" style="height:40px;font-size:15px"">
                     <option>Select the subject/field...</option>
                     <option>Infomation Technology</option>
                     <option>Computer Science</option>
@@ -94,7 +94,7 @@
                     <option>Agreeculture</option>
                 </select></td><td></td><td></td><td></td><td></td><td>
                 <label class=col><span class="error">*</span>Recognized University</label>
-                <select class="form-control dropdown-selection" name="stream" style="height:40px;font-size:20px"">
+                <select class="form-control dropdown-selection" name="stream" style="height:40px;font-size:15px"">
                     <option>Select recognized university...</option>
                     <option>University Of Jaffna</option>
                     <option>University Of Colombo</option>

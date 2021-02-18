@@ -41,13 +41,13 @@
       </div>
     <div class="modal-bg">
     <div class="modal-admin">
-          <form action="{{url('/login/verify')}}" method="POST">
+          <form action="{{url('/admin/verify')}}" method="POST">
           {{csrf_field()}}
             <div class="close-admin">+</div>
-            <img src="{{asset('images/admin-login.png')}}" width="120px" height="120px" style="margin-top:30px"></br></br>
-            <h4>username : <input class="form-group" type="text" placeholder="username" name=username></h4></br>
-            <h4>password : <input class="form-group" type="text" placeholder="password" name="password"></h4></br>
-            <h4><button type="submit" class="btn btn-primary">login</button></h4>
+            <img src="{{asset('images/admin-login.png')}}" width="100px" height="100px" style="margin-top:20px"></br></br>
+            <h5>username : <input class="form-group" type="text" placeholder="username" name=username></h5>
+            <h5>password : <input class="form-group" type="text" placeholder="password" name="password"></h5>
+            <h5><button type="submit" class="btn btn-primary">login</button></h5>
           </form>
       </div>
     </div>
