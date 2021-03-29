@@ -1,21 +1,20 @@
 @extends('layouts.master.page')
 @section('content')
 <div class="main-panel">
-<div><h1 class="page-title">Company Details</h1></div><br/><br/>
+  <div><h1 class="page-title">Company Details</h1>
+  </div><br/><br/>
 @if ($message = Session::get('success'))
-      <div class="alert alert-success">
-        <p>{{ $message }}</p>
-      </div>
-  @endif
-
+    <div class="alert alert-success">
+      <p>{{ $message }}</p>
+    </div>
+@endif
   <form action="{{route('company.store')}}" method="post" class="forms-sample">
           {{csrf_field()}}
   <div class="row">
-    <div class="col-md-6 grid-margin stretch-card">
+    <div class="col-md-7 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Default Details</h4><br/>
-          <form class="forms-sample">
               <div class="form-group">
                 <label class="col">Company Name</label>
                   <input type="text" class="form-control" name="name" placeholder="Company Name" required />
@@ -40,11 +39,10 @@
                 <label class=col>Upload the company logo</label>
                 <input type="file" class="form-control" name="img"required />
               </div>
-        </form>
         </div>
       </div>
-    </div>
-    <div class="col-md-6 grid-margin stretch-card">
+    
+    <div class="col-md-9 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Login Form</h4></br>
@@ -63,9 +61,9 @@
           <div><button type="submit" class="btn btn-primary"> Create </button></div>
         </div>
       </div>
-    </div></td>
+    </div>
   </div>
-  
-</div>
+  </div>
+  </form>
 </div>
 @stop

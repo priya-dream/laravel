@@ -15281,7 +15281,7 @@ dl {
 		color:white;
 		font-size:50px;
 		position:absolute;
-		padding-left:350px;
+		padding-left:280px;
 	}
     .sidebar-mini .sidebar .nav .sidebar-category {
       text-align: center; }
@@ -15670,7 +15670,27 @@ font-size:30px;
 margin-top:50px;
 margin-left:20px;}
 
-
+.card-main{
+	margin-left:100px;
+	width:900px;
+	height:1000px;
+	justify-content:center;
+	align-items:center;
+	display:flex;
+	background-repeat:no-repeat;
+}
+.card-sub{
+	flex:1 1 auto;
+	z-index:10;
+	background:rgba(255, 255, 255, 0.9);
+	padding:15px 30px;
+	transition:ease-in-out 0.4s;
+	border-radius:5px;
+	box-shadow:2px 2px 15px rgb(0 0 0 / 20%);
+	cursor:pointer;
+	margin-left:40px;
+	margin-right:40px;
+	margin-bottom:30px;}
 
 
 /*# sourceMappingURL=style.css.map */

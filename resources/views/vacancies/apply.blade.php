@@ -6,7 +6,7 @@
     {{csrf_field()}}
     <div class="error">* required field</div></br>
         <div class="row">
-        <div class="col-lg-13 grid-margin">
+        <div class="col-lg-24 grid-margin">
         <div class="card">
             <div class="form-group row" style="margin-top:30px">        
 		        <div class="col-md-6">
@@ -24,7 +24,7 @@
 	        </div>
 	        <div class="form-group row">        
 		        <div class="col-md-6">
-			        <label class=col><span class="error">*</span>NIC Number</label>
+			        <label class="col"><span class="error">*</span>NIC Number</label>
 			        <div>
 				        <input type="text" name="nic" placeholder="nic number" maxlength="12" class="form-control input">
 			        </div>

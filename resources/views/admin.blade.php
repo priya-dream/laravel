@@ -10,7 +10,7 @@
   <body>
     <div class="admin-header">
       <span>DFC JOBS</span>
-      <span style="margin-left:150px" class="dropdown">
+      <span style="margin-left:40px" class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           English
         </button>
