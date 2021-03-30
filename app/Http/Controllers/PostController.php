@@ -18,6 +18,8 @@ class PostController extends Controller
         $results=DB::table('posts')->get();
         $company=DB::table('companies')->select('name','id','image')->get(); 
         $vacancy=DB::table('vacancies')->select('title','id')->get();
+        // $data=DB::table('vacancy_qualification')->select('*')
+        // ->where(['vacancy_id','=',$vacancy->id],['company_id','=',$company->id]);
       return view('vacancies.index')->with(compact('results','company','vacancy'));
     }
 

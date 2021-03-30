@@ -13,6 +13,24 @@
         },
       });
     }
+	  var modalBtn=document.querySelector('.modal-btn');
+		var modalBg=document.querySelector('.modal-bg');
+	  var modalClose=document.querySelector('.close-admin');
+		modalBtn.addEventListener('click',function(){               
+		  modalBg.classList.add('bg-active');
+		});
+		modalClose.addEventListener('click',function(){
+		  modalBg.classList.remove('bg-active');
+		});
+		
+	const readMore=document.querySelector('.read-more');
+	const topText = document.querySelector('.card-sub');
+	readMore.addEventListener('click',(0)=>{
+		topText.classList.toggle('show-more')
+	});
+     
+	
+	
     // flot chart bar script
     $(function () {
       var data = [

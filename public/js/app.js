@@ -13,6 +13,15 @@
           modalBg.classList.remove('bg-active');
         });
 
+
+const readMore=document.querySelector('.read-more');
+const topText = document.querySelector('.card-sub');
+readMore.addEventListener('click',(0)=>{
+	topText.classList.toggle('show more')
+});
+	
+	
+	
 require('./bootstrap');
 
 window.Vue = require('vue');

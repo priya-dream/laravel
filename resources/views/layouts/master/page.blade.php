@@ -7,7 +7,7 @@
     <title>DFC-JOB BANK</title>
     @include('layouts.master.head')
    </head>
-  <body>
+  <body> 
 <div class="header">
   <span>DFC JOBS</span>
   <span style="margin-left:100px">
@@ -52,9 +52,8 @@
       </div>
     </div>
   </div>
-
-    <script>
-      var modalBtn=document.querySelector('.modal-btn');
+  <script>
+    var modalBtn=document.querySelector('.modal-btn');
 	    var modalBg=document.querySelector('.modal-bg');
       var modalClose=document.querySelector('.close-admin');
         modalBtn.addEventListener('click',function(){               
@@ -63,8 +62,8 @@
         modalClose.addEventListener('click',function(){
           modalBg.classList.remove('bg-active');
         });
-     </script>
-    @include('layouts.master.footer')  
+  </script>
+    @include('layouts.master.footer')
     </body>
 </html>
 

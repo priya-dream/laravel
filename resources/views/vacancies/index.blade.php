@@ -1,4 +1,3 @@
-
 @extends('layouts.master.page')
 @section('content')
 <div>
@@ -16,22 +15,19 @@
             <i class="mdi mdi-magnify"></i>
         </span>
     </div>
-
-
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
     @endif </br></br> </br>
         <?php $i=1; ?>
-    <table style="margin-top:30px">
+    <table style="margin-top:30px;margin-left:90px">
         <tr> 
     @foreach ($results as $result)
-    
             <td>
                 <span class="badge badge-danger text-white ml-3 rounded">{{$i}}</span>
             </td><td></td><td></td>
-            <td class="card px-xl-5" style="width:425px;align-items:center;margin-top:20px"></br>
+            <td class="card px-xl-6" style="width:425px;align-items:center;margin-top:20px"></br>
                 @foreach ($company as $com)
                     @if($com->id==$result->company_id) 
                         <div class="sub-text"><img src="{{asset('images/'.$com->image)}}" width="120px" height="70px"></div>
@@ -50,7 +46,7 @@
                 <div><h4 class="sub-text">Closing Date : {{$result->closing_date}}</h4></div></br>
                 <div>
                     <form action="" method="POST">
-                        <a class="btn btn-primary" href="{{url('/vacancy/apply'),$result->id}}">Apply</a>
+                        <a class="btn btn-primary" href="{{url('/vacancy/apply')}}">Apply</a>
                         <a class="btn btn-primary"  href="{{ url('/post/view'),$result->id }}">View</a>
                             @csrf
                             @method('DELETE')
@@ -61,17 +57,15 @@
             </td>
       
         <?php 
-                    if($i%2==0){
-                        echo '</tr><tr>';
-                        $i++;}
-                    else
-                        $i++;
-                    ?>
+            if($i%2==0){
+                echo '</tr><tr>';
+                $i++;}
+            else
+                $i++;
+        ?>
     
 @endforeach
 </table>
     </div>
 </div>
-  
-
 @stop
