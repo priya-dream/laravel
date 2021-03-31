@@ -23,6 +23,7 @@
         <?php $i=1; ?>
     <table style="margin-top:30px;margin-left:90px">
         <tr> 
+        
     @foreach ($results as $result)
             <td>
                 <span class="badge badge-danger text-white ml-3 rounded">{{$i}}</span>
@@ -35,6 +36,7 @@
                 @endforeach
                 @foreach ($vacancy as $vac)
                     @if($vac->id==$result->vacancy_id)
+                        
                         <div><h4 class="sub-text">Designation : {{$vac->title}}</h4></div>
                     @endif
                 @endforeach
@@ -47,7 +49,15 @@
                 <div>
                     <form action="" method="POST">
                         <a class="btn btn-primary" href="{{url('/vacancy/apply')}}">Apply</a>
-                        <a class="btn btn-primary"  href="{{ url('/post/view'),$result->id }}">View</a>
+                      @foreach($company as $com)
+                      @foreach ($vacancy as $vac)
+                      @if($data->vacancy_id==$vac->id and $data->company_id==$com->id)
+                        <a class="btn btn-primary"  href="{{ url('/post/view',$result->id) }}">View</a>
+                     @endif
+                     @endforeach
+                     @endforeach
+                    
+                        
                             @csrf
                             @method('DELETE')
                             <!-- <button type="submit" class="btn btn-danger">Delete</button> -->

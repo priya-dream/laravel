@@ -18,9 +18,10 @@ class PostController extends Controller
         $results=DB::table('posts')->get();
         $company=DB::table('companies')->select('name','id','image')->get(); 
         $vacancy=DB::table('vacancies')->select('title','id')->get();
-        // $data=DB::table('vacancy_qualification')->select('*')
-        // ->where(['vacancy_id','=',$vacancy->id],['company_id','=',$company->id]);
-      return view('vacancies.index')->with(compact('results','company','vacancy'));
+        $data=DB::table('vacancy_qualification')->first();
+        
+        
+      return view('vacancies.index')->with(compact('results','company','vacancy','data'));
     }
 
     /**
@@ -76,19 +77,22 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show($id)
     {
-        $posts=DB::table('vacancies')->first();
-        $lists=DB::table('vacancy_qualification')
-        ->join('posts','posts.vacancy_id','=','vacancy_qualification.vacancy_id')
+        $posts=DB::table('posts')
+        ->join('vacancies','vacancies.id','=','posts.vacancy_id')
+        ->join('companies','companies.id','=','posts.company_id')
+        ->select('posts.*','vacancies.*','companies.*')
+        ->get();
+        $datas=DB::table('vacancy_qualification')
+        ->join('posts','posts.qualification_id','=','vacancy_qualification.id')
         ->join('vacancies','vacancies.id','=','vacancy_qualification.vacancy_id')
         ->join('companies','companies.id','=','vacancy_qualification.company_id')
-        ->select('posts.*','companies.*','vacancy_qualification.*')
+        ->select('vacancy_qualification.*','vacancies.*','companies.*','posts.*')
+        ->where('vacancy_qualification.id',$id)
         ->get();
-        // ->where('posts.vacancy_id',$vac->id)->get(); 
-      //return $posts->id;
-    //$lists = Post::with('vacancy_quali')->get();
-       return view('vacancies.show',compact('posts','lists'));
+       // return $datas;
+      return view('vacancies.show',compact('datas','posts'));
     }
 
     /**
