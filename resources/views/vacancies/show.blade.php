@@ -11,7 +11,7 @@ $i=2;
 
 @foreach($datas as $data)
             <div><h2 style="color:#C71585">{{$data->title}}</h2></div>
-            <div class="card-main" style="background-image:url('{{asset('images/'.$data->img)}}')">
+            <div class="card-main" style="background-image:url('{{asset('images/'.$data->img)}}');width:1000px;height:1200px;">
             
       <div class="card-sub">
             
@@ -38,17 +38,7 @@ $i=2;
 @endforeach
 
 </div>
-      <!-- <script>
-            const readMore=document.querySelector('.read-more');
-            const topText = document.querySelector('.card-sub');
-            readMore.addEventListener('click',function(){
-                  topText.classList.toggle('show-more');
-                  if(readMore.innerText==='Read More'){
-                        readMore.innerText='Read less';}
-                  else{
-                        readMore.innerText='Read More';}
-            })
-      </script> -->
+<script src="{{asset('js/app.js')}}"></script> 
 @stop     
 </body>
               

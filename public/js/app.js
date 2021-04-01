@@ -19,6 +19,14 @@ const topText = document.querySelector('.card-sub');
 readMore.addEventListener('click',(0)=>{
 	topText.classList.toggle('show more')
 });
+
+function stoppedTyping(){
+        if(document.getElementById('advance_level').value==="Not Necessary") { 
+            document.getElementById('stream').disabled = true; 
+        } else { 
+            document.getElementById('stream').disabled = false;
+        }
+    } 
 	
 	
 	

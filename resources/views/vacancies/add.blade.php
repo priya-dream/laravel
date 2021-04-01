@@ -1,4 +1,6 @@
 @extends('layouts.master.page')
+<html>
+<body>
 @section('content')
 
 <!-- <div class='name'>Hi! {{$request->username}}</div> -->
@@ -55,13 +57,13 @@
                 <h5>Required Educational Qualification</h5>
                 <div class="col-md-9 grid-margin stretch-card">
                     <table><tr><td>
-                    <label class=col>A/L Qualified</label>
-                        <select class="form-control dropdown-selection2" name="advance_level">
-                            <option>Need</option>
+                    <label class=col onkeyup="stoppedTyping()">A/L Qualified</label>
+                        <select class="form-control dropdown-selection2" name="advance_level" id="advance_level">
                             <option>Not Necessary</option>
+                            <option>Need</option>
                         </select></td><td></td><td></td><td></td><td></td><td>
                     <label class=col>Stream</label>
-                        <select class="form-control dropdown-selection2" name="stream">
+                        <select class="form-control dropdown-selection2" name="stream" id="stream" disabled >
                             <option>Select stream...</option>
                             <option>Physical Science(Maths)</option>
                             <option>Biological Science</option>
@@ -70,6 +72,7 @@
                             <option>Technology</option>
                             <option>Any</option>
                         </select></td></tr></table>
+                        
                 </div>
             </div>
         </div>
@@ -152,5 +155,11 @@
     </div>
     </div>
  </form>
+ 
 </div>
+<script src="{{asset('js/app.js')}}"></script> 
 @stop
+
+
+</body>
+</html>

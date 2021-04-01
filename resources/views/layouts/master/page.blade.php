@@ -19,7 +19,6 @@
   </span>
   <a style="margin-left:150px;font-size:20px;" href="{{ url('/company/login') }}" class="btn btn-success">POST JOB</a>
   <span style="margin-left:160px" class="mdi mdi-account-star"><button style="background-color:white;font-size:25px" class="modal-btn">Admin</button></span>
-  
 </div>
 
     <div class="container-scroller">
@@ -52,18 +51,11 @@
       </div>
     </div>
   </div>
-  <script>
-    var modalBtn=document.querySelector('.modal-btn');
-	    var modalBg=document.querySelector('.modal-bg');
-      var modalClose=document.querySelector('.close-admin');
-        modalBtn.addEventListener('click',function(){               
-          modalBg.classList.add('bg-active');
-        });
-        modalClose.addEventListener('click',function(){
-          modalBg.classList.remove('bg-active');
-        });
-  </script>
+  
+   
+  
     @include('layouts.master.footer')
+    <script src="{{asset('js/app.js')}}"></script> 
     </body>
 </html>
 
