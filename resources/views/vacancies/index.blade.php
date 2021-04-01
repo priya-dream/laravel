@@ -7,6 +7,11 @@
         </div>
     @endif
     <h3 class="page-title" style="margin-top:40px"> Available vacancies</h3>
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif </br></br> </br>
 </div>
 <div style="margin-top:20px" class="input-group">
     <input style="margin-left:200px; font-size:25px" type="text" class="form-control" placeholder="Search" />
@@ -15,11 +20,7 @@
             <i class="mdi mdi-magnify"></i>
         </span>
     </div>
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif </br></br> </br>
+    
         <?php $i=1; ?>
     <table style="margin-top:30px;margin-left:90px">
         <tr> 

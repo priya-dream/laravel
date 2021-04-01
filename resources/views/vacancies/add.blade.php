@@ -36,7 +36,7 @@
         <div class="form-group row" style="margin-top:30px">        
 		    <div class="col-md-6">
                 <label class="col">Company Name</label>
-                <input type="text" class="form-control input1" name="company" value="{{$com->name}}" size="50px"  disabled />
+                <input type="text" class="form-control input1" name="company" value="{{$com->name}}" size="50px" />
             </div>
         </div>
         <div class="form-group row">
@@ -63,7 +63,7 @@
                             <option>Need</option>
                         </select></td><td></td><td></td><td></td><td></td><td>
                     <label class=col>Stream</label>
-                        <select class="form-control dropdown-selection2" name="stream" id="stream" disabled >
+                        <select class="form-control dropdown-selection2" name="stream" id="stream"  >
                             <option>Select stream...</option>
                             <option>Physical Science(Maths)</option>
                             <option>Biological Science</option>
@@ -83,7 +83,7 @@
                         <table><tr><td>
                         <label class=col>Graduation</label>
                         <select class="form-control dropdown-selection2"  name="grad">
-                            <option>Select your top graduation...</option>
+                            <option>Wanted graduation...</option>
                             <option>Diploma</option>
                             <option>Higher Diploma</option>
                             <option>Degree</option>
@@ -135,9 +135,15 @@
                         <input type="number" min="1" placeholder="select needed No of employee" name="need" class="form-control dropdown-selection2">
                         </td><td></td><td></td><td></td><td></td><td>
                     <label class="col">Experience</label>
-                        <input type="text" placeholder="exoerience" name="experience" class="form-control dropdown-selection2">
+                        <input type="text" placeholder="experience" name="experience" class="form-control dropdown-selection2">
                         </td></tr></table>
                 </div>
+            </div>
+        </div>
+        <div class="form-group row">        
+		    <div class="col-md-6">
+                <label class="col">Salary (monthly)</label>
+                <input type="text" placeholder="salary" name="salary" class="form-control input1">
             </div>
         </div>
         <div class="form-group row">        

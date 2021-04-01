@@ -23,7 +23,7 @@ class CreateVacancyQualificationTable extends Migration
             $table->text('stream');
             $table->text('graduate');
             $table->text('field');
-            $table->text('uni');
+            $table->text('other_quali');
             $table->text('gender');
             $table->text('age');
             $table->text('experience');

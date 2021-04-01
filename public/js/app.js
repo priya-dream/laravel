@@ -14,11 +14,20 @@
         });
 
 
-const readMore=document.querySelector('.read-more');
-const topText = document.querySelector('.card-sub');
-readMore.addEventListener('click',(0)=>{
-	topText.classList.toggle('show more')
+var readMore=document.querySelector('.read-more');
+var topText = document.querySelector('.card-sub');
+readMore.addEventListener('click',function(){
+	topText.classList.add('show-more');
+	if(readMore.innerText==='Read More-->'){
+                        readMore.innerText='Read less';}
+                  else{
+                        readMore.innerText='Read More-->';}
+            })
 });
+
+$(".read-more").on('click',function(){
+      $(this).parent().toggleclass("show-more");
+     });
 
 function stoppedTyping(){
         if(document.getElementById('advance_level').value==="Not Necessary") { 

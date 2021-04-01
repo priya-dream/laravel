@@ -15680,25 +15680,23 @@ margin-left:20px;}
 }
 .card-sub{
 	width:700px;
-	height:500px;
+	height:200px;
 	align-items:center;
 	flex:1 1 auto;
 	z-index:10;
-	background:rgba(255, 255, 255, 0.9);
+	background:rgba(255, 255, 255, 0.8);
 	padding:15px 30px;
 	transition:ease-in-out 0.4s;
 	border-radius:5px;
 	box-shadow:2px 2px 15px rgb(0 0 0 / 20%);
 	cursor:pointer;
-	margin-left:40px;
-	margin-right:40px;
-	margin-top:200px;}
+	margin:250px 40px 0px 40px;}
 	
 
-/* .more-text{ */
-/* display:none;} */
-/* .card-sub.show-more .more-text{ */
-/* display:inline;} */
+.more-text{
+display:none;}
+.card-sub.show-more .more-text{
+display:inline;}
 /* .showcontent.more-text{ */
 /* background-color:red;} */
 

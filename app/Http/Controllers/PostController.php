@@ -15,7 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $results=DB::table('posts')->get();
+        $date=date('y-m-d');
+        DB::table('posts')->where('closing_date','<=',$date)->update(['status'=>0]);
+        $results=DB::table('posts')->where('status',1)->get();
         $company=DB::table('companies')->select('name','id','image')->get(); 
         $vacancy=DB::table('vacancies')->select('title','id')->get();
         $data=DB::table('vacancy_qualification')->first();
@@ -57,15 +59,17 @@ class PostController extends Controller
         $closing_date=$request->input('closing_date');
         $vacancy_id=DB::table('vacancies')->select('id')->where('title',$title)->first();
         $company_id=DB::table('companies')->select('id')->where('name',$company)->first();
-        
-        DB::Insert('insert into vacancy_qualification(id,vacancy_id,company_id,advance_level,stream,graduate,field,gender,age,experience) values(?,?,?,?,?,?,?,?,?,?)',[
-            null,$vacancy_id->id,$company_id->id,$advance,$stream,$graduate,$field,$gender,$age,$exp
+        //return $company_id->id;
+        DB::Insert('insert into vacancy_qualification(id,vacancy_id,company_id,advance_level,stream,graduate,field,gender,age,experience,other_quali) values(?,?,?,?,?,?,?,?,?,?,?)',[
+            null,$vacancy_id->id,$company_id->id,$advance,$stream,$graduate,$field,$gender,$age,$exp,$other_quali
         ]);
         $quali_id=DB::table('vacancy_qualification')->select('id')->where('vacancy_id',$vacancy_id->id)->first();
         
         DB::Insert('insert into posts(id,vacancy_id,date,company_id,qualification_id,need,closing_date) values(?,?,?,?,?,?,?)',[
             null,$vacancy_id->id,$date,$company_id->id,$quali_id->id,$need,$closing_date
         ]);
+            
+        
         $results=DB::table('posts')->get();
         return  redirect('/post')->with('success','Vacancy Published Successfully :)');
     
@@ -89,9 +93,8 @@ class PostController extends Controller
         ->join('vacancies','vacancies.id','=','vacancy_qualification.vacancy_id')
         ->join('companies','companies.id','=','vacancy_qualification.company_id')
         ->select('vacancy_qualification.*','vacancies.*','companies.*','posts.*')
-        ->where('vacancy_qualification.id',$id)
+        ->where('posts.id',$id)
         ->get();
-       // return $datas;
       return view('vacancies.show',compact('datas','posts'));
     }
 
