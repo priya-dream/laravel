@@ -26,6 +26,18 @@ class PostController extends Controller
       return view('vacancies.index')->with(compact('results','company','vacancy','data'));
     }
 
+    public function search(){
+        $search_text=$_GET['query'];
+        $posts=DB::table('posts')
+        ->join('vacancies','vacancies.id','=','posts.vacancy_id')
+        ->join('companies','companies.id','=','posts.company_id')
+        ->select('posts.*','vacancies.*','companies.*')
+        ->where('vacancies.title','LIKE','%'.$search_text.'%')
+        ->where('posts.status',1)
+        ->get();
+        return view('vacancies.search',compact('posts',));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

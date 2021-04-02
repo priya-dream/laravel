@@ -18,50 +18,32 @@
 <input type="search" name="query" class="search" placeholder="Search" />
 <button type="submit" class="search-button mdi mdi-magnify"></button>
 </form>
-    <!-- <input type="search" name="query" class="search form-control" placeholder="Search" />
-    <div class="input-group-append">
-        <span class="input-group-text">
-            <a type="get" href="{{url('/search')}}"><i class="search-button mdi mdi-magnify"></i></a>
-        </span>
-    </div> -->
-    
         <?php $i=1; ?>
     <table style="margin-top:30px;margin-left:90px">
         <tr> 
         
-    @foreach ($results as $result)
+    @foreach ($posts as $post)
             <td>
                 <span class="badge badge-danger text-white ml-3 rounded">{{$i}}</span>
             </td><td></td><td></td>
             <td class="card px-xl-6" style="width:425px;align-items:center;margin-top:20px"></br>
-                @foreach ($company as $com)
-                    @if($com->id==$result->company_id) 
-                        <div class="sub-text"><img src="{{asset('images/'.$com->image)}}" width="120px" height="70px"></div>
-                    @endif
-                @endforeach
-                @foreach ($vacancy as $vac)
-                    @if($vac->id==$result->vacancy_id)
+                
+                        <div class="sub-text"><img src="{{asset('images/'.$post->image)}}" width="120px" height="70px"></div>
+                    
+                
                         
-                        <div><h4 class="sub-text">Designation : {{$vac->title}}</h4></div>
-                    @endif
-                @endforeach
-                @foreach ($company as $com)
-                    @if($com->id==$result->company_id) 
-                        <div><h4 class="sub-text">Company Name : {{$com->name}}</h4></div>
-                    @endif
-                @endforeach
-                <div><h4 class="sub-text">Closing Date : {{$result->closing_date}}</h4></div></br>
+                        <div><h4 class="sub-text">Designation : {{$post->title}}</h4></div>
+
+                        <div><h4 class="sub-text">Company Name : {{$post->name}}</h4></div>
+                   
+                <div><h4 class="sub-text">Closing Date : {{$post->closing_date}}</h4></div></br>
                 <div>
                     <form action="" method="POST">
                         <a class="btn btn-primary" href="{{url('/vacancy/apply')}}">Apply</a>
-                      @foreach($company as $com)
-                      @foreach ($vacancy as $vac)
-                      @if($data->vacancy_id==$vac->id and $data->company_id==$com->id)
-                        <a class="btn btn-primary"  href="{{ url('/post/view',$result->id) }}">View</a>
-                     @endif
-                     @endforeach
-                     @endforeach
-                    
+                         
+                        <a class="btn btn-primary"  href="{{ url('/post/view',$post->id) }}">View</a>
+                        
+                     
                         
                             @csrf
                             @method('DELETE')
@@ -80,6 +62,7 @@
         ?>
     
 @endforeach
+
 </table>
     </div>
 </div>

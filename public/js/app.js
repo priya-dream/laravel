@@ -12,22 +12,38 @@
         modalClose.addEventListener('click',function(){
           modalBg.classList.remove('bg-active');
         });
+		
+	var i=0;
+	function read(){
+		if(!i){
+			document.getElementById("card-sub").style.height="450px";
+			document.getElementById("more-text").style.display="inline";
+			document.getElementById("read-more").innerHTML="Read less";
+			i=1;
+		}
+		else{
+			document.getElementById("card-sub").style.height="170px";
+			document.getElementById("more-text").style.display="none";
+			document.getElementById("read-more").innerHTML="Read More-->";
+			i=0;
+		}
+	}
 
 
-var readMore=document.querySelector('.read-more');
-var topText = document.querySelector('.card-sub');
-readMore.addEventListener('click',function(){
-	topText.classList.add('show-more');
-	if(readMore.innerText==='Read More-->'){
-                        readMore.innerText='Read less';}
-                  else{
-                        readMore.innerText='Read More-->';}
-            })
-});
+// var readMore=document.querySelector('.read-more');
+// var topText = document.querySelector('.card-sub');
+// readMore.addEventListener('click',function(){
+	// topText.classList.add('show-more');
+	// if(readMore.innerText==='Read More-->'){
+                        // readMore.innerText='Read less';}
+                  // else{
+                        // readMore.innerText='Read More-->';}
+            // })
+// });
 
-$(".read-more").on('click',function(){
-      $(this).parent().toggleclass("show-more");
-     });
+// $(".read-more").on('click',function(){
+      // $(this).parent().toggleclass("show-more");
+     // });
 
 function stoppedTyping(){
         if(document.getElementById('advance_level').value==="Not Necessary") { 
