@@ -18,14 +18,7 @@
 <input type="search" name="query" class="search" placeholder="Search" />
 <button type="submit" class="search-button mdi mdi-magnify"></button>
 </form>
-    <!-- <input type="search" name="query" class="search form-control" placeholder="Search" />
-    <div class="input-group-append">
-        <span class="input-group-text">
-            <a type="get" href="{{url('/search')}}"><i class="search-button mdi mdi-magnify"></i></a>
-        </span>
-    </div> -->
-    
-        <?php $i=1; ?>
+<?php $i=1; ?>
     <table style="margin-top:30px;margin-left:90px">
         <tr> 
         
@@ -36,7 +29,7 @@
             <td class="card px-xl-6" style="width:425px;align-items:center;margin-top:20px"></br>
                 @foreach ($company as $com)
                     @if($com->id==$result->company_id) 
-                        <div class="sub-text"><img src="{{asset('images/'.$com->image)}}" width="120px" height="70px"></div>
+                        <div class="sub-text"><img src="{{asset('images/'.$com->logo)}}" width="120px" height="70px"></div>
                     @endif
                 @endforeach
                 @foreach ($vacancy as $vac)

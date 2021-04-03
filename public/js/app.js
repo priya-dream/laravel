@@ -3,9 +3,9 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-  var modalBtn=document.querySelector('.modal-btn');
-	    var modalBg=document.querySelector('.modal-bg');
-      var modalClose=document.querySelector('.close-admin');
+    var modalBtn=document.querySelector('.modal-btn');
+	var modalBg=document.querySelector('.modal-bg');
+    var modalClose=document.querySelector('.close-admin');
         modalBtn.addEventListener('click',function(){               
           modalBg.classList.add('bg-active');
         });
@@ -18,6 +18,7 @@
 		if(!i){
 			document.getElementById("card-sub").style.height="450px";
 			document.getElementById("more-text").style.display="inline";
+			document.getElementById("more-text").style.color="#fff";
 			document.getElementById("read-more").innerHTML="Read less";
 			i=1;
 		}
@@ -29,21 +30,6 @@
 		}
 	}
 
-
-// var readMore=document.querySelector('.read-more');
-// var topText = document.querySelector('.card-sub');
-// readMore.addEventListener('click',function(){
-	// topText.classList.add('show-more');
-	// if(readMore.innerText==='Read More-->'){
-                        // readMore.innerText='Read less';}
-                  // else{
-                        // readMore.innerText='Read More-->';}
-            // })
-// });
-
-// $(".read-more").on('click',function(){
-      // $(this).parent().toggleclass("show-more");
-     // });
 
 function stoppedTyping(){
         if(document.getElementById('advance_level').value==="Not Necessary") { 

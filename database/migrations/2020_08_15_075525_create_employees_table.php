@@ -16,9 +16,11 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->string('nic');
-            $table->string('name');
-            $table->string('address');
-            $table->string('image')->nullable();
+            $table->string('fname');
+            $table->string('lname');
+            $table->longText('address');
+            $table->integer('mobile');
+            $table->string('email');
             $table->timestamps();
         });
     }

@@ -29,7 +29,7 @@
               </div>
               <div class="form-group">
                 <label class="col">Mobile Number</label>
-                <input type="text" class="form-control" name="mobile" placeholder="Mobile" required />
+                <input type="text" class="form-control" maxlength="10" name="mobile" placeholder="Mobile" required />
               </div>
               <div class="form-group">
                 <label class=col>Email Address</label>
@@ -37,7 +37,7 @@
               </div>
               <div class="form-group">
                 <label class=col>Upload the company logo</label>
-                <input type="file" class="form-control" name="img"required />
+                <input type="file" class="form-control" name="logo" required />
               </div>
         </div>
       </div>

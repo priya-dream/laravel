@@ -57,6 +57,7 @@ class CompanyController extends Controller
         $company->email = $request->email;
         $company->username = $request->username;
         $company->password = $request->password;
+        $company->logo=$request->logo;
 
         $company->save();
         return  redirect()->route('company.index')->with('success','Account created successfully, Now you can login');

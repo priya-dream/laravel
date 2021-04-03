@@ -52,10 +52,20 @@
     </div>
   </div>
   
-   
+  <script>
+      var modalBtn=document.querySelector('.modal-btn');
+	var modalBg=document.querySelector('.modal-bg');
+    var modalClose=document.querySelector('.close-admin');
+        modalBtn.addEventListener('click',function(){               
+          modalBg.classList.add('bg-active');
+        });
+        modalClose.addEventListener('click',function(){
+          modalBg.classList.remove('bg-active');
+        });
+  </script>
   
     @include('layouts.master.footer')
-    <script src="{{asset('js/app.js')}}"></script> 
+     
     </body>
 </html>
 

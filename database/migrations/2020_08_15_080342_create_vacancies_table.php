@@ -16,7 +16,6 @@ class CreateVacanciesTable extends Migration
         Schema::create('vacancies', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->date('closing_date');
             $table->text('img');
             $table->timestamps();
         });

@@ -5,7 +5,7 @@
     <form action="{{url('/employee/resume')}}" method="post" class="forms-sample">
     {{csrf_field()}}
     <div class="error">* required field</div></br>
-        <div class="row">
+        <div class="row" style="margin-left:70px">
         <div class="col-lg-24 grid-margin">
         <div class="card">
             <div class="form-group row" style="margin-top:30px">        
@@ -15,7 +15,7 @@
 				        <input type="text" name="fname" placeholder="firstname" class="form-control input">
 			        </div>
 		        </div>
-		        <div class="col-md-6">
+		        <div class="col-md-4">
 			        <label class="col"><span class="error">*</span>Last Name</label>
 			        <div>
 				        <input type="text" name="lname" placeholder="lastname" class="form-control input">
@@ -29,10 +29,10 @@
 				        <input type="text" name="nic" placeholder="nic number" maxlength="12" class="form-control input">
 			        </div>
 		        </div>
-		        <div class="col-md-6">
+		        <div class="col-md-4">
 			        <label class=col><span class="error">*</span>Address</label>
 			        <div>
-				        <textarea cols="20" name="address" placeholder="address" class="form-control input" style="width:350px;font-size:20px"></textarea>
+				        <textarea cols="20" name="address" placeholder="address" class="form-control input" style="width:350px;font-size:15px"></textarea>
 			        </div>
 		        </div>
 	        </div>
@@ -40,10 +40,10 @@
 		    <div class="col-md-6">
 			    <label class=col><span class="error">*</span>Contact Number</label>
 			    <div>
-				    <input type="text" name="contact number" placeholder="mobile" maxlength="10" class="form-control input">
+				    <input type="text" name="mobile" placeholder="mobile" maxlength="10" class="form-control input">
 			    </div>
 		    </div>
-		    <div class="col-md-6">
+		    <div class="col-md-4">
 			    <label class="col"><span class="error">*</span>Email Address</label>
 			    <div>
 				    <input type="text" name="email" placeholder="abc@gmail.com" class="form-control input">
@@ -94,7 +94,7 @@
                     <option>Agreeculture</option>
                 </select></td><td></td><td></td><td></td><td></td><td>
                 <label class=col><span class="error">*</span>Recognized University</label>
-                <select class="form-control dropdown-selection" name="stream" style="height:40px;font-size:15px"">
+                <select class="form-control dropdown-selection" name="uni" style="height:40px;font-size:15px"">
                     <option>Select recognized university...</option>
                     <option>University Of Jaffna</option>
                     <option>University Of Colombo</option>

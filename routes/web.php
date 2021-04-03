@@ -51,8 +51,8 @@ Route::get('/destroy/{id}',
     Route::get('/vacancy/type','VacancyController@type');
     Route::resource('/vacancies', 'VacancyController');
 
-    Route::post('/employee/resume', 'EmployeeController@index');
-    Route::resource('/employee', 'EmployeeController');
+    Route::post('/employee/resume', 'EmployeeController@store');
+    Route::resource('/resume', 'EmployeeController');
 
     Route::post('/admin/verify','AdminController@verify');
     Route::resource('/admin','AdminController');

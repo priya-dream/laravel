@@ -18,13 +18,14 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('vacancy_id');
             $table->date('date');
             $table->unsignedBigInteger('company_id');           
-            $table->unsignedBigInteger('qualification_id');
+            $table->unsignedBigInteger('quali_id');
             $table->integer('need');          
             $table->date('closing_date');
+            $table->boolean('status');
             $table->timestamps();
             $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('vacancy_id')->references('id')->on('vacancies');
-            $table->foreign('qualification_id')->references('id')->on('vacancy_qualification');
+            // $table->foreign('quali_id')->references('id')->on('vacancy_qualification');
         });
     }
 

@@ -15,8 +15,6 @@ class CreateVacancyQualificationTable extends Migration
     {
         Schema::create('vacancy_qualification', function (Blueprint $table) {
             $table->id();
-            $table->foreign('vacancy_id')->references('id')->on('vacancies')->ondelete('cascade');
-            $table->foreign('company_id')->references('id')->on('companies')->ondelete('cascade');
             $table->unsignedBigInteger('vacancy_id');
             $table->unsignedBigInteger('company_id');
             $table->text('advance_level');
@@ -27,7 +25,10 @@ class CreateVacancyQualificationTable extends Migration
             $table->text('gender');
             $table->text('age');
             $table->text('experience');
+            $table->float('salary');
             $table->timestamps();
+            $table->foreign('vacancy_id')->references('id')->on('vacancies')->ondelete('cascade');
+            $table->foreign('company_id')->references('id')->on('companies')->ondelete('cascade');
             
         });
     }
