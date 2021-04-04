@@ -44,17 +44,18 @@ class EmployeeController extends Controller
         $al=$request->input('al');
         $stream=$request->input('stream');
         $graduate=$request->input('grad');
-        $subject=$request->input('sbj');
+        $subject=$request->input('subj');
         $uni=$request->input('uni');
         
         DB::Insert('insert into employees(id,fname,lname,nic,address,mobile,email) values(?,?,?,?,?,?,?)',[
             null,$fname,$lname,$nic,$address,$mobile,$email
         ]);
         $emp_id=DB::table('employees')->select('id')->where('nic',$nic)->first();
-        DB::Insert('insert into employee_qualification(id,emp_id,A/L,stream,graduate,field,uni) values(?,?,?,?,?,?,?)',[
-            null,$emp_id,$al,$stream,$graduate,$subject,$uni
+        DB::Insert('insert into employee_qualification(id,emp_id,advance_level,stream,graduate,field,uni) values(?,?,?,?,?,?,?)',[
+            null,$emp_id->id,$al,$stream,$graduate,$subject,$uni
         ]);
-        return  redirect('/resume');
+        // var_dump($test);
+        return  redirect('/post');
     }
 
     /**

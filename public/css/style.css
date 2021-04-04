@@ -15737,6 +15737,16 @@ color:#000;}
 	border-radius:5px;}
 #common:hover{
 	color:#fff}
-
+	
+.circle {
+  height: 25px;
+  width: 25px;
+  background-color: #20B2AA;
+  border-radius: 50%;
+  display: inline-block;
+  align-items:center;
+  align-content:center;
+  position:relative;
+}
 
 /*# sourceMappingURL=style.css.map */

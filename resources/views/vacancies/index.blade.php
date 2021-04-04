@@ -26,7 +26,10 @@
             <td>
                 <span class="badge badge-danger text-white ml-3 rounded">{{$i}}</span>
             </td><td></td><td></td>
-            <td class="card px-xl-6" style="width:425px;align-items:center;margin-top:20px"></br>
+            <td class="card px-xl-6" style="width:425px;align-items:center;margin-top:20px">
+            <span class="circle">3</span>
+
+            </br>
                 @foreach ($company as $com)
                     @if($com->id==$result->company_id) 
                         <div class="sub-text"><img src="{{asset('images/'.$com->logo)}}" width="120px" height="70px"></div>
@@ -34,7 +37,6 @@
                 @endforeach
                 @foreach ($vacancy as $vac)
                     @if($vac->id==$result->vacancy_id)
-                        
                         <div><h4 class="sub-text">Designation : {{$vac->title}}</h4></div>
                     @endif
                 @endforeach
