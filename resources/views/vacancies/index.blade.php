@@ -11,6 +11,11 @@
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
+    @endif
+    @if ($message = Session::get('success1'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
     @endif </br></br> </br>
 </div>
 <div style="margin-top:20px" class="input-group">
@@ -21,14 +26,20 @@
 <?php $i=1; ?>
     <table style="margin-top:30px;margin-left:90px">
         <tr> 
-        
+      {{$count}}  
     @foreach ($results as $result)
             <td>
                 <span class="badge badge-danger text-white ml-3 rounded">{{$i}}</span>
             </td><td></td><td></td>
             <td class="card px-xl-6" style="width:425px;align-items:center;margin-top:20px">
-            <span class="circle">3</span>
-
+            @foreach($company as $com)
+            @foreach($vacancy as $vac)
+            @if($result->company_id==$com->id and $result->vacancy_id==$vac->id)
+            <span class="badge circle">{{$count}}</span>
+            @endif
+            @endforeach
+            @endforeach
+            
             </br>
                 @foreach ($company as $com)
                     @if($com->id==$result->company_id) 
@@ -48,10 +59,11 @@
                 <div><h4 class="sub-text">Closing Date : {{$result->closing_date}}</h4></div></br>
                 <div>
                     <form action="" method="POST">
-                        <a class="btn btn-primary" href="{{url('/vacancy/apply')}}">Apply</a>
-                      @foreach($company as $com)
+                    @foreach($company as $com)
                       @foreach ($vacancy as $vac)
                       @if($data->vacancy_id==$vac->id and $data->company_id==$com->id)
+                        <a class="btn btn-primary" href="{{url('/vacancy/apply',$result->id)}}">Apply</a>
+                      
                         <a class="btn btn-primary"  href="{{ url('/post/view',$result->id) }}">View</a>
                      @endif
                      @endforeach

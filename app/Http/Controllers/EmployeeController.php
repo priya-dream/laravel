@@ -33,8 +33,9 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(request $request)
     {
+        $post_id=$request->input('post_id');
         $fname=$request->input('fname');
         $lname=$request->input('lname');
         $nic=$request->input('nic');
@@ -46,16 +47,18 @@ class EmployeeController extends Controller
         $graduate=$request->input('grad');
         $subject=$request->input('subj');
         $uni=$request->input('uni');
-        
-        DB::Insert('insert into employees(id,fname,lname,nic,address,mobile,email) values(?,?,?,?,?,?,?)',[
-            null,$fname,$lname,$nic,$address,$mobile,$email
-        ]);
+        // return $post_id;
+        $result=DB::table('employees')->select('*')->where('nic',$nic)->count();
+        if($result==0){
+            DB::Insert('insert into employees(id,fname,lname,nic,address,mobile,email) values(?,?,?,?,?,?,?)',[
+                null,$fname,$lname,$nic,$address,$mobile,$email
+            ]);
+        }
         $emp_id=DB::table('employees')->select('id')->where('nic',$nic)->first();
-        DB::Insert('insert into employee_qualification(id,emp_id,advance_level,stream,graduate,field,uni) values(?,?,?,?,?,?,?)',[
-            null,$emp_id->id,$al,$stream,$graduate,$subject,$uni
+        DB::Insert('insert into employee_qualification(id,post_id,emp_id,advance_level,stream,graduate,field,uni) values(?,?,?,?,?,?,?,?)',[
+            null,$post_id,$emp_id->id,$al,$stream,$graduate,$subject,$uni
         ]);
-        // var_dump($test);
-        return  redirect('/post');
+        return  redirect('/post')->with('success1','Application is submitted succesfully');
     }
 
     /**

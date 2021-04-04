@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use View;
 use DB;
+use Session;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,23 @@ class PostController extends Controller
         $company=DB::table('companies')->select('name','id','logo')->get(); 
         $vacancy=DB::table('vacancies')->select('title','id')->get();
         $data=DB::table('vacancy_qualification')->first();
-      return view('vacancies.index')->with(compact('results','company','vacancy','data'));
+        $emps=DB::table('employee_qualification')->select('*')->get();
+        $posts=DB::table('posts')
+        ->join('vacancies','vacancies.id','=','posts.vacancy_id')
+        ->join('companies','companies.id','=','posts.company_id')
+        ->select('posts.*')
+        ->get();
+        foreach($posts as $post){
+        $count=DB::table('employee_qualification')
+        ->join('posts','posts.id','=','employee_qualification.post_id')
+        ->select('employee_qualification.post_id')
+        ->where('employee_qualification.post_id',$post->id)
+        ->count();
+        
+        }
+        //return $count;
+        
+      return view('vacancies.index')->with(compact('results','company','vacancy','data','posts','count','emps'));
     
     }
 

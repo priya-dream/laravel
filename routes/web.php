@@ -45,7 +45,7 @@ Route::get('/destroy/{id}',
     'as' => 'vacancy.index',
 ]);
 
-    Route::get('/vacancy/apply','VacancyController@apply');
+    Route::get('/vacancy/apply/{id}','VacancyController@apply');
     Route::get('/vacancy/view/','VacancyController@show')->name('show');
     Route::post('/vacancy/add','VacancyController@store');
     Route::get('/vacancy/type','VacancyController@type');

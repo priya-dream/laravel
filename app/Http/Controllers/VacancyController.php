@@ -15,6 +15,7 @@ class VacancyController extends Controller
         // foreach($result as $res){
             //return $result->img;
         // }
+        
       return view ('vacancies.add_new',compact('results','pages'));
     }
     public function type()
@@ -52,10 +53,10 @@ class VacancyController extends Controller
         return view('vacancies.edit');
     }
 
-    public function apply(Vacancy $vacancy)
+    public function apply($id)
     {
-        
-        return view('vacancies.apply');
+        $posts=DB::table('posts')->select('id')->where('id',$id)->get();
+        return view('vacancies.apply',compact('posts'));
     }
 
     public function update(Request $request, Vacancy $vacancy)

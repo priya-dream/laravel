@@ -4,6 +4,11 @@
 <div><h2 class="page-title">Job Application Form</h2></div><br/>
     <form action="{{url('/employee/resume')}}" method="post" class="forms-sample">
     {{csrf_field()}}
+    @foreach($posts as $post)
+      <div>
+      <input type="hidden" name="post_id" value="{{$post->id}}">
+      </div>
+    @endforeach
     <div class="error">* required field</div></br>
         <div class="row" style="margin-left:70px">
         <div class="col-lg-24 grid-margin">
@@ -118,6 +123,7 @@
     </div>
     
     </form>
+   
 </div>
 
 @stop
