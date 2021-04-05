@@ -24,22 +24,23 @@
 <button type="submit" class="search-button mdi mdi-magnify"></button>
 </form>
 <?php $i=1; ?>
-    <table style="margin-top:30px;margin-left:90px">
-        <tr> 
-      {{$count}}  
+    <table style="margin-top:30px;margin-left:50px">
+        <tr>   
     @foreach ($results as $result)
             <td>
                 <span class="badge badge-danger text-white ml-3 rounded">{{$i}}</span>
             </td><td></td><td></td>
-            <td class="card px-xl-6" style="width:425px;align-items:center;margin-top:20px">
-            @foreach($company as $com)
-            @foreach($vacancy as $vac)
-            @if($result->company_id==$com->id and $result->vacancy_id==$vac->id)
-            <span class="badge circle">{{$count}}</span>
-            @endif
+            <td class="card px-xl-6">
+            <?php $y=0; ?>
+            @foreach($emps as $emp)
+                @if($emp->post_id==$result->id)
+            <?php $y=$y+1; ?>
+                @endif
             @endforeach
-            @endforeach
-            
+            <div class="num-circle">
+            <a class="badge circle" href=""><?php echo $y; ?>
+            <p class="description">view applications</p></a>
+            </div>
             </br>
                 @foreach ($company as $com)
                     @if($com->id==$result->company_id) 
@@ -59,15 +60,15 @@
                 <div><h4 class="sub-text">Closing Date : {{$result->closing_date}}</h4></div></br>
                 <div>
                     <form action="" method="POST">
-                    @foreach($company as $com)
+                    <!-- @foreach($company as $com)
                       @foreach ($vacancy as $vac)
-                      @if($data->vacancy_id==$vac->id and $data->company_id==$com->id)
+                      @if($data->vacancy_id==$vac->id and $data->company_id==$com->id) -->
                         <a class="btn btn-primary" href="{{url('/vacancy/apply',$result->id)}}">Apply</a>
                       
                         <a class="btn btn-primary"  href="{{ url('/post/view',$result->id) }}">View</a>
-                     @endif
+                     <!-- @endif
                      @endforeach
-                     @endforeach
+                     @endforeach -->
                     
                         
                             @csrf

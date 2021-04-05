@@ -23,22 +23,9 @@ class PostController extends Controller
         $vacancy=DB::table('vacancies')->select('title','id')->get();
         $data=DB::table('vacancy_qualification')->first();
         $emps=DB::table('employee_qualification')->select('*')->get();
-        $posts=DB::table('posts')
-        ->join('vacancies','vacancies.id','=','posts.vacancy_id')
-        ->join('companies','companies.id','=','posts.company_id')
-        ->select('posts.*')
-        ->get();
-        foreach($posts as $post){
-        $count=DB::table('employee_qualification')
-        ->join('posts','posts.id','=','employee_qualification.post_id')
-        ->select('employee_qualification.post_id')
-        ->where('employee_qualification.post_id',$post->id)
-        ->count();
         
-        }
-        //return $count;
         
-      return view('vacancies.index')->with(compact('results','company','vacancy','data','posts','count','emps'));
+      return view('vacancies.index')->with(compact('results','company','vacancy','data','emps'));
     
     }
 

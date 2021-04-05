@@ -10075,6 +10075,13 @@ button.bg-dark:focus,
   .pl-xl-5,
   .px-xl-5 {
     padding-left: 5rem !important; }
+  .px-xl-6 {
+  width:425px;
+  align-items:center;
+  margin-top:20px;}
+  .px-xl-6:hover{
+  border-radius:10px;
+  box-shadow: 5px 5px 5px 5px grey;}
   .m-xl-n1 {
     margin: -0.25rem !important; }
   .mt-xl-n1,
@@ -15719,7 +15726,7 @@ color:#000;}
 
 .search{
 	padding-left:20px;
-	margin-left:210px;
+	margin-left:215px;
 	font-size:1.3rem;
 	width:500px;
 	height:42px;
@@ -15749,5 +15756,21 @@ color:#000;}
   position:relative;
   color:#fff;
 }
+
+.num-circle a p {display:none;}
+.num-circle a:hover p {display:block;}
+.description{
+	width:150px;
+	height:25px;
+	border:none;
+	outline:none;
+	display:block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	border-radius:5px;
+	box-shadow:2px 2px 15px rgb(0 0 0 / 20%);
+	background:rgba(255, 0, 0, 0.3);
+}
+
 
 /*# sourceMappingURL=style.css.map */
