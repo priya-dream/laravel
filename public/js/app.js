@@ -3,6 +3,10 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+ function login(){
+	 document.getElementById("login-sub").style.display="inline";
+ }
+ 
     var modalBtn=document.querySelector('.modal-btn');
 	var modalBg=document.querySelector('.modal-bg');
     var modalClose=document.querySelector('.close-admin');

@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{asset('vendors/css/vendor.bundle.base.css')}}" />
 <link rel="stylesheet" href="{{asset('vendors/font-awesome/css/font-awesome.min.css')}}" />
 <link rel="stylesheet" href="{{asset('vendors/bootstrap-datepicker/bootstrap-datepicker.min.css')}}" />
-<link rel="shortcut icon" href="{{asset('images/favicon.png')}}" />
+<link rel="shortcut icon" href="{{asset('images/dfc-logo.png')}}" />
 
 <script type="text/javascript"  src="{{asset('js/app.js')}}"></script> 
 <script src="{{asset('js/dashboard.js')}}"></script> 

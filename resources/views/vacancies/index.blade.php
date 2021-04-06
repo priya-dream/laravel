@@ -6,7 +6,7 @@
             <h4>{{ $error }}</h4>
         </div>
     @endif
-    <h3 class="page-title" style="margin-top:40px"> Available vacancies</h3>
+    <h3 class="page-title" style="margin-top:50px;font-family:Broadway"> Available vacancies</h3>
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
@@ -16,12 +16,13 @@
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
-    @endif </br></br> </br>
+    @endif </br>
 </div>
-<div style="margin-top:20px" class="input-group">
+<div class="input-group">
 <form action="{{url('/search')}}" method="get">
+<div>
 <input type="search" name="query" class="search" placeholder="Search" />
-<button type="submit" class="search-button mdi mdi-magnify"></button>
+<button type="submit" class="search-button mdi mdi-magnify"></button></div>
 </form>
 <?php $i=1; ?>
     <table style="margin-top:30px;margin-left:50px">
@@ -38,8 +39,8 @@
                 @endif
             @endforeach
             <div class="num-circle">
-            <a class="badge circle" href=""><?php echo $y; ?>
-            <p class="description">view applications</p></a>
+            <a class="badge circle"><?php echo $y; ?>
+            <p class="description">Applications</p></a>
             </div>
             </br>
                 @foreach ($company as $com)
