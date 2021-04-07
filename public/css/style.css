@@ -5733,7 +5733,7 @@ input[type="button"].btn-block {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  padding-left:870px;
+  padding-left:970px;
   margin-bottom: 0;
   padding-top:5px;
   list-style: none; }
@@ -6532,13 +6532,14 @@ input[type="button"].btn-block {
     color: #5a3c0f; }
 
 .alert-danger {
+	margin-top:20px;
   width:400px;
   color: black;
   background-color:#F08080;
   border-color: red; 
   font-size:20px;
   align-items:center;
-  margin-top:60px;}
+  height:40px;}
   .alert-danger hr {
     border-top-color: #ffafda; }
   .alert-danger .alert-link {
@@ -15683,7 +15684,7 @@ font-size:0.875rem;}
 	border:none;
 	outline:none;
 	border-radius:3px;
-background-color:#ffff;}
+	background-color:#ffff;}
 .modal-btn:hover{
 	color:red;
 	background-color:#0000ff;
@@ -15776,19 +15777,17 @@ color:#000;}
 }
 
 .num-circle a p {display:none;}
+.num-circle a button {display:none;}
 .num-circle a:hover p {display:block;}
 .description{
+	width:50%;
+	height:30px;
+	text-align:center;
 	color:#00008B;
-	width:120px;
-	height:25px;
 	border:none;
 	outline:none;
-	display:block;
-	overflow: hidden;
-	text-overflow: ellipsis;
 	border-radius:5px;
-	box-shadow:2px 2px 15px rgb(0 0 0 / 20%);
-	background:rgba(255, 0, 0, 0.3);
+	background-color:#9e9ea9;)
 }
 .login{
 	width:120px;
@@ -15807,15 +15806,57 @@ color:#000;}
 	margin-left:100px;}
 .shadow{
 	box-shadow: 5px 5px 5px 5px grey;}
-#login-sub{
-	width:300px;
-	height:300px;
+.my-login{
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.5);
+	position:fixed;
+	top:0;
+	left:0;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	visibility:hidden;
+	epacity:0;
+	transition:visibility 0s epacity 0.5s;}
+#modal-sub {
+	position:relative;
+	background-color:white;
+	border-radius:4px;
+	text-align:center;
+	justify-content:center;}
+
+.login-btn{
+	background-color:#fff;
+	border:none;
+	border-radius:3px;}
+.login-sign{
+	width:50px;
+	height:50px;
+	align-items:right;}
+.sub-header{
+	width:150px;
+	height:50px;
+	background-color:#dfd6f6;
+	align-content:right;}
+
+.job-icon{
+	width:200px;
+	height:200px;
+	margin-left:120px;
 	box-shadow: 5px 5px 5px 5px grey;
-visibility:visible;}
-
-
-
-
-
+	outline:none;
+	border:none;
+	border-radius:7px;}
+.job-icon:hover{
+box-shadow: 7px 7px 7px 7px grey;}
+.gap{
+padding-left:120px;
+padding-top:35px;
+font-size:22px;
+color:#4B0082;
+font-weight:bold;}	
+	
+	
 
 /*# sourceMappingURL=style.css.map */

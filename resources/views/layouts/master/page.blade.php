@@ -8,6 +8,7 @@
     @include('layouts.master.head')
    </head>
   <body> 
+
 <div class="header">
   <span><img class="logo-image" src="{{asset('/images/dfc-logo.png')}}"> JOBS</span>
   <span style="margin-left:100px">
@@ -18,11 +19,11 @@
     </select>
   </span>
   <a style="margin-left:150px;font-size:20px;" href="{{ url('/company/login') }}" class="btn btn-success">POST JOB</a>
-  <a class=" login mdi mdi-account" class="login-sub">Login</a>
+  <span class=" login mdi mdi-account"><a class="login-btn" href="{{url('/myaccount')}}">Login</button></a>
   <span style="margin-left:100px" class="mdi mdi-account-star"><button style="background-color:white;font-size:25px" class="modal-btn">Admin</button></span>
 </div>
 
-    <div class="container-scroller">
+      <div class="container-scroller">
     <!-- @include('layouts.master.sidebar') -->
         
         <!-- <nav class="navbar col-lg-12 col-12 p-lg-0 fixed-top d-flex flex-row">
@@ -40,7 +41,7 @@
           </div>   
       </div>
     <div class="modal-bg">
-    <div class="modal-admin">
+      <div class="modal-admin">
           <form action="{{url('/admin/verify')}}" method="POST">
           {{csrf_field()}}
             <div class="close-admin">+</div>
@@ -51,28 +52,28 @@
           </form>
       </div>
     </div>
-  </div>
-  
-  <script>
-    var modalBtn=document.querySelector('.modal-btn');
-	var modalBg=document.querySelector('.modal-bg');
-    var modalClose=document.querySelector('.close-admin');
+    <div class="my-login">
+      <div class="modal-admin">
+        <form action="" method="POST">
+          <h5>username : <input class="input" type="text" placeholder="username" name=username></h5>
+          <h5>password : <input class="input" type="text" placeholder="password" name="password"></h5>
+          <h5><button type="submit" class="btn btn-primary">login</button></h5>
+        </form>
+      </div>
+    </div>
+    <script>
+      var modalBtn=document.querySelector('.modal-btn');
+	    var modalBg=document.querySelector('.modal-bg');
+      var modalClose=document.querySelector('.close-admin');
         modalBtn.addEventListener('click',function(){               
           modalBg.classList.add('bg-active');
         });
         modalClose.addEventListener('click',function(){
           modalBg.classList.remove('bg-active');
-        });
+        });</script>
 
-        var login=document.querySelector('.login-sub');
-        login.addEventListener('click',function(){               
-          login.classList.add('bg-active');
-        });
-  </script>
-  
-    @include('layouts.master.footer')
-    <script src="{{asset('js/app.js')}}"></script> 
     </body>
+    @include('layouts.master.footer')
 </html>
 
 

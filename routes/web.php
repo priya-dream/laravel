@@ -56,8 +56,12 @@ Route::get('/destroy/{id}',
 
     Route::post('/admin/verify','AdminController@verify');
     Route::resource('/admin','AdminController');
-    
-    
+
+    Route::get('/myaccount/posts/{id}','SettingController@post');
+    Route::post('/account/verify','SettingController@verify');
+    Route::resource('/myaccount','SettingController');
+
+
     Route::post('/join/store', 'UserController@store');
     Route::post('checklogin', 'PageController@checklogin');
     Route::get('successlogin', 'PageController@successlogin');
