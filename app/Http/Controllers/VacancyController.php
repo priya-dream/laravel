@@ -40,7 +40,7 @@ class VacancyController extends Controller
         $vacancy->img=$request->img;
         $vacancy->save();
         //return $vacancy->img;
-        return  redirect()->route('vacancy.index')->with('success','Added successfully');
+        return  redirect('/vacancies')->with('success','Added successfully');
     }
 
     public function show(Vacancy $vacancy)

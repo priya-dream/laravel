@@ -15717,19 +15717,17 @@ margin-left:20px;}
 	box-shadow:2px 2px 15px rgb(0 0 0 / 20%);
 	cursor:pointer;
 	margin:200px 40px 0px 40px;}
-#card-sub:hover{
-	background-color:#4682B4;
-	color:#fff;
-	}
+/* #card-sub:hover{ */
+	/* background-color:#4682B4; */
+	/* color:#fff; */
+	/* } */
 #card-sub button{	
 	display:inline-block;}
 
 #more-text{
 	display:none;
 	color:#00008B;
-	font-size:14px;}	
-#more-text:hover{
-	color:#fff}
+	font-size:14px;}
 #read-more{
 	color:#fff;
 	background-color:blue;
@@ -15849,13 +15847,17 @@ color:#000;}
 	border:none;
 	border-radius:7px;}
 .job-icon:hover{
-box-shadow: 7px 7px 7px 7px grey;}
+	box-shadow: 7px 7px 7px 7px grey;}
 .gap{
-padding-left:120px;
-padding-top:35px;
-font-size:22px;
-color:#4B0082;
-font-weight:bold;}	
+	padding-left:120px;
+	padding-top:35px;
+	font-size:22px;
+	color:#4B0082;
+	font-weight:bold;}	
+.view-post{
+	border:3px;
+	border-radius:8px;
+	margin-top:10px;}
 	
 	
 

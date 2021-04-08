@@ -31,7 +31,6 @@
 		if(!i){
 			document.getElementById("card-sub").style.height="450px";
 			document.getElementById("more-text").style.display="inline";
-			document.getElementById("more-text").style.color="#fff";
 			document.getElementById("read-more").innerHTML="Read less";
 			i=1;
 		}

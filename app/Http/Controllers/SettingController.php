@@ -106,6 +106,8 @@ class SettingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::delete('delete from posts where id = ?',[$id]);
+        return redirect('/myaccount/posts');
+
     }
 }
