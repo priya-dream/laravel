@@ -37,10 +37,11 @@ class SettingController extends Controller
         $results=DB::table('posts')
         ->join('companies','companies.id','=','posts.company_id')
         ->join('vacancies','vacancies.id','=','posts.vacancy_id')
-        ->select('posts.*','vacancies.*')
+        ->select('posts.*','vacancies.title')
         ->where('companies.id',$id)
         ->get();
         return view('settings.post',compact('results'));
+    
     }
 
     /**
@@ -83,7 +84,15 @@ class SettingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $results=DB::table('posts')
+        ->join('vacancy_qualification','vacancy_qualification.id','=','posts.quali_id')
+        ->select('posts.*','vacancy_qualification.*')
+        ->where('posts.id',$id)
+        ->get();
+        $vacancies=DB::table('vacancies')->get();
+        $advances=['Need','Not Necessary'];
+        $streams=['Physical Science(Maths)','Biological Science','Commerce','Arts','Technology','Any'];
+        return view('settings.edit',compact('results','vacancies','advances','streams'));
     }
 
     /**
@@ -106,8 +115,12 @@ class SettingController extends Controller
      */
     public function destroy($id)
     {
-        DB::delete('delete from posts where id = ?',[$id]);
-        return redirect('/myaccount/posts');
+        DB::table('posts')->delete($id);
+        return view('settings.post')
+                    ->with('success','post deleted successfully');
+
+        //return $id;
+        //return redirect('/myaccount/posts');
 
     }
 }

@@ -57,6 +57,7 @@ Route::get('/destroy/{id}',
     Route::post('/admin/verify','AdminController@verify');
     Route::resource('/admin','AdminController');
 
+    Route::get('/post/edit/{id}','SettingController@edit');
     Route::get('/post/delete/{id}','SettingController@destroy');
     Route::get('/myaccount/posts/{id}','SettingController@post');
     Route::post('/account/verify','SettingController@verify');
