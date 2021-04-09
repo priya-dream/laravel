@@ -11,11 +11,16 @@
     <div class="row">
     <div class="col-lg-24 grid-margin">
     <div class="shadow card">
-        <div class="form-group row" style="margin-top:30px">        
+        <div class="form-group row" style="margin-top:30px"> 
+        <table><tr><td>       
 		    <div class="col-md-6">
                 <label class="col">Company Name</label>
                 <input type="text" class="form-control input1" name="company" value="{{$com->name}}" size="50px" />
-            </div>
+            </div></td><td>
+            <div class="col-md-6">
+                <label class="col">Branch Name</label>
+                <input type="text" class="form-control input1" name="branch" size="50px" placeholder="Eg: jaffna" />
+            </div></td></tr></table>
         </div>
         <div class="form-group row">
             <div class="col-md-6">
@@ -123,7 +128,7 @@
         <div class="form-group row">        
 		    <div class="col-md-6">
                 <label class="col">Salary (monthly)</label>
-                <input type="text" placeholder="salary" name="salary" class="form-control input1" required/>
+                <input type="text" placeholder="Eg: 15000-20000" name="sal-from" class="form-control input1" required/>
             </div>
         </div>
         <div class="form-group row">        

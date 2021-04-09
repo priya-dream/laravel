@@ -40,6 +40,7 @@ class SettingController extends Controller
         ->select('posts.*','vacancies.title')
         ->where('companies.id',$id)
         ->get();
+    
         return view('settings.post',compact('results'));
     
     }
@@ -84,15 +85,22 @@ class SettingController extends Controller
      */
     public function edit($id)
     {
-        $results=DB::table('posts')
+        $result=DB::table('posts')
         ->join('vacancy_qualification','vacancy_qualification.id','=','posts.quali_id')
-        ->select('posts.*','vacancy_qualification.*')
+        ->select('vacancy_qualification.*')
         ->where('posts.id',$id)
-        ->get();
+        ->first();
+        $result1=DB::table('posts')
+        ->join('vacancy_qualification','vacancy_qualification.id','=','posts.quali_id')
+        ->select('posts.*')
+        ->where('posts.id',$id)
+        ->first();
+        //return $result1->id;
         $vacancies=DB::table('vacancies')->get();
         $advances=['Need','Not Necessary'];
         $streams=['Physical Science(Maths)','Biological Science','Commerce','Arts','Technology','Any'];
-        return view('settings.edit',compact('results','vacancies','advances','streams'));
+        $graduations=['Diploma','Higher Diploma','Degree','Master Degree'];
+        return view('settings.edit',compact('result','result1','vacancies','advances','streams','graduations'));
     }
 
     /**
@@ -104,7 +112,25 @@ class SettingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $title=$request->input('title');
+        $advance_level=$request->input('advance_level');
+        $stream=$request->input('stream');
+        $grad=$request->input('grad');
+        $field=$request->input('field');
+        $other_quali=$request->input('other_quali');
+        $gender=$request->input('gender');
+        $age_limit=$request->input('age_limit');
+        $need=$request->input('need');
+        $experience=$request->input('experience');
+        $salary=$request->input('salary');
+        $closing_date=$request->input('closing_date');
+        $post=DB::table('posts')->select('id','company_id')->where('quali_id',$id)->first();
+        
+        DB::update('update vacancy_qualification set advance_level=?,stream=?,graduate=?,field=?,other_quali=?,gender=?,age=?,experience=?,salary=? where id=?',
+            [ $advance_level,$stream,$grad,$field,$other_quali,$gender,$age_limit,$experience,$salary,$id ]);
+        
+        DB::update('update posts set need=?,closing_date=? where id=?',[$need,$closing_date,$post->id]);
+        return redirect("/myaccount/posts/$post->company_id")->with('success','Your edited datas are updated successfully');
     }
 
     /**
@@ -115,8 +141,11 @@ class SettingController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('posts')->delete($id);
-        return view('settings.post')
+        $data=DB::table('posts')->select('quali_id','company_id')->where('id',$id)->first();
+        DB::table('vacancy_qualification')->where('id', $data->quali_id)->delete();
+        DB::table('posts')->where('id',$id)->delete();
+        
+        return redirect("/myaccount/posts/$data->company_id")
                     ->with('success','post deleted successfully');
 
         //return $id;

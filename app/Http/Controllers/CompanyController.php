@@ -60,7 +60,7 @@ class CompanyController extends Controller
         $company->logo=$request->logo;
 
         $company->save();
-        return  redirect()->route('company.index')->with('success','Account created successfully, Now you can login');
+        return  redirect('/company/login')->with('success','Account created successfully, Now you can login');
     }
 
     /**

@@ -22,7 +22,7 @@ class PostController extends Controller
         $company=DB::table('companies')->select('name','id','logo')->get(); 
         $vacancy=DB::table('vacancies')->select('title','id')->get();
         $data=DB::table('vacancy_qualification')->first();
-        $emps=DB::table('employee_qualification')->select('*')->get();
+        $emps=DB::table('applications')->select('*')->get();
         
         
       return view('vacancies.index')->with(compact('results','company','vacancy','data','emps'));
@@ -65,6 +65,7 @@ class PostController extends Controller
     {
         $date=date('y-m-d');
         $company=$request->input('company');
+        $branch=$request->input('branch');
         $title=$request->input('title');
         $advance=$request->input('advance_level');
         $stream=$request->input('stream');
@@ -78,19 +79,30 @@ class PostController extends Controller
         $salary=$request->input('salary');
         $closing_date=$request->input('closing_date');
         $vacancy_id=DB::table('vacancies')->select('id')->where('title',$title)->first();
-        $company_id=DB::table('companies')->select('id')->where('name',$company)->first();
+        $company_id=DB::table('companies')->select('id','address')->where('name',$company)->first();
         //return $company_id->id;
-        DB::Insert('insert into vacancy_qualification(id,vacancy_id,company_id,advance_level,stream,graduate,field,gender,age,experience,salary,other_quali) values(?,?,?,?,?,?,?,?,?,?,?,?)',[
-            null,$vacancy_id->id,$company_id->id,$advance,$stream,$graduate,$field,$gender,$age,$exp,$salary,$other_quali
+        $post=DB::table('posts')
+        ->join('vacancy_qualification','vacancy_qualification.id','posts.quali_id')
+        ->select('*')
+        ->where('posts.company_id',$company_id->id)
+        ->where('posts.vacancy_id',$vacancy_id->id)
+        ->where('vacancy_qualification.branch',$branch)
+        ->count();
+        if($post==0){
+         DB::Insert('insert into vacancy_qualification(id,vacancy_id,company_id,advance_level,stream,graduate,field,gender,age,experience,salary,branch,other_quali) values(?,?,?,?,?,?,?,?,?,?,?,?,?)',[
+             null,$vacancy_id->id,$company_id->id,$advance,$stream,$graduate,$field,$gender,$age,$exp,$salary,$branch,$other_quali
         ]);
+        }
+        else{
+            return redirect('/post')->with('suggestion','this type of job is already published by you under this branch');
+        }
         $quali_id=DB::table('vacancy_qualification')->select('id')->where('vacancy_id',$vacancy_id->id)->first();
         
         DB::Insert('insert into posts(id,vacancy_id,date,company_id,quali_id,need,closing_date) values(?,?,?,?,?,?,?)',[
             null,$vacancy_id->id,$date,$company_id->id,$quali_id->id,$need,$closing_date
         ]);
             
-        
-        $results=DB::table('posts')->get();
+        // $results=DB::table('posts')->get();
         return  redirect('/post')->with('success','Vacancy Published Successfully :)');
     
     }

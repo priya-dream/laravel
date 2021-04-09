@@ -3,8 +3,7 @@
 <body>
 @section('content')
 <div class="main-panel">
-@foreach($results as $result)
-<form action="{{url('/update')}}" method="post" class="forms-sample">
+<form action="{{url('ad/update',$result->id)}}" method="post" class="forms-sample">
         {{csrf_field()}}
     <div class="row">
     <div class="col-lg-24 grid-margin">
@@ -28,16 +27,20 @@
                 <div class="col-md-9 grid-margin stretch-card">
                     <table><tr><td>
                     <label class=col onkeyup="stoppedTyping()">A/L Qualified</label>
-                        <select class="form-control dropdown-selection2" name="advances[]" id="advance_level" required/>
+                        <select class="form-control dropdown-selection2" name="advance_level" id="advance_level" required/>
                             @foreach ($advances as $advance => $key)
-                            <option value="{{ $key}}" {{ (old("advances") == $key ? "selected":"") }}>{{ $key }}</option>
+                        
+                            <option value="{{ $key}}" {{old('advance_level',$key)?"selected" : ""}}>{{ $key }}</option>
+                           
+                            
+                            
                             @endforeach
                         </select></td><td></td><td></td><td></td><td></td><td>
                     <label class=col>Stream</label>
-                        <select class="form-control dropdown-selection2" name="streams[]" id="stream" required/ >
-                        @foreach ($streams as $stream => $key)
-                            <option value="{{ $key}}" {{ (old("streams") == $key ? "selected":"") }}>{{ $key }}</option>
-                            @endforeach
+                        <select class="form-control dropdown-selection2" name="stream" id="stream" required/ >
+                        @foreach($streams as $stream=>$key)
+                            <option value="{{ $key}}" {{ old('stream',$key) ? "selected" : "" }}>{{$key}}</option>
+                       @endforeach
                         </select></td></tr></table>
                         
                 </div>
@@ -49,12 +52,14 @@
                     <div class="form-group">
                         <table><tr><td>
                         <label class=col>Graduation</label>
-                        <select value="{{old('grad', $result->graduate)}}" class="form-control dropdown-selection2"  name="grad" required/>
-                            <option value="">Wanted graduation...</option>
-                            <option>Diploma</option>
-                            <option>Higher Diploma</option>
-                            <option>Degree</option>
-                            <option>Master Degree</option>
+                        <select required="required" class="form-control dropdown-selection2"  name="grad" required/>
+                        @foreach ($graduations as $graduation => $key)
+                        @if(old('graduate',$key)){
+                        <option value="{{ $key}}" selected>{{$key}}</option>}
+                        @else{
+                        <option value="{{ $key}}">{{$key}}</option>}
+                        @endif
+                        @endforeach 
                         </select></td><td></td><td></td><td></td><td></td><td>
                         <label class=col>Field</label>
                         <select value="{{old('field', $result->field)}}" class="form-control dropdown-selection2" name="field" required/>
@@ -75,7 +80,9 @@
         <div class="form-group row">
             <div class="col-md-6">
                 <label class=col>Required Other Qualification</label>
-                <textarea value="{{old('other_quali', $result->other_quali)}}" class="form-control textarea1" name="other_quali" placeholder="Type here" required/></textarea>
+                <textarea class="form-control textarea1" name="other_quali" placeholder="Type here" required/>
+                {{ old('other_quali',$result->other_quali) }}
+                </textarea>
             </div>
         </div>
         <div class="form-group row">
@@ -85,12 +92,9 @@
                     <label class=col>Gender preference</label>
                         <select class="form-control dropdown-selection2" name="gender" required/>
                             <option value="">Select gender</option>
-                            @if (Input::old('gender') == $result->gender)
-                            <option value="{{ $result->gender }}" selected>Male</option>
-                            @else
+                            <option value="{{ $result->gender }}" >Male</option>
                             <option value="{{ $result->gender }}">Female</option>
                             <option value="{{$result->gender }}">Any</option>
-                            @endif
                         </select></td><td></td><td></td><td></td><td></td><td>
                     <label class=col>Age Limit</label>
                     <input value="{{old('age', $result->age)}}" type="text" class="form-control dropdown-selection2" name="age_limit" placeholder="Type age limit eg:22-30" required/>
@@ -103,7 +107,7 @@
                 <div class="form-group">
                     <table><tr><td>
                     <label class="col">Needed Employee</label>
-                        <input value="{{old('need', $result->need)}}" type="number" min="1" placeholder="select needed No of employee" name="need" class="form-control dropdown-selection2" required/>
+                        <input value="{{old('need', $result1->need)}}" type="number" min="1" placeholder="select needed No of employee" name="need" class="form-control dropdown-selection2" required/>
                         </td><td></td><td></td><td></td><td></td><td>
                     <label class="col">Experience</label>
                         <input value="{{old('experience', $result->experience)}}" type="text" placeholder="experience" name="experience" class="form-control dropdown-selection2" required/>
@@ -120,7 +124,7 @@
         <div class="form-group row">        
 		    <div class="col-md-6">
                 <label class="col">Closing Date</label>
-                <input value="{{old('closing_date', $result->closing_date)}}" type="date" placeholder="choose the closing date" name="closing_date" class="form-control dropdown-selection2" required/>
+                <input value="{{old('closing_date', $result1->closing_date)}}" type="date" placeholder="choose the closing date" name="closing_date" class="form-control dropdown-selection2" required/>
             </div>
         </div></br></br>
         <div class="form-group row">        
@@ -133,8 +137,7 @@
     </div>
  </form>
 </div>
-<script src="{{asset('js/app.js')}}"></script> 
-@endforeach
+<script src="{{asset('js/app.js')}}"></script>
 @stop
 </body>
 </html>

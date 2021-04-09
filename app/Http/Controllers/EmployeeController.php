@@ -35,6 +35,7 @@ class EmployeeController extends Controller
      */
     public function store(request $request)
     {
+        $date=date('y-m-d');
         $post_id=$request->input('post_id');
         $fname=$request->input('fname');
         $lname=$request->input('lname');
@@ -47,16 +48,20 @@ class EmployeeController extends Controller
         $graduate=$request->input('grad');
         $subject=$request->input('subj');
         $uni=$request->input('uni');
-        // return $post_id;
+        $emp_id=DB::table('employees')->select('id')->where('nic',$nic)->first();
         $result=DB::table('employees')->select('*')->where('nic',$nic)->count();
         if($result==0){
             DB::Insert('insert into employees(id,fname,lname,nic,address,mobile,email) values(?,?,?,?,?,?,?)',[
                 null,$fname,$lname,$nic,$address,$mobile,$email
             ]);
-        }
-        $emp_id=DB::table('employees')->select('id')->where('nic',$nic)->first();
-        DB::Insert('insert into employee_qualification(id,post_id,emp_id,advance_level,stream,graduate,field,uni) values(?,?,?,?,?,?,?,?)',[
+            
+            DB::Insert('insert into employee_qualification(id,post_id,emp_id,advance_level,stream,graduate,field,uni) values(?,?,?,?,?,?,?,?)',[
             null,$post_id,$emp_id->id,$al,$stream,$graduate,$subject,$uni
+            ]);
+        }
+        
+        DB::Insert('insert into applications(id,date,emp_id,post_id) values(?,?,?,?)',[
+            null,$date,$emp_id->id,$post_id
         ]);
         return  redirect('/post')->with('success1','Application is submitted succesfully');
     }

@@ -12,7 +12,7 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-    @if ($message = Session::get('success1'))
+    @if ($message = Session::get('suggestion'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
@@ -38,10 +38,12 @@
             <?php $y=$y+1; ?>
                 @endif
             @endforeach
+            @if($y>0)
             <div class="num-circle">
             <a class="badge circle"><?php echo $y; ?>
             <p class="description">Applications</p></a>
             </div>
+            @endif
             </br>
                 @foreach ($company as $com)
                     @if($com->id==$result->company_id) 
