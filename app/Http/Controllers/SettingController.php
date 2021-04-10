@@ -16,6 +16,7 @@ class SettingController extends Controller
     {
         return view('settings.index');
     }
+    
 
     public function verify(request $request)
     {
@@ -40,7 +41,6 @@ class SettingController extends Controller
         ->select('posts.*','vacancies.title')
         ->where('companies.id',$id)
         ->get();
-    
         return view('settings.post',compact('results'));
     
     }

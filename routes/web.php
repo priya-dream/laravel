@@ -57,8 +57,8 @@ Route::get('/destroy/{id}',
     Route::post('/admin/verify','AdminController@verify');
     Route::resource('/admin','AdminController');
 
-    
-    Route::resource('/myaccount/applications','ApplicationController');
+    Route::get('/myaccount/applications/{id}','ApplicationController@index');
+    Route::resource('/applications','ApplicationController');
 
 
     Route::post('/ad/update/{id}','SettingController@update');

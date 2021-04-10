@@ -26,7 +26,7 @@
 <td class="num-circle">
     <a href="{{ url('myaccount/posts',$com->id) }}"><img class="job-icon" src="{{asset('images/job-icon.png')}}"><p class="btn description">Posted Jobs</p></a></td>
 <td class="num-circle">
-    <a href="{{url('myaccount/applications')}}"><img class="job-icon" src="{{asset('images/application-icon.png')}}"><p class="btn description">Received Applications</p></a></td>
+    <a href="{{url('myaccount/applications',$com->id)}}"><img class="job-icon" src="{{asset('images/application-icon.png')}}"><p class="btn description">Received Applications</p></a></td>
 <td class="num-circle">
     <a href=""><img class="job-icon" src="{{asset('images/detail-icon.png')}}"><p class="btn description">Company Information</p></a></td>
 </tr><tr>

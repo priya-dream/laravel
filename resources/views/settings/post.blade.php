@@ -24,7 +24,7 @@
     @else
     <table class=" table view-post">
         <tr class="sub-texts">
-            <th>Date</th>
+            <th>Published Date</th>
             <th>Job Type</th>
             <th>Closing Date</th>
             <th>Actions</th>
@@ -37,7 +37,7 @@
             <td>
                 <a class="btn btn-primary" href="{{url('/post/edit',$result->id)}}">Edit</a>
                 <a onclick="return confirm('Are you sure want to delete this post?')" href="{{url('/post/delete',$result->id)}}" class="btn btn-danger">Remove</a>
-                
+            </td>   
         </tr>
         @endforeach
     </table>

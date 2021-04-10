@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\application;
 use Illuminate\Http\Request;
 
@@ -12,9 +12,18 @@ class ApplicationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view('settings.application');
+        $results1=DB::table('posts')->select('id')->where('company_id',$id)->first();
+        $results=DB::table('applications')
+        ->join('employee_qualification','employee_qualification.emp_id','=','applications.emp_id')
+        ->join('employees','employees.id','=','applications.emp_id')
+        ->select('employees.*','applications.*','employee_qualification.*')
+        ->where('applications.post_id',$results1->id)
+        ->get();
+        $num=count($results);
+        //return $num;
+        return view('settings.application',compact('results','num'));
     }
 
     /**

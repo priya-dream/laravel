@@ -13433,7 +13433,7 @@ select.tt-hint {
   .table th,
   .table td {
     vertical-align: middle;
-    font-size: 0.875rem;
+    font-size: 1.475rem;
     line-height: 1;
     white-space: nowrap;
     padding: 14px 0 14px 25px; }
@@ -15868,9 +15868,21 @@ color:#000;}
 	border-color:blue;
 	border-radius:7px;}
 .info{
-	padding:70px 50px 50px 50px;
+	padding:40px 50px 50px 50px;
 	font-size:2.5rem;
 	color:blue;}
+.number-view{
+	border:none;
+	outline:none;
+	border-radius:5px;
+	background-color:blue;
+	color:#fff;
+	font-size:40px;
+	padding-left:15px;
+	padding-right:15px;}
+.td-text{
+	font-size:40px;
+	font-weight:bold;}
 	
 	
 	
