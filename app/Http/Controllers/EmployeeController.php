@@ -48,22 +48,33 @@ class EmployeeController extends Controller
         $graduate=$request->input('grad');
         $subject=$request->input('subj');
         $uni=$request->input('uni');
+        $other_quali=$request->input('other_quali');
         $emp_id=DB::table('employees')->select('id')->where('nic',$nic)->first();
         $result=DB::table('employees')->select('*')->where('nic',$nic)->count();
+        //return $result;
         if($result==0){
             DB::Insert('insert into employees(id,fname,lname,nic,address,mobile,email) values(?,?,?,?,?,?,?)',[
                 null,$fname,$lname,$nic,$address,$mobile,$email
             ]);
-            
-            DB::Insert('insert into employee_qualification(id,post_id,emp_id,advance_level,stream,graduate,field,uni) values(?,?,?,?,?,?,?,?)',[
-            null,$post_id,$emp_id->id,$al,$stream,$graduate,$subject,$uni
+            $emp=DB::table('employees')->select('id')->where('nic',$nic)->first();
+            DB::Insert('insert into employee_qualification(id,post_id,emp_id,advance_level,stream,graduate,field,uni,other_quali) values(?,?,?,?,?,?,?,?,?)',[
+            null,$post_id,$emp->id,$al,$stream,$graduate,$subject,$uni,$other_quali
             ]);
         }
+            $emp1=DB::table('applications')->join('employees','employees.id','applications.emp_id')
+            ->select('employees.id')
+            ->where('employees.nic',$nic)
+            ->count();
+        if($emp1==0){
+            DB::Insert('insert into applications(id,date,emp_id,post_id) values(?,?,?,?)',[
+                null,$date,$emp_id->id,$post_id
+            ]);
+        }
+        else{
+            return redirect('/post')->with('alert','you applied already for this job');
+        }
         
-        DB::Insert('insert into applications(id,date,emp_id,post_id) values(?,?,?,?)',[
-            null,$date,$emp_id->id,$post_id
-        ]);
-        return  redirect('/post')->with('success1','Application is submitted succesfully');
+        return  redirect('/post')->with('success','Application is submitted succesfully');
     }
 
     /**

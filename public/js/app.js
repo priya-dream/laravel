@@ -3,9 +3,19 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
- function apply(){
-	 alert ('Application is submitted succesfully');
- }
+		var Btn=document.querySelector('.view-button');
+		var Quali=document.querySelector('.quali');
+		if(Btn){
+        Btn.addEventListener('click',function(){               
+          Quali.classList.add('active');
+		});}
+		// document.getElementById("quali").style.display="inline";
+
+	
+	function view(){
+			document.getElementById("more-detail").style.display="inline";	
+	}
+	
 	var loginBtn=document.querySelector('.login-btn');
 	var myLogin=document.querySelector('.my-login');
     var modalClose=document.querySelector('.close-admin');

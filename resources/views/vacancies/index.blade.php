@@ -6,6 +6,11 @@
             <h4>{{ $error }}</h4>
         </div>
     @endif
+    @if ($error = Session::get('alert'))
+        <div class="alert alert-danger">
+            <h4>{{ $error }}</h4>
+        </div>
+    @endif
     <h3 class="page-title" style="margin-top:50px;font-family:Broadway"> Available vacancies</h3>
     @if ($message = Session::get('success'))
         <div class="alert alert-success">

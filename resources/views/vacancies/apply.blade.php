@@ -109,6 +109,14 @@
                 </select></td></tr></table>
             </div>
         </div>
+        <div class="form-group row">        
+		    <div class="col-md-6">
+			    <label class=col>Mention other skills/qualificatons</label>
+			    <div>
+				    <textarea type="text" name="other_quali" placeholder="qualifications" class="form-control input"/></textarea>
+			    </div>
+		    </div>
+        <div>
         </br></br>
         <div class="form-group row"> 
                 <div class="col-md-6">

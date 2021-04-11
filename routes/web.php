@@ -57,6 +57,7 @@ Route::get('/destroy/{id}',
     Route::post('/admin/verify','AdminController@verify');
     Route::resource('/admin','AdminController');
 
+    Route::get('/myaccount/applications/remove/{id}','ApplicationController@destroy');
     Route::get('/myaccount/applications/{id}','ApplicationController@index');
     Route::resource('/applications','ApplicationController');
 

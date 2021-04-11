@@ -22,6 +22,7 @@ class CreateEmployeeQualificationTable extends Migration
             $table->text('graduate');
             $table->text('field');
             $table->text('uni');
+            $table->text('other_quali');
             $table->timestamps();
             $table->foreign('post_id')->references('id')->on('posts');
             $table->foreign('emp_id')->references('id')->on('employees');
