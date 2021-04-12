@@ -1,5 +1,6 @@
 <head>
 <link rel="stylesheet" href="{{asset('css/style.css')}}" /> 
+<link rel="stylesheet" href="{{asset('css/font-awesome.css')}}" /> 
 <link rel="stylesheet" href="{{asset('vendors/mdi/css/materialdesignicons.min.css')}}" />
 <link rel="stylesheet" href="{{asset('vendors/flag-icon-css/css/flag-icon.min.css')}}" />
 <link rel="stylesheet" href="{{asset('vendors/css/vendor.bundle.base.css')}}" />
@@ -10,6 +11,9 @@
 
 <script type="text/javascript"  src="{{asset('js/app.js')}}"></script> 
 <script type="text/javascript" src="{{asset('js/dashboard.js')}}"></script> 
+<script type="text/javascript"  src="{{asset('js/ajax.js')}}"></script> 
+<script type="text/javascript"  src="{{asset('js/jquery.js')}}"></script> 
+<script type="text/javascript"  src="{{asset('js/jquery.min.js')}}"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
 <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>

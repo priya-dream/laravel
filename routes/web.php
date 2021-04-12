@@ -57,6 +57,7 @@ Route::get('/destroy/{id}',
     Route::post('/admin/verify','AdminController@verify');
     Route::resource('/admin','AdminController');
 
+    Route::get('/myaccount/applicant/data/{id}','ApplicationController@show');
     Route::get('/myaccount/applications/remove/{id}','ApplicationController@destroy');
     Route::get('/myaccount/applications/{id}','ApplicationController@index');
     Route::resource('/applications','ApplicationController');
@@ -65,6 +66,7 @@ Route::get('/destroy/{id}',
     Route::post('/ad/update/{id}','SettingController@update');
     Route::get('/post/edit/{id}','SettingController@edit');
     Route::get('/post/delete/{id}','SettingController@destroy');
+    Route::get('/myaccount/details/{id}','SettingController@detail');
     Route::get('/myaccount/posts/{id}','SettingController@post');
     Route::post('/account/verify','SettingController@verify');
     Route::resource('/myaccount','SettingController');
@@ -77,6 +79,7 @@ Route::get('/destroy/{id}',
     Route::get('/user/log', 'UserController@log');
     Route::resource('user', 'UserController');
     
+    Route::post('company/detail/update','CompanyController@update');
     Route::post('/login/verify', 'CompanyController@verify');
     Route::get('/login/create', 'CompanyController@create');
     Route::get('company/login','CompanyController@index');

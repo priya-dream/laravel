@@ -43,18 +43,16 @@
                     <label class=col onkeyup="stoppedTyping()">A/L Qualified</label>
                         <select class="form-control dropdown-selection2" name="advance_level" id="advance_level" required/>
                             <option value="">Select.. </option>
-                            <option>Not Necessary</option>
-                            <option>Need</option>
+                            @foreach ($advances as $advance => $key)
+                                    <option>{{ $key }}</option>
+                            @endforeach
                         </select></td><td></td><td></td><td></td><td></td><td>
                     <label class=col>Stream</label>
                         <select class="form-control dropdown-selection2" name="stream" id="stream" required/ >
                             <option value="">Select stream...</option>
-                            <option>Physical Science(Maths)</option>
-                            <option>Biological Science</option>
-                            <option>Commerce</option>
-                            <option>Arts</option>
-                            <option>Technology</option>
-                            <option>Any</option>
+                            @foreach ($streams as $stream => $key)
+                                    <option>{{ $key }}</option>
+                            @endforeach
                         </select></td></tr></table>
                         
                 </div>
@@ -68,22 +66,16 @@
                         <label class=col>Graduation</label>
                         <select class="form-control dropdown-selection2"  name="grad" required/>
                             <option value="">Wanted graduation...</option>
-                            <option>Diploma</option>
-                            <option>Higher Diploma</option>
-                            <option>Degree</option>
-                            <option>Master Degree</option>
+                            @foreach ($graduations as $grad => $key)
+                                    <option>{{ $key }}</option>
+                            @endforeach
                         </select></td><td></td><td></td><td></td><td></td><td>
                         <label class=col>Field</label>
                         <select class="form-control dropdown-selection2" name="field" required/>
                             <option value="">Select the subject/field...</option>
-                            <option>Infomation Technology</option>
-                            <option>Computer Science</option>
-                            <option>English</option>
-                            <option>Software Engineering</option>
-                            <option>Physical Science</option>
-                            <option>Bio Science</option>
-                            <option>Agriculture</option>
-                            <option>Any</option>
+                            @foreach ($fields as $field => $key)
+                                    <option>{{ $key }}</option>
+                            @endforeach
                         </select></td></tr></table>
                     </div>
                 </div>
@@ -102,9 +94,9 @@
                     <label class=col>Gender preference</label>
                         <select class="form-control dropdown-selection2" id="exampleSelectGender" name="gender" required/>
                             <option value="">Select gender</option>
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Any</option>
+                            @foreach ($gender as $sex => $key)
+                                    <option>{{ $key }}</option>
+                            @endforeach
                         </select></td><td></td><td></td><td></td><td></td><td>
                     <label class=col>Age Limit</label>
                     <input type="text" class="form-control dropdown-selection2" name="age_limit" placeholder="Type age limit eg:22-30" required/>

@@ -30,12 +30,11 @@
             <?php $x=$x+1; ?>
             @endif
             @endforeach 
-            <td><button onclick="view()" class="number-view"><?php echo $x; ?></button><td> 
-            
+            <td><button onclick='view(" {{$vac->id}} ")' class="number-view"><?php echo $x; ?></button><td>   
         </tr>
         @endforeach
-    </table>
-    <table class="table" id="more-detail">
+        
+        <table class="table" id="more-detail">
         <tr>
             <th>No</th>
             <th>Applied Date</th>
@@ -48,18 +47,17 @@
             <th>Actions</th>
         </tr>
         <?php $n=1; ?>
+
         
-        @foreach($emps as $emp)
-        @foreach($data as $da)
-        @if($da->emp_id==$emp->id)
+        @foreach($test as $app)
             <tr>
                 <td><?php echo $n; ?></td>
-                <td>{{$da->date}}</td>
-                <td>{{$emp->fname}}</td>
-                <td>{{$emp->lname}}</td>
-                <td>{{$emp->nic}}</td>
-                <td>{{$emp->mobile}}</td>
-                <td>{{$emp->address}}</td>
+                <td>{{$app->date}}</td>
+                <td>{{$app->fname}}</td>
+                <td>{{$app->lname}}</td>
+                <td>{{$app->nic}}</td>
+                <td>{{$app->mobile}}</td>
+                <td>{{$app->address}}</td>
                 <td><button class="view-button btn btn-primary">View</button></td>
                 <td>
                 <table><tr><td>
@@ -68,10 +66,11 @@
                 </td>
             </tr>
             <?php $n+=1; ?>
-        @endif
-        @endforeach
         @endforeach
     </table>
+    
+    </table>
+    
 @endif  
 </div>
 <?php $x=4; ?>

@@ -45,6 +45,12 @@ class SettingController extends Controller
     
     }
 
+    public function detail($id)
+    {
+        $company=DB::table('companies')->select('*')->where('id',$id)->get();
+        return view('settings.com_detail',compact('company'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

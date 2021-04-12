@@ -2010,12 +2010,14 @@ button,
 input {
 	overflow: visible;
 	border-radius:3px;
-	border-color:4B0082  }
+	border-color:4B0082;
+-webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%);	}
 
 button,
 select {
   text-transform: none; 
-  font-size:0.975rem;}
+  font-size:0.975rem;
+  -webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%)}
 
 select {
   word-wrap: normal; }
@@ -2049,11 +2051,13 @@ input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
 input[type="month"] {
-  -webkit-appearance: listbox; }
+  -webkit-appearance: listbox;
+-webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%);  }
 
 textarea {
   overflow: auto;
-  resize: vertical; }
+  resize: vertical; 
+  -webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%);}
 
 fieldset {
   min-width: 0;
@@ -2077,7 +2081,8 @@ progress {
 
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
-  height: auto; }
+  height: auto;
+-webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%);  }
 
 [type="search"] {
   outline-offset: -2px;
@@ -3312,7 +3317,7 @@ pre {
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #212529;
+  color: #252588;
 font-size:5px;  }
   .table th,
   .table td {
@@ -6507,11 +6512,13 @@ input[type="button"].btn-block {
 .alert-success {
   color: #006a6b;
   background-color: #ccf5f5;
-  border-color: #b8f1f1; }
+  border-color: #b8f1f1; 
+  -webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%)}
   .alert-success hr {
     border-top-color: #a3eded; }
   .alert-success .alert-link {
-    color: #003738; }
+    color: #003738;
+-webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%)	}
 
 .alert-info {
   color: #0d4876;
@@ -10954,7 +10961,8 @@ address p {
 .blockquote-success {
   border-color: #00cccd; }
   .blockquote-success .blockquote-footer {
-    color: #00cccd; }
+    color: #00cccd; 
+	-webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%);}
 
 .blockquote-info {
   border-color: #198ae3; }
@@ -10985,7 +10993,8 @@ address p {
   font-size: 12rem; }
  .error {
 	color: #FF0000;
-	font-size: 20px;}
+	font-size: 20px;
+	-webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%);}
   @media (max-width: 991px) {
     .error-page h1 {
       font-size: 8rem; } }
@@ -11968,6 +11977,10 @@ padding-left: 600px; }
 .button{
 background-color:#32CD32;
 color: #ffffff;}
+.button:focus{
+background-color:#108e10;}
+.button:hover{
+background-color:#13f513;}
 .upload{
 background-color:#808080;
 color:#ffffff;}
@@ -12483,7 +12496,8 @@ color:#ffffff;}
   font-size: 0.8125rem;
   height: auto;
   padding: 9px 11px;
-  border-radius: 0px; }
+  border-radius: 0px;
+-webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%);  }
   .form-control:focus, .select2-container--default .select2-selection--single:focus, .select2-container--default .select2-selection--single .select2-search__field:focus, .typeahead:focus,
   .tt-query:focus,
   .tt-hint:focus {
@@ -12495,7 +12509,8 @@ select.tt-hint {
   padding: 0.4375rem 0.75rem;
   border: 0;
   outline: 1px solid #ebedf2;
-  color: #c9c8c8; }
+  color: #c9c8c8;
+-webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%);  }
   select.form-control:focus, .select2-container--default select.select2-selection--single:focus, .select2-container--default .select2-selection--single select.select2-search__field:focus, select.typeahead:focus,
   select.tt-query:focus,
   select.tt-hint:focus {
@@ -13434,7 +13449,7 @@ select.tt-hint {
 	text-align:center;
 	vertical-align: middle;
     font-size: 1.0rem;
-    line-height: 1;
+    line-height: 1.5;
     white-space: nowrap;
     padding: 14px 0 14px 15px;}
   .table td {
@@ -15658,7 +15673,8 @@ font-size:30px;}
 	width:50%;
 	display:block;
 	margin:15px auto;
-	border-radius:3px;}
+	border-radius:3px;
+	-webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%);}
 .close-admin{
 position:absolute;
 top:0;
@@ -15686,7 +15702,8 @@ cursor:pointer;}
 	epacity:1;
 }
 .selection{
-font-size:0.875rem;}
+font-size:0.875rem;
+-webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%);}
 .modal-btn{
 	border:none;
 	outline:none;
@@ -15930,5 +15947,13 @@ color:#000;}
 	cursor:pointer;
 	color:red;
 	}
+.com-data{
+	width:500px;
+	height:300px;
+	border:none;
+	border-radius:8px;
+	color:#00008B;
+	font-size:24px;
+	margin-left:100px;}
 
 /*# sourceMappingURL=style.css.map */

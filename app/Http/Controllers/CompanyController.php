@@ -96,12 +96,15 @@ class CompanyController extends Controller
         ->where('username',$username)
         ->where('password',$password)
         ->get();
-    
-
+        $advances=['Need','Not Necessary'];
+        $streams=['Physical Science(Maths)','Biological Science','Commerce','Arts','Technology','Any'];
+        $graduations=['Diploma','Higher Diploma','Degree','Master Degree'];
+        $fields=['Infomation Technology','Computer Science','English','Software Engineering','Physical Science','Bio Science','Agriculture','Any'];
+        $gender=['Male','Female','Any'];
         $vacancies= DB::table('vacancies')->select('title')->orderBy('title')->get();
-            
+        
             if(count($data))
-                return View('vacancies.add',compact('request','data','vacancies'));  
+                return View('vacancies.add',compact('request','data','vacancies','advances','streams','graduations','fields','gender'));  
             else
                 return redirect('/company/login')->with('error','Invalid login details !!');
         
@@ -118,6 +121,10 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if($request->ajax()){
+            Company::find($request->input('pk'))->update([$request->input('name') => $request->input('value')]);
+         return response()->json(['success' => true]);
+     }
         $this->validate($request,[
             'name' => 'required'
         ]);

@@ -29,18 +29,18 @@
                     <label class=col onkeyup="stoppedTyping()">A/L Qualified</label>
                         <select class="form-control dropdown-selection2" name="advance_level" id="advance_level" required/>
                             @foreach ($advances as $advance => $key)
-                        
-                            <option value="{{ $key}}" {{old('advance_level',$key)?"selected" : ""}}>{{ $key }}</option>
-                           
-                            
-                            
+                                @if (Request::old('advance_level') == $key)
+                                    <option value="{{ $key}}" selected >{{ $key }}</option>
+                                @else
+                                    <option value="{{ $key}}" >{{ $key }}</option>
+                                @endif
                             @endforeach
                         </select></td><td></td><td></td><td></td><td></td><td>
                     <label class=col>Stream</label>
-                        <select class="form-control dropdown-selection2" name="stream" id="stream" required/ >
-                        @foreach($streams as $stream=>$key)
-                            <option value="{{ $key}}" {{ old('stream',$key) ? "selected" : "" }}>{{$key}}</option>
-                       @endforeach
+                        <select class="form-control dropdown-selection2" name="stream" required/ >
+                            @foreach($streams as $streams=>$key)
+                            <option value="{{ $streams}}" {{ old('stream'== $streams ? "selected" : "") }}>{{$key}}</option>
+                            @endforeach
                         </select></td></tr></table>
                         
                 </div>
@@ -54,11 +54,7 @@
                         <label class=col>Graduation</label>
                         <select required="required" class="form-control dropdown-selection2"  name="grad" required/>
                         @foreach ($graduations as $graduation => $key)
-                        @if(old('graduate',$key)){
-                        <option value="{{ $key}}" selected>{{$key}}</option>}
-                        @else{
-                        <option value="{{ $key}}">{{$key}}</option>}
-                        @endif
+                        <option value="{{ $key}}" {{ old('grad'== $key ? "selected" : "" )}}>{{$key}}</option>
                         @endforeach 
                         </select></td><td></td><td></td><td></td><td></td><td>
                         <label class=col>Field</label>
