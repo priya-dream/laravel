@@ -26,20 +26,26 @@
                 <h5>Required Educational Qualification</h5>
                 <div class="col-md-9 grid-margin stretch-card">
                     <table><tr><td>
+                    
                     <label class=col onkeyup="stoppedTyping()">A/L Qualified</label>
                         <select class="form-control dropdown-selection2" name="advance_level" id="advance_level" required/>
-                            @foreach ($advances as $advance => $key)
-                                @if (Request::old('advance_level') == $key)
-                                    <option value="{{ $key}}" selected >{{ $key }}</option>
-                                @else
-                                    <option value="{{ $key}}" >{{ $key }}</option>
-                                @endif
+                            @foreach ($advances as $advance => $val)
+                            @if (old('advance_level', $result->advance_level) == $val)
+                                <option value="{{ $val }}" selected>{{ $val }}</option>
+                            @else
+                                <option value="{{ $val }}">{{ $val }}</option>
+                            @endif
+                                
                             @endforeach
                         </select></td><td></td><td></td><td></td><td></td><td>
                     <label class=col>Stream</label>
                         <select class="form-control dropdown-selection2" name="stream" required/ >
-                            @foreach($streams as $streams=>$key)
-                            <option value="{{ $streams}}" {{ old('stream'== $streams ? "selected" : "") }}>{{$key}}</option>
+                            @foreach($streams as $key=>$val)
+                            @if (old('stream', $result->stream) == $val)
+                                <option value="{{ $val }}" selected>{{ $val }}</option>
+                            @else
+                                <option value="{{ $val }}">{{ $val }}</option>
+                            @endif
                             @endforeach
                         </select></td></tr></table>
                         
@@ -53,21 +59,23 @@
                         <table><tr><td>
                         <label class=col>Graduation</label>
                         <select required="required" class="form-control dropdown-selection2"  name="grad" required/>
-                        @foreach ($graduations as $graduation => $key)
-                        <option value="{{ $key}}" {{ old('grad'== $key ? "selected" : "" )}}>{{$key}}</option>
+                        @foreach ($graduations as $graduation => $val)
+                            @if (old('grad', $result->graduate) == $val)
+                                <option value="{{ $val }}" selected>{{ $val }}</option>
+                            @else
+                                <option value="{{ $val }}">{{ $val }}</option>
+                            @endif
                         @endforeach 
                         </select></td><td></td><td></td><td></td><td></td><td>
                         <label class=col>Field</label>
-                        <select value="{{old('field', $result->field)}}" class="form-control dropdown-selection2" name="field" required/>
-                            <option value="">Select the subject/field...</option>
-                            <option>Infomation Technology</option>
-                            <option>Computer Science</option>
-                            <option>English</option>
-                            <option>Software Engineering</option>
-                            <option>Physical Science</option>
-                            <option>Bio Science</option>
-                            <option>Agriculture</option>
-                            <option>Any</option>
+                        <select class="form-control dropdown-selection2" name="field" required/>
+                        @foreach ($fields as $field => $val)
+                            @if (old('field', $result->field) == $val)
+                                <option value="{{ $val }}" selected>{{ $val }}</option>
+                            @else
+                                <option value="{{ $val }}">{{ $val }}</option>
+                            @endif
+                        @endforeach 
                         </select></td></tr></table>
                     </div>
                 </div>
@@ -87,10 +95,13 @@
                     <table><tr><td>
                     <label class=col>Gender preference</label>
                         <select class="form-control dropdown-selection2" name="gender" required/>
-                            <option value="">Select gender</option>
-                            <option value="{{ $result->gender }}" >Male</option>
-                            <option value="{{ $result->gender }}">Female</option>
-                            <option value="{{$result->gender }}">Any</option>
+                        @foreach ($gender as $sex => $val)
+                            @if (old('gender', $result->gender) == $val)
+                                <option value="{{ $val }}" selected>{{ $val }}</option>
+                            @else
+                                <option value="{{ $val }}">{{ $val }}</option>
+                            @endif
+                        @endforeach 
                         </select></td><td></td><td></td><td></td><td></td><td>
                     <label class=col>Age Limit</label>
                     <input value="{{old('age', $result->age)}}" type="text" class="form-control dropdown-selection2" name="age_limit" placeholder="Type age limit eg:22-30" required/>

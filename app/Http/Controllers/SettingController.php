@@ -106,7 +106,9 @@ class SettingController extends Controller
         $advances=['Need','Not Necessary'];
         $streams=['Physical Science(Maths)','Biological Science','Commerce','Arts','Technology','Any'];
         $graduations=['Diploma','Higher Diploma','Degree','Master Degree'];
-        return view('settings.edit',compact('result','result1','vacancies','advances','streams','graduations'));
+        $fields=['Infomation Technology','Computer Science','English','Software Engineering','Physical Science','Bio Science','Agriculture','Any'];
+        $gender=['Male','Female','Any'];
+        return view('settings.edit',compact('result','result1','vacancies','advances','streams','graduations','fields','gender'));
     }
 
     /**

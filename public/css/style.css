@@ -2011,12 +2011,14 @@ input {
 	overflow: visible;
 	border-radius:3px;
 	border-color:4B0082;
+	color:#394286;
 -webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%);	}
 
 button,
 select {
   text-transform: none; 
   font-size:0.975rem;
+  color:#394286;
   -webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%)}
 
 select {
@@ -2056,7 +2058,8 @@ input[type="month"] {
 
 textarea {
   overflow: auto;
-  resize: vertical; 
+  resize: vertical;
+color:#394286;  
   -webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%);}
 
 fieldset {
@@ -3728,6 +3731,7 @@ textarea.tt-hint {
 .form-group {
   margin-bottom: 1rem; }
   .input1[type="text"] {
+	  color:#394286; 
  width: 280px;
  font-size:15px;
  height:40px;
@@ -3747,6 +3751,7 @@ textarea.tt-hint {
  height:50px;
  font-size:15px;}
  .textarea1 {
+	 color:#394286; 
  width: 700px;
  height:50px;
  font-size:15px;
@@ -3763,6 +3768,7 @@ textarea.tt-hint {
  margin-left:100px;
  margin-top:10px;}  
  .dropdown-selection2{
+	 color:#394286; 
  width:350px;
  height:45px;
  font-size:15px;
@@ -12509,7 +12515,7 @@ select.tt-hint {
   padding: 0.4375rem 0.75rem;
   border: 0;
   outline: 1px solid #ebedf2;
-  color: #c9c8c8;
+  color: #394286;
 -webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%);  }
   select.form-control:focus, .select2-container--default select.select2-selection--single:focus, .select2-container--default .select2-selection--single select.select2-search__field:focus, select.typeahead:focus,
   select.tt-query:focus,
@@ -12600,7 +12606,8 @@ select.tt-hint {
   position: absolute; }
 
 .form-group .file-upload-info {
-  background: transparent; }
+  background: transparent;
+-webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%);	  }
 
 .select2-selection-multiple {
   background: red; }
@@ -13458,7 +13465,7 @@ select.tt-hint {
     font-size: 1.0rem;
     line-height: 1;
     white-space: nowrap;
-    padding: 14px 0 14px 20px; }
+    padding: 10px 0 10px 20px; }
     .table th img,
     .table td img {
       width: 30px;

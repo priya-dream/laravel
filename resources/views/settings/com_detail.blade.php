@@ -1,6 +1,7 @@
 @extends('layouts.master.page')
-@section('content')
 <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+
+@section('content')
 
 <div class="main-panel">
     <div class="page-title">Company Details</div></br>
@@ -20,18 +21,20 @@
         <th>Email Address</th>
         <td>{{$com->email}}</td>
         <td><a href="" class="btn button">Change</a></td></tr><tr>
-        <th>Company Logo</th>
+        <th class="a">Company Logo</th>
         <td><img src="{{asset('images/'.$com->logo)}}" width="150px" height="150px"></td>
         <td><a href="" class="btn button">Change</a></td></tr>
     </table>
     @endforeach
 </div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+
 <script>
 		$(document).ready(function () {
+            $('.a').css('color','red');
 	            $.ajaxSetup({
 	                headers: {
-	                    'X-CSRF-TOKEN': '{{csrf_token()}}'
+	                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	                }
 	            });
 

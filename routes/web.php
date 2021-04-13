@@ -45,6 +45,8 @@ Route::get('/destroy/{id}',
     'as' => 'vacancy.index',
 ]);
 
+Route::resource('contacts','ContactController');
+
     Route::get('/vacancy/apply/{id}','VacancyController@apply');
     Route::get('/vacancy/view/','VacancyController@show')->name('show');
     Route::post('/vacancy/add','VacancyController@store');
@@ -57,6 +59,7 @@ Route::get('/destroy/{id}',
     Route::post('/admin/verify','AdminController@verify');
     Route::resource('/admin','AdminController');
 
+    Route::get('/myaccount/applicant/quali/{id}','ApplicationController@quali');
     Route::get('/myaccount/applicant/data/{id}','ApplicationController@show');
     Route::get('/myaccount/applications/remove/{id}','ApplicationController@destroy');
     Route::get('/myaccount/applications/{id}','ApplicationController@index');
@@ -90,6 +93,9 @@ Route::get('/destroy/{id}',
     Route::get('search', 'PostController@search');
     Route::get('post/', 'PostController@index');
     Route::resource('post/{id}', 'PostController');
+
+    
+
 
     Route::get('locale/(locale)',function ($locale){
         Session::put('locale',$locale);
