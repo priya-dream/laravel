@@ -18,6 +18,7 @@ class CreateApplicationsTable extends Migration
             $table->date('date');
             $table->unsignedBigInteger('emp_id');
             $table->unsignedBigInteger('post_id');
+            $table->boolean('status');
             $table->timestamps();
             $table->foreign('emp_id')->references('id')->on('employees');
             $table->foreign('post_id')->references('id')->on('posts');

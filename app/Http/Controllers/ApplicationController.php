@@ -14,47 +14,6 @@ class ApplicationController extends Controller
      */
     public function index($id)
     {
-        $results1=DB::table('posts')->select('id')->where('company_id',$id)->get();
-        //return number_format($results1);
-        $new=array();
-        $new1=array();
-        $new2=array();
-        $i=0;
-        $x=0;
-        $z=0;
-        foreach($results1 as $res){
-            $collects=DB::table('applications')
-            ->join('posts','posts.id','=','applications.post_id')
-            ->select('applications.*')
-            ->where('posts.id',$res->id)
-            ->get();
-                $new[$i]=$res->id;
-                $i=$i+1;  
-        }
-        for($i=0;$i<count($new);$i++){
-        $res=DB::table('applications')
-        ->join('employee_qualification','employee_qualification.emp_id','=','applications.emp_id')
-        ->select('applications.*','employee_qualification.*')->where('applications.post_id',$new[$i])->get();
-        // foreach($res as $re ){
-        //     $y=0;
-        //     if($i==$y){
-        //     $new1[$x]=$re->id;
-        //         $x=$x+1;
-        //         $y=$y+1;}
-        //     else{
-        //         $new2[$z]=$re->id;
-        //         $z=$z+1;
-        //     }}
-        }
-        // return $collects;
-
-        $test=DB::table('applications')
-        ->join('employees','employees.id','applications.emp_id')
-        ->select('applications.*','employees.*')
-         //->where('applications.post_id',$res->id)
-        ->get();
-        
-       
         $data=DB::table('posts')
         ->join('applications','applications.post_id','=','posts.id')
         ->join('companies','companies.id','=','posts.company_id')
@@ -75,13 +34,7 @@ class ApplicationController extends Controller
         ->where('posts.company_id',$id)
         ->get();
         $num=count($results);
-        $applications=DB::table('applications')->select('*')->get();
-        $quali=DB::table('employee_qualification')->select('*')->get();
-        $emps=DB::table('employees')->select('*')->get();
-
-        
-        // return $applications;
-        return view('settings.application',compact('results','num','vacancy','applications','emps','quali','data','results1','collects','res'));
+        return view('settings.application',compact('results','num','vacancy','data'));
     }
 
     /**
@@ -115,18 +68,30 @@ class ApplicationController extends Controller
     {
         $com=DB::table('posts')->select('company_id')->where('id',$id)->first();
         $apps=DB::table('applications')
+        ->join('employee_qualification','employee_qualification.emp_id','applications.emp_id')
         ->join('employees','employees.id','=','applications.emp_id')
-        ->select('employees.*','applications.*')
-        ->where('post_id',$id)
+        ->select('applications.*','employees.*','employee_qualification.*')
+        ->where('applications.post_id',$id)
+        ->where('applications.status',1)
+        ->orderby('applications.date')
         ->get();
         $quali=DB::table('employee_qualification')->select('*')->get();
-        $emps=DB::table('employees')->select('*')->get();
-        foreach($apps as $app){
-            $emps=DB::table('employees')
+         $emps=DB::table('employees')->select('*')->get();
+         $apps1=DB::table('applications')
+        ->join('employees','employees.id','=','applications.emp_id')
+        ->select('applications.*')
+        ->where('post_id',$id)
+        ->get();
+        foreach($apps1 as $app){
+            $emp=DB::table('employees')
             ->join('applications','applications.emp_id','=','employees.id')
-            ->select('employees.id')
-            ->where('applications.id',$app->id)->get();
+            ->select('employees.*')
+            ->where('employees.id',$app->id)->get();
         }
+            $quali=DB::table('employee_qualification')->select('*')->get();
+        
+
+        
         //return $apps;
         // foreach($apps as $app){
         //     $quali=DB::table('employee_qualification')
@@ -136,23 +101,9 @@ class ApplicationController extends Controller
         //     ->where('applications.id',$app->id)
         //     ->get();
         //}
-        return view('settings.emp_data',compact('apps','quali','emps'));
+        return view('settings.emp_data',compact('apps','quali','emps','apps1'));
     }
-    public function quali($id)
-    {
-        $results=DB::table('employees')
-        ->join('employee_qualification','employee_qualification.emp_id','=','employees.id')
-        ->select('employee_qualification.*')
-        ->where('employees.id',$id)
-        ->get();
-        $data=DB::table('applications')
-        ->join('employees','employees.id','=','applications.emp_id')
-        ->select('applications.post_id')
-        ->where('applications.emp_id',$id)
-        ->first();
-        // return redirect("/myaccount/applicant/data/$data->post_id",compact('results'));
-        return redirect("/myaccount/applicant/data/$data->post_id")->with( ['results' => $results] );
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -172,9 +123,9 @@ class ApplicationController extends Controller
      * @param  \App\application  $application
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, application $application)
+    public function update(Request $request, $id)
     {
-        //
+        //DB::update('update applications set status=? where emp_id=?',[$need,$closing_date,$post->id]);
     }
 
     /**

@@ -61,13 +61,15 @@ class EmployeeController extends Controller
             null,$post_id,$emp->id,$al,$stream,$graduate,$subject,$uni,$other_quali
             ]);
         }
+            $data=DB::table('employees')->select('id')->where('nic',$nic)->first();
             $emp1=DB::table('applications')->join('employees','employees.id','applications.emp_id')
             ->select('employees.id')
-            ->where('employees.nic',$nic)
+            ->where('applications.emp_id',$data->id)
+            ->where('applications.post_id',$post_id)
             ->count();
         if($emp1==0){
             DB::Insert('insert into applications(id,date,emp_id,post_id) values(?,?,?,?)',[
-                null,$date,$emp_id->id,$post_id
+                null,$date,$data->id,$post_id
             ]);
         }
         else{

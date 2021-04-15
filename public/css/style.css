@@ -1894,13 +1894,16 @@ ol,
 ul,
 dl {
   margin-top: 0;
-  margin-bottom: 1rem; }
+  margin-bottom: 1rem;
+  font-size:16px; 
+ }
 
 ol ol,
 ul ul,
 ol ul,
 ul ol {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+font-size:16px;   }
 
 dt {
   font-weight: 700; }
@@ -14488,7 +14491,8 @@ dl {
   ul li,
   ol li,
   dl li {
-    line-height: 1.8; }
+    line-height: 1.8;
+font-size:16px; 	}
 
 .list-ticked,
 .list-arrow,

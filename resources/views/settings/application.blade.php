@@ -35,16 +35,8 @@
             <td><a href="{{url('myaccount/applicant/data',$vac->id)}}" class="number-view"><?php echo $x; ?></button><td>   
         </tr>
         @endforeach
-        
-        
-    
-    </table>
-    
+    </table>  
 @endif  
 </div>
 <?php $x=4; ?>
-   
-    
-    
-
 @stop

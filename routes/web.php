@@ -59,9 +59,9 @@ Route::resource('contacts','ContactController');
     Route::post('/admin/verify','AdminController@verify');
     Route::resource('/admin','AdminController');
 
-    Route::get('/myaccount/applicant/quali/{id}','ApplicationController@quali');
+    
     Route::get('/myaccount/applicant/data/{id}','ApplicationController@show');
-    Route::get('/myaccount/applications/remove/{id}','ApplicationController@destroy');
+    Route::get('/myaccount/applications/remove/{id}','ApplicationController@update');
     Route::get('/myaccount/applications/{id}','ApplicationController@index');
     Route::resource('/applications','ApplicationController');
 
