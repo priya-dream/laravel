@@ -5,8 +5,9 @@ use App\User;
 use DB;
 use View;
 use Illuminate\Http\Request;
-use validator;
+use Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -45,9 +46,10 @@ class UserController extends Controller
         return view('companies.test');
     }
 
-    public function log()
+    public function log($id)
     {
-        return view('users.log');
+        alert ($id);
+       // return view('users.log');
     }
 
     public function logout()
@@ -101,6 +103,25 @@ class UserController extends Controller
         else
         return redirect('/join')->with('error','Invalid login details !!');
 
+    }
+    public function update(Request $request,$id){
+        // $data = $request->all();
+        // $this->validate($request, [
+        //     'password'     => 'required',
+        //     'new_pw'     => 'required|min:6',
+        //     'confirm_pw' => 'required|same:new_pw',
+        // ]);
+        $result=DB::table('companies')->select('password')->where('id',$id)->first();
+        $username=$request->input('username');
+        $pw=$request->input('password');
+        $new_pw=$request->input('new_pw');
+        $confirm_pw=$request->input('confirm_pw');
+        if($pw==$result->password){
+        DB::update('update companies set username=?,password=? where id=?',[$username,$confirm_pw,$id]);
+        return redirect("/company/log/$id")->with('success','password is changed.');
+        }else{
+            return redirect("/company/log/$id")->with('error','current password is wrong !');
+        }
     }
 
 

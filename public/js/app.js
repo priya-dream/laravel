@@ -3,6 +3,14 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+	function btn(){
+        document.getElementById('more-data').style.display="inline";
+    }
+	function change(){
+        document.getElementById('loading_icon').style.display="inline";
+    }
+ 
+ 
 		var Btn=document.querySelector('.view-button');
 		var Quali=document.querySelector('.quali');
 		if(Btn){

@@ -18,6 +18,12 @@ class CompanyController extends Controller
         
         return view ('companies.login');
     }
+    public function log(Company $company, $id)
+    {
+        $result=DB::table('companies')->select('*')->where('id',$id)->first();
+        
+        return view ('companies.log',compact('result','id'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -38,15 +44,10 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-        $this->validate($request,[
-            //'name' => 'required',
-            // 'address' => 'required'
-            // 'ceo' => 'required',
-            // 'mobile'=>'required',
-            // 'email'=>'required',
-            //'username'=>'required',
-            //'password'=>'required',
-            //'confirm_password'=>'required',
+        $this->validate($request, [
+            'username' => 'required|min:3|max:50',
+            'email' => 'email',
+            'password' => 'required|confirmed|min:6',
         ]);
 
         $company = new Company;
@@ -121,18 +122,17 @@ class CompanyController extends Controller
      */
     public function update(Request $request)
     {
-         $id=$request->input('pk');
-         return $id;
-    //     if($request->ajax()){
-    //         Company::find($request->input('pk'))->update([$request->input('name') => $request->input('value')]);
-    //      return response()->json(['success' => true]);
-    //  }
-    //     $this->validate($request,[
-    //         'name' => 'required'
-    //     ]);
-    //         $company = Company::find($id);
-    //        $company->name = $request->name;
-    //        $company->save();
+         //return 'hi';
+        if($request->ajax()){
+            Company::find($request->input('pk'))->update([$request->input('name') => $request->input('value')]);
+         return response()->json(['success' => true]);
+     }
+        $this->validate($request,[
+            'name' => 'required'
+        ]);
+            $company = Company::find($id);
+           $company->name = $request->name;
+           $company->save();
 
            //return redirect()->route('company.index')->with('success','company successfully updated ');
         

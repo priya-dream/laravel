@@ -13457,6 +13457,7 @@ select.tt-hint {
       .table thead th i {
         margin-left: 0.325rem; }
   .table th{
+	color:#00008B;
 	text-align:center;
 	vertical-align: middle;
     font-size: 1.0rem;
@@ -13464,16 +13465,17 @@ select.tt-hint {
     white-space: nowrap;
     padding: 14px 0 14px 15px;}
   .table td {
+	color:#00008B; 
 	text-align:center;
     vertical-align: middle;
-    font-size: 1.0rem;
+    font-size: 1rem;
     line-height: 1;
     white-space: nowrap;
     padding: 10px 0 10px 20px; }
     .table th img,
     .table td img {
-      width: 30px;
-      height: 29px;
+      width: 40px;
+      height: 30px;
       border-radius: 100%; }
     .table th .badge,
     .table td .badge {
@@ -15967,5 +15969,13 @@ color:#000;}
 	color:#00008B;
 	font-size:24px;
 	margin-left:100px;}
+#more-data{
+display:none;}
+.log-image{
+	width:170px;
+	height:150px;
+	margin-left:200px;}
+#loading_icon{
+	display:none;}
 
 /*# sourceMappingURL=style.css.map */

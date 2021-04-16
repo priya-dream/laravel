@@ -77,16 +77,17 @@ Route::resource('contacts','ContactController');
 
 
     Route::post('/join/store', 'UserController@store');
-    Route::post('checklogin', 'PageController@checklogin');
-    Route::get('successlogin', 'PageController@successlogin');
-    Route::get('/join/logout', 'UserController@logout');
-    Route::get('/user/log', 'UserController@log');
+    // Route::post('checklogin', 'PageController@checklogin');
+    // Route::get('successlogin', 'PageController@successlogin');
+    Route::post('/user/change/{id}', 'UserController@update');
+    // Route::get('/user/log/{id}', 'UserController@log');
     Route::resource('user', 'UserController');
     
     Route::post('company/detail/update','CompanyController@update');
     Route::post('/login/verify', 'CompanyController@verify');
     Route::get('/login/create', 'CompanyController@create');
     Route::get('company/login','CompanyController@index');
+    Route::get('company/log/{id}','CompanyController@log');
     Route::resource('company', 'CompanyController');
 
     Route::get('/post/view/{id}','PostController@show');
