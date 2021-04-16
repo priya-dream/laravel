@@ -61,7 +61,8 @@ Route::resource('contacts','ContactController');
 
     
     Route::get('/myaccount/applicant/data/{id}','ApplicationController@show');
-    Route::get('/myaccount/applications/remove/{id}','ApplicationController@update');
+    Route::get('/myaccount/application/accept/{id}','ApplicationController@accept');
+    Route::get('/myaccount/application/remove/{id}','ApplicationController@update');
     Route::get('/myaccount/applications/{id}','ApplicationController@index');
     Route::resource('/applications','ApplicationController');
 

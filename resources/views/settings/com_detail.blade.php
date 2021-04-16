@@ -1,51 +1,31 @@
 @extends('layouts.master.page')
-<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
 
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 @section('content')
-
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 <div class="main-panel">
     <div class="page-title">Company Details</div></br>
     @foreach($company as $com)
-    <table class='table'><tr>
-        <th>Name</th>
-        <td><a href="#" class="xedit" data-pk="{{$com->id}}" data-name="name">{{$com->name}}</a></td></tr><tr>
-        <th>Address</th>
-        <td>{{$com->address}}</td>
-        <td><a href="" class="btn button">Change</a></td></tr><tr>
-        <th>CEO of the company</th>
-        <td>{{$com->CEO}}</td>
-        <td><a href="" class="btn button">Change</a></td></tr><tr>
-        <th>Contact Number</th>
-        <td>{{$com->mobile}}</td>
-        <td><a href="" class="btn button">Change</a></td></tr><tr>
-        <th>Email Address</th>
-        <td>{{$com->email}}</td>
-        <td><a href="" class="btn button">Change</a></td></tr><tr>
-        <th class="a">Company Logo</th>
-        <td><img src="{{asset('images/'.$com->logo)}}" width="150px" height="150px"></td>
-        <td><a href="" class="btn button">Change</a></td></tr>
+    <table><tr>
+    <td>Name : </td>
+    <td><a href="#" id="name" data-type="text" data-pk="{{$com->id}}" data-url="/company/detail/update" data-title="Enter username">{{$com->name}}</a></td></tr>
     </table>
     @endforeach
 </div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
-
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script> 
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 <script>
-		$(document).ready(function () {
-            $('.a').css('color','red');
-	            $.ajaxSetup({
-	                headers: {
-	                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-	                }
-	            });
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+	$.fn.editable.defaults.mode = 'inline';
+    $(document).ready(function() {
+    $('#name').editable();
+    });
 
-	            $('.xedit').editable({
-	                url: '{{url("company/detail/update")}}',
-	                title: 'Update',
-	                success: function (response, newValue) {
-	                    console.log('Updated', response)
-	                }
-	            });
-
-	    })
 </script>
 @stop

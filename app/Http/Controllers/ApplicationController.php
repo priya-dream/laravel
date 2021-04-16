@@ -82,26 +82,8 @@ class ApplicationController extends Controller
         ->select('applications.*')
         ->where('post_id',$id)
         ->get();
-        foreach($apps1 as $app){
-            $emp=DB::table('employees')
-            ->join('applications','applications.emp_id','=','employees.id')
-            ->select('employees.*')
-            ->where('employees.id',$app->id)->get();
-        }
             $quali=DB::table('employee_qualification')->select('*')->get();
-        
-
-        
-        //return $apps;
-        // foreach($apps as $app){
-        //     $quali=DB::table('employee_qualification')
-        //     ->join('employees','employees.id','=','employee_qualification.emp_id')
-        //     ->join('applications','applications.emp_id','=','employee_qualification.emp_id')
-        //     ->select('employees.*')
-        //     ->where('applications.id',$app->id)
-        //     ->get();
-        //}
-        return view('settings.emp_data',compact('apps','quali','emps','apps1'));
+        return view('settings.emp_data',compact('apps','quali','emps','id','apps1'));
     }
     
 
@@ -115,6 +97,10 @@ class ApplicationController extends Controller
     {
         //
     }
+    public function accept($id)
+    {
+        
+    }
 
     /**
      * Update the specified resource in storage.
@@ -125,7 +111,9 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //DB::update('update applications set status=? where emp_id=?',[$need,$closing_date,$post->id]);
+        $post=DB::table('applications')->select('post_id')->where('id',$id)->first();
+        DB::update('update applications set status=? where id=?',[0,$id]);
+        return redirect("myaccount/applicant/data/$post->post_id");
     }
 
     /**

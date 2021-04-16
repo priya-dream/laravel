@@ -119,20 +119,22 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        if($request->ajax()){
-            Company::find($request->input('pk'))->update([$request->input('name') => $request->input('value')]);
-         return response()->json(['success' => true]);
-     }
-        $this->validate($request,[
-            'name' => 'required'
-        ]);
-            $company = Company::find($id);
-           $company->name = $request->name;
-           $company->save();
+         $id=$request->input('pk');
+         return $id;
+    //     if($request->ajax()){
+    //         Company::find($request->input('pk'))->update([$request->input('name') => $request->input('value')]);
+    //      return response()->json(['success' => true]);
+    //  }
+    //     $this->validate($request,[
+    //         'name' => 'required'
+    //     ]);
+    //         $company = Company::find($id);
+    //        $company->name = $request->name;
+    //        $company->save();
 
-           return redirect()->route('company.index')->with('success','company successfully updated ');
+           //return redirect()->route('company.index')->with('success','company successfully updated ');
         
     }
 

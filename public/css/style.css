@@ -10336,7 +10336,8 @@ a.text-dark:hover, a.text-dark:focus {
   color: #343a40 !important; }
 .sub-text{
 	color:#fff;
-	font-size:16px;}
+	font-size:16px;
+	font-weight:bold;}
 .sub-texts{
 	color:#00008B;
 	font-size:20px;}

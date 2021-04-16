@@ -59,25 +59,40 @@
                     
                 <td>
                 <table><tr><td>
-                    <a class="show-detail" href=""><img src="{{url('images/check-tick.png')}}" style="width:40px;height:40px"><i >call to interview</i></a></td><td>
-                    <a class="show-detail" onclick="return confirm('Are you sure want to remove this application?')" href="{{url('myaccount/applications/remove',$app->emp_id)}}"><img src="{{url('images/wrong-tick.png')}}" style="width:40px;height:40px"><i>Remove/Reject</i></a></td></tr></table>
+                @foreach($apps1 as $apps)
+                    @if($apps->emp_id==$app->emp_id)     
+                    <button class="show-detail view-button"><img src="{{url('images/check-tick.png')}}" style="width:40px;height:40px"><i >call to interview</i></button></td><td>
+                    <a class="show-detail" onclick="return confirm('Are you sure want to remove this application?')" href="{{url('myaccount/application/remove',$apps->id)}}"><img src="{{url('images/wrong-tick.png')}}" style="width:40px;height:40px"><i>Remove/Reject</i></a></td></tr></table>
+                    @endif
+                @endforeach
                 </td>
             </tr>
             <?php $n+=1; ?>
         @endforeach 
     </table>
 
-
+    <div class="quali">
+        <div class="emp-data">
+            <div class="close-data">x</div> 
+            <div>date</div><input type="text">
+            <button type="submit">send</button>
+        </div>
+    </div> 
     
     </div>
     <script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js')}}" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
     <script>
-   function ShowModal(id)
-{
-  var modal = document.getElementById(id);
-  modal.style.display = "block";
-}
-}
+   var Btn=document.querySelector('.view-button');
+    var Quali=document.querySelector('.quali');
+    var Close=document.querySelector('.close-data');
+    if(Btn){
+    Btn.addEventListener('click',function(){               
+        Quali.classList.add('active');
+    });}
+    if(Btn){
+    Close.addEventListener('click',function(){
+        Quali.classList.remove('active');
+	});}
 </script>
     @stop
