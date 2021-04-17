@@ -36,8 +36,8 @@
                 <input type="text" class="form-control" name="email" placeholder="Email" required />
               </div>
               <div class="form-group">
-                <label class=col>Upload the company logo</label>
-                <input type="file" class="form-control" name="logo" required />
+                <label class=col>Upload the company logo</label></br>
+                <input type="file" name="logo" required />
               </div>
         </div>
       </div>

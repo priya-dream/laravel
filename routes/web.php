@@ -57,6 +57,7 @@ Route::resource('contacts','ContactController');
     Route::resource('/resume', 'EmployeeController');
 
     Route::post('/admin/verify','AdminController@verify');
+    Route::get('/admin/dashboard','AdminController@dashboard');
     Route::resource('/admin','AdminController');
 
     

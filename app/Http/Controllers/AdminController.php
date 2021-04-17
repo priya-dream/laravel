@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,8 +13,40 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin');
     }
+    public function dashboard()
+    {
+        $data1 = DB::table('posts')
+            ->join('companies','companies.id','=','posts.company_id')
+           ->select(
+            DB::raw('name as name'),
+            DB::raw('count(*) as num'))
+            ->where('posts.status',1)
+           ->groupBy('name')
+           ->get();
+           $array1[] = ['Name', 'Num'];
+           foreach($data1 as $ke => $val)
+        {
+          $array1[++$ke] = [$val->name, $val->num];
+        }
+        $data = DB::table('posts')
+            ->join('vacancies','vacancies.id','=','posts.vacancy_id')
+           ->select(
+            DB::raw('title as title'),
+            DB::raw('count(*) as number'))
+            ->where('status',1)
+           ->groupBy('title')
+           ->get();
+        $array[] = ['Title', 'Number'];
+        foreach($data as $key => $value)
+        {
+          $array[++$key] = [$value->title, $value->number];
+        }
+        return view('admin.dashboard')->with('title',json_encode($array));
+    }
+        
+    
 
     /**
      * Show the form for creating a new resource.

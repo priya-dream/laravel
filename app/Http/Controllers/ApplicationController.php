@@ -18,6 +18,7 @@ class ApplicationController extends Controller
         ->join('applications','applications.post_id','=','posts.id')
         ->join('companies','companies.id','=','posts.company_id')
         ->select('applications.*')
+        ->where('applications.status',1)
         ->get();
         
         $results=DB::table('applications')
@@ -32,6 +33,7 @@ class ApplicationController extends Controller
         ->join('posts','posts.vacancy_id','=','vacancies.id')
         ->select('vacancies.title','posts.*')
         ->where('posts.company_id',$id)
+        ->where('status',1)
         ->get();
         $num=count($results);
         return view('settings.application',compact('results','num','vacancy','data'));

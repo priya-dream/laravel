@@ -5,23 +5,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>DFC-JOB BANK</title>
-    @include('layouts.master.head')
+    <link rel="stylesheet" href="{{asset('css/style.css')}}" /> 
+    <link rel="stylesheet" href="{{asset('vendors/mdi/css/materialdesignicons.min.css')}}" />
    </head>
   <body> 
 
-<div class="header">
-  <span><img class="logo-image" src="{{asset('/images/dfc-logo.png')}}"> JOBS</span>
-  <span style="margin-left:100px">
-    <select class="btn btn-secondary">
-        <option><a href="#">English</a></option>
-        <option><a class="btn btn-success" href='/post'>Tamil</a></option>
-        <option><a href="#">Sinhala</a></option>
-    </select>
-  </span>
-  <a style="margin-left:150px;font-size:20px;" href="{{ url('/company/login') }}" class="btn btn-success">POST JOB</a>
-  <span class=" login mdi mdi-account"><a class="login-btn" href="{{url('/myaccount')}}">Login</button></a>
-  <span style="margin-left:100px" class="mdi mdi-account-star"><button style="background-color:white;font-size:25px" class="modal-btn">Admin</button></span>
-</div>
+  <div class="header">
+    <span><img class="logo-image" src="{{asset('/images/dfc-logo.png')}}"> JOBS</span>
+    <span style="margin-left:100px">
+      <select class="btn btn-secondary">
+          <option><a href="#">English</a></option>
+          <option><a class="btn btn-success" href='/post'>Tamil</a></option>
+          <option><a href="#">Sinhala</a></option>
+      </select>
+    </span>
+    <a style="margin-left:150px;font-size:20px;" href="{{ url('/company/login') }}" class="btn btn-success">POST JOB</a>
+    <span class=" login mdi mdi-account"><a class="login-btn" href="{{url('/myaccount')}}">Login</button></a>
+    <span style="margin-left:100px" class="mdi mdi-account-star"><button style="background-color:white;font-size:25px" class="modal-btn">Admin</button></span>
+  </div>
 
       <div class="container-scroller">
     <!-- @include('layouts.master.sidebar') -->
@@ -45,14 +46,18 @@
           <form action="{{url('/admin/verify')}}" method="POST">
           {{csrf_field()}}
             <div class="close-admin">+</div>
-            <img src="{{asset('images/admin-login.png')}}" width="100px" height="100px" style="margin-top:20px"></br></br>
-            <h5>username : <input class="form-group" type="text" placeholder="username" name=username></h5>
-            <h5>password : <input class="form-group" type="text" placeholder="password" name="password"></h5>
-            <h5><button type="submit" class="btn btn-primary">login</button></h5>
+            <img src="{{asset('images/admin-login.png')}}" width="100px" height="100px" style="margin-top:10px"></br></br>
+              <lable style="color:#6f2674">username</label></br>
+              <input class="form-control input1 admin-login" type="text" placeholder="username" name=username required/>
+              <lable style="color:#6f2674">password</label></br>
+              <input class="form-control input1 admin-login" type="text" placeholder="password" name="password" required/></br>
+              <button type="submit" class="btn btn-primary">login</button>
+              
+           
           </form>
       </div>
     </div>
-    <div class="my-login">
+    <!-- <div class="my-login">
       <div class="modal-admin">
         <form action="" method="POST">
           <h5>username : <input class="input" type="text" placeholder="username" name=username></h5>
@@ -60,7 +65,7 @@
           <h5><button type="submit" class="btn btn-primary">login</button></h5>
         </form>
       </div>
-    </div>
+    </div> -->
     <script>
       var modalBtn=document.querySelector('.modal-btn');
 	    var modalBg=document.querySelector('.modal-bg');

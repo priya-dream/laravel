@@ -4201,7 +4201,7 @@ fieldset:disabled .ajax-upload-dragdrop a.ajax-file-upload,
   color: #fff;
   width:135px;
   height:40px;
-  background-color: #F4A460;
+  background-color: #f4a460;
   border-color: #F4A460; }
   .btn-success:hover {
     color: #fff;
@@ -6056,6 +6056,7 @@ input[type="button"].btn-block {
   -ms-flex-direction: column;
   flex-direction: column;
   min-width: 0;
+  width:1000px;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
@@ -10576,7 +10577,8 @@ input[type=button]::-moz-focus-inner,
 input[type=submit]::-moz-focus-inner,
 input[type=file] > input[type=button]::-moz-focus-inner,
 select::-moz-focus-inner {
-  outline: 0; }
+  outline: 0;
+	border:none;  }
 
 input, .form-control:focus, .select2-container--default .select2-selection--single:focus, .select2-container--default .select2-selection--single .select2-search__field:focus, .typeahead:focus,
 .tt-query:focus,
@@ -12516,10 +12518,13 @@ color:#ffffff;}
 select.form-control, .select2-container--default select.select2-selection--single, .select2-container--default .select2-selection--single select.select2-search__field, select.typeahead,
 select.tt-query,
 select.tt-hint {
+	width:350px;
+	height:45px;
+	color:#394286;
+	font-size:15px;
   padding: 0.4375rem 0.75rem;
   border: 0;
   outline: 1px solid #ebedf2;
-  color: #394286;
 -webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%);  }
   select.form-control:focus, .select2-container--default select.select2-selection--single:focus, .select2-container--default .select2-selection--single select.select2-search__field:focus, select.typeahead:focus,
   select.tt-query:focus,
@@ -13468,7 +13473,7 @@ select.tt-hint {
 	color:#00008B; 
 	text-align:center;
     vertical-align: middle;
-    font-size: 1rem;
+    font-size: 1.0rem;
     line-height: 1;
     white-space: nowrap;
     padding: 10px 0 10px 20px; }
@@ -15332,10 +15337,10 @@ font-size:16px; 	}
 	}
 	.admin-header{
 		width:1600px;
-		height:100px;
-		background-color:#8B008B;
+		height:70px;
+		background-color:#998099;
 		color:white;
-		font-size:50px;
+		font-size:40px;
 		position:absolute;
 		padding-left:280px;
 	}
@@ -15977,5 +15982,14 @@ display:none;}
 	margin-left:200px;}
 #loading_icon{
 	display:none;}
+.admin-login{
+	margin-top:10px;
+	width:300px;
+	margin-left:35px;
+	color:#394286;}
+.box{
+		width:800px;
+		margin:0 auto;
+	}
 
 /*# sourceMappingURL=style.css.map */

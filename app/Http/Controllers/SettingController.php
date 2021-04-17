@@ -40,6 +40,7 @@ class SettingController extends Controller
         ->join('vacancies','vacancies.id','=','posts.vacancy_id')
         ->select('posts.*','vacancies.title')
         ->where('companies.id',$id)
+        ->where('posts.status',1)
         ->get();
         return view('settings.post',compact('results'));
     

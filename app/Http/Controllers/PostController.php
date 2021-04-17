@@ -22,7 +22,7 @@ class PostController extends Controller
         $company=DB::table('companies')->select('name','id','logo')->get(); 
         $vacancy=DB::table('vacancies')->select('title','id')->get();
         $data=DB::table('vacancy_qualification')->first();
-        $emps=DB::table('applications')->select('*')->get();
+        $emps=DB::table('applications')->select('*')->where('status',1)->get();
         
         
       return view('vacancies.index')->with(compact('results','company','vacancy','data','emps'));

@@ -26,7 +26,7 @@
             <div class="col-md-6">
                 <label class="col">Title Of Job</label>
                 <select class="js-example-basic-single form-control dropdown-selection1" name="title" required/>
-                    <option value="">Select vacancy type.... </option>
+                    <option value="" style="color:black;">Select vacancy type.... </option>
                         @foreach ($vacancies as $list) 
                             {
                                 <option value="{{ $list->title }}">{{ $list->title }}</option>
@@ -65,7 +65,7 @@
                         <table><tr><td>
                         <label class=col>Graduation</label>
                         <select class="form-control dropdown-selection2"  name="grad" required/>
-                            <option value="">Wanted graduation...</option>
+                            <option value="" style="color:#000">Wanted graduation...</option>
                             @foreach ($graduations as $grad => $key)
                                     <option>{{ $key }}</option>
                             @endforeach
@@ -109,7 +109,7 @@
                 <div class="form-group">
                     <table><tr><td>
                     <label class="col">Needed Employee</label>
-                        <input type="number" min="1" placeholder="select needed No of employee" name="need" class="form-control dropdown-selection2" required/>
+                        <input type="number" min="1" placeholder="No of needed employee" name="need" class="form-control dropdown-selection2" required/>
                         </td><td></td><td></td><td></td><td></td><td>
                     <label class="col">Experience</label>
                         <input type="text" placeholder="experience" name="experience" class="form-control dropdown-selection2" required/>

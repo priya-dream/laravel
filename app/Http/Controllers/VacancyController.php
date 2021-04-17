@@ -9,14 +9,12 @@ use Illuminate\Http\Request;
 class VacancyController extends Controller
 {
     public function index()
-    { 
-        $pages = Vacancy::latest()->paginate(2);
-        $results= DB::table('vacancies')->get();
-        // foreach($result as $res){
-            //return $result->img;
-        // }
+    {
         
-      return view ('vacancies.add_new',compact('results','pages'));
+        $results= DB::table('vacancies')->orderby('title')->paginate(10);
+
+        
+      return view ('vacancies.add_new',compact('results'));
     }
     public function type()
     { 
@@ -31,6 +29,7 @@ class VacancyController extends Controller
     
     public function store(Request $request)
     {
+        
         $this->validate($request,[
             'title'=>'required',
             'img'=>'required'
@@ -40,7 +39,7 @@ class VacancyController extends Controller
         $vacancy->img=$request->img;
         $vacancy->save();
         //return $vacancy->img;
-        return  redirect('/vacancies')->with('success','Added successfully');
+        return  redirect('/vacancies')->with('success','New job type Added :)');
     }
 
     public function show(Vacancy $vacancy)

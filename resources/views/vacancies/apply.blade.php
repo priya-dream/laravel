@@ -99,7 +99,7 @@
                     <option>Agreeculture</option>
                 </select></td><td></td><td></td><td></td><td></td><td>
                 <label class=col>Recognized University</label>
-                <select class="form-control dropdown-selection" name="uni" style="height:40px;font-size:15px"">
+                <select class="form-control dropdown-selection" placeholder="hi" name="uni" style="height:40px;font-size:15px"">
                     <option value="">Select recognized university...</option>
                     <option>University Of Jaffna</option>
                     <option>University Of Colombo</option>
