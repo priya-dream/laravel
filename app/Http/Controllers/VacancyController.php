@@ -9,17 +9,12 @@ use Illuminate\Http\Request;
 class VacancyController extends Controller
 {
     public function index()
-    {
-        
-        $results= DB::table('vacancies')->orderby('title')->paginate(10);
-
-        
-      return view ('vacancies.add_new',compact('results'));
-    }
-    public function type()
     { 
-      return view ('vacancies.type');
+        $results= DB::table('vacancies')->orderby('title')->paginate(10);   
+        return view ('vacancies.add_new',compact('results'))
+        ->with('i', (request()->input('page', 1) - 1) * 10);
     }
+
 
     public function create()
     {
@@ -55,7 +50,12 @@ class VacancyController extends Controller
     public function apply($id)
     {
         $posts=DB::table('posts')->select('id')->where('id',$id)->get();
-        return view('vacancies.apply',compact('posts'));
+        $advances=['Qualified','Not Qualified'];
+        $streams=['Physical Science(Maths)','Biological Science','Commerce','Arts','Technology','Any'];
+        $graduations=['Diploma','Higher Diploma','Degree','Master Degree'];
+        $fields=['Engineering','Accounting','Teaching','Law','Electrical','Nursing','Media','Human Resource Management','Marketing','Management','Architecture','Infomation Technology','Computer Science','English','Software Engineering','Physical Science','Bio Science','Agriculture','Any'];
+        $gender=['Male','Female','Any'];
+        return view('vacancies.apply',compact('posts','advances','streams','graduations','fields','gender'));
     }
 
     public function update(Request $request, Vacancy $vacancy)

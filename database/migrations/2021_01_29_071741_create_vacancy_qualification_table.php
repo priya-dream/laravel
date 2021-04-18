@@ -25,7 +25,7 @@ class CreateVacancyQualificationTable extends Migration
             $table->text('gender');
             $table->text('age');
             $table->text('experience');
-            $table->float('salary');
+            $table->text('salary');
             $table->text('branch');
             $table->timestamps();
             $table->foreign('vacancy_id')->references('id')->on('vacancies')->ondelete('cascade');

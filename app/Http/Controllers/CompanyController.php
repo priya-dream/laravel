@@ -100,7 +100,7 @@ class CompanyController extends Controller
         $advances=['Need','Not Necessary'];
         $streams=['Physical Science(Maths)','Biological Science','Commerce','Arts','Technology','Any'];
         $graduations=['Diploma','Higher Diploma','Degree','Master Degree'];
-        $fields=['Infomation Technology','Computer Science','English','Software Engineering','Physical Science','Bio Science','Agriculture','Any'];
+        $fields=['Engineering','Accounting','Teaching','Law','Electrical','Nursing','Media','Human Resource Management','Marketing','Management','Architecture','Infomation Technology','Computer Science','English','Software Engineering','Physical Science','Bio Science','Agriculture','Any'];
         $gender=['Male','Female','Any'];
         $vacancies= DB::table('vacancies')->select('title')->orderBy('title')->get();
         

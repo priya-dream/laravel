@@ -14,42 +14,58 @@
     @endif </br></br> </br>
 </div>
 <div style="margin-top:20px" class="input-group">
-<form action="{{url('/search')}}" method="get">
-<input type="search" name="query" class="search" placeholder="Search" />
-<button type="submit" class="search-button mdi mdi-magnify"></button>
-</form>
-    <?php $i=1; ?>
+    <form action="{{url('/search')}}" method="get">
+        <input type="search" name="query" class="search" placeholder="Search" />
+        <button type="submit" class="search-button mdi mdi-magnify"></button>
+    </form>
+            <?php $i=1; ?>
     <table style="margin-top:30px;margin-left:90px">
-        <tr>     
         @foreach ($posts as $post)
-            <td>
-                <span class="badge badge-danger text-white ml-3 rounded">{{$i}}</span>
-            </td><td></td><td></td>
-            <td class="card px-xl-6" style="width:425px;align-items:center;margin-top:20px"></br>
-                <div class="sub-text"><img src="{{asset('images/'.$post->logo)}}" width="120px" height="70px"></div>
-                <div><h4 class="sub-text">Designation : {{$post->title}}</h4></div>
-                <div><h4 class="sub-text">Company Name : {{$post->name}}</h4></div> 
-                <div><h4 class="sub-text">Closing Date : {{$post->closing_date}}</h4></div></br>
-                <div>
-                    <form action="" method="POST">
-                        <a class="btn btn-primary" href="{{url('/vacancy/apply')}}">Apply</a>
-                        <a class="btn btn-primary"  href="{{ url('/post/view',$post->id) }}">View</a>
-                            @csrf
-                            @method('DELETE')
-                            <!-- <button type="submit" class="btn btn-danger">Delete</button> -->
-                    </form>
-                </div>
-                </br>
-            </td>
-        <?php 
-            if($i%2==0){
-                echo '</tr><tr>';
-                $i++;}
-            else
-                $i++;
-        ?>   
-@endforeach
-</table>
-    </div>
+            <tr>     
+                <td>
+                    <span class="badge badge-danger text-white ml-3 rounded">{{$i}}</span>
+                </td><td></td><td></td>
+                <td class="card px-xl-6"> 
+                    <table><tr><td>
+                        <div style="padding-top:50px;padding-bottom:50px">
+                        <div style="margin-left:40px"><img src="{{asset('images/'.$post->logo)}}" width="200px" height="120px"></div>
+                        </td><td> 
+                            <?php $y=0; ?>
+                    @foreach($apps as $app)
+                        @if($app->post_id==$post->id)
+                            <?php $y=$y+1; ?>
+                        @endif
+                    @endforeach
+                    @if($y>0)
+                        <div class="num-circle">
+                            <a class="badge circle"><?php echo $y; ?>
+                            <p class="description">Applications</p></a>
+                        </div>
+                    @endif</br>
+                        <div><h4 class="sub-text">Designation : {{$post->title}}</h4></div>
+                        <div><h4 class="sub-text">Company Name : {{$post->name}}</h4></div>
+                        <div><h4 class="sub-text">Closing Date : {{$post->closing_date}}</h4></div></br>
+                        <div>
+                            <form action="" method="POST">  
+                                    {{csrf_field()}}                                                                                  
+                                <a class="btn btn-primary" href="{{url('/vacancy/apply',$post->id)}}">Apply</a>
+                                <a class="btn btn-primary"  href="{{ url('/post/view',$post->id) }}">View</a>
+                            </form>
+                        </div>
+                        @if( \Carbon\Carbon::parse($post->created_at)->diffInMinutes(\Carbon\Carbon::now()) <60)
+                            <div class="duration">{{\Carbon\Carbon::parse($post->created_at)->diffInMinutes(\Carbon\Carbon::now())}} minutes ago</div>
+                        @else
+                            @if( \Carbon\Carbon::parse($post->created_at)->diffInHours(\Carbon\Carbon::now()) <24)
+                                <div class="duration">{{\Carbon\Carbon::parse($post->created_at)->diffInHours(\Carbon\Carbon::now())}} hours ago</div>
+                            @else
+                                <div class="duration">{{\Carbon\Carbon::parse($post->created_at)->diffInDays(\Carbon\Carbon::now())}} days ago</div>
+                            @endif
+                        @endif
+                </div></td></tr></table>
+                </td>
+                    <?php $i++; ?> 
+            </tr>
+        @endforeach
+    </table>
 </div>
 @stop

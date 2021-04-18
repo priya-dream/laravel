@@ -48,9 +48,9 @@
             <div class="close-admin">+</div>
             <img src="{{asset('images/admin-login.png')}}" width="100px" height="100px" style="margin-top:10px"></br></br>
               <lable style="color:#6f2674">username</label></br>
-              <input class="form-control input1 admin-login" type="text" placeholder="username" name=username required/>
+              <input class="form-control admin-login" type="text" placeholder="username" name=username required/>
               <lable style="color:#6f2674">password</label></br>
-              <input class="form-control input1 admin-login" type="text" placeholder="password" name="password" required/></br>
+              <input class="form-control admin-login" type="text" placeholder="password" name="password" required/></br>
               <button type="submit" class="btn btn-primary">login</button>
               
            

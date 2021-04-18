@@ -1,9 +1,10 @@
 @extends('admin')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 @section('content')
+<div class="main-panel">
         <div class="row">
         <table><tr>
-           <td> <div id="pie_chart" style="width:750px; height:450px;"></div></td>
+           <td> <div id="pie_chart" style="width:750px; height:400px;"></div></td>
            <td><div id="pie_chart1" style="width:750px; height:450px;"></div></td></tr></table>
         </div>
              
@@ -35,6 +36,6 @@
         
     </script>
 
-
+</div>
     
 @stop

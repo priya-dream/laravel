@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use View;
 use DB;
+use Carbon\Carbon;
 use Session;
 use App\Post;
 use Illuminate\Http\Request;
@@ -16,32 +17,34 @@ class PostController extends Controller
      */
     public function index()
     {
-        $date=date('y-m-d');
+        $date=date('y-m-d h:i:s');
         DB::table('posts')->where('closing_date','<=',$date)->update(['status'=>0]);
-        $results=DB::table('posts')->where('status',1)->get();
+        $results=DB::table('posts')->where('status',1)->orderby('id','DESC')->get();
         $company=DB::table('companies')->select('name','id','logo')->get(); 
         $vacancy=DB::table('vacancies')->select('title','id')->get();
         $data=DB::table('vacancy_qualification')->first();
         $emps=DB::table('applications')->select('*')->where('status',1)->get();
+        $now = Carbon::now();
+        // $start=Carbon::parse($date)->diffInHours(Carbon::parse($now));
         
-        
-      return view('vacancies.index')->with(compact('results','company','vacancy','data','emps'));
+      return view('vacancies.index')->with(compact('results','company','vacancy','data','emps','now'));
     
     }
 
     public function search(){
+        $apps=DB::table('applications')->select('*')->where('status',1)->get();
         $search_text=$_GET['query'];
         $posts=DB::table('posts')
         ->join('vacancies','vacancies.id','=','posts.vacancy_id')
         ->join('companies','companies.id','=','posts.company_id')
-        ->select('posts.*','vacancies.*','companies.*')
+        ->select('posts.*','vacancies.title','companies.name','companies.logo')
         ->where('vacancies.title','LIKE','%'.$search_text.'%')
         ->where('posts.status',1)
         ->get();
         if(count($posts) === 0){
             return view('vacancies.search',compact('posts'))->with('nothing','No results');
         }else{
-        return view('vacancies.search',compact('posts'));}
+        return view('vacancies.search',compact('posts','apps'));}
     
     }
 
@@ -83,7 +86,7 @@ class PostController extends Controller
         //return $company_id->id;
         $post=DB::table('posts')
         ->join('vacancy_qualification','vacancy_qualification.id','posts.quali_id')
-        ->select('*')
+        ->select('posts.*')
         ->where('posts.company_id',$company_id->id)
         ->where('posts.vacancy_id',$vacancy_id->id)
         ->where('vacancy_qualification.branch',$branch)
@@ -92,15 +95,20 @@ class PostController extends Controller
          DB::Insert('insert into vacancy_qualification(id,vacancy_id,company_id,advance_level,stream,graduate,field,gender,age,experience,salary,branch,other_quali) values(?,?,?,?,?,?,?,?,?,?,?,?,?)',[
              null,$vacancy_id->id,$company_id->id,$advance,$stream,$graduate,$field,$gender,$age,$exp,$salary,$branch,$other_quali
         ]);
+        $quali_id=DB::table('vacancy_qualification')->select('id')
+        ->where('vacancy_id',$vacancy_id->id)
+        ->where('company_id',$company_id->id)
+        ->first();
+        DB::Insert('insert into posts(id,vacancy_id,date,company_id,quali_id,need,closing_date) values(?,?,?,?,?,?,?)',[
+            null,$vacancy_id->id,$date,$company_id->id,$quali_id->id,$need,$closing_date
+        ]);
         }
         else{
             return redirect('/post')->with('suggestion','this type of job is already published by you under this branch');
         }
-        $quali_id=DB::table('vacancy_qualification')->select('id')->where('vacancy_id',$vacancy_id->id)->first();
         
-        DB::Insert('insert into posts(id,vacancy_id,date,company_id,quali_id,need,closing_date) values(?,?,?,?,?,?,?)',[
-            null,$vacancy_id->id,$date,$company_id->id,$quali_id->id,$need,$closing_date
-        ]);
+        
+        
             
         // $results=DB::table('posts')->get();
         return  redirect('/post')->with('success','Vacancy Published Successfully :)');
@@ -119,6 +127,7 @@ class PostController extends Controller
         ->join('vacancies','vacancies.id','=','posts.vacancy_id')
         ->join('companies','companies.id','=','posts.company_id')
         ->select('posts.*','vacancies.*','companies.*')
+        ->where('posts.id',$id)
         ->get();
         $datas=DB::table('vacancy_qualification')
         ->join('posts','posts.quali_id','=','vacancy_qualification.id')

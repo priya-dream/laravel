@@ -53,10 +53,10 @@
             </tr>
         </thead>
         <tbody>
-                <?php $i=1; ?>
+                
             @foreach($results as $result)
                 <tr>
-                    <th>{{$i}}</th>
+                    <th>{{ ++$i }}</th>
                     <td>{{$result->title}}</td>
                     <td><img src="{{asset('images/'.$result->img)}}"></td>
                     <td>
@@ -70,7 +70,6 @@
                         </div>
                     </td>
                 </tr>
-                <?php $i++; ?>
             @endforeach
         </tbody>
     </table>

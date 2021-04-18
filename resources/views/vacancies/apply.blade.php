@@ -1,8 +1,9 @@
 @extends('layouts.master.page')
+
 @section('content')
 <div class="main-panel">
 <div><h2 class="page-title">Job Application Form</h2></div><br/>
-    <form action="{{url('/employee/resume')}}" method="post" class="forms-sample">
+    <form action="{{url('/employee/resume')}}" method="post" class="forms-sample" id="form">
     {{csrf_field()}}
     @foreach($posts as $post)
       <div>
@@ -62,17 +63,17 @@
                 <label class=col><span class="error">*</span>A/L Qualification</label>
                 <select class="form-control dropdown-selection" name="al" style="height:40px;font-size:15px" required/>
                     <option value="">Select the status...</option>
-                    <option>Qualified</option>
-                    <option>Not Qualified</option>
+                    @foreach ($advances as $advance => $val)
+                    <option value="{{ $val }}">{{ $val }}</option>
+                    @endforeach
+                    
                 </select></td><td></td><td></td><td></td><td></td><td>
                 <label class=col><span class="error">*</span>Stream</label>
                 <select class="form-control dropdown-selection" name="stream" style="height:40px;font-size:15px" required/>
                     <option value="">Select stream...</option>
-                    <option>Physical Science(Maths)</option>
-                    <option>Biological Science</option>
-                    <option>Commerce</option>
-                    <option>Arts</option>
-                    <option>Technology</option>
+                    @foreach ($streams as $stream => $val)
+                    <option value="{{ $val }}">{{ $val }}</option>
+                    @endforeach
                 </select></td></tr></table>
             </div>
         </div>
@@ -82,21 +83,16 @@
                 <label class=col>Graduation</label>
                 <select class="form-control dropdown-selection" name="grad" style="height:40px;font-size:15px"">
                     <option value="">Select your top graduation...</option>
-                    <option>Diploma</option>
-                    <option>Higher Diploma</option>
-                    <option>Degree</option>
-                    <option>Master Degree</option>
+                    @foreach ($graduations as $graduation => $val)
+                    <option value="{{ $val }}">{{ $val }}</option>
+                    @endforeach
                 </select></td><td></td><td></td><td></td><td></td><td>
                 <label class=col>Field</label>
                 <select class="form-control dropdown-selection" name="subj" style="height:40px;font-size:15px"">
                     <option value="">Select the subject/field...</option>
-                    <option>Infomation Technology</option>
-                    <option>Computer Science</option>
-                    <option>English</option>
-                    <option>Software Engineering</option>
-                    <option>Physical Science</option>
-                    <option>Bio Science</option>
-                    <option>Agreeculture</option>
+                    @foreach ($fields as $field => $val)
+                    <option value="{{ $val }}">{{ $val }}</option>
+                    @endforeach
                 </select></td><td></td><td></td><td></td><td></td><td>
                 <label class=col>Recognized University</label>
                 <select class="form-control dropdown-selection" placeholder="hi" name="uni" style="height:40px;font-size:15px"">
@@ -129,9 +125,23 @@
     </div>
     </div>
     </div>
-    
     </form>
-   
 </div>
+
+<script>
+$(document).on('submit', '[id^=form]', function (e) {
+  e.preventDefault();
+  var data = $(this).serialize();
+  swal({
+      title: "Your application submitted successfully",
+      text: "Your application submitted successfully",
+      type: "success",
+      showCancelButton: true,
+  }).then(function () {
+      $('#form').submit();
+  });
+  return false;
+});
+</script>
 
 @stop
