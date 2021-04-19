@@ -5,6 +5,7 @@ use View;
 use DB;
 use Carbon\Carbon;
 use Session;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        //return view ('companies.test');
         $date=date('y-m-d h:i:s');
         DB::table('posts')->where('closing_date','<=',$date)->update(['status'=>0]);
         $results=DB::table('posts')->where('status',1)->orderby('id','DESC')->get();

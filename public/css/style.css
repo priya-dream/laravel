@@ -12503,7 +12503,7 @@ color:#ffffff;}
 .form-control, .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--single .select2-search__field, .typeahead,
 .tt-query,
 .tt-hint {
-	/* color:#394286; */
+	color:#394286;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
   border: 1px solid #ebedf2;
@@ -12524,7 +12524,7 @@ select.tt-query,
 select.tt-hint {
 	width:300px;
 	height:45px;
-	/* color:#394286; */
+	color:#394286;
 	font-size:16px;
   padding: 0.4375rem 0.75rem;
   border: 0;
@@ -15812,15 +15812,16 @@ color:#000;}
 	
 .circle {
 margin-top:10px;
-  margin-left:495px;
-  height: 32px;
-  width: 32px;
+  margin-left:525px;
+  height: 36px;
+  width: 36px;
   font-size:1.3rem;
   background-color: #20B2AA;
   border-radius: 50%;
   display: inline-block;
   position:relative;
   color:#fff;
+  padding-top:8px;
 }
 .show-detail i { display:none;}
 .show-detail:hover i{display:block;}

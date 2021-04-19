@@ -1,5 +1,6 @@
 @extends('layouts.master.page')
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.css">
 <link href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css')}}" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <div class="main-panel">
 <div class="page-title">Applicant Details</div></br>
@@ -62,7 +63,10 @@
                 @foreach($apps1 as $apps)
                     @if($apps->emp_id==$app->emp_id)     
                     <button class="show-detail view-button"><img src="{{url('images/check-tick.png')}}" style="width:40px;height:40px"><i >call to interview</i></button></td><td>
-                    <a class="show-detail" onclick="return confirm('Are you sure want to remove this application?')" href="{{url('myaccount/application/remove',$apps->id)}}"><img src="{{url('images/wrong-tick.png')}}" style="width:40px;height:40px"><i>Remove/Reject</i></a></td></tr></table>
+                    <form action="{{url('/myaccount/application/remove',$apps->id)}}" method="post" >
+                    @csrf
+                    <a href="" class="show-detail delete-confirm"  data-name="{{$apps->id}}"><img src="{{url('images/wrong-tick.png')}}" style="width:40px;height:40px"><i>Remove/Reject</i></a></td></tr></table>
+                    </form>
                     @endif
                 @endforeach
                 </td>
@@ -70,7 +74,7 @@
             <?php $n+=1; ?>
         @endforeach 
     </table>
-
+    {!! $list->links() !!}
     <div class="quali">
         <div class="emp-data">
             <div class="close-data">x</div> 
@@ -82,17 +86,49 @@
     </div>
     <script type="text/javascript"  src="{{asset('js/app.js')}}"></script>
     <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
-    <script>
-   var Btn=document.querySelector('.view-button');
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.js"></script>
+
+<script>
+    var Btn=document.querySelector('.view-button');
     var Quali=document.querySelector('.quali');
     var Close=document.querySelector('.close-data');
     if(Btn){
-    Btn.addEventListener('click',function(){               
-        Quali.classList.add('active');
-    });}
+        Btn.addEventListener('click',function(){               
+            Quali.classList.add('active');
+        });}
     if(Btn){
-    Close.addEventListener('click',function(){
-        Quali.classList.remove('active');
-	});}
+        Close.addEventListener('click',function(){
+            Quali.classList.remove('active');
+        });}
+</script>
+<script>
+   $('.delete-confirm').click(function(event) {
+      var form =  $(this).closest("form");
+      var name = $(this).data("name");
+      event.preventDefault();
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Do you want to remove this application?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: 'rgb(214 63 48)',
+        cancelButtonColor: 'rgb(51 127 221)',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+            'Deleted!',
+            'Application has been removed.',
+            'success'
+            ).then((result) => {
+            if (result.isConfirmed){
+                form.submit();
+            }
+        });
+        }
+    });   
+});
 </script>
     @stop

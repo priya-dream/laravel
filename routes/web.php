@@ -63,7 +63,7 @@ Route::resource('contacts','ContactController');
     
     Route::get('/myaccount/applicant/data/{id}','ApplicationController@show');
     Route::get('/myaccount/application/accept/{id}','ApplicationController@accept');
-    Route::get('/myaccount/application/remove/{id}','ApplicationController@update');
+    Route::post('/myaccount/application/remove/{id}','ApplicationController@update');
     Route::get('/myaccount/applications/{id}','ApplicationController@index');
     Route::resource('/applications','ApplicationController');
 
@@ -94,7 +94,7 @@ Route::resource('contacts','ContactController');
     Route::get('/post/view/{id}','PostController@show');
     Route::any('/list','PostController@store');
     Route::get('search', 'PostController@search');
-    Route::get('post/', 'PostController@index');
+    Route::get('/post', 'PostController@index');
     Route::resource('post/{id}', 'PostController');
 
     

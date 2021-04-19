@@ -1,6 +1,14 @@
 @extends('layouts.master.page')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.css">
 @section('content')
 <div>
+        @if($msg=Session::get('sweetalert'))
+        <script type="text/javascript">
+        Swal(
+            swal('Success!', '{{ $msg }}', 'success');
+        );
+        </script>
+        @endif
     @if ($error = Session::get('error'))
         <div class="alert alert-danger">
             <h4>{{ $error }}</h4>
@@ -45,6 +53,7 @@
                         <div style="margin-left:40px"><img src="{{asset('images/'.$com->logo)}}" width="200px" height="120px"></div>
                         @endif
                     @endforeach </td><td>
+                    <div style="margin-left:60px">
                         <?php $y=0; ?>
                     @foreach($emps as $emp)
                         @if($emp->post_id==$result->id)
@@ -70,16 +79,10 @@
                 <div><h4 class="sub-text">Closing Date : {{$result->closing_date}}</h4></div></br>
                 <div>
                     <form action="" method="POST">  
-                            {{csrf_field()}}                                                                                  
-                        <!-- @foreach($company as $com)
-                      @foreach ($vacancy as $vac)
-                      @if($data->vacancy_id==$vac->id and $data->company_id==$com->id) -->
-                      <a class="btn btn-primary" href="{{url('/vacancy/apply',$result->id)}}">Apply</a>
-                      
-                      <a class="btn btn-primary"  href="{{ url('/post/view',$result->id) }}">View</a>
-                   <!-- @endif
-                   @endforeach
-                   @endforeach --></form>
+                            {{csrf_field()}} 
+                      <a class="btn btn-primary" style="margin-left:60px"  href="{{url('/vacancy/apply',$result->id)}}">Apply</a>
+                      <a class="btn btn-primary" style="margin-left:10px"  href="{{ url('/post/view',$result->id) }}">View</a>
+                   </form>
                 </div>
                     @if( \Carbon\Carbon::parse($result->created_at)->diffInMinutes(\Carbon\Carbon::now()) <60)
                         <div class="duration">{{\Carbon\Carbon::parse($result->created_at)->diffInMinutes(\Carbon\Carbon::now())}} minutes ago</div>
@@ -90,12 +93,15 @@
                             <div class="duration">{{\Carbon\Carbon::parse($result->created_at)->diffInDays(\Carbon\Carbon::now())}} days ago</div>
                         @endif
                     @endif
-                </div></td></tr></table>
+                </div></div></td></tr></table>
             </td>
                 <?php $i++; ?>    
         </tr>
         @endforeach
     </table>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.js"></script>
+
 
 @stop

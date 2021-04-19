@@ -63,7 +63,7 @@
                         <div>
                             <form action="" method="POST">
                                 {{csrf_field()}}
-                                <a class="btn btn-primary"  href="">Edit</a>
+                                <a class="btn btn-primary"  href="">Change</a>
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>  
                             </form>

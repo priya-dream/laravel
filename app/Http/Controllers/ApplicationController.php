@@ -84,8 +84,14 @@ class ApplicationController extends Controller
         ->select('applications.*')
         ->where('post_id',$id)
         ->get();
+        $list=DB::table('applications')
+        ->join('employees','employees.id','=','applications.emp_id')
+        ->select('employees.*')
+        ->where('post_id',$id)
+        ->where('status',1)
+        ->paginate(5);
             $quali=DB::table('employee_qualification')->select('*')->get();
-        return view('settings.emp_data',compact('apps','quali','emps','id','apps1'));
+        return view('settings.emp_data',compact('apps','quali','emps','id','apps1','list'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
     
 

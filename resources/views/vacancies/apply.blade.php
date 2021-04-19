@@ -1,9 +1,9 @@
 @extends('layouts.master.page')
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.css">
 @section('content')
 <div class="main-panel">
 <div><h2 class="page-title">Job Application Form</h2></div><br/>
-    <form action="{{url('/employee/resume')}}" method="post" class="forms-sample" id="form">
+    <form  action="{{ url('employee/resume')}}" method="post" class="forms-sample" id="form">
     {{csrf_field()}}
     @foreach($posts as $post)
       <div>
@@ -18,13 +18,13 @@
 		        <div class="col-md-6">
 			        <label class="col"><span class="error">*</span>First Name</label>
 			        <div>
-				        <input type="text" name="fname" placeholder="firstname" class="form-control input" required/>
+				        <input type="text" name="fname" id="fname" placeholder="firstname" class="form-control input" required/>
 			        </div>
 		        </div>
 		        <div class="col-md-4">
 			        <label class="col"><span class="error">*</span>Last Name</label>
 			        <div>
-				        <input type="text" name="lname" placeholder="lastname" class="form-control input" required/>
+				        <input type="text" name="lname" id="lname" placeholder="lastname" class="form-control input" required/>
 			        </div>
 		        </div>
 	        </div>
@@ -32,13 +32,13 @@
 		        <div class="col-md-6">
 			        <label class="col"><span class="error">*</span>NIC Number</label>
 			        <div>
-				        <input type="text" name="nic" placeholder="nic number" maxlength="12" class="form-control input" required/>
+				        <input type="text" name="nic" id="nic" placeholder="nic number" maxlength="12" class="form-control input" required/>
 			        </div>
 		        </div>
 		        <div class="col-md-4">
 			        <label class=col><span class="error">*</span>Address</label>
 			        <div>
-				        <textarea cols="20" name="address" placeholder="address" class="form-control input" style="width:350px;font-size:15px" required/></textarea>
+				        <textarea cols="20" name="address" id="address" placeholder="address" class="form-control input" style="width:350px;font-size:15px" required/></textarea>
 			        </div>
 		        </div>
 	        </div>
@@ -46,13 +46,13 @@
 		    <div class="col-md-6">
 			    <label class=col><span class="error">*</span>Contact Number</label>
 			    <div>
-				    <input type="text" name="mobile" placeholder="mobile" maxlength="10" class="form-control input" required/>
+				    <input type="text" name="mobile" id="mobile" placeholder="mobile" maxlength="10" class="form-control input" required/>
 			    </div>
 		    </div>
 		    <div class="col-md-4">
 			    <label class="col"><span class="error">*</span>Email Address</label>
 			    <div>
-				    <input type="text" name="email" placeholder="abc@gmail.com" class="form-control input" required/>
+				    <input type="text" name="email" id="email" placeholder="abc@gmail.com" class="form-control input" required/>
 			    </div>
 		    </div>
 	    </div>
@@ -61,7 +61,7 @@
             <div class="form-group">
                 <table><tr><td>
                 <label class=col><span class="error">*</span>A/L Qualification</label>
-                <select class="form-control dropdown-selection" name="al" style="height:40px;font-size:15px" required/>
+                <select class="form-control dropdown-selection" name="al" id="advance_level" style="height:40px;font-size:15px" required/>
                     <option value="">Select the status...</option>
                     @foreach ($advances as $advance => $val)
                     <option value="{{ $val }}">{{ $val }}</option>
@@ -69,7 +69,7 @@
                     
                 </select></td><td></td><td></td><td></td><td></td><td>
                 <label class=col><span class="error">*</span>Stream</label>
-                <select class="form-control dropdown-selection" name="stream" style="height:40px;font-size:15px" required/>
+                <select class="form-control dropdown-selection" name="stream" id="stream" style="height:40px;font-size:15px" required/>
                     <option value="">Select stream...</option>
                     @foreach ($streams as $stream => $val)
                     <option value="{{ $val }}">{{ $val }}</option>
@@ -117,7 +117,7 @@
         <div class="form-group row"> 
                 <div class="col-md-6">
                     <div>
-                    <input type="submit" value="Apply" class="btn btn-primary" style="margin-left:40px">
+                    <input type="submit" id="btn" value="Apply" class="btn btn-primary" style="margin-left:40px">
                     </div>
                 </div>
         </div>
@@ -128,20 +128,21 @@
     </form>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.js"></script>
 <script>
-$(document).on('submit', '[id^=form]', function (e) {
+document.querySelector('#form').addEventListener('submit', function(e) {
+  var form = this;
   e.preventDefault();
-  var data = $(this).serialize();
-  swal({
-      title: "Your application submitted successfully",
-      text: "Your application submitted successfully",
-      type: "success",
-      showCancelButton: true,
-  }).then(function () {
-      $('#form').submit();
-  });
-  return false;
-});
+    Swal.fire({
+                title:'Good Job',
+                text: 'Application is submitted successfully',
+                icon: 'success'
+            }).then((result) => {
+            if (result.isConfirmed){
+                form.submit();
+            }
+            });
+});         
 </script>
-
 @stop

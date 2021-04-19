@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Employee;
 use DB;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -71,12 +72,13 @@ class EmployeeController extends Controller
             DB::Insert('insert into applications(id,date,emp_id,post_id) values(?,?,?,?)',[
                 null,$date,$data->id,$post_id
             ]);
+            return  redirect('/post');   
         }
         else{
-            return redirect('/post')->with('alert','you applied already for this job');
+            return redirect('/post')->with('alert','you are already applied for this job');
         }
         
-        return  redirect('/post')->with('success','Application is submitted succesfully');
+        // $request->session()->flash('status', 'Task was successful!');
     }
 
     /**

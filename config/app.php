@@ -135,6 +135,7 @@ return [
     */
 
     'providers' => [
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
        // Collective\Html\HtmlServiceProvider::class,
 
         /*
@@ -162,6 +163,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        // Illuminate\RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -232,6 +234,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Input' => Illuminate\Support\Facades\Input::class,
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         
 
     ],

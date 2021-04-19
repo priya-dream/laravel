@@ -1,8 +1,40 @@
+import swal from 'sweetalert';
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+ 
+   $('.delete-confirm').click(function(event) {
+      var form =  $(this).closest("form");
+      var name = $(this).data("name");
+      event.preventDefault();
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Do you want to remove this application",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+            'Deleted!',
+            'Application has been removed.',
+            'success'
+            ).then((result) => {
+            if (result.isConfirmed){
+                form.submit();
+            }
+        });
+        }
+    });   
+});
+
+ 
+ 
 	function btn(){
         document.getElementById('more-data').style.display="inline";
     }

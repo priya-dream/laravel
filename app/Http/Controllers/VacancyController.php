@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Vacancy;
 use DB;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
