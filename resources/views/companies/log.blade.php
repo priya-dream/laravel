@@ -13,12 +13,12 @@
             <p>{{ $message }}</p>
             </div>
         @endif
-    <div class="card" style="margin-left:150px;padding:0px 0px 30px 60px">
+    <div class="card" style="width:900px;margin-left:150px;padding:0px 0px 30px 60px">
         <img src="{{ url('images/log.png')}}" class="log-image">
         <form action="{{url('/user/change',$id)}}" method="post">
             {{csrf_field()}}
             <label class="col">Username</label>
-            <input value="{{old('username', $result->username)}}" name="username" type="text" class="form-control input1" required/></br></br>
+            <input value="{{old('username', $result->username)}}" name="username" type="text" class="form-control input1" style="width:700px" required/></br></br>
             <a class="btn btn-secondary" onclick="btn()">Change Password</a></br></br>
                 <div id="more-data">
                     <input type="password" name="password" class="form-control input1" placeholder="Current password" required/></br>
@@ -32,6 +32,14 @@
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+function btn(){
+        document.getElementById('more-data').style.display="inline";
+    }
+function change(){
+        document.getElementById('loading_icon').style.display="inline";
+    }
+</script>
 <script>
     $('#confirm_pw').on('keyup', function () {
     if ($('#new_pw').val() == $('#confirm_pw').val()) {

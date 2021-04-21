@@ -41,8 +41,17 @@ class SettingController extends Controller
         ->select('posts.*','vacancies.title')
         ->where('companies.id',$id)
         ->where('posts.status',1)
+        ->orderby('posts.date','DESC')
         ->get();
-        return view('settings.post',compact('results'));
+        $results1=DB::table('posts')
+        ->join('companies','companies.id','=','posts.company_id')
+        ->join('vacancies','vacancies.id','=','posts.vacancy_id')
+        ->select('posts.*','vacancies.title')
+        ->where('companies.id',$id)
+        ->where('posts.status',0)
+        ->orderby('posts.date','DESC')
+        ->get();
+        return view('settings.post',compact('results','results1'));
     
     }
 
@@ -92,6 +101,9 @@ class SettingController extends Controller
      */
     public function edit($id)
     {
+        $data=DB::table('posts')
+        ->join('companies','companies.id','=','posts.company_id')
+        ->select('posts.company_id')->where('posts.id',$id)->first();
         $result=DB::table('posts')
         ->join('vacancy_qualification','vacancy_qualification.id','=','posts.quali_id')
         ->select('vacancy_qualification.*')
@@ -107,9 +119,9 @@ class SettingController extends Controller
         $advances=['Need','Not Necessary'];
         $streams=['Physical Science(Maths)','Biological Science','Commerce','Arts','Technology','Any'];
         $graduations=['Diploma','Higher Diploma','Degree','Master Degree'];
-        $fields=['Infomation Technology','Computer Science','English','Software Engineering','Physical Science','Bio Science','Agriculture','Any'];
+        $fields=['Engineering','Accounting','Teaching','Law','Electrical','Nursing','Media','Human Resource Management','Marketing','Management','Architecture','Infomation Technology','Computer Science','English','Software Engineering','Physical Science','Bio Science','Agriculture','Any'];
         $gender=['Male','Female','Any'];
-        return view('settings.edit',compact('result','result1','vacancies','advances','streams','graduations','fields','gender'));
+        return view('settings.edit',compact('data','result','result1','vacancies','advances','streams','graduations','fields','gender'));
     }
 
     /**
@@ -139,7 +151,7 @@ class SettingController extends Controller
             [ $advance_level,$stream,$grad,$field,$other_quali,$gender,$age_limit,$experience,$salary,$id ]);
         
         DB::update('update posts set need=?,closing_date=? where id=?',[$need,$closing_date,$post->id]);
-        return redirect("/myaccount/posts/$post->company_id")->with('success','Your edited datas are updated successfully');
+        return redirect("/myaccount/posts/$post->company_id");
     }
 
     /**
@@ -154,8 +166,7 @@ class SettingController extends Controller
         DB::table('vacancy_qualification')->where('id', $data->quali_id)->delete();
         DB::table('posts')->where('id',$id)->delete();
         
-        return redirect("/myaccount/posts/$data->company_id")
-                    ->with('success','post deleted successfully');
+        return redirect("/myaccount/posts/$data->company_id");
 
         //return $id;
         //return redirect('/myaccount/posts');

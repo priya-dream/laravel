@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // View::composer('*', function($view){
+        //     $view->with('pages', Page::all());
+        // });
         //Schema::defaultStringLength(191);
     }
 }

@@ -1,9 +1,7 @@
 @extends('layouts.master.page')
-<html>
-<body>
 @section('content')
 <div class="main-panel">
-<form action="{{url('ad/update',$result->id)}}" method="post" class="forms-sample">
+<form action="{{url('ad/update',$result->id)}}" method="post" class="forms-sample" id="form">
         {{csrf_field()}}
     <div class="row">
     <div class="col-lg-24 grid-margin">
@@ -135,8 +133,9 @@
             </div>
         </div></br></br>
         <div class="form-group row">        
-		    <div class="col-md-6">
-                <input type="submit" value="Update" class="btn btn-primary"></br></br>
+		    <div class="col-md-6" style="margin-left:200px">
+                <input type="submit" value="Update" class="btn1 btn-primary">
+                <a href="{{ url('myaccount/posts',$data->company_id)}}" style="margin-left:20px"><input type="button" value="Back" class="btn1 button"></a>
             </div>
         </div>
     </div>
@@ -145,6 +144,20 @@
  </form>
 </div>
 <script src="{{asset('js/app.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.js"></script>
+<script>
+document.querySelector('#form').addEventListener('submit', function(e) {
+  var form = this;
+  e.preventDefault();
+    Swal.fire({
+                title:'Changes are updated',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2000
+            }).then((result) => {
+                form.submit();
+            });
+});         
+</script>
 @stop
-</body>
-</html>

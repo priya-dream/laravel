@@ -18,7 +18,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //return view ('companies.test');
+        // $datas=['rrr','sss','iii','uuuu'];
+        // return view ('companies.test',compact('datas'));
         $date=date('y-m-d h:i:s');
         DB::table('posts')->where('closing_date','<=',$date)->update(['status'=>0]);
         $results=DB::table('posts')->where('status',1)->orderby('id','DESC')->get();
@@ -113,7 +114,7 @@ class PostController extends Controller
         
             
         // $results=DB::table('posts')->get();
-        return  redirect('/post')->with('success','Vacancy Published Successfully :)');
+        return  redirect('/post');
     
     }
 

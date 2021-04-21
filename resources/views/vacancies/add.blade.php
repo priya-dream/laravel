@@ -1,12 +1,15 @@
 @extends('layouts.master.page')
 <html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.css">
+</head>
 <body>
 @section('content')
 <div class="main-panel">
 <h1 class="page-title" >Post New Vacancy</h1>
 @foreach($data as $com)
 @endforeach
-<form action="{{url('/list')}}" method="post" class="forms-sample">
+<form action="{{url('/list')}}" method="post" class="forms-sample" id="form">
         {{csrf_field()}}
     <div class="row">
     <div class="col-lg-24 grid-margin">
@@ -120,7 +123,7 @@
         <div class="form-group row">        
 		    <div class="col-md-6">
                 <label class="col">Salary (monthly)</label>
-                <input type="text" placeholder="Eg: 15000-20000" name="sal-from" class="form-control input1" required/>
+                <input type="text" placeholder="Eg: 15000-20000" name="salary" class="form-control input1" required/>
             </div>
         </div>
         <div class="form-group row">        
@@ -131,7 +134,7 @@
         </div></br></br>
         <div class="form-group row">        
 		    <div class="col-md-6">
-                <input type="submit" value="Add" class="btn btn-primary"></br></br>
+                <input type="submit" value="Publish"  class="btn btn-primary"></br></br>
             </div>
         </div>
     </div>
@@ -139,7 +142,26 @@
     </div>
  </form>
 </div>
+
 <script src="{{asset('js/app.js')}}"></script> 
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.js"></script>
+<script>
+document.querySelector('#form').addEventListener('submit', function(e) {
+  var form = this;
+  e.preventDefault();
+    Swal.fire({
+        icon: 'success',
+        title: 'Your vacancy has been published',
+        showConfirmButton:false,
+        timer: 2000
+            }).then((result) => {
+                form.submit();
+            
+            });
+}); 
+</script>        
 @stop
 </body>
 </html>

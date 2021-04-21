@@ -7,6 +7,7 @@
     <title>DFC-JOB BANK</title>
     <link rel="stylesheet" href="{{asset('css/style.css')}}" /> 
     <link rel="stylesheet" href="{{asset('vendors/mdi/css/materialdesignicons.min.css')}}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.css">
    </head>
   <body> 
 
@@ -39,7 +40,8 @@
             <div class="page-header flex-wrap">
               @yield('content')
             </div>
-          </div>   
+          </div> 
+          @yield('scripts')  
       </div>
     <div class="modal-bg">
       <div class="modal-admin">
@@ -75,7 +77,10 @@
         });
         modalClose.addEventListener('click',function(){
           modalBg.classList.remove('bg-active');
-        });</script>
+        });
+      </script>
+      <script type="text/javascript"  src="{{asset('js/app.js')}}"></script> 
+      <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
 
     </body>
     @include('layouts.master.footer')

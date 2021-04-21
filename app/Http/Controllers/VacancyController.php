@@ -59,6 +59,12 @@ class VacancyController extends Controller
         return view('vacancies.apply',compact('posts','advances','streams','graduations','fields','gender'));
     }
 
+    public function change_vacancy_type(Request $request,$id){
+        $image=$request->input('image');
+        DB::update('update vacancies set img=? where id=?',[$image,$id] );
+        return redirect('/vacancies');
+    }
+
     public function update(Request $request, Vacancy $vacancy)
     {
         $request->validate([

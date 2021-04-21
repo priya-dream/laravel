@@ -44,11 +44,11 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-        $this->validate($request, [
-            'username' => 'required|min:3|max:50',
-            'email' => 'email',
-            'password' => 'required|confirmed|min:6',
-        ]);
+        // $this->validate($request, [
+        //     'username' => 'required|min:3|max:50',
+        //     'email' => 'email',
+        //     'password' => 'required|confirmed|min:6',
+        // ]);
 
         $company = new Company;
         $company->name = $request->name;
@@ -134,7 +134,7 @@ class CompanyController extends Controller
            $company->name = $request->name;
            $company->save();
 
-           //return redirect()->route('company.index')->with('success','company successfully updated ');
+           return redirect()->route('company.index')->with('success','company successfully updated ');
         
     }
 

@@ -2,10 +2,11 @@
 @extends('admin')
 @section('content')
 <link href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css')}}" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.css">
 
    @if ($message = Session::get('success'))  
        <div class="alert alert-success">
-            <p>{{ $message }}</p>
+            <p style="width:200px;height:40px">{{ $message }}</p>
         </div>
     @endif
 <div class="page-title">Job Types</div>
@@ -61,11 +62,13 @@
                     <td><img src="{{asset('images/'.$result->img)}}"></td>
                     <td>
                         <div>
-                            <form action="" method="POST">
+                            <form action="{{url('vacancy_type/update',$result->id)}}" method="POST" id="form">
                                 {{csrf_field()}}
-                                <a class="btn btn-primary"  href="">Change</a>
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>  
+                                <div class="file" style="display:none"><input type="file" name="image" value="change" class="btn btn-primary" >
+                                <input type="submit" value="change" class="btn button" style="background-color:green;color:#fff"></div>
+                                <input class="btn btn-primary change" value="change" style="width:100px" >
+                            
+                                <button type="button" class="btn btn-danger">Delete</button>  
                             </form>
                         </div>
                     </td>
@@ -78,6 +81,37 @@
 {!! $results->links() !!}
 </div><script type="text/javascript"  src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js')}}" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.js"></script>
 
+<script>
+$('.change').click(function(event) {
+    $('.file').css('display','inline');
+    $('.change').css('display','none');
+});
 
+</script>
+<script>
+$('.choose-image').click(function(event) {
+      var form =  $(this).closest("form");
+      var name = $(this).data("name");
+      event.preventDefault();
+    Swal.fire({
+    title: 'Select image',
+    input: 'file'
+  
+}).then((result) => {
+            if (result.isConfirmed){
+                Swal.fire(
+            'Changed!',
+            'success'
+            ).then((result) => {
+                form.submit();
+            
+        });
+            }
+            });
+
+});
+</script>
 @stop

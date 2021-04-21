@@ -1,6 +1,6 @@
 @extends('layouts.master.page')
 @section('content')
-<div class="main-panel">
+<div class="main-panel" style="margin-left:170px">
     <div class="page-title">Applications</div></br>
     @if ($message = Session::get('success'))
       <div class="alert alert-success">
@@ -18,12 +18,15 @@
     @else
     <table class=" table">
         <tr class="sub-texts">
+            <th>No</th>
             <th>Job Title</th>
             <th>Closing Date</th>
             <th>No Of Applications</th>
         </tr>
+        <?php $i=1; ?>
         @foreach($vacancy as $vac)
         <tr class="sub-texts">
+            <td>{{$i}}</td>
             <td>{{$vac->title}}</td>
             <td>{{$vac->closing_date}}</td>
             <?php $x=0; ?>
@@ -32,8 +35,9 @@
             <?php $x=$x+1; ?>
             @endif
             @endforeach 
-            <td><a href="{{url('myaccount/applicant/data',$vac->id)}}" class="number-view"><?php echo $x; ?></button><td>   
+            <td><a href="{{url('myaccount/applicant/data',$vac->id)}}"><div class="number-view"><?php echo $x; ?></div></a></td>   
         </tr>
+        <?php $i+=1; ?>
         @endforeach
     </table>  
 @endif  

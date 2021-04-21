@@ -3,11 +3,10 @@
 @foreach($result as $com)
 @endforeach
 
-
 <div>
 <ul class=" navbar-nav">
     <li class="nav-item nav-profile dropdown border-0" style="margin-top:30px">
-        <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" href="" class="btn btn-success">
+        <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" class="btn btn-success">
             <img class="login-sign" src="{{ asset('images/login.png') }}">
             <span class="profile-name sub-texts">{{$request->username}}</span>
         </a>

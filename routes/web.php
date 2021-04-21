@@ -47,9 +47,13 @@ Route::get('/destroy/{id}',
 
 Route::resource('contacts','ContactController');
 
+
+Route::get('/account','NavigationController@myaccount');
+
     Route::get('/vacancy/apply/{id}','VacancyController@apply');
     Route::get('/vacancy/view/','VacancyController@show')->name('show');
     Route::post('/vacancy/add','VacancyController@store');
+    Route::post('/vacancy_type/update/{id}','VacancyController@change_vacancy_type');
     Route::get('/vacancy/type','VacancyController@type');
     Route::resource('/vacancies', 'VacancyController');
 
@@ -60,7 +64,9 @@ Route::resource('contacts','ContactController');
     Route::get('/admin/dashboard','AdminController@dashboard');
     Route::resource('/admin','AdminController');
 
-    
+    Route::post('/add/interview-list/{id}','InterviewController@store');
+    Route::resource('/interview','InterviewController');
+
     Route::get('/myaccount/applicant/data/{id}','ApplicationController@show');
     Route::get('/myaccount/application/accept/{id}','ApplicationController@accept');
     Route::post('/myaccount/application/remove/{id}','ApplicationController@update');
@@ -70,7 +76,7 @@ Route::resource('contacts','ContactController');
 
     Route::post('/ad/update/{id}','SettingController@update');
     Route::get('/post/edit/{id}','SettingController@edit');
-    Route::get('/post/delete/{id}','SettingController@destroy');
+    Route::post('/post/delete/{id}','SettingController@destroy');
     Route::get('/myaccount/details/{id}','SettingController@detail');
     Route::get('/myaccount/posts/{id}','SettingController@post');
     Route::post('/account/verify','SettingController@verify');

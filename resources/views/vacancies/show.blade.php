@@ -23,12 +23,30 @@
                   <ul><h6>{{$data->other_quali}}</h6></ul></div>     
          </div>
          <button id="read-more" onclick="read()">Read More--></button>
+         <script type="text/javascript"  src="{{asset('js/app.js')}}"></script>
          </div>
       </div>
    </div>
 @endforeach
 </div>
-<script src="{{asset('js/app.js')}}"></script> 
+
+<script>
+var i=0;
+	function read(){
+		if(!i){
+			document.getElementById("card-sub").style.height="450px";
+			document.getElementById("more-text").style.display="inline";
+			document.getElementById("read-more").innerHTML="Read less";
+			i=1;
+		}
+		else{
+			document.getElementById("card-sub").style.height="170px";
+			document.getElementById("more-text").style.display="none";
+			document.getElementById("read-more").innerHTML="Read More-->";
+			i=0;
+		}
+	}
+</script> 
 @stop     
 
               

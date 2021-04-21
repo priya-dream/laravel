@@ -10,8 +10,8 @@
    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    @yield('javascript');
+    <script src="{{ asset('js/app.js') }}"></script>
+    <!-- @yield('javascript'); -->
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
