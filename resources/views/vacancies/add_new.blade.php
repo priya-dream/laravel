@@ -23,15 +23,15 @@
         <div class="modal-body">   
             <div class="mb-3">
                 <label  class="form-label">Type New Vacancy Type</label>
-                <input type="text" placeholder="type here" name="title" class="form-control">
+                <input type="text" placeholder="type here" name="title" class="form-control" required/>
             </div>
             <div class="mb-3">
                 <label  class="form-label">Choose Image Logo</label>
-                <input type="file" placeholder="choose" name="img" class="form-control">
+                <input type="file" placeholder="choose" name="img" class="form-control" required/>
             </div>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Add</button>
+            <button type="submit" class="btn btn-primary add">Add</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             
         </div>
@@ -62,14 +62,21 @@
                     <td><img src="{{asset('images/'.$result->img)}}"></td>
                     <td>
                         <div>
-                            <form action="{{url('vacancy_type/update',$result->id)}}" method="POST" id="form">
+                        <table><tr><td>
+                            <form action="{{url('vacancy_type/update',$result->id)}}" method="POST">
                                 {{csrf_field()}}
-                                <div class="file" style="display:none"><input type="file" name="image" value="change" class="btn btn-primary" >
-                                <input type="submit" value="change" class="btn button" style="background-color:green;color:#fff"></div>
+                                <div class="file" style="display:none">
+                                    <input value="{{old('title', $result->title)}}" type="text" class="form-control" name="title" style="width:200px" required/>
+                                    <input value="{{old('img', $result->img)}}" type="file" name="image" class="btn btn-primary" style="width:250px"/ >
+                                    <input type="submit" value="change" class="btn button" style="background-color:green;color:#fff" ></div>
+                                </div>
                                 <input class="btn btn-primary change" value="change" style="width:100px" >
+                            </form></td><td>
+                            <form action="{{url('vacancy_type/delete',$result->id)}}" method="POST">
+                                    {{csrf_field()}}
+                                <input data-name="{{$result->id}}" type="submit" value="Delete" class="btn btn-danger delete">
+                            </form></td></tr></table>
                             
-                                <button type="button" class="btn btn-danger">Delete</button>  
-                            </form>
                         </div>
                     </td>
                 </tr>
@@ -92,26 +99,18 @@ $('.change').click(function(event) {
 
 </script>
 <script>
-$('.choose-image').click(function(event) {
+$('.delete').click(function(event) {
       var form =  $(this).closest("form");
       var name = $(this).data("name");
       event.preventDefault();
-    Swal.fire({
-    title: 'Select image',
-    input: 'file'
-  
-}).then((result) => {
-            if (result.isConfirmed){
-                Swal.fire(
-            'Changed!',
-            'success'
-            ).then((result) => {
-                form.submit();
-            
-        });
-            }
-            });
-
+        Swal.fire({
+            title: 'Deleted',
+            icon: 'success',
+            ShowConfirmButton: false,
+            timer:1500
+        }).then((result) => {
+                form.submit();   
+        }); 
+    
 });
-</script>
 @stop

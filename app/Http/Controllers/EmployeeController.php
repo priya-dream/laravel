@@ -44,22 +44,28 @@ class EmployeeController extends Controller
         $address=$request->input('address');
         $mobile=$request->input('mobile');
         $email=$request->input('email');
-        $al=$request->input('al');
+        // $al=$request->input('al');
         $stream=$request->input('stream');
         $graduate=$request->input('grad');
         $subject=$request->input('subj');
         $uni=$request->input('uni');
         $other_quali=$request->input('other_quali');
+        $al=$request->input('al');$al1=$request->input('al1');$al2=$request->input('al2');$al3=$request->input('al3');
+        $no=$request->input('no1');$no1=$request->input('no1');$no2=$request->input('no2');$no3=$request->input('no3');
+        $ol=$request->input('ol');$ol1=$request->input('ol1');$ol2=$request->input('ol2');$ol3=$request->input('ol3');
+        $num=$request->input('num');$num1=$request->input('num1');$num2=$request->input('num2');$num3=$request->input('num3');
         $emp_id=DB::table('employees')->select('id')->where('nic',$nic)->first();
         $result=DB::table('employees')->select('*')->where('nic',$nic)->count();
-        //return $result;
+        $o_level= $num.$ol.' '.$num1.$ol1.' '.$num2.$ol2.' '.$num3.$ol3;
+        $a_level= $no.$al.' '.$no1.$al1.' '.$no2.$al2.' '.$no3.$al3;
+        // return $o_level;
         if($result==0){
             DB::Insert('insert into employees(id,fname,lname,nic,address,mobile,email) values(?,?,?,?,?,?,?)',[
                 null,$fname,$lname,$nic,$address,$mobile,$email
             ]);
             $emp=DB::table('employees')->select('id')->where('nic',$nic)->first();
-            DB::Insert('insert into employee_qualification(id,post_id,emp_id,advance_level,stream,graduate,field,uni,other_quali) values(?,?,?,?,?,?,?,?,?)',[
-            null,$post_id,$emp->id,$al,$stream,$graduate,$subject,$uni,$other_quali
+            DB::Insert('insert into employee_qualification(id,post_id,emp_id,o_level,advance_level,stream,graduate,field,uni,other_quali) values(?,?,?,?,?,?,?,?,?,?)',[
+            null,$post_id,$emp->id,$o_level,$a_level,$stream,$graduate,$subject,$uni,$other_quali
             ]);
         }
             $data=DB::table('employees')->select('id')->where('nic',$nic)->first();

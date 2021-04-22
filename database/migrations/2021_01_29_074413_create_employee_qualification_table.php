@@ -17,7 +17,8 @@ class CreateEmployeeQualificationTable extends Migration
             $table->id();
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('emp_id');
-            $table->text('A/L');
+            $table->text('o_level');
+            $table->text('advance_level');
             $table->text('stream');
             $table->text('graduate');
             $table->text('field');

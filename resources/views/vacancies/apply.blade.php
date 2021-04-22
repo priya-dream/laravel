@@ -58,25 +58,117 @@
 	    </div>
             
         <div class="col-md-9 grid-margin stretch-card">
-            <div class="form-group">
-                <table><tr><td>
-                <label class=col><span class="error">*</span>A/L Qualification</label>
-                <select class="form-control dropdown-selection" name="al" id="advance_level" style="height:40px;font-size:15px" required/>
-                    <option value="">Select the status...</option>
-                    @foreach ($advances as $advance => $val)
-                    <option value="{{ $val }}">{{ $val }}</option>
-                    @endforeach
-                    
-                </select></td><td></td><td></td><td></td><td></td><td>
-                <label class=col><span class="error">*</span>Stream</label>
-                <select class="form-control dropdown-selection" name="stream" id="stream" style="height:40px;font-size:15px" required/>
-                    <option value="">Select stream...</option>
-                    @foreach ($streams as $stream => $val)
-                    <option value="{{ $val }}">{{ $val }}</option>
-                    @endforeach
-                </select></td></tr></table>
+            <div class="form-group">         
+                <h3 style="margin-left:60px">Educational Qualifications</h3>
+                <table>
+                 <tr>
+                    <td>
+                    <table><tr><h4 style="margin-left:60px">Ordinary Level(O/L)</h4></tr>
+				        <tr>
+						  <th><label class="col" style="margin-left:30px">Grade</label></th>
+                          <th><label class="col">Count</label></th></tr>
+                        <tr><td>
+							<select class="form-control dropdown-selection2" name="ol" id="ol" style="width:150px;height:35px" />
+								<option value="">Select </option>
+								<option>A</option>
+								<option>B</option>
+								<option>C</option>
+								<option>S</option>
+							</select></td><td>
+                            <input type="number" name="num" min=0 max=9 class="form-control" style="width:100px;margin-left:10px;margin-top:10px"></td></tr>
+                        <tr><td>
+							<select class="form-control dropdown-selection2" name="ol1" id="ol" style="width:150px;height:35px" />
+								<option value="">Select </option>
+								<option>A</option>
+								<option>B</option>
+								<option>C</option>
+								<option>S</option>
+							</select></td><td>
+                            <input type="number" min=0 max=9 name="num1" class="form-control" style="width:100px;margin-left:10px;margin-top:10px"></td></tr>
+                        <tr><td>
+							<select class="form-control dropdown-selection2" name="ol2" id="ol" style="width:150px;height:35px" />
+								<option value="">Select </option>
+								<option>A</option>
+								<option>B</option>
+								<option>C</option>
+								<option>S</option>
+							</select></td><td>
+                            <input type="number" min=0 max=9 name=num2 class="form-control" style="width:100px;margin-left:10px;margin-top:10px"></td></tr>
+                        <tr><td>
+							<select class="form-control dropdown-selection2" name="ol3" id="ol" style="width:150px;height:35px" />
+								<option value="">Select </option>
+								<option>A</option>
+								<option>B</option>
+								<option>C</option>
+								<option>S</option>
+							</select></td><td>
+                            <input type="number" min=0 max=9 name="num3" class="form-control" style="width:100px;margin-left:10px;margin-top:10px"></td>
+                    </tr></table>
+                    </td>
+                    <td>			
+						<table><tr><h4 style="margin-left:40px">Advance Level(A/L)</h4></tr>
+                          <tr>
+							<th><label class="col" style="margin-left:30px">Grade</label></th>
+							<th><label>Count</label></th>
+                          </tr>
+                          <tr><td>
+							  <table>
+                                <tr><td>
+                                    <select class="form-control dropdown-selection2" name="al" id="al" style="width:150px;height:35px" />
+                                        <option value="">Select </option>
+                                        <option>A</option>
+                                        <option>B</option>
+                                        <option>C</option>
+                                        <option>S</option>
+                                    </select></td><td>
+                                    <input type="number" min=0 max=3 name="no" class="form-control" style="width:100px;margin-left:10px;margin-top:10px"></td></tr>
+                                <tr><td>
+                                    <select class="form-control dropdown-selection2" name="al1" id="al" style="width:150px;height:35px" />
+                                        <option value="">Select </option>
+                                        <option>A</option>
+                                        <option>B</option>
+                                        <option>C</option>
+                                        <option>S</option>
+                                    </select></td><td>
+                                    <input type="number" min=0 max=3 name="no1" class="form-control" style="width:100px;margin-left:10px;margin-top:10px"></td></tr>
+                                <tr><td>
+                                    <select class="form-control dropdown-selection2" name="al2" id="al" style="width:150px;height:35px" />
+                                        <option value="">Select </option>
+                                        <option>A</option>
+                                        <option>B</option>
+                                        <option>C</option>
+                                        <option>S</option>
+                                    </select></td><td>
+                                    <input type="number" min=0 max=3 name="no2" class="form-control" style="width:100px;margin-left:10px;margin-top:10px"></td></tr>
+                                <tr><td>
+                                    <select class="form-control dropdown-selection2" name="al3" id="al" style="width:150px;height:35px" />
+                                        <option value="">Select </option>
+                                        <option>A</option>
+                                        <option>B</option>
+                                        <option>C</option>
+                                        <option>S</option>
+                                    </select></td><td>
+                                    <input type="number" min=0  max=3 name="no3" class="form-control" style="width:100px;margin-left:10px;margin-top:10px">
+                                </td></tr>
+							 </table>
+                            </td></tr>
+                        </table>
+					</td><td>
+                        <div style="margin-bottom:160px">
+                        <h4><label  class="col">Stream(A/L)</label><h4>
+                        <select class="form-control dropdown-selection2" name="stream" id="stream"  style="width:260px" required/ >
+                            <option value="">Select...</option>
+                            @foreach ($streams as $stream => $key)
+                                <option>{{ $key }}</option>
+                            @endforeach
+                        </select>
+                        </div>
+                    </td>
+                   </tr>
+                </table>
             </div>
         </div>
+				
         <div class="col-md-9 grid-margin stretch-card">
             <div class="form-group">
                 <table><tr><td>
@@ -88,6 +180,7 @@
                     @endforeach
                 </select></td><td></td><td></td><td></td><td></td><td>
                 <label class=col>Field</label>
+                <?php sort($fields); ?>
                 <select class="form-control dropdown-selection" name="subj" style="height:40px;font-size:15px"">
                     <option value="">Select the subject/field...</option>
                     @foreach ($fields as $field => $val)
@@ -117,7 +210,7 @@
         <div class="form-group row"> 
                 <div class="col-md-6">
                     <div>
-                    <input type="submit" id="btn" value="Apply" class="btn btn-primary" style="margin-left:40px">
+                    <input type="submit" id="btn" value="Apply" class="btn1 btn-primary" style="margin-left:40px">
                     </div>
                 </div>
         </div>

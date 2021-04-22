@@ -32,20 +32,21 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel" style="color:#3b4c9d;font-size:25px">Qualifications</h5>
+                                    <h5><u class="modal-title" id="exampleModalLabel" style="color:#3b4c9d;font-size:25px">Qualifications</u></h5>
                                 </div>
-                                <div class="modal-body" style="color: #6e83ab;font-size:18px;font-weight: bold">
+                                <div class="modal-body" style="margin-left:50px;color: #6e83ab;font-size:18px;font-weight: bold">
                                 @foreach($quali as $qua) 
                                 @if($app->emp_id==$qua->emp_id)
-                                <div>A/L  =>  {{$qua->advance_level}}
+                                <div>O/L Result  =>  {{$qua->o_level}}</div></br>
+                                <div>A/L Result  =>  {{$qua->advance_level}}
                                     <ul style="font-size:18px">Stream : {{$qua->stream}}</ul></div>
                                 <div>Graduation  =>  {{$qua->graduate}}<ul>
-                                @if($qua->field!==null)
                                     <li>Field/Subject : {{$qua->field}}</li>
+                                @if($qua->uni!==null)
                                     <li>University : {{$qua->uni}}</span></li>
                                 @endif
                                 </ul></div>
-                                @if($qua->other_quali!==null)
+                                @if($qua->other_quali!=='')
                                 <div>Other Qualifications/Skills  => 
                                 <ul style="font-size:16px"> {{$qua->other_quali}}</ul></div>
                                 @endif
@@ -64,14 +65,14 @@
                 @foreach($apps1 as $apps)
                     @if($apps->emp_id==$app->emp_id)  
                     {{$apps->id}}    
-                    <button data-id="{{$apps->id}}" data-toggle="modal" data-target="#test-{{$apps->id}}" class="show-detail modifyButton"><img src="{{url('images/check-tick.png')}}" style="width:40px;height:40px"><i >call to interview</i></button></td><td>
+                    <button  data-bs-toggle="modal" data-bs-target="#exampleModal" class="show-detail modifyButton"><img src="{{url('images/check-tick.png')}}" style="width:40px;height:40px"><i >call to interview</i></button></td><td>
 
                     <form action="{{url('/myaccount/application/remove',$apps->id)}}" method="post" >
                     {{$apps->id}}
                         @csrf
                         <button class="show-detail delete-confirm"  data-name="{{$apps->id}}"><img src="{{url('images/wrong-tick.png')}}" style="width:40px;height:40px"><i>Remove/Reject</i></button></td></tr></table>
                     </form>
-                    <div class="modal fade" id="test-{{$apps->id}}">
+                    <div class="modal fade" id="exampleModal-{{$apps->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="model-content"> 
                                 <div class="modal-header">

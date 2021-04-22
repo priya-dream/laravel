@@ -2,13 +2,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.css">
 @section('content')
 <div>
-        @if($msg=Session::get('sweetalert'))
-        <script type="text/javascript">
-        Swal(
-            swal('Success!', '{{ $msg }}', 'success');
-        );
-        </script>
-        @endif
     @if ($error = Session::get('error'))
         <div class="alert alert-danger">
             <h4>{{ $error }}</h4>
@@ -39,9 +32,26 @@
         </div>
     </form>
             <?php $i=1; ?>
-    <table style="margin-top:30px;margin-left:50px">  
+            <!-- <div class="col-md-6 form-group">
+                <select class="form-control dropdown-selection" style="width:150px">
+                <option value="">Job Type</option>
+                <option>Full Time</option>
+                <option>Part Time</option>
+                </select>
+            </div></br></br>
+            <div class="col-md-6 form-group">
+                <select class="form-control dropdown-selection" style="width:150px">
+                <option value="">Location</option>
+                <option>Jaffna</option>
+                <option>Colombo</option>
+                </select>
+            </div> -->
+            
+    <table style="margin-top:30px;margin-left:120px">  
+    
         @foreach ($results as $result)
         <tr> 
+            
             <td>
                 <span class="badge badge-danger text-white ml-3 rounded">{{$i}}</span>
             </td><td></td><td></td>

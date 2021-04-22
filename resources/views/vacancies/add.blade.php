@@ -5,7 +5,7 @@
 </head>
 <body>
 @section('content')
-<div class="main-panel">
+<div class="main-panel" style="margin-left:40px">
 <h1 class="page-title" >Post New Vacancy</h1>
 @foreach($data as $com)
 @endforeach
@@ -28,7 +28,7 @@
         <div class="form-group row">
             <div class="col-md-6">
                 <label class="col">Title Of Job</label>
-                <select class="js-example-basic-single form-control dropdown-selection1" name="title" required/>
+                <select class="js-example-basic-single form-control dropdown-selection1" style="width:600px" name="title" required/>
                     <option value="" style="color:black;">Select vacancy type.... </option>
                         @foreach ($vacancies as $list) 
                             {
@@ -43,16 +43,22 @@
                 <h5>Required Educational Qualification</h5>
                 <div class="col-md-9 grid-margin stretch-card">
                     <table><tr><td>
-                    <label class=col onkeyup="stoppedTyping()">A/L Qualified</label>
-                        <select class="form-control dropdown-selection2" name="advance_level" id="advance_level" required/>
-                            <option value="">Select.. </option>
+                    <label class="col">Ordinary Level(O/L-pass)</label>
+                        <select class="form-control dropdown-selection2" name="ol" id="ol" style="width:250px" required/>
+                            <option value="">Select... </option>
+                            <option>Need</option>
+                            <option>Not Necessary</option>
+                        </select></td><td>
+                    <label class=col onkeyup="stoppedTyping()">Advance Level(A/L-pass)</label>
+                        <select class="form-control dropdown-selection2" name="advance_level" id="advance_level"  style="width:250px" required/>
+                            <option value="">Select... </option>
                             @foreach ($advances as $advance => $key)
                                     <option>{{ $key }}</option>
                             @endforeach
-                        </select></td><td></td><td></td><td></td><td></td><td>
-                    <label class=col>Stream</label>
-                        <select class="form-control dropdown-selection2" name="stream" id="stream" required/ >
-                            <option value="">Select stream...</option>
+                        </select></td><td>
+                        <label class="col">Wanted (A/L) Stream</label>
+                        <select class="form-control dropdown-selection2" name="stream" id="stream"  style="width:260px" required/ >
+                            <option value="">Select...</option>
                             @foreach ($streams as $stream => $key)
                                     <option>{{ $key }}</option>
                             @endforeach
@@ -76,6 +82,7 @@
                         <label class=col>Field</label>
                         <select class="form-control dropdown-selection2" name="field" required/>
                             <option value="">Select the subject/field...</option>
+                            <?php sort($fields);?>
                             @foreach ($fields as $field => $key)
                                     <option>{{ $key }}</option>
                             @endforeach
@@ -86,7 +93,7 @@
         </div>
         <div class="form-group row">
             <div class="col-md-6">
-                <label class=col>Required Other Qualification</label>
+                <label class=col>Required Other Specify Qualification</label>
                 <textarea class="form-control textarea1" name="other_quali" placeholder="Type here" required/></textarea>
             </div>
         </div>
@@ -94,15 +101,15 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <table><tr><td>
-                    <label class=col>Gender preference</label>
+                    <label class="col">Gender preference</label>
                         <select class="form-control dropdown-selection2" id="exampleSelectGender" name="gender" required/>
                             <option value="">Select gender</option>
                             @foreach ($gender as $sex => $key)
                                     <option>{{ $key }}</option>
                             @endforeach
-                        </select></td><td></td><td></td><td></td><td></td><td>
+                        </select></td><td>
                     <label class=col>Age Limit</label>
-                    <input type="text" class="form-control dropdown-selection2" name="age_limit" placeholder="Type age limit eg:22-30" required/>
+                    <input type="text" class="form-control input" name="age_limit" placeholder="Type age limit eg:22-30"style="margin-left:60px" required/>
                     </td></tr></table>
                 </div>
             </div>
@@ -112,29 +119,40 @@
                 <div class="form-group">
                     <table><tr><td>
                     <label class="col">Needed Employee</label>
-                        <input type="number" min="1" placeholder="No of needed employee" name="need" class="form-control dropdown-selection2" required/>
-                        </td><td></td><td></td><td></td><td></td><td>
+                        <input type="number" min="1" placeholder="No of needed employee" name="need" class="form-control dropdown-selection2" style="width:300px" required/>
+                        </td><td>
                     <label class="col">Experience</label>
-                        <input type="text" placeholder="experience" name="experience" class="form-control dropdown-selection2" required/>
+                        <input type="text" placeholder="experience" name="experience" class="form-control input" style="margin-left:60px" required/>
                         </td></tr></table>
                 </div>
             </div>
         </div>
         <div class="form-group row">        
 		    <div class="col-md-6">
-                <label class="col">Salary (monthly)</label>
-                <input type="text" placeholder="Eg: 15000-20000" name="salary" class="form-control input1" required/>
+                <div class="form-group">
+                    <table><tr><td>
+                    <label class="col">Job Type</label>
+                    <select class="form-control dropdown-selection2" name="type" required/>
+                        <option value="">Select job type</option>
+                        <option>Full time</option>
+                        <option>Part time</option>
+                        <option>Internship</option>
+                    </select></td><td>
+                    <label class="col">Salary (monthly)</label>
+                    <input type="text" placeholder="Eg: 15000-20000" name="salary" class="form-control input" style="margin-left:60px" required/>
+                    </td></tr></table>
+                </div>
             </div>
         </div>
         <div class="form-group row">        
 		    <div class="col-md-6">
                 <label class="col">Closing Date</label>
-                <input type="date" placeholder="choose the closing date" name="closing_date" class="form-control dropdown-selection2" required/>
+                <input type="date" style="font-size: 1.2rem" placeholder="choose the closing date" name="closing_date" class="form-control dropdown-selection2" required/>
             </div>
         </div></br></br>
         <div class="form-group row">        
 		    <div class="col-md-6">
-                <input type="submit" value="Publish"  class="btn btn-primary"></br></br>
+                <input type="submit" value="Publish"  class="btn1 btn-primary" style="margin-left:300px;width:200px"></br></br>
             </div>
         </div>
     </div>

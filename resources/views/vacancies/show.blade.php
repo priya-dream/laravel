@@ -7,23 +7,36 @@
    <div class="card-main" style="background-image:url('{{asset('images/'.$data->img)}}');background-size:900px 650px;">
       <div id="common">
          <div id="card-sub" >
-            <div><h6>Company : {{$data->name}}</h6></div>
-            <div><h6>Gender preference : {{$data->gender}}</h6></div>
-            <div><h6>Age Limit : {{$data->age}}</h6></div>
-            <div><h6>Salary : {{$data->salary}}</h6></div>   
-         <div id="more-text">
-            <div><h6> No of needed employees : {{$data->need}}</h6></div>
-            <div><h4 >Required educational qualifications</h4></div>
-            <div><ul><h6>G.C.E(Advance Level)completion  :{{$data->advance_level}}</h6>
-                  <ul><h6>Stream :{{$data->stream}}</h6></ul></ul></div>
-            <div><ul><h6>Graduation :{{$data->graduate}}</h6>
-                  <ul><h6>Field :{{$data->field}}</h6></ul></ul></div> 
-            <div><h4>Required other qualifications</h4>
-                  <ul><h6>Experience :{{$data->experience}}</h6></ul>
-                  <ul><h6>{{$data->other_quali}}</h6></ul></div>     
-         </div>
-         <button id="read-more" onclick="read()">Read More--></button>
-         <script type="text/javascript"  src="{{asset('js/app.js')}}"></script>
+            <div ><span style="color:#5c4be9">Company  : </span>{{$data->name}}</div>
+            <div><span style="color:#5c4be9">Gender preference  : </span>{{$data->gender}}</div>
+            <div><span style="color:#5c4be9">Age Limit  : </span>{{$data->age}}</div>
+            <div><span style="color:#5c4be9">Salary  : </span>{{$data->salary}}</div>
+            <div><span style="color:#5c4be9">No of needed employees  : </span>{{$data->need}}</div> </br>
+            <div id="more-text">
+               <div style="color:#5c4be9">Required educational qualifications  =></div>
+               <div style="margin-left:10px;margin-top:10px">
+                  @if($data->o_level!=='' and $data->o_level=='Need' )
+                     <div>Should Passed in G.C.E(O/L)</div>
+                  @endif
+                  @if($data->o_level!=='' and $data->advance_level=='Need' )
+                     <div>Should Passed in G.C.E(A/L)</div>
+                  @endif
+                  @if($data->graduate!==''and $data->field!=='' )
+                     <div>{{$data->graduate}} in {{$data->field}} field</div> 
+                  @endif
+                  @if($data->experience!=='')
+                     <div>Experience -  {{$data->experience}}</div></br>
+                  @endif
+               </div>
+                  @if($data->other_quali!=="")
+                     <div style="color:#5c4be9">Required other qualifications  =></div>
+                     <div style="margin-left:10px;margin-top:10px">
+                        <div>{{$data->other_quali}}</div>
+                     </div></br>
+                  @endif
+            </div>
+            <button id="read-more" onclick="read()">Read More--></button>
+            <script type="text/javascript"  src="{{asset('js/app.js')}}"></script>
          </div>
       </div>
    </div>
@@ -40,7 +53,7 @@ var i=0;
 			i=1;
 		}
 		else{
-			document.getElementById("card-sub").style.height="170px";
+			document.getElementById("card-sub").style.height="200px";
 			document.getElementById("more-text").style.display="none";
 			document.getElementById("read-more").innerHTML="Read More-->";
 			i=0;

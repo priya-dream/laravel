@@ -78,6 +78,10 @@ class AdminController extends Controller
             return redirect('/post')->with('error','Sorry,Admin login details are wrong !!');
     }
 
+    public function company_data(){
+        $results=DB::table('companies')->select('*')->get();
+        return view('admin.com_data',compact('results'));
+    }
 
     /**
      * Display the specified resource.

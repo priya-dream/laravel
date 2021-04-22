@@ -73,6 +73,7 @@ class PostController extends Controller
         $company=$request->input('company');
         $branch=$request->input('branch');
         $title=$request->input('title');
+        $ol=$request->input('ol');
         $advance=$request->input('advance_level');
         $stream=$request->input('stream');
         $graduate=$request->input('grad');
@@ -82,6 +83,7 @@ class PostController extends Controller
         $age=$request->input('age_limit');
         $need=$request->input('need');
         $exp=$request->input('experience');
+        $type=$request->input('type');
         $salary=$request->input('salary');
         $closing_date=$request->input('closing_date');
         $vacancy_id=DB::table('vacancies')->select('id')->where('title',$title)->first();
@@ -95,8 +97,8 @@ class PostController extends Controller
         ->where('vacancy_qualification.branch',$branch)
         ->count();
         if($post==0){
-         DB::Insert('insert into vacancy_qualification(id,vacancy_id,company_id,advance_level,stream,graduate,field,gender,age,experience,salary,branch,other_quali) values(?,?,?,?,?,?,?,?,?,?,?,?,?)',[
-             null,$vacancy_id->id,$company_id->id,$advance,$stream,$graduate,$field,$gender,$age,$exp,$salary,$branch,$other_quali
+         DB::Insert('insert into vacancy_qualification(id,vacancy_id,company_id,o_level,type,advance_level,stream,graduate,field,gender,age,experience,salary,branch,other_quali) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[
+             null,$vacancy_id->id,$company_id->id,$ol,$type,$advance,$stream,$graduate,$field,$gender,$age,$exp,$salary,$branch,$other_quali
         ]);
         $quali_id=DB::table('vacancy_qualification')->select('id')
         ->where('vacancy_id',$vacancy_id->id)

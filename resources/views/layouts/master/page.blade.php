@@ -12,17 +12,17 @@
   <body> 
 
   <div class="header">
-    <span><img class="logo-image" src="{{asset('/images/dfc-logo.png')}}"> JOBS</span>
-    <span style="margin-left:100px">
+    <span><img class="logo-image" src="{{asset('/images/dfc-logo.png')}}"><span> JOBS</span></span>
+    <!-- <span style="margin-left:100px">
       <select class="btn btn-secondary">
           <option><a href="#">English</a></option>
           <option><a class="btn btn-success" href='/post'>Tamil</a></option>
           <option><a href="#">Sinhala</a></option>
       </select>
-    </span>
-    <a style="margin-left:150px;font-size:20px;" href="{{ url('/company/login') }}" class="btn btn-success">POST JOB</a>
-    <span class=" login mdi mdi-account"><a class="login-btn" href="{{url('/myaccount')}}">Login</button></a>
-    <span style="margin-left:100px" class="mdi mdi-account-star"><button style="background-color:white;font-size:25px" class="modal-btn">Admin</button></span>
+    </span> -->
+    <a style="margin-left:120px;font-size:20px;" href="{{ url('/company/login') }}" class="btn btn-success">POST JOB</a>
+    <span class="login mdi mdi-account"><a class="login-btn" href="{{url('/myaccount')}}">MyAccount</button></a></span>
+    <span style="margin-left:60px" class="mdi mdi-account-star"><button style="background-color:white;font-size:25px" class="modal-btn">Admin</button></span>
   </div>
 
       <div class="container-scroller">

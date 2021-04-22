@@ -61,7 +61,7 @@ class CompanyController extends Controller
         $company->logo=$request->logo;
 
         $company->save();
-        return  redirect('/company/login')->with('success','Account created successfully, Now you can login');
+        return  redirect('/company/login');
     }
 
     /**
@@ -98,11 +98,11 @@ class CompanyController extends Controller
         ->where('password',$password)
         ->get();
         $advances=['Need','Not Necessary'];
-        $streams=['Physical Science(Maths)','Biological Science','Commerce','Arts','Technology','Any'];
+        $streams=['Physical Science(Maths)','Biological Science(Bio)','Commerce','Arts','Technology','Any'];
         $graduations=['Diploma','Higher Diploma','Degree','Master Degree'];
         $fields=['Engineering','Accounting','Teaching','Law','Electrical','Nursing','Media','Human Resource Management','Marketing','Management','Architecture','Infomation Technology','Computer Science','English','Software Engineering','Physical Science','Bio Science','Agriculture','Any'];
         $gender=['Male','Female','Any'];
-        $vacancies= DB::table('vacancies')->select('title')->orderBy('title')->get();
+        $vacancies= DB::table('vacancies')->select('title')->orderBy('title','ASC')->get();
         
             if(count($data))
                 return View('vacancies.add',compact('request','data','vacancies','advances','streams','graduations','fields','gender'));  

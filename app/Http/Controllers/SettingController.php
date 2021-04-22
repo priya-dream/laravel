@@ -117,7 +117,7 @@ class SettingController extends Controller
         //return $result1->id;
         $vacancies=DB::table('vacancies')->get();
         $advances=['Need','Not Necessary'];
-        $streams=['Physical Science(Maths)','Biological Science','Commerce','Arts','Technology','Any'];
+        $streams=['Physical Science(Maths)','Biological Science(Bio)','Commerce','Arts','Technology','Any'];
         $graduations=['Diploma','Higher Diploma','Degree','Master Degree'];
         $fields=['Engineering','Accounting','Teaching','Law','Electrical','Nursing','Media','Human Resource Management','Marketing','Management','Architecture','Infomation Technology','Computer Science','English','Software Engineering','Physical Science','Bio Science','Agriculture','Any'];
         $gender=['Male','Female','Any'];

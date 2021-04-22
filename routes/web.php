@@ -53,6 +53,7 @@ Route::get('/account','NavigationController@myaccount');
     Route::get('/vacancy/apply/{id}','VacancyController@apply');
     Route::get('/vacancy/view/','VacancyController@show')->name('show');
     Route::post('/vacancy/add','VacancyController@store');
+    Route::post('/vacancy_type/delete/{id}','VacancyController@destroy');
     Route::post('/vacancy_type/update/{id}','VacancyController@change_vacancy_type');
     Route::get('/vacancy/type','VacancyController@type');
     Route::resource('/vacancies', 'VacancyController');
@@ -61,6 +62,7 @@ Route::get('/account','NavigationController@myaccount');
     Route::resource('/resume', 'EmployeeController');
 
     Route::post('/admin/verify','AdminController@verify');
+    Route::get('/company/data','AdminController@company_data');
     Route::get('/admin/dashboard','AdminController@dashboard');
     Route::resource('/admin','AdminController');
 

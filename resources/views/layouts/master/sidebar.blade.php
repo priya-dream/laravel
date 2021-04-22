@@ -36,7 +36,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="">
+      <a class="nav-link" href="/company/data">
         <i class="mdi mdi-format-list-bulleted menu-icon"></i>
         <span class="menu-title">Company</span>
       </a>

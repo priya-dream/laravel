@@ -17,11 +17,13 @@ class CreateVacancyQualificationTable extends Migration
             $table->id();
             $table->unsignedBigInteger('vacancy_id');
             $table->unsignedBigInteger('company_id');
+            $table->text('o_level');
             $table->text('advance_level');
             $table->text('stream');
             $table->text('graduate');
             $table->text('field');
             $table->text('other_quali');
+            $table->text('type');
             $table->text('gender');
             $table->text('age');
             $table->text('experience');
