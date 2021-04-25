@@ -28,7 +28,7 @@
                 <td>{{$app->mobile}}</td>
                 <td>{{$app->address}}</td>
                
-                    <div class="modal fade" id="exampleModal-{{$app->emp_id}}" tabindex="-1" aria-labelledby="exampleModalLabel">
+                    <div class="modal fade" id="exampleModal-{{$app->job_seeker_id}}" tabindex="-1" aria-labelledby="exampleModalLabel">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="modal-body" style="margin-left:50px;color: #6e83ab;font-size:18px;font-weight: bold">
                                 @foreach($quali as $qua) 
-                                @if($app->emp_id==$qua->emp_id)
+                                @if($app->job_seeker_id==$qua->job_seeker_id)
                                 <div>O/L Result  =>  {{$qua->o_level}}</div></br>
                                 <div>A/L Result  =>  {{$qua->advance_level}}
                                     <ul style="font-size:18px">Stream : {{$qua->stream}}</ul></div>
@@ -46,9 +46,9 @@
                                     <li>University : {{$qua->uni}}</span></li>
                                 @endif
                                 </ul></div>
-                                @if($qua->other_quali!=='')
-                                <div>Other Qualifications/Skills  => 
-                                <ul style="font-size:16px"> {{$qua->other_quali}}</ul></div>
+                                @if($qua->other_quali!==null)
+                                <div>Other Qualifications/Skills  =></div>
+                                <ul class="points-format" style="font-size:16px"> {{$qua->other_quali}}</ul>
                                 @endif
                                @endif
                                @endforeach
@@ -57,56 +57,44 @@
                         <div>
                     </div>
                    
-                <td><button class=" btn btn-primary" data-id="{{ $app->emp_id }}" data-toggle="modal" data-target="#exampleModal-{{$app->emp_id}}">View</button></td>
-                
-                    
+                <td><button class=" btn btn-primary" data-id="{{ $app->job_seeker_id }}" data-toggle="modal" data-target="#exampleModal-{{$app->job_seeker_id}}">View</button></td>   
                 <td>
                 <table><tr><td>
-                @foreach($apps1 as $apps)
-                    @if($apps->emp_id==$app->emp_id)  
-                    {{$apps->id}}    
-                    <button  data-bs-toggle="modal" data-bs-target="#exampleModal" class="show-detail modifyButton"><img src="{{url('images/check-tick.png')}}" style="width:40px;height:40px"><i >call to interview</i></button></td><td>
-
-                    <form action="{{url('/myaccount/application/remove',$apps->id)}}" method="post" >
-                    {{$apps->id}}
-                        @csrf
-                        <button class="show-detail delete-confirm"  data-name="{{$apps->id}}"><img src="{{url('images/wrong-tick.png')}}" style="width:40px;height:40px"><i>Remove/Reject</i></button></td></tr></table>
-                    </form>
-                    <div class="modal fade" id="exampleModal-{{$apps->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="model-content"> 
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Call to interview</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    @foreach($apps1 as $apps)
+                    @if($apps->job_seeker_id==$app->job_seeker_id)   
+                        <a  data-toggle="modal" data-id="{{ $apps->id }}" data-target="#test-{{$apps->id}}" class="show-detail modifyButton"><img src="{{url('images/check-tick.jpg')}}" style="width:40px;height:40px"></a></td><td>
+                        <form action="{{url('/myaccount/application/remove',$apps->id)}}" method="post" >
+                            @csrf
+                            <a class="show-detail delete-confirm"  data-name="{{$apps->id}}"><img src="{{url('images/wrong-tick1.png')}}" style="width:40px;height:40px;margin-top:20px"></a></td></tr></table>
+                        </form>
+                        <!-- Modal -->
+                        <div class="modal fade" id="test-{{$apps->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add to Interview List</h5>
+                                    </div>
+                                    <form action="{{url('/add/interview-list',$apps->id)}}" method="POST">
+                                        {{ csrf_field() }}
+                                    <div class="modal-body">   
+                                        <div class="mb-3">
+                                            <label  class="form-label" style="margin-bottom:1.5rem;margin-right:25.5rem">Select Interview Date</label></br>
+                                            <input data-name="{{$apps->id}}" type="date" name="date" class="form-control" style="color:#00008B" required/></br>                        
+                                        </div> 
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input data-name="{{$apps->id}}" type="submit" value="Add" class="btn1 btn-success add" style="margin-left:100px">                           
+                                    </div>
+                                    </form>
                                 </div>
-                                
-                                 
-                                <form action="{{url('/add/interview-list',$apps->id)}}" method="post" id="form">
-                                    @csrf
-                                    <div class="modal-body">
-                                    <label>Date</label>
-                                    <input data-name="{{$apps->id}}" type="date" name="date" class="form-control" style="color:#00008B" required/></br>
-                                    
-                                    <div class="modal-footer"
-                                    <input data-name="{{$apps->id}}" type="submit" value="Add" class="btn1 btn-success add" style="margin-left:100px">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    </div>
-                                    </div>
-                                </form>
-                                
                             </div>
-                        </div>
-                    </div> 
+                        </div> 
                     @endif
-                @endforeach
-                </td>
-            </tr>
-            <?php $n+=1; ?>
-           
-
-   
-        @endforeach 
-    </table>
+                    @endforeach
+                </td><td></td><td></td></tr>
+                    <?php $n+=1; ?>
+                @endforeach 
+        </table>
     
     {!! $list->links() !!}
      </div>
@@ -118,33 +106,20 @@
     <script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js')}}" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
 <script>
-    var Quali=document.querySelector('.quali');
-    var Add=document.querySelector('.add');
-    var Close=document.querySelector('.close-data');
-    $(".modifyButton").click(function() {
-        // alert($(this).data("fpid"));               
-        Quali.classList.add('active');
-            $(".add").click(function() {
-            var form =  $(this).closest("form");
-            var name = $(this).data("name");
-            event.preventDefault();
-            Swal.fire({
-                title:'Done',
-                text: 'Application is added to Interview list',
-                icon: 'success'
-            }).then((result) => {
-            if (result.isConfirmed){
-                form.submit();
-            }
-            });
-            });
-    Close.addEventListener('click',function(){
-        Quali.classList.remove('active');
-	});
-	
-        
-	});
-    
+    $(".add").click(function() {
+        var form =  $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        Swal.fire({
+            title:'Done',
+            text: 'Application is added to Interview list',
+            icon: 'success'
+        }).then((result) => {
+        if (result.isConfirmed){
+            form.submit();
+        }
+        });
+    });   
 </script>
 <script>
    $('.delete-confirm').click(function(event) {
@@ -189,5 +164,18 @@ $(".save").click(function() {
             }
             });
 });     
+</script>
+<script>
+window.onload = function (){ 
+    var header  =document.querySelector(".points-format");
+    var headerText = header.innerText;
+    var a = headerText .split(".");
+    a.pop();
+    var toAppend = "";
+    a.forEach(function (t, i){
+        toAppend += t + ".<br>";   
+    });
+    header .innerHTML = toAppend ;
+}
 </script>
     @stop

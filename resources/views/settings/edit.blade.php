@@ -1,14 +1,15 @@
 @extends('layouts.master.page')
 @section('content')
-<div class="main-panel">
+<div class="main-panel" style="margin-left:90px">
 <form action="{{url('ad/update',$result->id)}}" method="post" class="forms-sample" id="form">
         {{csrf_field()}}
     <div class="row">
     <div class="col-lg-24 grid-margin">
     <div class="shadow card"></br>
         <div class="form-group row">
+        <table><tr><td>
             <div class="col-md-6">
-                <label class="col">Job Type</label>
+                <label class="col">Job Title</label>
                 <select class="js-example-basic-single form-control dropdown-selection1" name="title" required/>
                     <option value="">Select vacancy type.... </option>
                         @foreach ($vacancies as $list) 
@@ -17,16 +18,30 @@
                             }
                         @endforeach
                 </select>
-            </div>
+            </div></td><td>
+            <div class="col-md-6">
+                <label class="col">Branch Name</label>
+                <input type="text" value="{{old('branch', $result->branch)}}" class="form-control input1" name="branch" size="50px" placeholder="Eg: jaffna" />
+            </div></td></tr>
+        </table>
         </div>
         <div class="form-group row">
             <div class="col-md-6">
                 <h5>Required Educational Qualification</h5>
                 <div class="col-md-9 grid-margin stretch-card">
                     <table><tr><td>
-                    
-                    <label class=col onkeyup="stoppedTyping()">A/L Qualified</label>
-                        <select class="form-control dropdown-selection2" name="advance_level" id="advance_level" required/>
+                    <label class="col">Ordinary Level(O/L-pass)</label>
+                        <select class="form-control dropdown-selection2" name="ol" id="ol" style="width:250px" required/>
+                            @if (old('o_level', $result->o_level) == 'Need')
+                            <option selected>Need</option>
+                            <option>Not Necessary</option>
+                            @else
+                            <option>Need</option>
+                            <option selected>Not Necessary</option>
+                            @endif
+                        </select></td><td>
+                    <label class=col onkeyup="stoppedTyping()">Advance Level(A/L-pass)</label>
+                        <select class="form-control dropdown-selection2" name="advance_level" id="advance_level" style="width:250px" required/>
                             @foreach ($advances as $advance => $val)
                             @if (old('advance_level', $result->advance_level) == $val)
                                 <option value="{{ $val }}" selected>{{ $val }}</option>
@@ -37,7 +52,7 @@
                             @endforeach
                         </select></td><td></td><td></td><td></td><td></td><td>
                     <label class=col>Stream</label>
-                        <select class="form-control dropdown-selection2" name="stream" required/ >
+                        <select class="form-control dropdown-selection2" name="stream" style="width:260px" required/ >
                             @foreach($streams as $key=>$val)
                             @if (old('stream', $result->stream) == $val)
                                 <option value="{{ $val }}" selected>{{ $val }}</option>
@@ -102,7 +117,7 @@
                         @endforeach 
                         </select></td><td></td><td></td><td></td><td></td><td>
                     <label class=col>Age Limit</label>
-                    <input value="{{old('age', $result->age)}}" type="text" class="form-control dropdown-selection2" name="age_limit" placeholder="Type age limit eg:22-30" required/>
+                    <input value="{{old('age', $result->age)}}" type="text" class="form-control input" name="age_limit" style="margin-left:60px" placeholder="Type age limit eg:22-30" required/>
                     </td></tr></table>
                 </div>
             </div>
@@ -112,24 +127,40 @@
                 <div class="form-group">
                     <table><tr><td>
                     <label class="col">Needed Employee</label>
-                        <input value="{{old('need', $result1->need)}}" type="number" min="1" placeholder="select needed No of employee" name="need" class="form-control dropdown-selection2" required/>
+                        <input value="{{old('need', $result1->need)}}" type="number" min="1" placeholder="select needed No of employee" name="need" class="form-control dropdown-selection2" style="width:300px" required/>
                         </td><td></td><td></td><td></td><td></td><td>
                     <label class="col">Experience</label>
-                        <input value="{{old('experience', $result->experience)}}" type="text" placeholder="experience" name="experience" class="form-control dropdown-selection2" required/>
+                        <input value="{{old('experience', $result->experience)}}" type="text" placeholder="experience" name="experience"style="margin-left:60px" class="form-control input" required/>
                         </td></tr></table>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <table><tr><td>
+                        <label class="col">Job Type</label>
+                        <select class="form-control dropdown-selection2" name="type" required/>
+                            @foreach ($type as $ty => $val)
+                                @if (old('type', $result->type) == $val)
+                                    <option value="{{ $val }}" selected>{{ $val }}</option>
+                                @else
+                                    <option value="{{ $val }}">{{ $val }}</option>
+                                @endif
+                            @endforeach 
+                        </select></td><td>        
+                        <div class="col">
+                            <label class="col">Salary (monthly)</label>
+                            <input value="{{old('salary', $result->salary)}}" type="text" placeholder="salary" name="salary" class="form-control input1" required/>
+                        </div></td></tr>
+                    </table>
                 </div>
             </div>
         </div>
         <div class="form-group row">        
 		    <div class="col-md-6">
-                <label class="col">Salary (monthly)</label>
-                <input value="{{old('salary', $result->salary)}}" type="text" placeholder="salary" name="salary" class="form-control input1" required/>
-            </div>
-        </div>
-        <div class="form-group row">        
-		    <div class="col-md-6">
                 <label class="col">Closing Date</label>
-                <input value="{{old('closing_date', $result1->closing_date)}}" type="date" placeholder="choose the closing date" name="closing_date" class="form-control dropdown-selection2" required/>
+                <input value="{{old('closing_date', $result1->closing_date)}}" style="font-size: 1.2rem" type="date" placeholder="choose the closing date" name="closing_date" class="form-control dropdown-selection2" required/>
             </div>
         </div></br></br>
         <div class="form-group row">        

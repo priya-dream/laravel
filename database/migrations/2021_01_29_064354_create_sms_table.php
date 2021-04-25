@@ -21,7 +21,7 @@ class CreateSmsTable extends Migration
             $table->unsignedBigInteger('emp_id');
             $table->unsignedBigInteger('com_id');
             $table->timestamps();
-            $table->foreign('emp_id')->references('id')->on('employees');
+            $table->foreign('emp_id')->references('id')->on('job_seekers');
             $table->foreign('com_id')->references('id')->on('companies');
         });
     }

@@ -37,14 +37,24 @@ class InterviewController extends Controller
     public function store(Request $request, $id)
     {
         $date=$request->input('date');
-        $data=DB::table('applications')->select('post_id','emp_id')->where('id',$id)->first();
+        $data=DB::table('applications')->select('post_id','job_seeker_id')->where('id',$id)->first();
         $data1=DB::table('posts')->select('company_id')->where('id',$data->post_id)->first();
-        DB::Insert('insert into interviews (id,date,company_id,post_id,emp_id) values(?,?,?,?,?)',[
-            null,$date,$data1->company_id,$data->post_id,$data->emp_id
-        ]);
-        return $id;
-        // return redirect("/myaccount/applicant/data/$data->post_id");
-        
+        $com=DB::table('posts')->select('company_id')->where('id',$data->post_id)->first();
+        $result=DB::table('interviews')->select('id')
+        ->where('company_id',$com->company_id)
+        ->where('post_id',$data->post_id)
+        ->where('job_seeker_id',$data->job_seeker_id)
+        ->count();
+        // return $result;
+        if($result==0){
+            DB::Insert('insert into interviews (id,date,company_id,post_id,job_seeker_id) values(?,?,?,?,?)',[
+                null,$date,$data1->company_id,$data->post_id,$data->job_seeker_id
+            ]);
+            DB::Update('update job_seekers set type=? where id=?',[1,$data->job_seeker_id]);
+            return redirect("/myaccount/applicant/data/$data->post_id");
+        }else{
+            return redirect("/myaccount/applicant/data/$data->post_id")->with('error','this applicant added already into interview list');
+        }
     }
 
     /**
@@ -53,9 +63,18 @@ class InterviewController extends Controller
      * @param  \App\Interview  $interview
      * @return \Illuminate\Http\Response
      */
-    public function show(Interview $interview)
+    public function show(Interview $interview, $id)
     {
-        //
+        $results=DB::table('interviews')
+        ->join('job_seekers','job_seekers.id','=','interviews.job_seeker_id')
+        ->select('interviews.*','job_seekers.*')
+        ->where('company_id',$id)->orderby('date','ASC')
+        ->get();
+        $vac=DB::table('posts')->join('vacancies','vacancies.id','=','posts.vacancy_id')
+        ->select('vacancies.title')->where('posts.company_id',$id)->first();
+        $emps=DB::table('job_seekers')->select('*')->get();
+        $quali=DB::table('job_seekers_qualification')->select('*')->get();
+        return view('settings.interview_list',compact('results','quali','emps','vac'));
     }
 
     /**

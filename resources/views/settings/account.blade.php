@@ -20,19 +20,23 @@
         <div>
     </li>
 </ul>
-<h2 class="page-title">My Account</h2><br/>
-<table><tr>
-<td class="num-circle">
-    <a href="{{ url('myaccount/posts',$com->id) }}"><img class="job-icon" src="{{asset('images/job-icon.png')}}"></a></td>
-<td class="num-circle">
-    <a href="{{url('myaccount/applications',$com->id)}}"><img class="job-icon" src="{{asset('images/application-icon.png')}}"></p></a></td>
-<td class="num-circle">
-    <a href="{{url('myaccount/details',$com->id)}}"><img class="job-icon" src="{{asset('images/detail-icon.png')}}"></a></td>
-</tr><tr>
-<td class="gap">POSTED JOBS</td>
-<td class="gap">RECEIVED APPLICATIONS</td>
-<td class="gap">COMPANY DETAILS</td></tr>
-
+<h2 class="page-title" style="margin-top:0px">My Account</h2><br/>
+<div><a href="{{ url('myaccount/interview_list',$com->id) }}"><img class="job-icon"style="margin-left:450px" src="{{asset('images/interview.png')}}"></a></div>
+<div class="gap1">INTERVIEW LIST</div>
+<table>
+    <tr>
+        <td class="num-circle">
+            <a href="{{ url('myaccount/posts',$com->id) }}"><img class="job-icon" src="{{asset('images/job-icon.png')}}"></a></td>
+        <td class="num-circle">
+            <a href="{{url('myaccount/applications',$com->id)}}"><img class="job-icon" src="{{asset('images/application-icon.png')}}"></p></a></td>
+        <td class="num-circle">
+            <a href="{{url('myaccount/details',$com->id)}}"><img class="job-icon" src="{{asset('images/detail-icon.png')}}"></a></td>
+    </tr>
+    <tr>
+        <td class="gap">POSTED JOBS</td>
+        <td class="gap">RECEIVED APPLICATIONS</td>
+        <td class="gap">COMPANY DETAILS</td>
+    </tr>
 </table>
 
 

@@ -18,12 +18,12 @@ class CreateInterviewsTable extends Migration
             $table->date('date');
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('post_id');
-            $table->unsignedBigInteger('emp_id');
+            $table->unsignedBigInteger('job_seeker_id');
             $table->boolean('status');
             $table->timestamps();
             $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('post_id')->references('id')->on('posts');
-            $table->foreign('emp_id')->references('id')->on('employees');
+            $table->foreign('job_seeker_id')->references('id')->on('job_seekers');
         });
     }
 

@@ -30,12 +30,6 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="">
-        <i class="mdi mdi-contacts menu-icon"></i>
-        <span class="menu-title">Login Users</span>
-      </a>
-    </li>
-    <li class="nav-item">
       <a class="nav-link" href="/company/data">
         <i class="mdi mdi-format-list-bulleted menu-icon"></i>
         <span class="menu-title">Company</span>
@@ -44,7 +38,7 @@
     <li class="nav-item">
       <a class="nav-link" href="/employee">
         <i class="mdi mdi-chart-bar menu-icon"></i>
-        <span class="menu-title">Employee resumes</span>
+        <span class="menu-title">Job Seekers</span>
       </a>
     </li>
     <li class="nav-item">
@@ -55,22 +49,16 @@
     </li>
    
     <li class="nav-item">
-      <a class="nav-link" href="https://www.bootstrapdash.com/demo/breeze-free/documentation/documentation.html">
+      <a class="nav-link" href="">
         <i class="mdi mdi-file-document-box menu-icon"></i>
-        <span class="menu-title">About</span>
+        <span class="menu-title">Reports</span>
       </a>
     </li>
-    <li class="nav-item sidebar-actions">
-      <div class="nav-link">
-        <div class="mt-4">
-          <div class="border-none">
-            <p class="text-black">Notification</p>
-          </div>
-          <ul class="mt-4 pl-0">
-            <li>Sign Out</li>
-          </ul>
-        </div>
-      </div>
+    <li class="nav-item">
+      <a class="nav-link" href="/myaccount">
+        <i class="mdi mdi-logout menu-icon"></i>
+        <span>Sign Out</span>
+      </a>
     </li>
   </ul>
   </nav>

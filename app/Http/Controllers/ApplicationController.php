@@ -23,9 +23,9 @@ class ApplicationController extends Controller
         
         $results=DB::table('applications')
         ->join('posts','posts.id','=','applications.post_id')
-        ->join('employee_qualification','employee_qualification.emp_id','=','applications.emp_id')
-        ->join('employees','employees.id','=','applications.emp_id')
-        ->select('employees.*','applications.*','employee_qualification.*')
+        ->join('job_seekers_qualification','job_seekers_qualification.job_seeker_id','=','applications.job_seeker_id')
+        ->join('job_seekers','job_seekers.id','=','applications.job_seeker_id')
+        ->select('job_seekers.*','applications.*','job_seekers_qualification.*')
         ->where('posts.company_id',$id)
         ->get();
         
@@ -70,27 +70,27 @@ class ApplicationController extends Controller
     {
         $com=DB::table('posts')->select('company_id')->where('id',$id)->first();
         $apps=DB::table('applications')
-        ->join('employee_qualification','employee_qualification.emp_id','applications.emp_id')
-        ->join('employees','employees.id','=','applications.emp_id')
-        ->select('applications.*','employees.*','employee_qualification.*')
+        ->join('job_seekers_qualification','job_seekers_qualification.job_seeker_id','applications.job_seeker_id')
+        ->join('job_seekers','job_seekers.id','=','applications.job_seeker_id')
+        ->select('applications.*','job_seekers.*','job_seekers_qualification.*')
         ->where('applications.post_id',$id)
         ->where('applications.status',1)
         ->orderby('applications.date')
         ->get();
-        $quali=DB::table('employee_qualification')->select('*')->get();
-         $emps=DB::table('employees')->select('*')->get();
+        $quali=DB::table('job_seekers_qualification')->select('*')->get();
+         $emps=DB::table('job_seekers')->select('*')->get();
          $apps1=DB::table('applications')
-        ->join('employees','employees.id','=','applications.emp_id')
+        ->join('job_seekers','job_seekers.id','=','applications.job_seeker_id')
         ->select('applications.*')
         ->where('post_id',$id)
         ->get();
         $list=DB::table('applications')
-        ->join('employees','employees.id','=','applications.emp_id')
-        ->select('employees.*')
+        ->join('job_seekers','job_seekers.id','=','applications.job_seeker_id')
+        ->select('job_seekers.*')
         ->where('post_id',$id)
         ->where('status',1)
         ->paginate(5);
-            $quali=DB::table('employee_qualification')->select('*')->get();
+            $quali=DB::table('job_seekers_qualification')->select('*')->get();
         return view('settings.emp_data',compact('apps','quali','emps','id','apps1','list'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
     

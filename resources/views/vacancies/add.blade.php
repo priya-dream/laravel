@@ -5,7 +5,7 @@
 </head>
 <body>
 @section('content')
-<div class="main-panel" style="margin-left:40px">
+<div class="main-panel" style="margin-left:60px">
 <h1 class="page-title" >Post New Vacancy</h1>
 @foreach($data as $com)
 @endforeach

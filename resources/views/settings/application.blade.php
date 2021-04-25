@@ -1,6 +1,10 @@
 @extends('layouts.master.page')
 @section('content')
-<div class="main-panel" style="margin-left:170px">
+<div class="main-panel">
+    <div style="font-size:22px;color:#1547df;margin-top:20px">
+        <a href="{{ url('/account')}}">My Account</a>--><a href="">Applications</a>
+    </div>
+    <div style="margin-left:170px">
     <div class="page-title">Applications</div></br>
     @if ($message = Session::get('success'))
       <div class="alert alert-success">
@@ -40,7 +44,8 @@
         <?php $i+=1; ?>
         @endforeach
     </table>  
-@endif  
+@endif
+</div>  
 </div>
 <?php $x=4; ?>
 @stop

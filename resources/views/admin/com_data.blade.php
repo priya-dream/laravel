@@ -1,7 +1,7 @@
 @extends('admin')
 @section('content')
-<div class="main-panel" style="overflow-x: auto">
-    <table class="table table-bordered table-striped tr-odd" >
+<div class="main-panel" style="width:880px">
+    <table class="table table-striped tr-odd"  style="overflow-x: scroll">
         <tr>
             <th>No</th>
             <th>Company Name</th>

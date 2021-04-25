@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmployeeQualificationTable extends Migration
+class CreateJobSeekersQualificationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateEmployeeQualificationTable extends Migration
      */
     public function up()
     {
-        Schema::create('employee_qualification', function (Blueprint $table) {
+        Schema::create('job_seekers_qualification', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('post_id');
-            $table->unsignedBigInteger('emp_id');
+            $table->unsignedBigInteger('job_seeker_id');
             $table->text('o_level');
             $table->text('advance_level');
             $table->text('stream');
@@ -26,7 +26,7 @@ class CreateEmployeeQualificationTable extends Migration
             $table->text('other_quali');
             $table->timestamps();
             $table->foreign('post_id')->references('id')->on('posts');
-            $table->foreign('emp_id')->references('id')->on('employees');
+            $table->foreign('job_seeker_id')->references('id')->on('job_seekers');
             
         });
     }
@@ -38,6 +38,6 @@ class CreateEmployeeQualificationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee_qualification');
+        Schema::dropIfExists('job_seekers_qualification');
     }
 }

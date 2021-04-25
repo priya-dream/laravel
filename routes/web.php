@@ -66,6 +66,7 @@ Route::get('/account','NavigationController@myaccount');
     Route::get('/admin/dashboard','AdminController@dashboard');
     Route::resource('/admin','AdminController');
 
+    Route::get('/myaccount/interview_list/{id}','InterviewController@show');
     Route::post('/add/interview-list/{id}','InterviewController@store');
     Route::resource('/interview','InterviewController');
 

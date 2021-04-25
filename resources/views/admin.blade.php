@@ -12,7 +12,7 @@
     <div class="admin-header">
       <span><img class="logo-image" src="{{asset('/images/dfc-logo.png')}}"> JOBS</span>
       <a style="margin-left:150px;font-size:20px;" href="{{ url('/company/login') }}" class="btn btn-success"> POST JOB </a>
-      <span class=" login mdi mdi-account"><a class="login-btn" href="{{url('/myaccount')}}">Login</button></a>
+      <span class=" login mdi mdi-account"style="margin-left:150px;font-size:30px"><a class="login-btn" href="{{url('/myaccount')}}">MyAccount</button></a>
       </div>
     <div class="container-scroller">
     @include('layouts.master.sidebar')

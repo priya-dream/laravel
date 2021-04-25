@@ -121,7 +121,8 @@ class SettingController extends Controller
         $graduations=['Diploma','Higher Diploma','Degree','Master Degree'];
         $fields=['Engineering','Accounting','Teaching','Law','Electrical','Nursing','Media','Human Resource Management','Marketing','Management','Architecture','Infomation Technology','Computer Science','English','Software Engineering','Physical Science','Bio Science','Agriculture','Any'];
         $gender=['Male','Female','Any'];
-        return view('settings.edit',compact('data','result','result1','vacancies','advances','streams','graduations','fields','gender'));
+        $type=['Full time','Part time','Internship'];
+        return view('settings.edit',compact('type','data','result','result1','vacancies','advances','streams','graduations','fields','gender'));
     }
 
     /**
@@ -134,6 +135,9 @@ class SettingController extends Controller
     public function update(Request $request, $id)
     {
         $title=$request->input('title');
+        $branch=$request->input('branch');
+        $ol=$request->input('ol');
+        $type=$request->input('type');
         $advance_level=$request->input('advance_level');
         $stream=$request->input('stream');
         $grad=$request->input('grad');
@@ -147,8 +151,8 @@ class SettingController extends Controller
         $closing_date=$request->input('closing_date');
         $post=DB::table('posts')->select('id','company_id')->where('quali_id',$id)->first();
         
-        DB::update('update vacancy_qualification set advance_level=?,stream=?,graduate=?,field=?,other_quali=?,gender=?,age=?,experience=?,salary=? where id=?',
-            [ $advance_level,$stream,$grad,$field,$other_quali,$gender,$age_limit,$experience,$salary,$id ]);
+        DB::update('update vacancy_qualification set advance_level=?,stream=?,graduate=?,field=?,other_quali=?,gender=?,age=?,experience=?,salary=?,branch=?,ol=?,type=? where id=?',
+            [ $advance_level,$stream,$grad,$field,$other_quali,$gender,$age_limit,$experience,$salary,$branch,$ol,$type,$id ]);
         
         DB::update('update posts set need=?,closing_date=? where id=?',[$need,$closing_date,$post->id]);
         return redirect("/myaccount/posts/$post->company_id");

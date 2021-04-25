@@ -44,7 +44,7 @@
     <li class="nav-item">
       <a class="nav-link" href="">
         <i class="mdi mdi-chart-bar menu-icon"></i>
-        <span class="menu-title">Employee</span>
+        <span class="menu-title">Job Seekers</span>
       </a>
     </li>
     <li class="nav-item">

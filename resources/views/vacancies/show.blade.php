@@ -19,7 +19,7 @@
                      <div>Should Passed in G.C.E(O/L)</div>
                   @endif
                   @if($data->o_level!=='' and $data->advance_level=='Need' )
-                     <div>Should Passed in G.C.E(A/L)</div>
+                     <div>Should Passed in G.C.E(A/L) in {{$data->stream}} stream</div>
                   @endif
                   @if($data->graduate!==''and $data->field!=='' )
                      <div>{{$data->graduate}} in {{$data->field}} field</div> 
@@ -31,7 +31,7 @@
                   @if($data->other_quali!=="")
                      <div style="color:#5c4be9">Required other qualifications  =></div>
                      <div style="margin-left:10px;margin-top:10px">
-                        <div>{{$data->other_quali}}</div>
+                        <div class="points-format">{{$data->other_quali}}</div>
                      </div></br>
                   @endif
             </div>
@@ -41,8 +41,21 @@
       </div>
    </div>
 @endforeach
-</div>
 
+</div>
+<script>
+window.onload = function (){ 
+    var header  =document.querySelector(".points-format");
+    var headerText = header.innerText;
+    var a = headerText .split(".");
+    a.pop();
+    var toAppend = "";
+    a.forEach(function (t, i){
+        toAppend += t + ".<br>";   
+    });
+    header .innerHTML = toAppend ;
+}
+</script>
 <script>
 var i=0;
 	function read(){

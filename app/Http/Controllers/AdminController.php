@@ -43,7 +43,8 @@ class AdminController extends Controller
         {
           $array[++$key] = [$value->title, $value->number];
         }
-        return view('admin.dashboard')->with('title',json_encode($array));
+        // return json_encode($array1);
+        return view('admin.dashboard')->with('name',json_encode($array1))->with('title',json_encode($array));
     }
         
     
@@ -79,7 +80,11 @@ class AdminController extends Controller
     }
 
     public function company_data(){
-        $results=DB::table('companies')->select('*')->get();
+        $results=DB::table('companies')->select('*')->where('status',1)->get();
+        // $vacancy=DB::table('vacancies')->join('posts','posts.vacancy_id','=','vacancies.id')
+        // ->join('companies','companies.id','=','posts.company_id')
+        // ->select('companies.name')->where('posts.status',1)->whereIn('posts.vacancy_id',[1,4])->get();
+        // return view('companies.test',compact('vacancy'));
         return view('admin.com_data',compact('results'));
     }
 

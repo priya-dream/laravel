@@ -2,7 +2,7 @@
 @section('content')
 <div class="main-panel" style="margin-left:300px">
 <div><h1 style="color:#4B0082">Login</h1></div></br>
-<div class="px-xl-5">
+<div class="px-xl-5" style="height:400px; width:500px">
 <div><img class="login-image" src="{{asset('images/dfc-logo.png')}}"></div></br>
     @if ($message = Session::get('success'))
       <div class="alert alert-success">

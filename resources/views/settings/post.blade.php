@@ -3,7 +3,7 @@
 @section('content')
 <div class="main-panel">
     <div style="font-size:22px;color:#1547df;margin-top:20px">
-        <a href="{{ url('account')}}">My Account</a>--><a href="">Posts</a>
+        <a href="{{ url('/account')}}">My Account</a>--><a href="">Posts</a>
     </div>
     <div style="margin-left:170px">
     @if ($message = Session::get('success'))

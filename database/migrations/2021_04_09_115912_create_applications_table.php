@@ -16,11 +16,11 @@ class CreateApplicationsTable extends Migration
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->unsignedBigInteger('emp_id');
+            $table->unsignedBigInteger('job_seeker_id');
             $table->unsignedBigInteger('post_id');
             $table->boolean('status');
             $table->timestamps();
-            $table->foreign('emp_id')->references('id')->on('employees');
+            $table->foreign('job_seeker_id')->references('id')->on('job_seekers');
             $table->foreign('post_id')->references('id')->on('posts');
         });
     }
