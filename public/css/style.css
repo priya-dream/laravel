@@ -3328,6 +3328,7 @@ pre {
 font-size:5px;  }
   .table th,
   .table td {
+	  border:1px solid #ddd;
     padding: .9375rem;
     vertical-align: top;
     border-top: 1px solid #ebedf2; }
@@ -3342,7 +3343,7 @@ font-size:5px;  }
   padding: .3rem; }
 
 .table-bordered {
-  border: 1px solid #000000; 
+  border:2px solid #4693b8;
   background-color:#ffffff;}
   .table-bordered th,
   .table-bordered td {
@@ -3731,7 +3732,7 @@ select.tt-hint[multiple] {
 textarea.form-control, .select2-container--default textarea.select2-selection--single, .select2-container--default .select2-selection--single textarea.select2-search__field, textarea.typeahead,
 textarea.tt-query,
 textarea.tt-hint {
-  height: auto;
+  height: 100px;
 font-size:16px;  }
 
 .form-group {
@@ -6989,7 +6990,7 @@ a.close.disabled {
 
 .modal-dialog {
   position: relative;
-  width: auto;
+  width: 900px;
   margin: 10px;
   pointer-events: none; }
   .modal.fade .modal-dialog {
@@ -7004,6 +7005,7 @@ a.close.disabled {
         -webkit-transition: none;
         transition: none; } }
   .modal.show .modal-dialog {
+	 width:auto;
     -webkit-transform: none;
     transform: none; }
   .modal.modal-static .modal-dialog {
@@ -7138,7 +7140,7 @@ a.close.disabled {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 500px;
+    max-width: 700px;
     margin: 30px auto; }
   .modal-dialog-scrollable {
     max-height: calc(100% - 60px); }
@@ -10097,6 +10099,7 @@ button.bg-dark:focus,
     padding-bottom: 3rem !important; }
   .pl-xl-5,
   .px-xl-5 {
+	  margin-left:50px;
     padding-left: 5rem !important;
 	height:450px;
 	border:none;
@@ -10428,7 +10431,7 @@ a.text-dark:hover, a.text-dark:focus {
       background-color: #ffffff !important; }
   .table-bordered th,
   .table-bordered td {
-    border: 1px solid #dee2e6 !important; }
+    border: 1px solid #ddd !important; }
   .table-dark {
     color: inherit; }
     .table-dark th,
@@ -13476,6 +13479,7 @@ select.tt-hint {
       .table thead th i {
         margin-left: 0.325rem; }
   .table th{
+	  border:1px solid #ddd;
 	color:#00008B;
 	text-align:center;
 	vertical-align: middle;
@@ -13484,6 +13488,7 @@ select.tt-hint {
     white-space: nowrap;
     padding:5px 5px 5px 5px;}
   .table td {
+	  border:1px solid #ddd;
 	color:#00008B; 
 	text-align:center;
     vertical-align: middle;
@@ -15703,12 +15708,13 @@ font-size:30px;}
 
 .modal-admin {
 	position:relative;
-	width:375px;
-	height:325px;
+	width:445px;
+	height:355px;
+	padding-left:30px;
 	background-color:white;
 	border-radius:4px;
-	text-align:center;
-	justify-content:center;}
+	justify-content:center;
+	font-size:18px;}
 .input{
 	width:50%;
 	display:block;
@@ -16064,6 +16070,12 @@ font-size:20px;}
 	background-color:#2480c2;
 	color:#fff;
 }
+.publish{
+	width:50px;
+	height:50px;
+	background-color:#fff;
+	align-items:center;
+	border:none;}
 
 
 

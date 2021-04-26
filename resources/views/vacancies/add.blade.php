@@ -22,7 +22,7 @@
             </div></td><td>
             <div class="col-md-6">
                 <label class="col">Branch Name</label>
-                <input type="text" class="form-control input1" name="branch" size="50px" placeholder="Eg: jaffna" />
+                <input type="text" class="form-control input1" name="branch" size="50px" placeholder="Eg: jaffna" required />
             </div></td></tr></table>
         </div>
         <div class="form-group row">
@@ -79,7 +79,7 @@
                                     <option>{{ $key }}</option>
                             @endforeach
                         </select></td><td></td><td></td><td></td><td></td><td>
-                        <label class=col>Field</label>
+                        <label class=col>Field (You can select also "Any" field)</label>
                         <select class="form-control dropdown-selection2" name="field" required/>
                             <option value="">Select the subject/field...</option>
                             <?php sort($fields);?>
@@ -152,7 +152,7 @@
         </div></br></br>
         <div class="form-group row">        
 		    <div class="col-md-6">
-                <input type="submit" value="Publish"  class="btn1 btn-primary" style="margin-left:300px;width:200px"></br></br>
+                <input type="submit" value="Send"  class="btn1 btn-primary" style="margin-left:300px;width:200px"></br></br>
             </div>
         </div>
     </div>
@@ -170,14 +170,14 @@ document.querySelector('#form').addEventListener('submit', function(e) {
   var form = this;
   e.preventDefault();
     Swal.fire({
-        icon: 'success',
-        title: 'Your vacancy has been published',
-        showConfirmButton:false,
-        timer: 2000
-            }).then((result) => {
-                form.submit();
-            
-            });
+        title:'Sent !',
+        text: 'Your post has been sent,We will contact you soon',
+        icon: 'success'
+    }).then((result) => {
+        if (result.isConfirmed){
+            form.submit();
+        }
+    });
 }); 
 </script>        
 @stop

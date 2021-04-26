@@ -10,6 +10,12 @@
       </a>
     </li>
     <li class="nav-item">
+      <a class="nav-link"  href="{{url('/admin/for_publish')}}">
+        <i class="mdi mdi-arrow-right-bold-circle menu-icon"></i>
+        <span class="menu-title">For Publish</span>
+      </a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link"  href="{{url('/post')}}" >
         <i class="mdi mdi-crosshairs-gps menu-icon"></i>
         <span class="menu-title">Available Vacancies</span>

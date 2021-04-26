@@ -15,6 +15,21 @@ class AdminController extends Controller
     {
         return view('admin');
     }
+
+    public function for_publish(){
+
+        $result=DB::table('posts')->join('vacancies','vacancies.id','=','posts.vacancy_id')->join('companies','companies.id','=','posts.company_id')
+        ->select('title','name','closing_date','date','posts.id','quali_id','mobile')->where('posts.status',0)->orderBy('posts.date','DESC')->get();
+        $quali=DB::table('vacancy_qualification')->select('*')->get();
+        return view('admin.for_publish',compact('result','quali'));
+    }
+
+    public function publish($id){
+        DB::Update('update posts set status=? where id=?',[1,$id]);
+        return redirect('/admin/for_publish');
+
+    }
+
     public function dashboard()
     {
         $data1 = DB::table('posts')
@@ -43,8 +58,21 @@ class AdminController extends Controller
         {
           $array[++$key] = [$value->title, $value->number];
         }
-        // return json_encode($array1);
-        return view('admin.dashboard')->with('name',json_encode($array1))->with('title',json_encode($array));
+        $result=DB::table('posts')
+        ->join('applications','applications.post_id','posts.id')
+        ->join('vacancies','posts.vacancy_id','=','vacancies.id')
+        ->select(DB::raw('title as title'),DB::raw('count(job_seeker_id) as count'))
+        ->groupBy(DB::raw('title'))->where('posts.status',1)->get();
+        $test[] = ['Title', 'Count'];
+        $result1=DB::table('applications')
+        ->select(DB::raw('count(*) as count'))
+        ->groupBy(DB::raw('job_seeker_id'))->pluck('count');
+        $datas=array();
+        foreach($result as $res=>$key){
+            $test[++$res] = [$key->title, $key->count];
+        }
+        return json_encode($test);
+        //return view('admin.dashboard',compact('datas'))->with('name',json_encode($array1))->with('title',json_encode($array));
     }
         
     

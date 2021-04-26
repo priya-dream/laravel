@@ -7,6 +7,8 @@
     <title>DFC-JOB BANK</title>
     <link rel="stylesheet" href="{{asset('css/style.css')}}" /> 
     <link rel="stylesheet" href="{{asset('vendors/mdi/css/materialdesignicons.min.css')}}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.css">
+
   </head>
   <body>
     <div class="admin-header">

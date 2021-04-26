@@ -63,6 +63,8 @@ Route::get('/account','NavigationController@myaccount');
 
     Route::post('/admin/verify','AdminController@verify');
     Route::get('/company/data','AdminController@company_data');
+    Route::post('admin/publish/{id}','AdminController@publish');
+    Route::get('/admin/for_publish','AdminController@for_publish');
     Route::get('/admin/dashboard','AdminController@dashboard');
     Route::resource('/admin','AdminController');
 
