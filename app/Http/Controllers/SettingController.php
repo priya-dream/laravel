@@ -151,7 +151,7 @@ class SettingController extends Controller
         $closing_date=$request->input('closing_date');
         $post=DB::table('posts')->select('id','company_id')->where('quali_id',$id)->first();
         
-        DB::update('update vacancy_qualification set advance_level=?,stream=?,graduate=?,field=?,other_quali=?,gender=?,age=?,experience=?,salary=?,branch=?,ol=?,type=? where id=?',
+        DB::update('update vacancy_qualification set advance_level=?,stream=?,graduate=?,field=?,other_quali=?,gender=?,age=?,experience=?,salary=?,branch=?,o_level=?,type=? where id=?',
             [ $advance_level,$stream,$grad,$field,$other_quali,$gender,$age_limit,$experience,$salary,$branch,$ol,$type,$id ]);
         
         DB::update('update posts set need=?,closing_date=? where id=?',[$need,$closing_date,$post->id]);

@@ -58,12 +58,14 @@ Route::get('/account','NavigationController@myaccount');
     Route::get('/vacancy/type','VacancyController@type');
     Route::resource('/vacancies', 'VacancyController');
 
-    Route::post('/employee/resume', 'EmployeeController@store');
-    Route::resource('/resume', 'EmployeeController');
+    Route::post('/employee/resume', 'JobSeekerController@store');
+    Route::resource('/resume', 'JobSeekerController');
 
     Route::post('/admin/verify','AdminController@verify');
     Route::get('/company/data','AdminController@company_data');
     Route::post('admin/publish/{id}','AdminController@publish');
+    Route::post('/admin/add_payment/{id}','AdminController@payment');
+    Route::get('/admin/job_seeker','AdminController@job_seeker');
     Route::get('/admin/for_publish','AdminController@for_publish');
     Route::get('/admin/dashboard','AdminController@dashboard');
     Route::resource('/admin','AdminController');
@@ -105,6 +107,7 @@ Route::get('/account','NavigationController@myaccount');
     Route::get('/post/view/{id}','PostController@show');
     Route::any('/list','PostController@store');
     Route::get('search', 'PostController@search');
+    Route::post('/post/type_search', 'PostController@type_search');
     Route::get('/post', 'PostController@index');
     Route::resource('post/{id}', 'PostController');
 

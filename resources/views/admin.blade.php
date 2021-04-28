@@ -24,32 +24,7 @@
           </div>
         </div>   
     </div>
-    <div class="modal-bg">
-    <div class="modal-admin">
-      <form action="{{url('/login/verify')}}" method="POST">
-      {{csrf_field()}}
-        <div class="close-admin">+</div>
-        <img src="{{asset('images/admin-login.png')}}" width="120px" height="120px"></br><br>
-          <lable style="color:#6f2674">username</label></br>
-              <input class="form-control admin-login" type="text" placeholder="username" name=username required/>
-          <lable style="color:#6f2674">password</label></br>
-              <input class="form-control admin-login" type="text" placeholder="password" name="password" required/></br>
-          <button type="submit" class="btn btn-primary">login</button>    
-      </form>
-    </div>
-    </div>
-
-    <script>
-      var modalBtn=document.querySelector('.modal-btn');
-	    var modalBg=document.querySelector('.modal-bg');
-      var modalClose=document.querySelector('.close-admin');
-        modalBtn.addEventListener('click',function(){               
-          modalBg.classList.add('bg-active');
-        });
-        modalClose.addEventListener('click',function(){
-          modalBg.classList.remove('bg-active');
-        });
-    </script>
+    
     @include('layouts.master.footer') 
    
 

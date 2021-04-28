@@ -3336,14 +3336,14 @@ font-size:5px;  }
     vertical-align: bottom;
     border-bottom: 2px solid #ebedf2; }
   .table tbody + tbody {
-    border-top: 2px solid #ebedf2; }
+    /* border-top: 2px solid #ebedf2; } */
 
 .table-sm th,
 .table-sm td {
   padding: .3rem; }
 
 .table-bordered {
-  border:2px solid #4693b8;
+  /* border:2px solid #4693b8; */
   background-color:#ffffff;}
   .table-bordered th,
   .table-bordered td {
@@ -3364,10 +3364,11 @@ font-size:5px;  }
   border: 0; }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  /* background-color: #B0C4DE;  */
+  background-color: #d4f1f1; 
+  color:#fff;
   }
   .tr-odd tbody tr:nth-of-type(even) {
-  background-color: #D3D3D3; }
+  background-color: #63c0ed; }
 
 .table-hover tbody tr:hover {
   color: #212529;
@@ -6555,7 +6556,16 @@ input[type="button"].btn-block {
 .alert-danger {
 	margin-top:0px;
   width:400px;
-  color: black;
+  color: #fff;
+  background-color:#F08080;
+  border-color: red; 
+  font-size:20px;
+  align-items:center;
+  height:40px;}
+ .alert-danger1 {
+  margin-top:25px;
+  width:600px;
+  color: #f5eded;
   background-color:#F08080;
   border-color: red; 
   font-size:20px;
@@ -6989,6 +6999,7 @@ a.close.disabled {
   outline: 0; }
 
 .modal-dialog {
+  background-color:#fff;
   position: relative;
   width: 900px;
   margin: 10px;
@@ -7011,6 +7022,8 @@ a.close.disabled {
   .modal.modal-static .modal-dialog {
     -webkit-transform: scale(1.02);
     transform: scale(1.02); }
+	.modal.fade.show.modal-dialog{
+	background-color:#fff;}
 
 .modal-dialog-scrollable {
   display: -webkit-box;
@@ -7064,7 +7077,7 @@ a.close.disabled {
   flex-direction: column;
   width: 100%;
   pointer-events: auto;
-  background-color: #f2f2f2;
+  background:rgba(255, 255, 255, 0.9);
   background-clip: padding-box;
   border: 1px solid #ebedf2;
   border-radius: 0.3rem;
@@ -10111,7 +10124,8 @@ button.bg-dark:focus,
   box-shadow: 5px 5px 5px 5px grey;}
   .px-xl-6 {
 	box-shadow: 1px 1px 1px 1px grey;
-  width:925px;
+  width:725px;
+  height:250px;
   margin-top:0px;
   background-color:#c1c1d0;}
   .px-xl-6:hover{
@@ -10290,7 +10304,11 @@ button.bg-dark:focus,
   font-style: italic !important; }
 
 .text-white {
-  color: #ffffff !important; }
+  color: #ffffff !important; 
+  font-size:19px;}
+.text-white1{
+	font-size:35px;
+	color:#fff;}
 
 .text-primary, .list-wrapper .completed .remove {
   color: #3f50f6 !important; }
@@ -11384,7 +11402,7 @@ padding-left: 600px; }
 .content-wrapper .color-card .color-card-head {
   font-weight: 500;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 22px;
   line-height: 1.25; }
 
 .content-wrapper .flot-chart-wrapper .flot-chart {
@@ -13479,7 +13497,7 @@ select.tt-hint {
       .table thead th i {
         margin-left: 0.325rem; }
   .table th{
-	  border:1px solid #ddd;
+	  /* border:1px solid #ddd; */
 	color:#00008B;
 	text-align:center;
 	vertical-align: middle;
@@ -15070,7 +15088,7 @@ font-size:16px; 	}
 .sidebar {
   min-height: calc(100vh - 70px);
   background: -webkit-gradient(linear, left top, left bottom, from(#e6e5f2), to(#4599cd));
-  background: linear-gradient(to bottom, #e6e5f2, #4599cd);
+  background: linear-gradient(to bottom, #e6e5f2, #cf61d0);
   font-family: "Rubik", sans-serif;
   padding: 0;
   width: 260px;
@@ -15168,9 +15186,9 @@ font-size:16px; 	}
                 margin-left: 0;
                 margin-right: 0.25rem; }
         .sidebar .nav .nav-item .nav-link .menu-title {
-          color: #141212;
+          color: #0d0b80;
           display: inline-block;
-          font-size: 15px;
+          font-size: 18px;
           line-height: 1;
           vertical-align: middle; }
           .rtl .sidebar .nav .nav-item .nav-link .menu-title {
@@ -15836,8 +15854,8 @@ color:#fff;}
 	color:#fff}
 	
 .circle {
-margin-top:10px;
-  margin-left:525px;
+margin-top:5px;
+  margin-left:435px;
   height: 36px;
   width: 36px;
   font-size:1.3rem;
@@ -15857,10 +15875,12 @@ margin-top:10px;
 .num-circle a button {display:none;}
 .num-circle a:hover p {display:block;}
 .description{
-	width:50%;
+	width:140px;
+	font-size:20px;
 	height:30px;
 	text-align:center;
-	color:#e6ede4;
+	color:#fff;
+	background-color:#4e71f1;
 	border:none;
 	outline:none;
 	border-radius:5px;)
@@ -15977,7 +15997,6 @@ margin-top:10px;
 .quali{
 	width:100%;
 	height:100%;
-	background-color:rgba(0,0,0,0.5);
 	position:fixed;
 	top:0;
 	left:0;
@@ -15990,13 +16009,12 @@ margin-top:10px;
 .emp-data{
 	color:#00008B;
 	font-weight:bold;
-	font-size:25px;
-	width:550px;
-	height:320px;
-	padding:50px 50px 50px 100px;
+	font-size:20px;
+	width:500px;
+	height:390px;
+	padding:50px 50px 50px 70px;
 	position:relative;
-	background-color:rgba(255,255,255);
-	border-radius:4px;
+	background-color:rgb(248 242 212);
 	align-content:center;}
 	
 .active{
@@ -16046,7 +16064,7 @@ display:none;}
 .duration{
 	text-align:center;
 	margin-bottom:20px;
-	margin-left:400px;
+	margin-left:380px;
 	background-color:#307abe;
 	color:#fff;
 	width:120px;
@@ -16078,9 +16096,103 @@ font-size:20px;}
 	border:none;}
 
 
+.btn-primary1{
+	background-color:#4c86af;
+	border-color:#6ac5e1;
+	color:#fff;
+}
+.btn-primary1:hover{
+	background-color:#387eaf;
+	color:#fff;}
+.btn-primary1:focus{
+	background-color:#1a5986;
+	color:#fff;}
 
+.icon-size{
+	width:50px;
+	height:50px;
+	margin-right:80px;
+	margin-left:40px;}
+	
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
 
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #fff;
+  border-radius: 50%;
+}
 
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 10px;
+	height: 10px;
+	align-items:center;
+	border-radius: 50%;
+	background: white;
+}
+.no-result{
+	width:725px;
+	height:300px;
+	border:3px solid blue;
+	border-radius:7px;
+	color:blue;
+	font-size:50px;
+	padding:100px 100px 100px 170px;}
+}
+i.search-arrow{
+	color:blue;
+	border:none;
+	width:20px;
+	height:20px;
+	background-color:#fff;
+	font-size:20px;
+	border-radius:50%;
+	background-color:pink;}
 
 
 /*# sourceMappingURL=style.css.map */

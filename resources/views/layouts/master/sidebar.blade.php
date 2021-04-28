@@ -19,7 +19,6 @@
       <a class="nav-link"  href="{{url('/post')}}" >
         <i class="mdi mdi-crosshairs-gps menu-icon"></i>
         <span class="menu-title">Available Vacancies</span>
-        <i class="menu-arrow"></i>
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
@@ -37,19 +36,19 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/company/data">
-        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+        <i class="mdi mdi-city menu-icon"></i>
         <span class="menu-title">Company</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/employee">
-        <i class="mdi mdi-chart-bar menu-icon"></i>
+      <a class="nav-link" href="/admin/job_seeker">
+        <i class="mdi mdi-account-card-details menu-icon"></i>
         <span class="menu-title">Job Seekers</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/vacancies">
-        <i class="mdi mdi-table-large menu-icon"></i>
+        <i class="mdi mdi-briefcase menu-icon"></i>
         <span class="menu-title">Job types</span>
       </a>
     </li>
@@ -61,7 +60,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/myaccount">
+      <a class="nav-link" href="/post">
         <i class="mdi mdi-logout menu-icon"></i>
         <span>Sign Out</span>
       </a>

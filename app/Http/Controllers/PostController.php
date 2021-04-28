@@ -22,7 +22,7 @@ class PostController extends Controller
         // return view ('companies.test',compact('datas'));
         $date=date('y-m-d h:i:s');
         DB::table('posts')->where('closing_date','<=',$date)->update(['status'=>0]);
-        $results=DB::table('posts')->where('status',1)->orderby('id','DESC')->get();
+        $results=DB::table('posts')->where('status',1)->orderby('updated_at','DESC')->get();
         $company=DB::table('companies')->select('name','id','logo')->get(); 
         $vacancy=DB::table('vacancies')->select('title','id')->get();
         $data=DB::table('vacancy_qualification')->first();
@@ -44,11 +44,35 @@ class PostController extends Controller
         ->where('vacancies.title','LIKE','%'.$search_text.'%')
         ->where('posts.status',1)
         ->get();
-        if(count($posts) === 0){
-            return view('vacancies.search',compact('posts'))->with('nothing','No results');
-        }else{
-        return view('vacancies.search',compact('posts','apps'));}
+        $count=count($posts);
+        
+        return view('vacancies.search',compact('posts','apps','count'));
     
+    }
+    public function type_search(Request $request){
+        $apps=DB::table('applications')->select('*')->where('status',1)->get();
+        $search=$request->input('type');
+        if($search!=="All"){
+            $result=DB::table('posts')
+            ->join('vacancies','vacancies.id','=','posts.vacancy_id')
+            ->join('companies','companies.id','=','posts.company_id')
+            ->join('vacancy_qualification','vacancy_qualification.id','=','posts.quali_id')
+            ->select('posts.*','vacancies.title','companies.name','companies.logo')
+            ->where('vacancy_qualification.type','Like','%'.$search.'%')
+            ->where('posts.status',1)
+            ->get();}
+        else{
+            $result=DB::table('posts')
+            ->join('vacancies','vacancies.id','=','posts.vacancy_id')
+            ->join('companies','companies.id','=','posts.company_id')
+            ->join('vacancy_qualification','vacancy_qualification.id','=','posts.quali_id')
+            ->select('posts.*','vacancies.title','companies.name','companies.logo')
+            ->where('posts.status',1)
+            ->get();} 
+        
+        $count=count($result);
+        //return $search;
+        return view('vacancies.type_search',compact('result','apps','count'));
     }
 
     /**

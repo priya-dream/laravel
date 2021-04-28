@@ -8,11 +8,13 @@
       <div id="common">
          <div id="card-sub" >
             <div ><span style="color:#5c4be9">Company  : </span>{{$data->name}}</div>
+            <div ><span style="color:#5c4be9">Location  : </span>{{$data->branch}}</div>
             <div><span style="color:#5c4be9">Gender preference  : </span>{{$data->gender}}</div>
             <div><span style="color:#5c4be9">Age Limit  : </span>{{$data->age}}</div>
             <div><span style="color:#5c4be9">Salary  : </span>{{$data->salary}}</div>
-            <div><span style="color:#5c4be9">No of needed employees  : </span>{{$data->need}}</div> </br>
             <div id="more-text">
+            <div><span style="color:#5c4be9">No of needed employees  : </span>{{$data->need}}</div>
+            <div><span style="color:#5c4be9">Job Type  : </span>{{$data->type}}</div></br>
                <div style="color:#5c4be9">Required educational qualifications  =></div>
                <div style="margin-left:10px;margin-top:10px">
                   @if($data->o_level!=='' and $data->o_level=='Need' )
@@ -34,7 +36,7 @@
                         <div class="points-format">{{$data->other_quali}}</div>
                      </div></br>
                   @endif
-            </div>
+            </div></br>
             <button id="read-more" onclick="read()">Read More--></button>
             <script type="text/javascript"  src="{{asset('js/app.js')}}"></script>
          </div>
@@ -60,7 +62,7 @@ window.onload = function (){
 var i=0;
 	function read(){
 		if(!i){
-			document.getElementById("card-sub").style.height="450px";
+			document.getElementById("card-sub").style.height="550px";
 			document.getElementById("more-text").style.display="inline";
 			document.getElementById("read-more").innerHTML="Read less";
 			i=1;
