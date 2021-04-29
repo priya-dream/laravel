@@ -4,8 +4,11 @@
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.css">
 <div class="main-panel">
+<div style="font-size:22px;color:#1547df;margin-top:20px">
+    <a style="color:blue" class="navigate" onclick="history.go(-2)">My Account</a>--><a class="navigate" style="color:blue" onclick="history.back()">Applications</a>--><a class="navigate" href="">Applicant Details</a>
+</div>
 <div class="page-title">Applicant Details</div></br>
-<table class="table">
+<table>
         <tr>
             <th>No</th>
             <th>Applied Date</th>
@@ -15,7 +18,7 @@
             <th>Contact Number</th>
             <th>Address</th>
             <th>Qualification</th>
-            <th>Actions</th>
+            <th colspan="2">Actions</th>
         </tr>
         <?php $n=1; ?>
         @foreach($apps as $app)
@@ -41,9 +44,9 @@
                                 <div>A/L Result  =>  {{$qua->advance_level}}
                                     <ul style="font-size:18px">Stream : {{$qua->stream}}</ul></div>
                                 <div>Graduation  =>  {{$qua->graduate}}<ul>
-                                    <li>Field/Subject : {{$qua->field}}</li>
+                                    <ul>Field/Subject : {{$qua->field}}</ul>
                                 @if($qua->uni!==null)
-                                    <li>University : {{$qua->uni}}</span></li>
+                                    <ul>University : {{$qua->uni}}</span></ul>
                                 @endif
                                 </ul></div>
                                 @if($qua->other_quali!==null)
@@ -59,13 +62,12 @@
                    
                 <td><button class=" btn btn-primary" data-id="{{ $app->job_seeker_id }}" data-toggle="modal" data-target="#exampleModal-{{$app->job_seeker_id}}">View</button></td>   
                 <td>
-                <table><tr><td>
                     @foreach($apps1 as $apps)
                     @if($apps->job_seeker_id==$app->job_seeker_id)   
-                        <a  data-toggle="modal" data-id="{{ $apps->id }}" data-target="#test-{{$apps->id}}" class="show-detail modifyButton"><img src="{{url('images/check-tick.jpg')}}" style="width:40px;height:40px"></a></td><td>
+                        <a  data-toggle="modal" data-id="{{ $apps->id }}" data-target="#test-{{$apps->id}}" class="show-detail modifyButton"><img src="{{url('images/check-tick.jpg')}}" style="width:40px;height:40px;margin-bottom:10px"></a></td><td>
                         <form action="{{url('/myaccount/application/remove',$apps->id)}}" method="post" >
                             @csrf
-                            <a class="show-detail delete-confirm"  data-name="{{$apps->id}}"><img src="{{url('images/wrong-tick1.png')}}" style="width:40px;height:40px;margin-top:20px"></a></td></tr></table>
+                            <a class="show-detail delete-confirm"  data-name="{{$apps->id}}"><img src="{{url('images/wrong-tick1.png')}}" style="width:40px;height:40px;margin-top:10px"></a>
                         </form>
                         <!-- Modal -->
                         <div class="modal fade" id="test-{{$apps->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -91,7 +93,7 @@
                         </div> 
                     @endif
                     @endforeach
-                </td><td></td><td></td></tr>
+                </td></tr>
                     <?php $n+=1; ?>
                 @endforeach 
         </table>

@@ -1,6 +1,9 @@
 @extends('layouts.master.page')
 @section('content')
 <div class="main-panel" style="margin-left:90px">
+<div style="font-size:22px;color:#1547df;margin-top:20px">
+    <a style="color:blue" class="navigate" onclick="history.go(-2)">My Account</a>--><a class="navigate" style="color:blue" onclick="history.back()">Posts</a>--><a class="navigate" href="">Post Edit</a>
+</div>
 <form action="{{url('ad/update',$result->id)}}" method="post" class="forms-sample" id="form">
         {{csrf_field()}}
     <div class="row">

@@ -21,7 +21,8 @@ class PostController extends Controller
         // $datas=['rrr','sss','iii','uuuu'];
         // return view ('companies.test',compact('datas'));
         $date=date('y-m-d h:i:s');
-        DB::table('posts')->where('closing_date','<=',$date)->update(['status'=>0]);
+        $today=date('Y-m-d');
+        DB::table('posts')->where('closing_date','<',$today)->update(['status'=>0]);
         $results=DB::table('posts')->where('status',1)->orderby('updated_at','DESC')->get();
         $company=DB::table('companies')->select('name','id','logo')->get(); 
         $vacancy=DB::table('vacancies')->select('title','id')->get();
@@ -29,8 +30,9 @@ class PostController extends Controller
         $emps=DB::table('applications')->select('*')->where('status',1)->get();
         $now = Carbon::now();
         // $start=Carbon::parse($date)->diffInHours(Carbon::parse($now));
-        
-      return view('vacancies.index')->with(compact('results','company','vacancy','data','emps','now'));
+        // date box,change,reports,dashboard,com detail
+        $location=DB::table('vacancy_qualification')->select('branch')->whereNotNull('branch')->distinct()->get();
+      return view('vacancies.index')->with(compact('results','company','vacancy','data','emps','now','location'));
     
     }
 
@@ -39,41 +41,40 @@ class PostController extends Controller
         $search_text=$_GET['query'];
         $posts=DB::table('posts')
         ->join('vacancies','vacancies.id','=','posts.vacancy_id')
+        ->join('vacancy_qualification','vacancy_qualification.id','=','posts.quali_id')
         ->join('companies','companies.id','=','posts.company_id')
         ->select('posts.*','vacancies.title','companies.name','companies.logo')
-        ->where('vacancies.title','LIKE','%'.$search_text.'%')
+        ->orwhere('vacancies.title','LIKE','%'.$search_text.'%')
+        ->orwhere('branch','LIKE','%'.$search_text.'%')
         ->where('posts.status',1)
         ->get();
         $count=count($posts);
+        $location=DB::table('vacancy_qualification')->select('branch')->whereNotNull('branch')->distinct()->get();
+      
         
-        return view('vacancies.search',compact('posts','apps','count'));
+        return view('vacancies.search',compact('posts','apps','count','location'));
     
     }
     public function type_search(Request $request){
         $apps=DB::table('applications')->select('*')->where('status',1)->get();
         $search=$request->input('type');
-        if($search!=="All"){
+        $loc=$request->input('location');
             $result=DB::table('posts')
             ->join('vacancies','vacancies.id','=','posts.vacancy_id')
             ->join('companies','companies.id','=','posts.company_id')
             ->join('vacancy_qualification','vacancy_qualification.id','=','posts.quali_id')
             ->select('posts.*','vacancies.title','companies.name','companies.logo')
             ->where('vacancy_qualification.type','Like','%'.$search.'%')
+            ->where('vacancy_qualification.branch','Like','%'.$loc.'%')
             ->where('posts.status',1)
-            ->get();}
-        else{
-            $result=DB::table('posts')
-            ->join('vacancies','vacancies.id','=','posts.vacancy_id')
-            ->join('companies','companies.id','=','posts.company_id')
-            ->join('vacancy_qualification','vacancy_qualification.id','=','posts.quali_id')
-            ->select('posts.*','vacancies.title','companies.name','companies.logo')
-            ->where('posts.status',1)
-            ->get();} 
-        
+            ->get();
         $count=count($result);
+        $location=DB::table('vacancy_qualification')->select('branch')->whereNotNull('branch')->distinct()->get();
+      
         //return $search;
-        return view('vacancies.type_search',compact('result','apps','count'));
+        return view('vacancies.type_search',compact('result','apps','count','location'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -122,7 +123,7 @@ class PostController extends Controller
         ->count();
         if($post==0){
          DB::Insert('insert into vacancy_qualification(id,vacancy_id,company_id,o_level,type,advance_level,stream,graduate,field,gender,age,experience,salary,branch,other_quali) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[
-             null,$vacancy_id->id,$company_id->id,$ol,$type,$advance,$stream,$graduate,$field,$gender,$age,$exp,$salary,$branch,$other_quali
+             null,$vacancy_id->id,$company_id->id,$ol,$type,$advance,$stream,$graduate,$field,$gender,$age,$exp,$salary,$branch,$other_quali.'.'
         ]);
         $quali_id=DB::table('vacancy_qualification')->select('id')
         ->where('vacancy_id',$vacancy_id->id)

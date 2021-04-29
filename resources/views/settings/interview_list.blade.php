@@ -3,11 +3,14 @@
 
 @section('content')
 <div class="main-panel" style="overflow-x: auto">
-@if ($message = Session::get('error'))
+    @if ($message = Session::get('error'))
       <div class="alert alert-success">
           <p>{{ $message }}</p>
       </div>
     @endif
+    <div style="font-size:22px;color:#1547df;margin-top:20px">
+        <a style="color:blue" class="navigate" onclick="history.back()">My Account</a>--><a class="navigate"href="">Interview List</a>
+    </div>
 <div class="page-title">Applicant details to interview</div></br>
 <table class="table">
         <tr>

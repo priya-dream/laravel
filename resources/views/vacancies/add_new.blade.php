@@ -83,7 +83,7 @@
             @endforeach
         </tbody>
     </table>
-</div>
+</div></br>
 <!-- {!! ($results->currentpage()-1)* $results->perpage() !!} -->
 {!! $results->links() !!}
 </div><script type="text/javascript"  src="{{asset('js/app.js')}}"></script>

@@ -1975,6 +1975,25 @@ svg {
 
 table {
   border-collapse: collapse; }
+/* table th{ */
+	/* text-align:center; */
+	/* padding:7px 5px 7px 5px; */
+	/* border-top:1px solid #ddd; */
+	/* border-bottom:1px solid #ddd; */
+	/* color:#00008B; */
+/* } */
+/* table td{ */
+	/* height:20px; */
+	/* border-top:1px solid #ddd; */
+	/* border-bottom:1px solid #ddd; */
+	/* color:#00008B; */
+/* } */
+table td img{
+	width:150px;
+	height:120px;
+	background-color:#fff;}
+table tr td{
+height:5px;}
 
 caption {
   padding-top: 0.9375rem;
@@ -10125,14 +10144,18 @@ button.bg-dark:focus,
   .px-xl-6 {
 	box-shadow: 1px 1px 1px 1px grey;
   width:725px;
-  height:250px;
+  height:auto;
   margin-top:0px;
-  background-color:#c1c1d0;}
+  background-color:#efe3ef;}
   .px-xl-6:hover{
   border-radius:10px;
   box-shadow: 5px 5px 5px 5px grey;
   background-color:#998099;
   color:#fff;}
+  .px-xl-6:hover .sub-text{
+  color:#fff;}
+    .px-xl-6:hover .duration{
+  font-weight:bold;}
   .m-xl-n1 {
     margin: -0.25rem !important; }
   .mt-xl-n1,
@@ -10361,7 +10384,7 @@ a.text-dark:hover, a.text-dark:focus {
 .text-body {
   color: #343a40 !important; }
 .sub-text{
-	color:#fff;
+	color:#1e0d7c;
 	font-size:18px;
 	font-weight:bold;}
 .sub-texts{
@@ -15855,7 +15878,7 @@ color:#fff;}
 	
 .circle {
 margin-top:5px;
-  margin-left:435px;
+  margin-left:455px;
   height: 36px;
   width: 36px;
   font-size:1.3rem;
@@ -16064,7 +16087,7 @@ display:none;}
 .duration{
 	text-align:center;
 	margin-bottom:20px;
-	margin-left:380px;
+	margin-left:300px;
 	background-color:#307abe;
 	color:#fff;
 	width:120px;
@@ -16183,16 +16206,46 @@ font-size:20px;}
 	color:blue;
 	font-size:50px;
 	padding:100px 100px 100px 170px;}
-}
-i.search-arrow{
+.no-result1{
+	width:825px;
+	height:150px;
+	border:3px solid blue;
+	border-radius:7px;
 	color:blue;
+	font-size:50px;
+	padding:50px 100px 100px 250px;}
+.search-arrow{
+	color:#fff;
 	border:none;
-	width:20px;
-	height:20px;
-	background-color:#fff;
+	width:60px;
+	height:40px;
+	margin-left:50px;
 	font-size:20px;
-	border-radius:50%;
-	background-color:pink;}
-
+	border-radius:7px;
+	background-color:#8d32e1;}
+.navigate{
+	font-size:25px;
+	cursor:pointer;}
+.navigate:hover{
+	font-weight:bold;}
+.search-box{
+	margin-left:20px;
+	width:270px;
+	height:270px;
+	padding-top:20px;
+	padding-left:10px;
+	border:1px solid #c42cc4;
+}
+.all-post{
+	width:100px;
+	height:50px;
+	font-size:21px;
+	border:none;
+	border-radius:7px;
+	background-color:purple;
+	color:#fff;
+	margin-left:100px;
+	margin-bottom:50px;
+}
 
 /*# sourceMappingURL=style.css.map */

@@ -22,15 +22,25 @@
     <div class="row" style="margin-top:30px"> 
         <div class="col-md-4 grid-margin stretch-card" >
             <div class="card" style="padding-top:30px">
-                <label class="col">Location</lable>
-                <input type="text" class="form-control" name="Location" placeholder="Type here"></br>
-                <label class="col">Job Type</lable>
-                <select class="form-control" name="type" style="width:250px" onchange="location = this.value;">
-                    <option value="">All</option>
-                    <option value="{{url('/post/type_search')}}">Full time</option>
-                    <option>Part time</option>
-                    <option>Internship</option>
-                </select>
+            <button class="all-post" onclick="location.href='/post';">All Posts</button>
+            <div class="search-box">
+                    <form action="{{url('/post/type_search')}}" method="post" id="select-option">
+                            @csrf
+                        <label class="col">Location</label>
+                        <select class="form-control" name="location" style="width:220px;margin-left:15px">
+                            @foreach($location as $loc)
+                                <option value="{{$loc->branch}}" @if($loc->branch == $location) selected @endif>{{$loc->branch}}</option>
+                            @endforeach
+                        </select></br>
+                        <label class="col">Job Type</lable>
+                        <select class="form-control" name="type" style="width:220px">
+                            <option>Full time</option>
+                            <option>Part time</option>
+                            <option>Internship</option>
+                        </select></br>
+                        <button type="submit" class="search-arrow">Get</button>
+                    </form>
+                </div>
             </div>
         <div class="grid-margin stretch-card">
             <div class="card">
@@ -44,7 +54,7 @@
                             <td class="card px-xl-6"> 
                                 <table><tr><td>
                                     <div style="padding-bottom:10px">
-                                    <div style="margin-left:5px"><img src="{{asset('images/'.$post->logo)}}" width="170px" height="120px"></div>
+                                    <div style="margin-left:45px"><img src="{{asset('images/'.$post->logo)}}"></div>
                                     </td><td> 
                                         <?php $y=0; ?>
                                 @foreach($apps as $app)
@@ -58,6 +68,7 @@
                                         <p class="description">Applications</p></a>
                                     </div>
                                 @endif</br>
+                                <div style="margin-left:60px">
                                     <div><h4 class="sub-text">Designation : {{$post->title}}</h4></div>
                                     <div><h4 class="sub-text">Company Name : {{$post->name}}</h4></div>
                                     <div><h4 class="sub-text">Closing Date : {{$post->closing_date}}</h4></div></br>
@@ -77,7 +88,7 @@
                                             <div class="duration">{{\Carbon\Carbon::parse($post->created_at)->diffInDays(\Carbon\Carbon::now())}} days ago</div>
                                         @endif
                                     @endif
-                            </div></td></tr></table>
+                            </div></div></td></tr></table>
                             </td>
                                 <?php $i++; ?> 
                         </tr>

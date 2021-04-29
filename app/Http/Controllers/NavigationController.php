@@ -8,6 +8,6 @@ class NavigationController extends Controller
 {
     
     public function myaccount(){
-        return redirect('/account/verify');
+        return view('settings.account');
     }
 }

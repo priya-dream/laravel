@@ -2,7 +2,7 @@
 @section('content')
 <div class="main-panel">
     <div style="font-size:22px;color:#1547df;margin-top:20px">
-        <a href="{{ url('/account')}}">My Account</a>--><a href="">Applications</a>
+        <a style="color:blue" class="navigate" onclick="history.back()">My Account</a>--><a class="navigate" href="">Applications</a>
     </div>
     <div style="margin-left:170px">
     <div class="page-title">Applications</div></br>

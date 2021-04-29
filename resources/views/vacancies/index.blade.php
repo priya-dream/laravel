@@ -33,37 +33,28 @@
         </div>
     </form>
             <?php $i=1; ?>
-            <!-- <div class="col-md-6 form-group">
-                <select class="form-control dropdown-selection" style="width:150px">
-                <option value="">Job Type</option>
-                <option>Full Time</option>
-                <option>Part Time</option>
-                </select>
-            </div></br></br>
-            <div class="col-md-6 form-group">
-                <select class="form-control dropdown-selection" style="width:150px">
-                <option value="">Location</option>
-                <option>Jaffna</option>
-                <option>Colombo</option>
-                </select>
-            </div> -->
     <div class="row" style="margin-top:30px"> 
         <div class="col-md-4 grid-margin stretch-card" >
             <div class="card" style="padding-top:30px">
-                <label class="col">Location</lable>
-                <input type="text" class="form-control" name="Location" placeholder="Type here"></br>
-                <form action="{{url('/post/type_search')}}" method="post">
-                @csrf
-                <label class="col">Job Type</lable>
-                <table><tr><td>
-                <select class="form-control" name="type" style="width:220px">
-                    <option>All</option>
-                    <option>Full time</option>
-                    <option>Part time</option>
-                    <option>Internship</option>
-                </select></td>
-                <td><button type="submit" class="mdi mdi-arrow-right-bold btn-secondary" style="border:none;font-size:30px;color:blue"></button></td></tr></table>
-                </form>
+                <button class="all-post" onclick="location.href='/post';">All Posts</button>
+                <div class="search-box">
+                    <form action="{{url('/post/type_search')}}" method="post" id="select-option">
+                            @csrf
+                        <label class="col">Location</label>
+                        <select class="form-control" name="location" style="width:220px;margin-left:15px">
+                            @foreach($location as $loc)
+                                <option value="{{$loc->branch}}" @if($loc->branch == $location) selected @endif>{{$loc->branch}}</option>
+                            @endforeach
+                        </select></br>
+                        <label class="col">Job Type</lable>
+                        <select class="form-control" name="type" style="width:220px">
+                            <option>Full time</option>
+                            <option>Part time</option>
+                            <option>Internship</option>
+                        </select></br>
+                        <button type="submit" class="search-arrow">Get</button>
+                    </form>
+                </div>
             </div>
         <div class="grid-margin stretch-card">
             <div class="card">
@@ -78,10 +69,10 @@
                         <div style="padding-bottom:10px">
                             @foreach ($company as $com)
                                 @if($com->id==$result->company_id)
-                                <div style="margin-left:5px"><img src="{{asset('images/'.$com->logo)}}" width="170px" height="120px"></div>
+                                <div style="margin-left:45px"><img src="{{asset('images/'.$com->logo)}}"></div>
                                 @endif
                             @endforeach </td><td>
-                            <div style="margin-left:5px;">
+                            <div>
                                 <?php $y=0; ?>
                             @foreach($emps as $emp)
                                 @if($emp->post_id==$result->id)
@@ -94,6 +85,7 @@
                                     <p class="description">Applications</p></a>
                                 </div>
                             @endif</br>
+                        <div style="margin-left:60px">
                         @foreach ($vacancy as $vac)
                             @if($vac->id==$result->vacancy_id)
                                 <div><h4 class="sub-text">Designation : {{$vac->title}}</h4></div>
@@ -105,7 +97,7 @@
                             @endif
                         @endforeach
                         <div><h4 class="sub-text">Closing Date : {{$result->closing_date}}</h4></div>
-                        <div>
+                        <div style="margin-top:15px">
                             <form action="" method="POST">  
                                     {{csrf_field()}} 
                             <a class="btn btn-primary" style="margin-left:60px"  href="{{url('/vacancy/apply',$result->id)}}">Apply</a>

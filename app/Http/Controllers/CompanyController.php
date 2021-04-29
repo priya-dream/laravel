@@ -90,6 +90,7 @@ class CompanyController extends Controller
     public function verify(Request $request)
     {
         // //print_r($request->input());
+        $date=date('Y-m-d');
         $username=$request->input('username');
         $password=$request->input('password');
         $data=DB::table('companies')
@@ -105,7 +106,7 @@ class CompanyController extends Controller
         $vacancies= DB::table('vacancies')->select('title')->orderBy('title','ASC')->get();
         
             if(count($data))
-                return View('vacancies.add',compact('request','data','vacancies','advances','streams','graduations','fields','gender'));  
+                return View('vacancies.add',compact('request','data','vacancies','advances','streams','graduations','fields','gender','date'));  
             else
                 return redirect('/company/login')->with('error','Invalid login details !!');
         

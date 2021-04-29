@@ -179,7 +179,7 @@
                     <option value="{{ $val }}">{{ $val }}</option>
                     @endforeach
                 </select></td><td></td><td></td><td></td><td></td><td>
-                <label class=col>Field</label>
+                <label class=col>Field/Subject</label>
                 <?php sort($fields); ?>
                 <select class="form-control dropdown-selection" name="subj" style="height:40px;font-size:15px"">
                     <option value="">Select the subject/field...</option>
@@ -188,13 +188,11 @@
                     @endforeach
                 </select></td><td></td><td></td><td></td><td></td><td>
                 <label class=col>Recognized University</label>
-                <select class="form-control dropdown-selection" placeholder="hi" name="uni" style="height:40px;font-size:15px"">
+                <select class="form-control dropdown-selection" name="uni" style="height:40px;font-size:15px;width:350px">
                     <option value="">Select recognized university...</option>
-                    <option>University Of Jaffna</option>
-                    <option>University Of Colombo</option>
-                    <option>University Of Moratuwa</option>
-                    <option>University Of kelaniya</option>
-                    <option>University Of Peradeniya</option>
+                    @foreach ($uni as $uni => $val)
+                    <option value="{{ $val }}">{{ $val }}</option>
+                    @endforeach
                 </select></td></tr></table>
             </div>
         </div>
@@ -202,7 +200,7 @@
 		    <div class="col-md-6">
 			    <label class=col>Mention other skills/qualifications</label>
 			    <div>
-				    <textarea type="text" name="other_quali" placeholder="qualifications" class="form-control input"/></textarea>
+				    <textarea type="text" name="other_quali" placeholder="Type here" class="form-control textarea1"/></textarea>
 			    </div>
 		    </div>
         <div>

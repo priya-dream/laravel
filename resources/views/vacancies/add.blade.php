@@ -147,7 +147,7 @@
         <div class="form-group row">        
 		    <div class="col-md-6">
                 <label class="col">Closing Date</label>
-                <input type="date" style="font-size: 1.2rem" placeholder="choose the closing date" name="closing_date" class="form-control dropdown-selection2" required/>
+                <input type="date" min="{{$date}}" style="font-size: 1.2rem" placeholder="choose the closing date" name="closing_date" class="form-control dropdown-selection2" required/>
             </div>
         </div></br></br>
         <div class="form-group row">        

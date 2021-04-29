@@ -30,7 +30,7 @@
                      <div>Experience -  {{$data->experience}}</div></br>
                   @endif
                </div>
-                  @if($data->other_quali!=="")
+                  @if($data->other_quali!=="null")
                      <div style="color:#5c4be9">Required other qualifications  =></div>
                      <div style="margin-left:10px;margin-top:10px">
                         <div class="points-format">{{$data->other_quali}}</div>

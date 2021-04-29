@@ -51,7 +51,8 @@ class SettingController extends Controller
         ->where('posts.status',0)
         ->orderby('posts.date','DESC')
         ->get();
-        return view('settings.post',compact('results','results1'));
+        $count=count($results1);
+        return view('settings.post',compact('results','results1','count'));
     
     }
 

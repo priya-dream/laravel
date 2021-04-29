@@ -56,7 +56,9 @@ class VacancyController extends Controller
         $graduations=['Diploma','Higher Diploma','Degree','Master Degree'];
         $fields=['Engineering','Accounting','Teaching','Law','Electrical','Nursing','Media','Human Resource Management','Marketing','Management','Architecture','Infomation Technology','Computer Science','English','Software Engineering','Physical Science','Bio Science','Agriculture'];
         $gender=['Male','Female','Any'];
-        return view('vacancies.apply',compact('posts','advances','streams','graduations','fields','gender'));
+        $uni=['University of Colombo','Eastern University','University of Jaffna','University of Kelaniya','University of Moratuwa','Open University','University of Peradeniya','Rajarata University','University of Ruhuna',
+        'Sabaragamuwa University','South Eastern University','University of Sri Jayewardenepura','Uva Wellassa University','Wayamba University','Gampaha Wickramarachchi University'];
+        return view('vacancies.apply',compact('posts','advances','streams','graduations','fields','gender','uni'));
     }
 
     public function change_vacancy_type(Request $request,$id){

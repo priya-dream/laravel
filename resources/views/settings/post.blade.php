@@ -3,7 +3,7 @@
 @section('content')
 <div class="main-panel">
     <div style="font-size:22px;color:#1547df;margin-top:20px">
-        <a href="{{ url('/account')}}">My Account</a>--><a href="">Posts</a>
+        <a style="color:blue" class="navigate" onclick="history.back()">My Account</a>--><a class="navigate"href="">Posts</a>
     </div>
     <div style="margin-left:170px">
     @if ($message = Session::get('success'))
@@ -51,33 +51,38 @@
         @endforeach
     </table></br></br>
     <button class="old-post-btn" onclick="old_post()">Older posts</button></br></br>
-        <div id="old-post">
-            <table class=" table view-post">
-                <tr class="sub-texts">
-                    <th>No</th>
-                    <th>Published Date</th>
-                    <th>Job Type</th>
-                    <th>Closing Date</th>
-                    <th></th>
-                </tr>
-                <?php $i=1; ?>
-                @foreach($results1 as $result1)
-                <tr class="view-post">
-                    <td>{{$i}}</td>
-                    <td>{{$result1->date}}</td>
-                    <td>{{$result1->title}}
-                    <td>{{$result1->closing_date}}</td>
-                    <td>
-                        <form action="" method="post"> 
-                                @csrf  
-                            <button class="btn btn-primary view">View</button>
-                        </form>
-                    </td>   
-                </tr>
-                <?php $i+=1; ?>
-                @endforeach
-            </table>
-        </div>
+            <div id="old-post">
+            @if($count!=0)
+                <table class=" table view-post">
+                    <tr class="sub-texts">
+                        <th>No</th>
+                        <th>Published Date</th>
+                        <th>Job Type</th>
+                        <th>Closing Date</th>
+                        <th></th>
+                    </tr>
+                    <?php $i=1; ?>
+                    @foreach($results1 as $result1)
+                    <tr class="view-post">
+                        <td>{{$i}}</td>
+                        <td>{{$result1->date}}</td>
+                        <td>{{$result1->title}}
+                        <td>{{$result1->closing_date}}</td>
+                        <td>
+                            <form action="" method="post"> 
+                                    @csrf  
+                                <button class="btn btn-primary view">View</button>
+                            </form>
+                        </td>   
+                    </tr>
+                    <?php $i+=1; ?>
+                    @endforeach
+                </table>
+            @else
+                <div class="no-result1">No Result !!</div>
+            @endif
+            </div>
+
             @endif
     </div>
 </div>

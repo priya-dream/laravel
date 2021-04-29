@@ -5,6 +5,9 @@
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 @section('content')
 <div class="main-panel">
+    <div style="font-size:22px;color:#1547df;margin-top:20px">
+        <a style="color:blue" class="navigate" onclick="history.back()">My Account</a>--><a class="navigate"href="">Company Details</a>
+    </div>
     <div class="page-title">Company Details</div></br>
     <table class="table"><tr>
     @foreach($company as $com)
