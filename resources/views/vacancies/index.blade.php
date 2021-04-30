@@ -1,4 +1,5 @@
 @extends('layouts.master.page')
+<link href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css')}}" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.css">
 @section('content')
 <div>
@@ -24,6 +25,42 @@
         </div>
     @endif
     
+</div>
+<div class="navigate">
+    <button type="button" class="add-resume" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add Resume
+    </button>
+    <a href="#about" class="navigate">About Us</a>
+    <a href="#contact" class="navigate">Contact Us</a>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Resume</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="{{url('/job_seeker/cv')}}" method="POST" id="form" enctype="multipart/form-data">
+      {{ csrf_field() }}
+        <div class="modal-body">   
+            <div class="mb-3">
+                <label  class="form-label">Wanted Job Designation</label>
+                <input type="text" placeholder="Eg:Office Administrator" name="title" class="form-control" required/>
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Upload Your CV (in PDF)</label>
+                <input type="file" placeholder="choose" name="cv" class="form-control" required/>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary add">Add</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            
+        </div>
+       </form>
+    </div>
+  </div>
 </div>
 <div class="input-group">
     <form action="{{url('/search')}}" method="get">
@@ -69,7 +106,7 @@
                         <div style="padding-bottom:10px">
                             @foreach ($company as $com)
                                 @if($com->id==$result->company_id)
-                                <div style="margin-left:45px"><img src="{{asset('images/'.$com->logo)}}"></div>
+                                <div style="margin-left:45px"><img src="{{asset('images/'.$com->logo)}}" style="background-color:#fff"></div>
                                 @endif
                             @endforeach </td><td>
                             <div>
@@ -123,10 +160,45 @@
         </div>
         </div>
     </div>
-           
+    <h1 style="margin-left:450px;margin-top:90px">ABOUT - US</h1>
+    <div id="about" class="about">
+        <p>You will be charged from Rs.2500 to publish the employment details of your company,</p>
+        <p>Also You can see Job seekers details(Excepts your specific applicants for the post)
+        When Job seeker's qualification matching with your employment details</p>
+        </p>To sign in your own account (Click MyAccount button on top bar.)</p>
+    </div> </br></br>
+    <h1 style="margin-left:450px;margin-top:90px">CONTACT - US</h1>
+    <div id="contact" class="contact">
+        <table><tr>
+        <td><img src="{{asset('images/map.png')}}"></td>
+        <td>
+        <div><i class="mdi mdi-map-marker">No 273, Aadiyapatham Road,</span><span>Kokuvil,Jaffna</i></div></br>
+        <div><i class="mdi mdi-email">dfcjobslk@gmail.com</i></div></br>
+        <div><i class="mdi mdi-phone-in-talk"><p>077-649-5791</p><p>021-435-8078</p></i></div></br>
+        </td>
+        </tr></table>
+   
+    </div>        
 </div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js')}}" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.js"></script>
-
-
+<script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
+<script>
+document.querySelector('#form').addEventListener('submit', function(e) {
+  var form = this;
+  e.preventDefault();
+    Swal.fire({
+        title:'Done',
+        text: 'Employer will contact you, If your qualification match their requirements.Thank You:)',
+        textColor:'blue',
+        icon: 'success'
+    }).then((result) => {
+        if (result.isConfirmed){
+            form.submit();
+        }
+    });
+});     
+</script>
 @stop

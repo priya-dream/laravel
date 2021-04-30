@@ -38,18 +38,8 @@
         <td class="gap">COMPANY DETAILS</td>
     </tr>
 </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
+        <script type="text/javascript"  src="{{asset('js/app.js')}}"></script> 
+      <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
+
 @stop

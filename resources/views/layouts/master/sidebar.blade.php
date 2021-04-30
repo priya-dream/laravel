@@ -1,3 +1,4 @@
+<!-- <link rel="stylesheet" href="{{asset('css/style.css')}}" /> -->
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
 <div class="text-center sidebar-brand-wrapperr">
     <a class="" href="#"><table><tr><td><img class="sidebar-image-admin" src="{{ asset('images/admin.png') }}"></td><td><img class="sidebar-image-job" src="{{ asset('images/job.png') }}"; height="25px"; width="25px";></td></tr></table></a>
@@ -20,19 +21,6 @@
         <i class="mdi mdi-crosshairs-gps menu-icon"></i>
         <span class="menu-title">Available Vacancies</span>
       </a>
-      <div class="collapse" id="ui-basic">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item">
-            <a class="nav-link" href="">Jaffna</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">Colombo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">Others</a>
-          </li>
-        </ul>
-      </div>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/company/data">
@@ -44,6 +32,7 @@
       <a class="nav-link" href="/admin/job_seeker">
         <i class="mdi mdi-account-card-details menu-icon"></i>
         <span class="menu-title">Job Seekers</span>
+        
       </a>
     </li>
     <li class="nav-item">
@@ -52,12 +41,22 @@
         <span class="menu-title">Job types</span>
       </a>
     </li>
-   
     <li class="nav-item">
-      <a class="nav-link" href="">
+      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
         <i class="mdi mdi-file-document-box menu-icon"></i>
         <span class="menu-title">Reports</span>
+        <i class="menu-arrow"></i>
       </a>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="">Applications by job type</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Posts by job type</a>
+          </li>
+        </ul>
+      </div>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/post">
@@ -67,3 +66,4 @@
     </li>
   </ul>
   </nav>
+  <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>

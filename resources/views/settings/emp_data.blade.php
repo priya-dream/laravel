@@ -8,7 +8,7 @@
     <a style="color:blue" class="navigate" onclick="history.go(-2)">My Account</a>--><a class="navigate" style="color:blue" onclick="history.back()">Applications</a>--><a class="navigate" href="">Applicant Details</a>
 </div>
 <div class="page-title">Applicant Details</div></br>
-<table>
+<table class="hi">
         <tr>
             <th>No</th>
             <th>Applied Date</th>
@@ -74,7 +74,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Add to Interview List</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Add to Shortlist</h5>
                                     </div>
                                     <form action="{{url('/add/interview-list',$apps->id)}}" method="POST">
                                         {{ csrf_field() }}
@@ -108,7 +108,7 @@
     <script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js')}}" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
 <script>
-    $(".add").click(function() {
+    $(".add").click(function(event) {
         var form =  $(this).closest("form");
         var name = $(this).data("name");
         event.preventDefault();
@@ -153,7 +153,7 @@
 });
 </script>
 <script>
-$(".save").click(function() {
+$(".save").click(function(e) {
   var form = this;
   e.preventDefault();
     Swal.fire({

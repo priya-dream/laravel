@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         // $datas=['rrr','sss','iii','uuuu'];
-        // return view ('companies.test',compact('datas'));
+         //return view ('companies.test');
         $date=date('y-m-d h:i:s');
         $today=date('Y-m-d');
         DB::table('posts')->where('closing_date','<',$today)->update(['status'=>0]);

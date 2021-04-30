@@ -36,7 +36,17 @@ class ApplicationController extends Controller
         ->where('status',1)
         ->get();
         $num=count($results);
-        return view('settings.application',compact('results','num','vacancy','data'));
+        $resume=DB::table('resumes')->select('*')->get();
+        // $pdf = PDF::loadView('pdf.invoice', $data);
+        // Storage::put('public/pdf/invoice.pdf', $pdf->output());
+        // return \PDF::loadView('pdf.invoice', $resume->cv);
+        // $data1=DB::table('posts')
+        // ->join('vacancies','vacancies.id','posts.vacancy_id')
+        // ->where('company_id',$id)
+        // ->where('title','LIKE','%sof%')
+        // ->get();
+        // return $data1;
+        return view('settings.application',compact('results','num','vacancy','data','resume'));
     }
 
     /**

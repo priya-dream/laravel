@@ -138,6 +138,12 @@ class CompanyController extends Controller
            return redirect()->route('company.index')->with('success','company successfully updated ');
         
     }
+    public function update_logo(Request $request,$id)
+    {
+        $logo=$request->input('logo');
+        DB::table('companies')->where('id',$id)->update(['logo'=>$logo]);
+        return redirect("myaccount/details/$id");
+    }
 
     public function delete(Company $company)
     {

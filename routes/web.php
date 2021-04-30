@@ -58,6 +58,7 @@ Route::get('/account','NavigationController@myaccount');
     Route::get('/vacancy/type','VacancyController@type');
     Route::resource('/vacancies', 'VacancyController');
 
+    Route::post('/job_seeker/cv', 'JobSeekerController@add_cv');
     Route::post('/employee/resume', 'JobSeekerController@store');
     Route::resource('/resume', 'JobSeekerController');
 
@@ -98,6 +99,7 @@ Route::get('/account','NavigationController@myaccount');
     Route::resource('user', 'UserController');
     
     Route::post('company/detail/update','CompanyController@update');
+    Route::post('company/logo/update/{id}','CompanyController@update_logo');
     Route::post('/login/verify', 'CompanyController@verify');
     Route::get('/login/create', 'CompanyController@create');
     Route::get('company/login','CompanyController@index');
@@ -111,6 +113,9 @@ Route::get('/account','NavigationController@myaccount');
     Route::get('/post', 'PostController@index');
     Route::resource('post/{id}', 'PostController');
 
+    // Password reset link request routes...
+    Route::get('password/email', 'Auth\ForgotPasswordController@getEmail');
+    Route::post('password/email', 'Auth\ForgotPasswordController@postEmail');
     
 
 

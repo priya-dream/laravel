@@ -236,6 +236,7 @@ return [
         'Input' => Illuminate\Support\Facades\Input::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         
+        
 
     ],
 

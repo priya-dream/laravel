@@ -36,6 +36,7 @@
 }
 
 .editable-input {
+	font-size:50px;
     vertical-align: top; 
     display: inline-block; /* should be inline to take effect of parent's white-space: nowrap */
     width: auto; /* bootstrap-responsive has width: 100% that breakes layout */
@@ -51,7 +52,8 @@
 
 /*for jquery-ui buttons need set height to look more pretty*/
 .editable-buttons button.ui-button-icon-only {
-   
+   height: 24px; 
+   width: 30px;
 }
 
 .editableform-loading {
@@ -660,3 +662,5 @@ a.editable-click.editable-disabled:hover {
   margin-left: -5px;
   margin-right: -5px;
 }
+input {
+font-size:55px;}

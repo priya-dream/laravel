@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Jobseeker;
 use DB;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
@@ -86,6 +87,22 @@ class JobseekerController extends Controller
         }
         
         // $request->session()->flash('status', 'Task was successful!');
+    }
+    public function add_cv(Request $request){
+        $title=$request->input('title');
+        // $cv=$request->file('cv');
+        // $request->file('photo')->move($destinationPath);
+        $request->validate([
+            'file' => 'required|mimes:pdf|max:2048',
+        ]);
+  
+        $fileName = time().'.'.$request->file->extension();  
+   
+        $request->file->move(public_path('files'), $fileName);
+        return $fileName;
+        
+        DB::Insert('insert into resumes(id,title,cv) values(?,?,?)',[null,$title,$fileName]);
+        //return redirect('/post');
     }
 
     /**

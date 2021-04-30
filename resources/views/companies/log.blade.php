@@ -22,6 +22,9 @@
             <a class="btn btn-secondary" onclick="btn()">Change Password</a></br></br>
                 <div id="more-data">
                     <input type="password" name="password" class="form-control input1" placeholder="Current password" required/></br>
+                    <a class="btn btn-link" href="{{ url('password/email') }}">
+                             {{ __('Forgot Your Current Password?') }}
+                    </a>
                     <input type="password" name="new_pw" id="new_pw" class="form-control input1" placeholder="New password" required/></br>
                     <input type="password" name="confirm_pw" id="confirm_pw" class="form-control input1" placeholder="Confirm new password"/>
                     <span id='message'></span></br>
@@ -32,6 +35,9 @@
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript"  src="{{asset('js/app.js')}}"></script> 
+<script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
+
 <script>
 function btn(){
         document.getElementById('more-data').style.display="inline";

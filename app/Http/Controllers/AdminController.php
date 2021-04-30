@@ -37,7 +37,7 @@ class AdminController extends Controller
     public function for_publish(){
 
         $result=DB::table('posts')->join('vacancies','vacancies.id','=','posts.vacancy_id')->join('companies','companies.id','=','posts.company_id')
-        ->select('company_id','name','closing_date','date','posts.id','quali_id','mobile','title')->where('posts.status',0)->orderBy('posts.date','DESC')->get();
+        ->select('company_id','name','closing_date','date','posts.id','quali_id','mobile','title')->where('posts.payment',0)->orderBy('posts.date','DESC')->get();
         $quali=DB::table('vacancy_qualification')->select('*')->get();
         $com_data=DB::table('companies')->select('*')->get();
         return view('admin.for_publish',compact('result','quali','com_data'));
@@ -46,7 +46,7 @@ class AdminController extends Controller
     public function publish($id){
         $data=DB::table('payments')->select('post_id')->where('post_id',$id)->count();
         if($data!=0){   
-            DB::Update('update posts set status=? where id=?',[1,$id]);
+            DB::Update('update posts set status=?,payment=? where id=?',[1,1,$id]);
             return redirect('/admin/for_publish');
         }
         else{
