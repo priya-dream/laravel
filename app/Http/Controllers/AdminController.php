@@ -17,8 +17,8 @@ class AdminController extends Controller
     }
 
     public function job_seeker(){
-        DB::table('job_seekers')->select('*')->get();
-        return view('admin.job_seeker');
+        $datas=DB::table('job_seekers')->orderby('fname')->paginate(10);
+        return view('admin.job_seeker',compact('datas'))->with('i', (request()->input('page', 1) - 1) * 10);;
     }
 
     public function payment(Request $request,$id){
@@ -109,6 +109,28 @@ class AdminController extends Controller
         $last_post=DB::table('posts')->whereMonth('date',$month-1)->count('id');
         //return $income_cash;
         return view('admin.dashboard',compact('datas','post','last_post','income_total','last_income','income_cash','income_card','last_income_cash','last_income_card'))->with('name',json_encode($array1))->with('title',json_encode($array));
+    }
+
+
+    public function application_report(){
+        $month=date('m');
+        $apps=DB::table('applications')->select('id','post_id')->whereMonth('date',$month-1)->get();
+        
+        $posts=DB::table('posts')
+        ->join('vacancies','vacancies.id','=','posts.vacancy_id')
+        ->join('applications','applications.post_id','=','posts.id')
+        ->select(DB::raw('title as title'),DB::raw('count(*) as number'))
+        ->groupBy('title')
+        ->get();
+        $datas=DB::table('posts')
+        ->join('vacancies','vacancies.id','=','posts.vacancy_id')
+        ->select(DB::raw('title as title'),DB::raw('count(*) as number'))
+        ->whereMonth('posts.date',$month)
+        ->groupBy('title')
+        ->get();
+        //return $posts;
+
+        return view('admin.application_report',compact('apps','posts','datas'));
     }
         
     

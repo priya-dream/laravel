@@ -1,5 +1,4 @@
 @extends('layouts.master.page')
-<link href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css')}}" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.css">
 @section('content')
 <div>
@@ -30,8 +29,8 @@
     <button type="button" class="add-resume" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Add Resume
     </button>
-    <a href="#about" class="navigate">About Us</a>
-    <a href="#contact" class="navigate">Contact Us</a>
+    <a href="#about"style="text-decoration:none;" class="navigate">About Us</a>
+    <a href="#contact" style="text-decoration:none;" class="navigate">Contact Us</a>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -39,9 +38,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Add Resume</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="{{url('/job_seeker/cv')}}" method="POST" id="form" enctype="multipart/form-data">
+      <form action="{{url('/add/resume')}}" method="POST" id="form" enctype="multipart/form-data">
       {{ csrf_field() }}
         <div class="modal-body">   
             <div class="mb-3">

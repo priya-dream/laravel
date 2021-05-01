@@ -1,10 +1,10 @@
 @extends('layouts.master.page')
 @section('content')
 <div class="main-panel">
-<div><h2>Job Details</h2></div></br>
+<div><h2 class="page-title">Job Details</h2></div></br>
 @foreach($datas as $data)
-   <div><h2 style="color:#C71585">{{$data->title}}</h2></div>
-   <div class="card-main" style="background-image:url('{{asset('images/'.$data->img)}}');background-size:900px 650px;">
+   <div><h2 style="color:#C71585">{{$vac->title}}</h2></div>
+   <div class="card-main" style="background-image:url('{{asset('images/'.$vac->img)}}');background-size:900px 650px;">
       <div id="common">
          <div id="card-sub" >
             <div ><span style="color:#5c4be9">Company  : </span>{{$data->name}}</div>
@@ -33,7 +33,7 @@
                   @if($data->other_quali!=="null")
                      <div style="color:#5c4be9">Required other qualifications  =></div>
                      <div style="margin-left:10px;margin-top:10px">
-                        <div class="points-format">{{$data->other_quali}}</div>
+                        <div style="white-space: pre-wrap;">{{$data->other_quali}}</div>
                      </div></br>
                   @endif
             </div></br>

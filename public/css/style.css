@@ -1991,8 +1991,8 @@ table {
 .hi th{
 	font-weight:bold;}
 table td img{
-	width:130px;
-	height:85px;
+	width:150px;
+	height:125px;
 	border-radius:7px;}
 table tr td{
 height:5px;}
@@ -15801,13 +15801,14 @@ cursor:pointer;}
 font-size:0.875rem;
 -webkit-box-shadow:inset 0 3px 1px rgb(231 237 238 / 50%);}
 .modal-btn{
+	font-size:25px;
 	border:none;
 	outline:none;
 	border-radius:3px;
+	color:#5a519f;
 	background-color:#ffff;}
 .modal-btn:hover{
-	color:red;
-	background-color:#0000ff;
+	color:blue;
 }
 .name{
 font-size:30px;
@@ -15920,7 +15921,7 @@ margin-top:5px;
 .login{
 	width:120px;
 	height:90px;
-	font-size:1.9rem;
+	font-size:2.2rem;
 	color:#fff;
 	margin-left:260px;}
 .login:hover{
@@ -15961,6 +15962,9 @@ margin-top:5px;
 	border-radius:3px;
 	color:#5a519f;
 	font-size:28px;}
+.login-btn:hover{
+	background-color:#fff;
+	color:blue;}
 .login-sign{
 	width:50px;
 	height:50px;
@@ -15997,16 +16001,16 @@ margin-top:5px;
 	color:#4B0082;
 	font-weight:bold;}	
 .nothing{
-	width:670px;
+	width:770px;
 	height:250px;
 	align-content:center;
-	margin-left:240px;
+	margin-left:90px;
 	margin-top:40px;
 	border:3px solid;
 	border-color:blue;
 	border-radius:7px;}
 .info{
-	padding:40px 50px 50px 50px;
+	padding:70px 50px 50px 50px;
 	font-size:2.5rem;
 	color:blue;}
 .number-view{
@@ -16268,6 +16272,7 @@ font-size:20px;}
 	border:2px solid #c42cc4;
 	border-radius:7px;}
 .navigate{
+	text-decoration:none;
 	margin-left:40px;
 	font-size:22px;}
 .contact{
@@ -16300,4 +16305,8 @@ font-size:20px;}
 	margin-left:200px;
 	font-size:21px;
 	color:#d241ba;}
+.recover:hover{
+	background-color:rgba(255,255,255,0.8);
+}
+		
 /*# sourceMappingURL=style.css.map */

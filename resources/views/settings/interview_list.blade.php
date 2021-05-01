@@ -9,7 +9,7 @@
       </div>
     @endif
     <div style="font-size:22px;color:#1547df;margin-top:20px">
-        <a style="color:blue" class="navigate" onclick="history.back()">My Account</a>--><a class="navigate"href="">Interview List</a>
+        <a style="color:blue" class="navigate" onclick="history.back()">My Account</a>--><a href="">Interview List</a>
     </div>
 <div class="page-title">Applicant details to interview</div></br>
 <table class="table">
@@ -26,17 +26,26 @@
             <th>Actions</th>
         </tr>
         <?php $n=1; ?>
-        @foreach($results as $res)
+        @foreach($resu as $res)
             <tr>
                 <td><?php echo $n; ?></td>
                 <td>{{$res->date}}</td>
-                <td>{{$vac->title}}</td>
-                <td>{{$res->fname}}</td>
-                <td>{{$res->lname}}</td>
-                <td>{{$res->nic}}</td>
-                <td>{{$res->mobile}}</td>
-                <td>{{$res->address}}</td>
+                @foreach($vac as $va)
+                @if($res->post_id==$va->id)
+                <td>{{$va->title}}</td>
+                @endif
+                @endforeach
+                @foreach($emps as $emp) 
+                @if($res->job_seeker_id==$emp->id)
+                <td>{{$emp->fname}}</td>
+                <td>{{$emp->lname}}</td>
+                <td>{{$emp->nic}}</td>
+                <td>{{$emp->mobile}}</td>
+                <td>{{$emp->address}}</td>
+                @endif
+                @endforeach
                 <td><button class=" btn btn-primary" data-id="{{$res->job_seeker_id}}" data-toggle="modal" data-target="#exampleModal-{{$res->job_seeker_id}}">View</button></td>
+                <td><a class="recover" href="{{url('/shortlist/restore',$res->id)}}"><img src="{{asset('images/recover-icon.png')}}"style="width:40px;height:40px;"></a></td>
                     <div class="modal fade" id="exampleModal-{{$res->job_seeker_id}}" tabindex="-1" aria-labelledby="exampleModalLabel">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -65,8 +74,7 @@
                             </div>
                         <div>
                     </div>
-                 
-                <td>
+                
                 
                     <?php $n+=1; ?>
                 @endforeach 
@@ -75,4 +83,16 @@
     
 
 </div>
+    <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js')}}" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script>
+$(".recover").click(function() {
+    Swal.fire({
+                title:'Done',
+                text: 'Application is restored from Shortlist',
+                icon: 'success'
+            });
+});     
+</script>
 @stop

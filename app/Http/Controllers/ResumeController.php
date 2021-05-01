@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\resume;
+use App\Resume;
 use Illuminate\Http\Request;
 
 class ResumeController extends Controller
@@ -14,7 +14,8 @@ class ResumeController extends Controller
      */
     public function index()
     {
-        //
+        // $file=Resume::all();
+        // return view('settings.job_seeker_resume_view',compact('file'));
     }
 
     /**
@@ -35,7 +36,17 @@ class ResumeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=new Resume;
+        if($request->file('file')){
+            $file=$request->file('file');
+            $filename=time().'.'.$file->getClientOriginalExtension();
+            $request->file->store('/public',$filename);
+            $data->cv=$filename;
+        }
+        //return $filename;
+        $data->title=$request->title;
+        $data->save();
+        return redirect()->back();
     }
 
     /**
@@ -44,9 +55,13 @@ class ResumeController extends Controller
      * @param  \App\resume  $resume
      * @return \Illuminate\Http\Response
      */
-    public function show(resume $resume)
+    public function show($id)
     {
-        //
+        // $data=Resume::find($id);
+        // return view('settings.job_seeker_resume_view',compact('data'));
+    }
+    public function download(){
+        
     }
 
     /**

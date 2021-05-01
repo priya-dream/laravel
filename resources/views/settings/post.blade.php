@@ -59,7 +59,6 @@
                         <th>Published Date</th>
                         <th>Job Type</th>
                         <th>Closing Date</th>
-                        <th></th>
                     </tr>
                     <?php $i=1; ?>
                     @foreach($results1 as $result1)
@@ -67,13 +66,7 @@
                         <td>{{$i}}</td>
                         <td>{{$result1->date}}</td>
                         <td>{{$result1->title}}
-                        <td>{{$result1->closing_date}}</td>
-                        <td>
-                            <form action="" method="post"> 
-                                    @csrf  
-                                <button class="btn btn-primary view">View</button>
-                            </form>
-                        </td>   
+                        <td>{{$result1->closing_date}}</td> 
                     </tr>
                     <?php $i+=1; ?>
                     @endforeach

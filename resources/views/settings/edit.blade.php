@@ -2,7 +2,7 @@
 @section('content')
 <div class="main-panel" style="margin-left:90px">
 <div style="font-size:22px;color:#1547df;margin-top:20px">
-    <a style="color:blue" class="navigate" onclick="history.go(-2)">My Account</a>--><a class="navigate" style="color:blue" onclick="history.back()">Posts</a>--><a class="navigate" href="">Post Edit</a>
+    <a style="color:blue" class="navigate" onclick="history.go(-2)">My Account</a>--><a style="color:blue" onclick="history.back()">Posts</a>--><a style="text-decoration:none"  href="">Post Edit</a>
 </div>
 <form action="{{url('ad/update',$result->id)}}" method="post" class="forms-sample" id="form">
         {{csrf_field()}}
@@ -17,7 +17,7 @@
                     <option value="">Select vacancy type.... </option>
                         @foreach ($vacancies as $list) 
                             {
-                                <option value="{{$list->title}}" {{$list->id==$result->vacancy_id ? 'selected' : ""}} >{{ $list->title }}</option>
+                                <option value="{{$list->title}}" {{$list->title==$result->title ? 'selected' : ""}} >{{ $list->title }}</option>
                             }
                         @endforeach
                 </select>

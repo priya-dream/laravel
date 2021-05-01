@@ -1,26 +1,15 @@
-<link rel="stylesheet" href="{{asset('css/style.css')}}" /> 
-<link rel="stylesheet" href="{{asset('vendors/css/vendor.bundle.base.css')}}" />
-<script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
-<li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-              <span class="menu-title">Basic UI Elements</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
-                </li>
-              </ul>
+<form action="{{url('/add/resume')}}" method="POST" id="form" enctype="multipart/form-data">
+      {{ csrf_field() }}
+        <div class="modal-body">   
+            <div class="mb-3">
+                <label  class="form-label">Wanted Job Designation</label>
+                <input type="text" placeholder="Eg:Office Administrator" name="title" class="form-control" required/>
             </div>
-          </li>
-
-
-
+            <div class="mb-3">
+                <label  class="form-label">Upload Your CV (in PDF)</label>
+                <input type="file" placeholder="choose" name="file" class="form-control" required/>
+            </div>
+            <input type="submit" value="Add" class="btn btn-primary add">
+        </div>
+    </form>
+    

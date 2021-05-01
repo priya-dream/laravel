@@ -21,8 +21,8 @@
       </select>
     </span> -->
     <a style="margin-left:120px;font-size:20px;" href="{{ url('/company/login') }}" class="btn btn-success">POST JOB</a>
-    <span class="login mdi mdi-account"><a class="login-btn" href="{{url('/myaccount')}}">MyAccount</button></a></span>
-    <span style="margin-left:60px" class="mdi mdi-account-star"><button style="background-color:white;font-size:25px" class="modal-btn">Admin</button></span>
+    <span class="login mdi mdi-account"><a class="login-btn"style="text-decoration:none;" href="{{url('/myaccount')}}">MyAccount</button></a></span>
+    <span style="margin-left:60px" class="mdi mdi-account-star"><button class="modal-btn">Admin</button></span>
   </div>
 
       <div class="container-scroller">

@@ -35,7 +35,7 @@
                     <td>{{$vac->closing_date}}</td>
                     <?php $x=0; ?>
                     @foreach($data as $da)
-                    @if($vac->id==$da->post_id)
+                    @if($vac->id==$da->post_id and $da->company_id==$vac->company_id)
                     <?php $x=$x+1; ?>
                     @endif
                     @endforeach 
@@ -46,10 +46,10 @@
             </table>  
         @endif
     </div> </br></br>
-    <div class="other">May need you these Applications<a style="margin-left:10px;" href="">Click here</a></div>
+    <!-- <div class="other">May need you these Applications<a style="margin-left:10px;" href="">Click here</a></div>
     @foreach($resume as $cv)
     <div>{{$cv->cv}}</div>
-    @endforeach
+    @endforeach -->
 </div>
 <?php $x=4; ?>
 @stop

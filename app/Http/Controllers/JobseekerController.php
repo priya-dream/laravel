@@ -66,7 +66,7 @@ class JobseekerController extends Controller
             ]);
             $emp=DB::table('job_seekers')->select('id')->where('nic',$nic)->first();
             DB::Insert('insert into job_seekers_qualification(id,post_id,job_seeker_id,o_level,advance_level,stream,graduate,field,uni,other_quali) values(?,?,?,?,?,?,?,?,?,?)',[
-            null,$post_id,$emp->id,$o_level,$a_level,$stream,$graduate,$subject,$uni,$other_quali
+            null,$post_id,$emp->id,$o_level,$a_level,$stream,$graduate,$subject,$uni,$other_quali.'.'
             ]);
         }
             $data=DB::table('job_seekers')->select('id')->where('nic',$nic)->first();
@@ -89,19 +89,14 @@ class JobseekerController extends Controller
         // $request->session()->flash('status', 'Task was successful!');
     }
     public function add_cv(Request $request){
-        $title=$request->input('title');
-        // $cv=$request->file('cv');
-        // $request->file('photo')->move($destinationPath);
-        $request->validate([
-            'file' => 'required|mimes:pdf|max:2048',
-        ]);
-  
-        $fileName = time().'.'.$request->file->extension();  
-   
-        $request->file->move(public_path('files'), $fileName);
-        return $fileName;
+        return $request;
         
-        DB::Insert('insert into resumes(id,title,cv) values(?,?,?)',[null,$title,$fileName]);
+        // $title=$request->input('title');
+        // $cv=$request->file('cv');
+        // $request->file('cv')->store($cv,'public');
+        
+        
+        // DB::Insert('insert into resumes(id,title,cv) values(?,?,?)',[null,$title,]);
         //return redirect('/post');
     }
 

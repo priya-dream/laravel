@@ -17,7 +17,7 @@ class ApplicationController extends Controller
         $data=DB::table('posts')
         ->join('applications','applications.post_id','=','posts.id')
         ->join('companies','companies.id','=','posts.company_id')
-        ->select('applications.*')
+        ->select('applications.*','company_id')
         ->where('applications.status',1)
         ->get();
         

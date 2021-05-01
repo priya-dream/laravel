@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.css">
 <div class="main-panel">
 <div style="font-size:22px;color:#1547df;margin-top:20px">
-    <a style="color:blue" class="navigate" onclick="history.go(-2)">My Account</a>--><a class="navigate" style="color:blue" onclick="history.back()">Applications</a>--><a class="navigate" href="">Applicant Details</a>
+    <a style="color:blue" class="navigate" onclick="history.go(-2)">My Account</a>--><a style="color:blue" onclick="history.back()">Applications</a>--><a href="">Applicant Details</a>
 </div>
 <div class="page-title">Applicant Details</div></br>
 <table class="hi">
@@ -51,7 +51,7 @@
                                 </ul></div>
                                 @if($qua->other_quali!==null)
                                 <div>Other Qualifications/Skills  =></div>
-                                <ul class="points-format" style="font-size:16px"> {{$qua->other_quali}}</ul>
+                                <ul style="white-space: pre-wrap;font-size:16px"> {{$qua->other_quali}}</ul>
                                 @endif
                                @endif
                                @endforeach
@@ -168,16 +168,16 @@ $(".save").click(function(e) {
 });     
 </script>
 <script>
-window.onload = function (){ 
-    var header  =document.querySelector(".points-format");
-    var headerText = header.innerText;
-    var a = headerText .split(".");
-    a.pop();
-    var toAppend = "";
-    a.forEach(function (t, i){
-        toAppend += t + ".<br>";   
-    });
-    header .innerHTML = toAppend ;
-}
+// window.onload = function (){ 
+//     var header  =document.querySelector(".points-format");
+//     var headerText = header.innerText;
+//     var a = headerText .split(".");
+//     a.pop();
+//     var toAppend = "";
+//     a.forEach(function (t, i){
+//         toAppend += t + ".<br>";   
+//     });
+//     header .innerHTML = toAppend ;
+// }
 </script>
     @stop

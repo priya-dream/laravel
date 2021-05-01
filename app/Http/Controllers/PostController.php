@@ -123,7 +123,7 @@ class PostController extends Controller
         ->count();
         if($post==0){
          DB::Insert('insert into vacancy_qualification(id,vacancy_id,company_id,o_level,type,advance_level,stream,graduate,field,gender,age,experience,salary,branch,other_quali) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[
-             null,$vacancy_id->id,$company_id->id,$ol,$type,$advance,$stream,$graduate,$field,$gender,$age,$exp,$salary,$branch,$other_quali.'.'
+             null,$vacancy_id->id,$company_id->id,$ol,$type,$advance,$stream,$graduate,$field,$gender,$age,$exp,$salary,$branch,$other_quali
         ]);
         $quali_id=DB::table('vacancy_qualification')->select('id')
         ->where('vacancy_id',$vacancy_id->id)
@@ -166,7 +166,10 @@ class PostController extends Controller
         ->select('vacancy_qualification.*','vacancies.*','companies.*','posts.*')
         ->where('posts.id',$id)
         ->get();
-        return view('vacancies.show',compact('datas','posts'));
+        $vac=DB::table('posts')
+        ->join('vacancies','vacancies.id','=','posts.vacancy_id')
+        ->select('title','img')->where('posts.id',$id)->first();
+        return view('vacancies.show',compact('datas','posts','vac'));
     }
 
     /**

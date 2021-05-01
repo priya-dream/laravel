@@ -58,10 +58,19 @@ Route::get('/account','NavigationController@myaccount');
     Route::get('/vacancy/type','VacancyController@type');
     Route::resource('/vacancies', 'VacancyController');
 
+    Route::get('/cv/download/{cv}', 'ResumeController@download');
+    Route::get('/resume_view/{id}', 'ResumeController@show');
+    Route::get('/cv', 'ResumeController@index');
+    Route::post('/add/resume', 'ResumeController@store');
+    Route::resource('/resumes', 'ResumeController');
+
+    
     Route::post('/job_seeker/cv', 'JobSeekerController@add_cv');
     Route::post('/employee/resume', 'JobSeekerController@store');
     Route::resource('/resume', 'JobSeekerController');
 
+
+    Route::get('/application_report','AdminController@application_report');
     Route::post('/admin/verify','AdminController@verify');
     Route::get('/company/data','AdminController@company_data');
     Route::post('admin/publish/{id}','AdminController@publish');
@@ -71,6 +80,7 @@ Route::get('/account','NavigationController@myaccount');
     Route::get('/admin/dashboard','AdminController@dashboard');
     Route::resource('/admin','AdminController');
 
+    Route::get('/shortlist/restore/{id}','InterviewController@restore');
     Route::get('/myaccount/interview_list/{id}','InterviewController@show');
     Route::post('/add/interview-list/{id}','InterviewController@store');
     Route::resource('/interview','InterviewController');

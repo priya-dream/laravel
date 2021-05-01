@@ -106,8 +106,9 @@ class SettingController extends Controller
         ->join('companies','companies.id','=','posts.company_id')
         ->select('posts.company_id')->where('posts.id',$id)->first();
         $result=DB::table('posts')
+        ->join('vacancies','vacancies.id','=','posts.vacancy_id')
         ->join('vacancy_qualification','vacancy_qualification.id','=','posts.quali_id')
-        ->select('vacancy_qualification.*')
+        ->select('vacancy_qualification.*','title')
         ->where('posts.id',$id)
         ->first();
         $result1=DB::table('posts')
@@ -116,7 +117,8 @@ class SettingController extends Controller
         ->where('posts.id',$id)
         ->first();
         //return $result1->id;
-        $vacancies=DB::table('vacancies')->get();
+        $vacancies=DB::table('vacancies')->select('title')->get();
+        // $vac=array($vacancies);
         $advances=['Need','Not Necessary'];
         $streams=['Physical Science(Maths)','Biological Science(Bio)','Commerce','Arts','Technology','Any'];
         $graduations=['Diploma','Higher Diploma','Degree','Master Degree'];
@@ -153,9 +155,9 @@ class SettingController extends Controller
         $post=DB::table('posts')->select('id','company_id')->where('quali_id',$id)->first();
         
         DB::update('update vacancy_qualification set advance_level=?,stream=?,graduate=?,field=?,other_quali=?,gender=?,age=?,experience=?,salary=?,branch=?,o_level=?,type=? where id=?',
-            [ $advance_level,$stream,$grad,$field,$other_quali,$gender,$age_limit,$experience,$salary,$branch,$ol,$type,$id ]);
-        
-        DB::update('update posts set need=?,closing_date=? where id=?',[$need,$closing_date,$post->id]);
+            [ $advance_level,$stream,$grad,$field,$other_quali.'.',$gender,$age_limit,$experience,$salary,$branch,$ol,$type,$id ]);
+        $vac=DB::table('vacancies')->select('id')->where('title',$title)->first();
+        DB::update('update posts set vacancy_id=?,need=?,closing_date=? where id=?',[$vac->id,$need,$closing_date,$post->id]);
         return redirect("/myaccount/posts/$post->company_id");
     }
 
